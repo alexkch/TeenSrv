@@ -1779,3 +1779,812 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 139ms (Views: 116.4ms | ActiveRecord: 1.0ms)
 
 
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProfiles (20171008072728)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "firstname" varchar, "lastname" varchar, "dob" datetime, "description" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_e424190865"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_profiles_on_user_id" ON "profiles" ("user_id")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171008072728"]]
+  [1m[35m (115.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_profiles_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_profiles_on_user_id' AND type='index'
+[0m
+Started GET "/users" for 127.0.0.1 at 2017-10-08 03:55:04 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (14.0ms)
+Completed 500 Internal Server Error in 1186ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (require_tree argument must be a directory):
+    4:     <title>AlexTest</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+   10: 
+  
+app/assets/javascripts/cable.js:6
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___543209902_26695692'
+Started GET "/user" for 127.0.0.1 at 2017-10-08 03:55:18 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/user"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users/new" for 127.0.0.1 at 2017-10-08 03:55:35 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (103.2ms)
+  Rendered users/new.html.erb within layouts/application (135.3ms)
+Completed 500 Internal Server Error in 275ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (require_tree argument must be a directory):
+    4:     <title>AlexTest</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+   10: 
+  
+app/assets/javascripts/cable.js:6
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___543209902_87107604'
+Started GET "/users/new" for 127.0.0.1 at 2017-10-08 03:58:29 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (2.0ms)
+  Rendered users/new.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 1180ms (Views: 1156.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-08 03:58:55 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 133ms (Views: 110.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-08 03:58:57 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (3.0ms)
+  Rendered users/new.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 179ms (Views: 148.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-10-08 03:59:01 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"s5uZbKMyEltMAK1HdLqx5oR5w5H+NwG7D50h19q6r4RWydOA4xoKayEQB44SOUaWuAEvCDLlShGpm67QuqSSZw==", "user"=>{"username"=>"esfrfres", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (5.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "esfrfres"], ["password", "ersferfers"], ["created_at", "2017-10-08 07:59:01.246714"], ["updated_at", "2017-10-08 07:59:01.246714"]]
+  [1m[35m (155.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 169ms (ActiveRecord: 160.9ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2017-10-08 03:59:01 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (29.0ms)
+Completed 500 Internal Server Error in 146ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `profiles' for #<User:0xc0c55c8>
+Did you mean?  profile
+               profile=):
+    10: </p>
+    11: 
+    12: <h2>Profiles</h2>
+    13: <% @user.profiles.each do |profile| %>
+    14:   <p>
+    15:     <strong>Commenter:</strong>
+    16:     <%= profile.firstname %>
+  
+app/views/users/show.html.erb:13:in `_app_views_users_show_html_erb___12394223_101086944'
+Started GET "/users/2" for 127.0.0.1 at 2017-10-08 04:00:10 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (29.0ms)
+Completed 500 Internal Server Error in 114ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `profiles' for #<User:0xccdec90>
+Did you mean?  profile
+               profile=):
+    10: </p>
+    11: 
+    12: <h2>Profiles</h2>
+    13: <% @user.profiles.each do |profiles| %>
+    14:   <p>
+    15:     <strong>Commenter:</strong>
+    16:     <%= profile.firstname %>
+  
+app/views/users/show.html.erb:13:in `_app_views_users_show_html_erb___12394223_107409600'
+Started GET "/users/2" for 127.0.0.1 at 2017-10-08 04:01:05 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (144.1ms)
+Completed 500 Internal Server Error in 231ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    10: </p>
+    11: 
+    12: <h2>Profiles</h2>
+    13: <% @user.profile.each do |profile| %>
+    14:   <p>
+    15:     <strong>Commenter:</strong>
+    16:     <%= profile.firstname %>
+  
+app/views/users/show.html.erb:13:in `_app_views_users_show_html_erb___12394223_102099204'
+Started GET "/users/2" for 127.0.0.1 at 2017-10-08 04:03:00 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (33.0ms)
+Completed 500 Internal Server Error in 138ms (ActiveRecord: 2.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    10: </p>
+    11: 
+    12: <h2>Profiles</h2>
+    13: <% @user.profile.each do |profile| %>
+    14:   <p>
+    15:     <strong>Commenter:</strong>
+    16:     <%= profile.firstname %>
+  
+app/views/users/show.html.erb:13:in `_app_views_users_show_html_erb___12394223_84937992'
+Started GET "/users/new" for 127.0.0.1 at 2017-10-08 04:07:05 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (3.0ms)
+  Rendered users/new.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 177ms (Views: 142.2ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-10-08 04:07:12 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gkLQCiTPs+y9aaH5AQ864cKS63cyYkZ+Nnb1rpK5g6pzaSaLaSMNXm9TtEu7WL91SUxOKYLugteKnmexwbKE4g==", "user"=>{"username"=>"dccdscd", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "dccdscd"], ["password", "cddscds"], ["created_at", "2017-10-08 08:07:12.968606"], ["updated_at", "2017-10-08 08:07:12.968606"]]
+  [1m[35m (188.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 199ms (ActiveRecord: 190.7ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2017-10-08 04:07:13 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (32.0ms)
+Completed 500 Internal Server Error in 127ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    10: </p>
+    11: 
+    12: <h2>Profiles</h2>
+    13: <% @user.profile.each do |profile| %>
+    14:   <p>
+    15:     <strong>Commenter:</strong>
+    16:     <%= profile.firstname %>
+  
+app/views/users/show.html.erb:13:in `_app_views_users_show_html_erb___12394223_87748488'
+Started GET "/users/3" for 127.0.0.1 at 2017-10-08 04:08:59 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (26.0ms)
+Completed 500 Internal Server Error in 115ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `build' for nil:NilClass):
+    23: <% end %>
+    24: 
+    25: <h2>Add some info:</h2>
+    26: <%= form_with(model: [ @user, @user.profile.build ], local: true) do |form| %>
+    27:   <p>
+    28:     <%= form.label :firstname %><br>
+    29:     <%= form.text_field :firstname %>
+  
+app/views/users/show.html.erb:26:in `_app_views_users_show_html_erb___12394223_99451404'
+Started GET "/users/3" for 127.0.0.1 at 2017-10-08 04:12:00 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mProfile Load (1.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (53.1ms)
+Completed 200 OK in 191ms (Views: 166.1ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users/3/profiles" for 127.0.0.1 at 2017-10-08 04:12:17 -0400
+Processing by ProfilesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dCS46O40nbuqUv/Xko2CSeBOQPoYLQoCfbVt+o22GmiFD05po9gjCXho6mUo2gfda5DlpKihzqvBXf/l3r0dIA==", "profile"=>{"firstname"=>"swed", "lastname"=>"awedawe"}, "commit"=>"Create Profile", "user_id"=>"3"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 128ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `profile_params' for #<ProfilesController:0xc004680>):
+  
+app/controllers/profiles_controller.rb:7:in `create'
+Started GET "/users/3/profiles" for 127.0.0.1 at 2017-10-08 04:14:45 -0400
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for ProfilesController):
+  
+actionpack (5.1.4) lib/abstract_controller/base.rb:119:in `process'
+actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.4) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/users/3/profiles" for 127.0.0.1 at 2017-10-08 04:14:54 -0400
+Processing by ProfilesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dCS46O40nbuqUv/Xko2CSeBOQPoYLQoCfbVt+o22GmiFD05po9gjCXho6mUo2gfda5DlpKihzqvBXf/l3r0dIA==", "profile"=>{"firstname"=>"swed", "lastname"=>"awedawe"}, "commit"=>"Create Profile", "user_id"=>"3"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 152ms (ActiveRecord: 1.0ms)
+
+
+  
+NameError (undefined local variable or method `profile_params' for #<ProfilesController:0x98cffd0>):
+  
+app/controllers/profiles_controller.rb:7:in `create'
+Started POST "/users/3/profiles" for 127.0.0.1 at 2017-10-08 04:17:44 -0400
+Processing by ProfilesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dCS46O40nbuqUv/Xko2CSeBOQPoYLQoCfbVt+o22GmiFD05po9gjCXho6mUo2gfda5DlpKihzqvBXf/l3r0dIA==", "profile"=>{"firstname"=>"swed", "lastname"=>"awedawe"}, "commit"=>"Create Profile", "user_id"=>"3"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 128ms (ActiveRecord: 1.0ms)
+
+
+  
+NameError (undefined local variable or method `profile_params' for #<ProfilesController:0xcd25640>):
+  
+app/controllers/profiles_controller.rb:7:in `create'
+Started POST "/users/3/profiles" for 127.0.0.1 at 2017-10-08 04:26:35 -0400
+Processing by ProfilesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dCS46O40nbuqUv/Xko2CSeBOQPoYLQoCfbVt+o22GmiFD05po9gjCXho6mUo2gfda5DlpKihzqvBXf/l3r0dIA==", "profile"=>{"firstname"=>"swed", "lastname"=>"awedawe"}, "commit"=>"Create Profile", "user_id"=>"3"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "profiles" ("firstname", "lastname", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["firstname", "swed"], ["lastname", "awedawe"], ["user_id", 3], ["created_at", "2017-10-08 08:26:35.168687"], ["updated_at", "2017-10-08 08:26:35.168687"]]
+  [1m[35m (120.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 185ms (ActiveRecord: 125.1ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2017-10-08 04:26:35 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendered users/show.html.erb within layouts/application (36.0ms)
+Completed 500 Internal Server Error in 168ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotSaved (Failed to remove the existing associated profile. The record failed to save after its foreign key was set to nil.):
+  
+app/views/users/show.html.erb:26:in `_app_views_users_show_html_erb___12394223_46113264'
+Started POST "/users" for 127.0.0.1 at 2017-10-08 04:27:03 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gkLQCiTPs+y9aaH5AQ864cKS63cyYkZ+Nnb1rpK5g6pzaSaLaSMNXm9TtEu7WL91SUxOKYLugteKnmexwbKE4g==", "user"=>{"username"=>"dccdscd000", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (47.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "dccdscd000"], ["password", "cddscds"], ["created_at", "2017-10-08 08:27:03.084672"], ["updated_at", "2017-10-08 08:27:03.084672"]]
+  [1m[35m (89.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 144ms (ActiveRecord: 137.0ms)
+
+
+Started GET "/users/4" for 127.0.0.1 at 2017-10-08 04:27:03 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 4], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 147ms (Views: 121.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/4/profiles" for 127.0.0.1 at 2017-10-08 04:27:09 -0400
+Processing by ProfilesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sa2OKT4ruFDCQQOlXgUIibIGbU5Q6z8Seeb3hOU7vnVAhnioc8cG4hB7FhfkUo0dOdjIEOBn+7vFDmWbtjC5PQ==", "profile"=>{"firstname"=>"poopooo", "lastname"=>"22"}, "commit"=>"Create Profile", "user_id"=>"4"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (110.1ms)[0m  [1m[32mINSERT INTO "profiles" ("firstname", "lastname", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["firstname", "poopooo"], ["lastname", "22"], ["user_id", 4], ["created_at", "2017-10-08 08:27:09.991332"], ["updated_at", "2017-10-08 08:27:09.991332"]]
+  [1m[35m (189.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 4], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 312ms (ActiveRecord: 299.6ms)
+
+
+Started GET "/users/4" for 127.0.0.1 at 2017-10-08 04:27:10 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 4], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendered users/show.html.erb within layouts/application (32.0ms)
+Completed 500 Internal Server Error in 118ms (ActiveRecord: 1.0ms)
+
+
+  
+ActiveRecord::RecordNotSaved (Failed to remove the existing associated profile. The record failed to save after its foreign key was set to nil.):
+  
+app/views/users/show.html.erb:26:in `_app_views_users_show_html_erb___12394223_99952716'
+Started GET "/favicon.ico" for 127.0.0.1 at 2017-10-08 14:08:47 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/favicon.ico" for 127.0.0.1 at 2017-10-08 14:08:52 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/users" for 127.0.0.1 at 2017-10-08 14:08:56 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gkLQCiTPs+y9aaH5AQ864cKS63cyYkZ+Nnb1rpK5g6pzaSaLaSMNXm9TtEu7WL91SUxOKYLugteKnmexwbKE4g==", "user"=>{"username"=>"dccdscd000", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "dccdscd000"], ["password", "cddscds"], ["created_at", "2017-10-08 18:08:57.346817"], ["updated_at", "2017-10-08 18:08:57.346817"]]
+  [1m[35m (132.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/5
+Completed 302 Found in 166ms (ActiveRecord: 135.1ms)
+
+
+Started GET "/users/5" for 127.0.0.1 at 2017-10-08 14:08:57 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (32.0ms)
+Completed 200 OK in 207ms (Views: 177.5ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/users/5/profiles" for 127.0.0.1 at 2017-10-08 14:09:01 -0400
+Processing by ProfilesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8XyCAd3FXRCKvMQ49AqULbP+BTYL6UrMaintgr326GkAV3SAkCnjoliG0YpOXRG5OCCgaLtljmXWwX+d7v3vIQ==", "profile"=>{"firstname"=>"ergregr", "lastname"=>"esrgserg"}, "commit"=>"Create Profile", "user_id"=>"5"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (17.1ms)[0m  [1m[32mINSERT INTO "profiles" ("firstname", "lastname", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["firstname", "ergregr"], ["lastname", "esrgserg"], ["user_id", 5], ["created_at", "2017-10-08 18:09:01.187386"], ["updated_at", "2017-10-08 18:09:01.187386"]]
+  [1m[35m (165.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mProfile Load (1.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/5
+Completed 302 Found in 205ms (ActiveRecord: 183.3ms)
+
+
+Started GET "/users/5" for 127.0.0.1 at 2017-10-08 14:09:01 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendered users/show.html.erb within layouts/application (38.0ms)
+Completed 500 Internal Server Error in 160ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotSaved (Failed to remove the existing associated profile. The record failed to save after its foreign key was set to nil.):
+  
+app/views/users/show.html.erb:26:in `_app_views_users_show_html_erb___12394223_57787200'
+Started POST "/users" for 127.0.0.1 at 2017-10-08 14:14:38 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gkLQCiTPs+y9aaH5AQ864cKS63cyYkZ+Nnb1rpK5g6pzaSaLaSMNXm9TtEu7WL91SUxOKYLugteKnmexwbKE4g==", "user"=>{"username"=>"dccdscd000", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "dccdscd000"], ["password", "cddscds"], ["created_at", "2017-10-08 18:14:38.147255"], ["updated_at", "2017-10-08 18:14:38.147255"]]
+  [1m[35m (137.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 145ms (ActiveRecord: 138.3ms)
+
+
+Started GET "/users/6" for 127.0.0.1 at 2017-10-08 14:14:38 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (156.1ms)
+Completed 500 Internal Server Error in 254ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `profiles_path' for #<#<Class:0x9f7a6a0>:0xcd054e0>):
+    23: <% end %>
+    24: 
+    25: <h2>Add some info:</h2>
+    26: <%= form_with(model:  @user.build_profile, local: true) do |form| %>
+    27:   <p>
+    28:     <%= form.label :firstname %><br>
+    29:     <%= form.text_field :firstname %>
+  
+app/views/users/show.html.erb:26:in `_app_views_users_show_html_erb___12394223_107490816'
+Started GET "/users" for 127.0.0.1 at 2017-10-08 14:24:11 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 149ms (Views: 123.9ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/users/2" for 127.0.0.1 at 2017-10-08 14:24:15 -0400
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"tTF1fhalkTxga4sG/WD+VJjg2xWKjgUfMQMZ2cP+m1tEGoP/W0kvjrJRnrRHN3vAEz5+SzoCwbaN64vGkPWcEw==", "id"=>"2"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (36.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 2]]
+  [1m[35m (145.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 187ms (ActiveRecord: 182.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-08 14:24:15 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 170ms (Views: 143.1ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/3" for 127.0.0.1 at 2017-10-08 14:24:17 -0400
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"7nS02s9nCqT5oX5rY8w71EsOO59Ai9uj8aTkAVMV7WofX0Jbgou0Fiuba9nZm75AwNCewfAHHwpNTHYeAB7qIg==", "id"=>"3"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (14.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 3]]
+  [1m[35m (5.0ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 20.1ms)
+
+
+  
+ActiveRecord::InvalidForeignKey (SQLite3::ConstraintException: FOREIGN KEY constraint failed: DELETE FROM "users" WHERE "users"."id" = ?):
+  
+app/controllers/users_controller.rb:42:in `destroy'
+Started DELETE "/users/3" for 127.0.0.1 at 2017-10-08 14:24:19 -0400
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"7nS02s9nCqT5oX5rY8w71EsOO59Ai9uj8aTkAVMV7WofX0Jbgou0Fiuba9nZm75AwNCewfAHHwpNTHYeAB7qIg==", "id"=>"3"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 3]]
+  [1m[35m (5.0ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 378ms (ActiveRecord: 7.0ms)
+
+
+  
+ActiveRecord::InvalidForeignKey (SQLite3::ConstraintException: FOREIGN KEY constraint failed: DELETE FROM "users" WHERE "users"."id" = ?):
+  
+app/controllers/users_controller.rb:42:in `destroy'
+Started GET "/users" for 127.0.0.1 at 2017-10-08 14:24:51 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 152ms (Views: 128.3ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/6" for 127.0.0.1 at 2017-10-08 14:24:55 -0400
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"9B6OCa1LdQ8EbMXPzGV/8+sZYH9OyDYMj9O8byYMCpgFNXiI4KfLvdZW0H12MvpnYMfFIf5E8qUzOy5wdQcN0A==", "id"=>"6"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 6]]
+  [1m[35m (103.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 110ms (ActiveRecord: 104.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-08 14:24:55 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 177ms (Views: 151.6ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/5" for 127.0.0.1 at 2017-10-08 14:24:58 -0400
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"A1yMQIjJmgvqJ9w9xY6Gl9ZZ9djsPHEPyvyeD8A6WDLyd3rBxSUkuTgdyY9/2QMDXYdQhlywtaZ2FAwQkzFfeg==", "id"=>"5"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (21.0ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 5]]
+  [1m[35m (4.0ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 25.0ms)
+
+
+  
+ActiveRecord::InvalidForeignKey (SQLite3::ConstraintException: FOREIGN KEY constraint failed: DELETE FROM "users" WHERE "users"."id" = ?):
+  
+app/controllers/users_controller.rb:42:in `destroy'
+Started GET "/users" for 127.0.0.1 at 2017-10-08 14:25:08 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 155ms (Views: 129.4ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/users/5" for 127.0.0.1 at 2017-10-08 14:25:12 -0400
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"rdm6+Dky3vWfHIoR3rgSkXxXLyvUbKmadQQuhv310VZc8kx5dN5gR00mn6Nk75cF94mKdWTgbTPJ7LyZrv7WHg==", "id"=>"5"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 5]]
+  [1m[35m (4.0ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 5.0ms)
+
+
+  
+ActiveRecord::InvalidForeignKey (SQLite3::ConstraintException: FOREIGN KEY constraint failed: DELETE FROM "users" WHERE "users"."id" = ?):
+  
+app/controllers/users_controller.rb:42:in `destroy'
+Started GET "/users" for 127.0.0.1 at 2017-10-08 14:25:19 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 155ms (Views: 129.7ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/4" for 127.0.0.1 at 2017-10-08 14:25:22 -0400
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"SDCmJal/Frh0j/jHCamHVby4kqZ7a2kq+gLBy3sEyoa5G1Ck5JOoCqa17XWz/gLBN2Y3+MvnrYNG6lPUKA/Nzg==", "id"=>"4"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 4]]
+  [1m[35m (5.0ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 8.0ms)
+
+
+  
+ActiveRecord::InvalidForeignKey (SQLite3::ConstraintException: FOREIGN KEY constraint failed: DELETE FROM "users" WHERE "users"."id" = ?):
+  
+app/controllers/users_controller.rb:42:in `destroy'
+  [1m[36mProfile Load (1.5ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mProfile Load (0.5ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.1ms)[0m  [1m[31mDELETE FROM "profiles" WHERE "profiles"."id" = ?[0m  [["id", 1]]
+  [1m[35m (118.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (29.3ms)[0m  [1m[31mDELETE FROM "profiles" WHERE "profiles"."id" = ?[0m  [["id", 2]]
+  [1m[35m (99.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mProfile Load (0.5ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (5.1ms)[0m  [1m[31mDELETE FROM "profiles" WHERE "profiles"."id" = ?[0m  [["id", 3]]
+  [1m[35m (99.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mProfile Load (0.5ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/users/" for 127.0.0.1 at 2017-10-08 14:36:24 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 166ms (Views: 141.5ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/3" for 127.0.0.1 at 2017-10-08 14:36:29 -0400
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"kwMIBBCb66gO1FtznzGi5dRbOIPWyuCkAqdzvzWgmUdiKP6FXXdVGtzuTsElZidxX4Wd3WZGJA2+T+GgZqueDw==", "id"=>"3"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (26.0ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 3]]
+  [1m[35m (130.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 162ms (ActiveRecord: 156.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-08 14:36:29 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 145ms (Views: 120.6ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/users/4" for 127.0.0.1 at 2017-10-08 14:36:31 -0400
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9rERieCRR+5o6xwnqgsmSR0K5B0iLX+S8Yuf7db8Si28TLHam77rWuZucIk/6kNr6qOzsQEcVf3Lrxg5FD2YA==", "id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (33.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 4]]
+  [1m[35m (168.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 208ms (ActiveRecord: 202.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-08 14:36:31 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 167ms (Views: 139.3ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/5" for 127.0.0.1 at 2017-10-08 14:36:33 -0400
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"wpPynFxCwmb/7M4ljgIZHV+bbH0Nryz3iPYpUJ5VurEzuAQdEa581C3W25c0VZyJ1EXJI70j6F40HrtPzV69+Q==", "id"=>"5"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (15.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 5]]
+  [1m[35m (96.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 117ms (ActiveRecord: 112.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-08 14:36:34 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 190ms (Views: 142.2ms | ActiveRecord: 0.5ms)
+
+
