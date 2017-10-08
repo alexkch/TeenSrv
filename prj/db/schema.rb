@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171008203207) do
+ActiveRecord::Schema.define(version: 20171008210901) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "street_no"
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(version: 20171008203207) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["payment_id"], name: "index_credit_cards_on_payment_id"
+  end
+
+  create_table "endorsements", force: :cascade do |t|
+    t.integer "endorsed_user_id"
+    t.integer "reference_user_id"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["endorsed_user_id"], name: "index_endorsements_on_endorsed_user_id"
+    t.index ["reference_user_id"], name: "index_endorsements_on_reference_user_id"
   end
 
   create_table "payments", force: :cascade do |t|
