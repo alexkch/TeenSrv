@@ -2847,3 +2847,247 @@ FOREIGN KEY ("reference_user_id")
   [1m[36mEndorsement Load (0.0ms)[0m  [1m[34mSELECT  "endorsements".* FROM "endorsements" LIMIT ?[0m  [["LIMIT", 11]]
   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to EndorsementReaddCol (20171008232536)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aendorsements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "endorsed_user_id" integer DEFAULT NULL, "reference_user_id" integer DEFAULT NULL, "comment" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_endorsements_on_reference_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_endorsements_on_reference_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_endorsements_on_endorsed_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_endorsements_on_endorsed_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "tindex_aendorsements_on_reference_user_id" ON "aendorsements" ("reference_user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "tindex_aendorsements_on_endorsed_user_id" ON "aendorsements" ("endorsed_user_id")[0m
+  [1m[35m (2.1ms)[0m  [1m[32mINSERT INTO "aendorsements" ("id","endorsed_user_id","reference_user_id","comment","created_at","updated_at")
+                     SELECT "id","endorsed_user_id","reference_user_id","comment","created_at","updated_at" FROM "endorsements"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "endorsements"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "endorsements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "reference_user_id" integer DEFAULT NULL, "comment" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_aendorsements_on_endorsed_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_aendorsements_on_endorsed_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_aendorsements_on_reference_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_aendorsements_on_reference_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "index_endorsements_on_reference_user_id" ON "endorsements" ("reference_user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "endorsements" ("id","reference_user_id","comment","created_at","updated_at")
+                     SELECT "id","reference_user_id","comment","created_at","updated_at" FROM "aendorsements"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "aendorsements"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aendorsements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "reference_user_id" integer DEFAULT NULL, "comment" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_endorsements_on_reference_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_endorsements_on_reference_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "tindex_aendorsements_on_reference_user_id" ON "aendorsements" ("reference_user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aendorsements" ("id","reference_user_id","comment","created_at","updated_at")
+                     SELECT "id","reference_user_id","comment","created_at","updated_at" FROM "endorsements"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "endorsements"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "endorsements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "comment" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_aendorsements_on_reference_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_aendorsements_on_reference_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "endorsements" ("id","comment","created_at","updated_at")
+                     SELECT "id","comment","created_at","updated_at" FROM "aendorsements"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "aendorsements"[0m
+  [1m[35m (29.1ms)[0m  [1m[35mALTER TABLE "endorsements" ADD "user_id" integer[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "index_endorsements_on_user_id" ON "endorsements" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "endorsements" ADD "user_id" integer[0m
+  [1m[35m (69.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to EndorsementReaddCol (20171008232536)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aendorsements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "endorsed_user_id" integer DEFAULT NULL, "reference_user_id" integer DEFAULT NULL, "comment" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_endorsements_on_reference_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_endorsements_on_reference_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_endorsements_on_endorsed_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_endorsements_on_endorsed_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "tindex_aendorsements_on_reference_user_id" ON "aendorsements" ("reference_user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "tindex_aendorsements_on_endorsed_user_id" ON "aendorsements" ("endorsed_user_id")[0m
+  [1m[35m (28.1ms)[0m  [1m[32mINSERT INTO "aendorsements" ("id","endorsed_user_id","reference_user_id","comment","created_at","updated_at")
+                     SELECT "id","endorsed_user_id","reference_user_id","comment","created_at","updated_at" FROM "endorsements"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "endorsements"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "endorsements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "reference_user_id" integer DEFAULT NULL, "comment" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_aendorsements_on_endorsed_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_aendorsements_on_endorsed_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_aendorsements_on_reference_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_aendorsements_on_reference_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "index_endorsements_on_reference_user_id" ON "endorsements" ("reference_user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "endorsements" ("id","reference_user_id","comment","created_at","updated_at")
+                     SELECT "id","reference_user_id","comment","created_at","updated_at" FROM "aendorsements"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "aendorsements"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aendorsements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "reference_user_id" integer DEFAULT NULL, "comment" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_endorsements_on_reference_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_endorsements_on_reference_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "tindex_aendorsements_on_reference_user_id" ON "aendorsements" ("reference_user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aendorsements" ("id","reference_user_id","comment","created_at","updated_at")
+                     SELECT "id","reference_user_id","comment","created_at","updated_at" FROM "endorsements"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "endorsements"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "endorsements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "comment" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_aendorsements_on_reference_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_aendorsements_on_reference_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "endorsements" ("id","comment","created_at","updated_at")
+                     SELECT "id","comment","created_at","updated_at" FROM "aendorsements"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "aendorsements"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "endorsements" ADD "ref_user_id" integer[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "index_endorsements_on_ref_user_id" ON "endorsements" ("ref_user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mALTER TABLE "endorsements" ADD "end_user_id" integer[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_endorsements_on_ref_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_endorsements_on_ref_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "index_endorsements_on_end_user_id" ON "endorsements" ("end_user_id")[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171008232536"]]
+  [1m[35m (138.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_bank_infos_on_payment_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_bank_infos_on_payment_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_credit_cards_on_payment_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_credit_cards_on_payment_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_endorsements_on_end_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_endorsements_on_end_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_endorsements_on_ref_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_endorsements_on_ref_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_payments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_payments_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_profiles_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_profiles_on_user_id' AND type='index'
+[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (15.7ms)[0m  [1m[32mINSERT INTO "endorsements" ("comment", "created_at", "updated_at", "ref_user_id", "end_user_id") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "good"], ["created_at", "2017-10-08 23:46:47.829300"], ["updated_at", "2017-10-08 23:46:47.829300"], ["ref_user_id", 2], ["end_user_id", 2]]
+  [1m[35m (109.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mEndorsement Load (0.0ms)[0m  [1m[34mSELECT  "endorsements".* FROM "endorsements" WHERE "endorsements"."end_user_id" = ? LIMIT ?[0m  [["end_user_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "endorsements" ("comment", "created_at", "updated_at", "ref_user_id", "end_user_id") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "good"], ["created_at", "2017-10-08 23:48:33.502383"], ["updated_at", "2017-10-08 23:48:33.502383"], ["ref_user_id", 2], ["end_user_id", 1]]
+  [1m[35m (208.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mEndorsement Load (0.0ms)[0m  [1m[34mSELECT  "endorsements".* FROM "endorsements" WHERE "endorsements"."end_user_id" = ? LIMIT ?[0m  [["end_user_id", 1], ["LIMIT", 1]]
+  [1m[36mEndorsement Load (0.0ms)[0m  [1m[34mSELECT  "endorsements".* FROM "endorsements" WHERE "endorsements"."ref_user_id" = ? LIMIT ?[0m  [["ref_user_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "endorsements" ("comment", "created_at", "updated_at", "ref_user_id", "end_user_id") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "good"], ["created_at", "2017-10-08 23:49:21.536817"], ["updated_at", "2017-10-08 23:49:21.536817"], ["ref_user_id", 2], ["end_user_id", 1]]
+  [1m[35m (125.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
