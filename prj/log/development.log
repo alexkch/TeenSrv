@@ -2819,3 +2819,31 @@ FOREIGN KEY ("reference_user_id")
             FROM sqlite_temp_master
             WHERE name='index_profiles_on_user_id' AND type='index'
 [0m
+  [1m[36mProfile Load (0.5ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "profiles" ("firstname", "lastname", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["firstname", "Alex"], ["lastname", "Chang"], ["user_id", 1], ["created_at", "2017-10-08 22:09:33.785930"], ["updated_at", "2017-10-08 22:09:33.785930"]]
+  [1m[35m (119.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "profiles" ("firstname", "lastname", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["firstname", "Brian"], ["lastname", "Chang"], ["user_id", 1], ["created_at", "2017-10-08 22:10:28.434194"], ["updated_at", "2017-10-08 22:10:28.434194"]]
+  [1m[35m (128.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mPayment Load (0.5ms)[0m  [1m[34mSELECT  "payments".* FROM "payments" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "payments" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 1], ["created_at", "2017-10-08 22:16:13.581964"], ["updated_at", "2017-10-08 22:16:13.581964"]]
+  [1m[35m (146.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPayment Load (0.0ms)[0m  [1m[34mSELECT  "payments".* FROM "payments" WHERE "payments"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPayment Load (0.0ms)[0m  [1m[34mSELECT  "payments".* FROM "payments" WHERE "payments"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (47.5ms)[0m  [1m[32mINSERT INTO "credit_cards" ("payment_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["payment_id", 1], ["created_at", "2017-10-08 22:44:04.602721"], ["updated_at", "2017-10-08 22:44:04.602721"]]
+  [1m[35m (211.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (14.3ms)[0m  [1m[32mINSERT INTO "credit_cards" ("payment_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["payment_id", 1], ["created_at", "2017-10-08 22:44:44.898936"], ["updated_at", "2017-10-08 22:44:44.898936"]]
+  [1m[35m (103.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mEndorsement Load (0.0ms)[0m  [1m[34mSELECT  "endorsements".* FROM "endorsements" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
