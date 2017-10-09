@@ -1,0 +1,3 @@
+class JobType < ApplicationRecord
+
+end

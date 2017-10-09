@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  teenager: one
+  job: one
+  payment: one
+  amount: 1
+  trans_date: 2017-10-09 15:10:57
+  status: MyString
+
+two:
+  client: two
+  teenager: two
+  job: two
+  payment: two
+  amount: 1
+  trans_date: 2017-10-09 15:10:57
+  status: MyString
