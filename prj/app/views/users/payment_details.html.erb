@@ -1,0 +1,63 @@
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<div class="box">
+  <form>
+    <div class="row">
+      <h1> Payment Details </h1>
+      <div class="input-group">
+        <input type="radio" name="payment-method" value="card" id="payment-method-card" checked="true"/>
+        <label for="payment-method-card"><span><i class="fa fa-cc-visa" style="font-size:20px"></i>Credit Card</span></label>
+        <input type="radio" name="payment-method" value="paypal" id="payment-method-paypal"/>
+        <label for="payment-method-paypal"><span><i class="fa fa-cc-paypal" style="font-size:20px"></i>Paypal</span></label>
+	  </div>
+      <div class="input-group input-group-icon">
+        <input type="text" placeholder="Card Number" maxlength="16"/>
+        <div class="input-icon"><i class="material-icons">payment</i></div>
+      </div>
+	  <div class="col-half">
+        <div class="input-group input-group-icon">
+          <input type="text" placeholder="Card CVC" maxlength="3"/>
+          <div class="input-icon"><i class="material-icons">person</i></div>
+		</div>
+	  </div>
+      <div class="col-half">
+        <div class="input-group">
+          <select>
+            <option>Jan</option>
+            <option>Feb</option>
+			<option>March</option>
+			<option>April</option>
+			<option>May</option>
+			<option>June</option>
+			<option>July</option>
+			<option>Aug</option>
+			<option>Sep</option>
+			<option>Oct</option>
+			<option>Nov</option>
+			<option>Dec</option>
+          </select>
+		  <select>
+			<option>2017</option>
+			<option>2018</option>
+			<option>2019</option>
+			<option>2020</option>
+			<option>2021</option>
+		  </select>
+		</div>
+	  </div>
+	</div>
+  </form>
+
+    <div class="row">
+      <h4>Terms and Conditions</h4>
+      <div class="input-group">
+        <input type="checkbox" id="terms"/>
+        <label for="terms"><span>I accept the terms and conditions for signing up to this service, and hereby confirm I have read the privacy policy.</span></label>
+	</div>
+	</div>
+
+	<a href="http://localhost:3000/welcome" class="myButton pull-right">Continue</a>
+</div>
