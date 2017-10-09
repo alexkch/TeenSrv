@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009162341) do
+ActiveRecord::Schema.define(version: 20171009164516) do
+
+  create_table "accepted_jobs", force: :cascade do |t|
+    t.integer "job_id"
+    t.integer "teenager_id"
+    t.integer "trans_id"
+    t.datetime "accept_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_accepted_jobs_on_job_id"
+    t.index ["teenager_id"], name: "index_accepted_jobs_on_teenager_id"
+    t.index ["trans_id"], name: "index_accepted_jobs_on_trans_id"
+  end
 
   create_table "addresses", force: :cascade do |t|
     t.integer "street_no"
@@ -38,6 +50,16 @@ ActiveRecord::Schema.define(version: 20171009162341) do
     t.index ["payment_id"], name: "index_bank_infos_on_payment_id"
   end
 
+  create_table "cancelled_jobs", force: :cascade do |t|
+    t.integer "job_id"
+    t.integer "teenager_id"
+    t.datetime "cancel_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_cancelled_jobs_on_job_id"
+    t.index ["teenager_id"], name: "index_cancelled_jobs_on_teenager_id"
+  end
+
   create_table "credit_cards", force: :cascade do |t|
     t.integer "payment_id"
     t.string "card_type"
@@ -50,6 +72,16 @@ ActiveRecord::Schema.define(version: 20171009162341) do
     t.index ["payment_id"], name: "index_credit_cards_on_payment_id"
   end
 
+  create_table "declined_jobs", force: :cascade do |t|
+    t.integer "job_id"
+    t.integer "teenager_id"
+    t.datetime "decline_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_declined_jobs_on_job_id"
+    t.index ["teenager_id"], name: "index_declined_jobs_on_teenager_id"
+  end
+
   create_table "endorsements", force: :cascade do |t|
     t.string "comment"
     t.datetime "created_at", null: false
@@ -58,6 +90,20 @@ ActiveRecord::Schema.define(version: 20171009162341) do
     t.integer "end_user_id"
     t.index ["end_user_id"], name: "index_endorsements_on_end_user_id"
     t.index ["ref_user_id"], name: "index_endorsements_on_ref_user_id"
+  end
+
+  create_table "finished_jobs", force: :cascade do |t|
+    t.integer "job_id"
+    t.integer "teenager_id"
+    t.integer "client_id"
+    t.integer "trans_id"
+    t.datetime "finish_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_finished_jobs_on_client_id"
+    t.index ["job_id"], name: "index_finished_jobs_on_job_id"
+    t.index ["teenager_id"], name: "index_finished_jobs_on_teenager_id"
+    t.index ["trans_id"], name: "index_finished_jobs_on_trans_id"
   end
 
   create_table "job_types", force: :cascade do |t|
