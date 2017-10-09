@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171008232536) do
+ActiveRecord::Schema.define(version: 20171009162341) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "street_no"
@@ -58,6 +58,41 @@ ActiveRecord::Schema.define(version: 20171008232536) do
     t.integer "end_user_id"
     t.index ["end_user_id"], name: "index_endorsements_on_end_user_id"
     t.index ["ref_user_id"], name: "index_endorsements_on_ref_user_id"
+  end
+
+  create_table "job_types", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.integer "job_type_id"
+    t.integer "teenager_id"
+    t.integer "client_id"
+    t.text "description"
+    t.integer "amount"
+    t.integer "hours"
+    t.datetime "starttime"
+    t.datetime "finishtime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_jobs_on_client_id"
+    t.index ["job_type_id"], name: "index_jobs_on_job_type_id"
+    t.index ["teenager_id"], name: "index_jobs_on_teenager_id"
+  end
+
+  create_table "offered_jobs", force: :cascade do |t|
+    t.integer "job_id"
+    t.integer "jobtype_id"
+    t.text "description"
+    t.datetime "duration_start"
+    t.datetime "duration_finish"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_offered_jobs_on_job_id"
+    t.index ["jobtype_id"], name: "index_offered_jobs_on_jobtype_id"
   end
 
   create_table "payments", force: :cascade do |t|
