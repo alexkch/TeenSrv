@@ -8,6 +8,11 @@
   <strong>Password:</strong>
   <%= @user.password %>
 </p>
+ 
+<p>
+  <strong>User Type:</strong>
+  <%= @user.usertype %>
+</p>
 
 <h2>Profiles</h2>
 <% @user.profile do |profile| %>
@@ -23,7 +28,7 @@
 <% end %>
 
 <h2>Add some info:</h2>
-<%= form_with(model:  @user.build_profile, local: true) do |form| %>
+<%= form_with(model:  @user, uri: users_path, local: true) do |form| %>
   <p>
     <%= form.label :firstname %><br>
     <%= form.text_field :firstname %>

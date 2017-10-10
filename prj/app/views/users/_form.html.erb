@@ -25,6 +25,11 @@
   </p>
  
   <p>
+    <%= form.label :usertype %><br>
+    <%= form.select :usertype, [['Teen', 'teen'], ['Client', 'client'],['Customer Service', 'cserve'], ['Admin', 'admin']] %>
+  </p>
+
+  <p>
     <%= form.submit %>
   </p>
  
