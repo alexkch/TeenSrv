@@ -1,0 +1,17 @@
+<%= form_with model: @profile, local: true do |form| %>
+ 
+  <p>
+    <%= form.label :firstname %><br>
+    <%= form.text_field :firstname %>
+  </p>
+ 
+  <p>
+    <%= form.label :lastname %><br>
+    <%= form.text_field :lastname %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>
