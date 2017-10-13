@@ -8,11 +8,13 @@
     <div class="row">
       <h1> Payment Details </h1>
       <div class="input-group">
-        <input type="radio" name="payment-method" value="card" id="payment-method-card" checked="true"/>
-        <label for="payment-method-card"><span><i class="fa fa-cc-visa" style="font-size:20px"></i>Credit Card</span></label>
-        <input type="radio" name="payment-method" value="paypal" id="payment-method-paypal"/>
-        <label for="payment-method-paypal"><span><i class="fa fa-cc-paypal" style="font-size:20px"></i>Paypal</span></label>
-	  </div>
+	<input type="radio" name="payment-method" value="visa" id="payment-method-visa" checked="true"/>
+	<label for="payment-method-visa"><span>Visa</span></label>
+	<input type="radio" name="payment-method" value="mastercard" id="payment-method-mastercard"/>
+	<label for="payment-method-mastercard"><span>Mastercard</span></label>
+	<input type="radio" name="payment-method" value="amex" id="payment-method-amex"/>
+	<label for="payment-method-amex"><span>American Express</span></label>
+      </div>
       <div class="input-group input-group-icon">
         <input type="text" placeholder="Card Number" maxlength="16"/>
         <div class="input-icon"><i class="material-icons">payment</i></div>
