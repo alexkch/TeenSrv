@@ -1,0 +1,29 @@
+<h1>All Clients</h1>
+
+<table>
+	<tr>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Gender Name</th>
+		<th>Birthday</th>
+		<th>Address</th>
+		<th>Postal Code</th>
+		<th>City</th>
+		<th>Country</th>
+	</tr>
+
+	<% @clients.each do |client| %>
+		<tr>
+		  <td><%= teenager.fName %></td>
+		  <td><%= teenager.lName %></td>
+		  <td><%= teenager.gender %></td>
+		  <td><%= teenager.birth_month %>/<%= teenager.birth_day %>/<%= teenager.birth_year %></td>
+		  <td><%= teenager.address %></td>
+		  <td><%= teenager.postal_code %></td>
+		  <td><%= teenager.city %></td>
+		  <td><%= teenager.country %></td>
+		  <td><%= link_to 'Show', client_path(client_id) %></td>
+		  <td><%= link_to 'Edit', edit_client_path(client_id) %></td>
+		</tr>
+	<% end %>
+</table>

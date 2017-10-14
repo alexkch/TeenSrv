@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   resources :users
   resources :profiles
-  
+  resources :clients
+  resources :teenagers
 
   root 'welcome#index'
 end

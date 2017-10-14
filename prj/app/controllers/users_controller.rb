@@ -22,10 +22,10 @@ def create
   @teenager = Teenager.new
 
   if @user.save
-    if @user.usertype == 0
-      redirect_to :controller => 'teenagers', :action => 'new'
-    elsif @user.usertype == 1
-      render 'new' # define type
+    if @user.usertype == 0              #type0 = teen
+      redirect_to new_teenager_path
+    elsif @user.usertype == 1           #type 1 = client
+      redirect_to new_client_path
     end
   else
     render 'new'

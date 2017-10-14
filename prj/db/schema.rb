@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 20171010153722) do
   create_table "clients", force: :cascade do |t|
     t.string "job_wanted"
     t.integer "user_id"
+    t.string "fName"
+    t.string "lName"
     t.string "gender"
     t.integer "birth_year"
     t.integer "birth_month"
