@@ -1,5 +1,11 @@
 class User < ApplicationRecord
-  
+  # enum usertype: [:teen, :client, :cust_srv, :admin, :null]
+  # after_initialize :set_default_role, :if => :new_record?
+
+  # def set_default_role
+  #   self.usertype ||= :null
+  # end
+
   has_one :teenager
   has_one :client
   has_one :payment

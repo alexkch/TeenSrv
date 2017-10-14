@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   get 'welcome/index'
 
-  resources :users
-  resources :profiles
+#  resources :users do |users|
+#      resources :teenagers, :name_prefix => "user_"
+#  end
   
+  resources :users
+  resources :teenagers
 
+  # resources :profiles
+  
   root 'welcome#index'
 end
