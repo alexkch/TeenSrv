@@ -1,13 +1,13 @@
-<%= form_with model: @user, local: true do |form| %>
+<%= form_with model: @client, url: clients_path, local: true do |form| %>
  
-  <% if @user.errors.any? %>
+  <% if @client.errors.any? %>
     <div id="error_explanation">
       <h2>
-        <%= pluralize(@user.errors.count, "error") %> prohibited
-        this user from being saved:
+        <%= pluralize(@client.errors.count, "error") %> prohibited
+        this client form from being saved:
       </h2>
       <ul>
-        <% @user.errors.full_messages.each do |msg| %>
+        <% @client.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
@@ -15,22 +15,57 @@
   <% end %>
  
   <p>
-    <%= form.label :username %><br>
-    <%= form.text_field :username %>
+    <%= form.label :'First Name:' %>
+    <%= form.text_field :first_name %>
   </p>
- 
+
   <p>
-    <%= form.label :password %><br>
-    <%= form.text_area :password %>
+    <%= form.label :'Last Name:' %>
+    <%= form.text_field :last_name %>
   </p>
- 
+
   <p>
-    <%= form.label :usertype %><br>
-    <%= form.select :usertype, [['Teen', 'teen'], ['Client', 'client'],['Customer Service', 'cserve'], ['Admin', 'admin']] %>
+    <%= form.label :'Gender:' %>
+    <%= form.text_field :gender %>
+  </p>
+
+  <h3>Date of Birth</h3>
+  <p>
+    <%= form.label :'Month' %>
+    <%= form.text_field :birth_month %>
+    <%= form.label :'Day' %>
+    <%= form.text_field :birth_day %>
+    <%= form.label :'Year' %>
+    <%= form.text_field :birth_year %>
+  </p>
+
+  <h3>Address</h3>
+    <p>
+    <%= form.label :'Address Line' %>
+    <%= form.text_field :address %>
+  </p>
+  <p>
+    <%= form.label :'Apt.No' %>
+    <%= form.text_field :apt_no %>
+  </p>
+    <p>
+    <%= form.label :'City' %>
+    <%= form.text_field :city %>
+  </p>
+  <p>
+    <%= form.label :'Province/State' %>
+    <%= form.text_field :province %>
+  </p>
+  <p>
+    <%= form.label :'Country' %>
+    <%= form.text_field :country %>
+  </p>
+  <p>
+    <%= form.label :'Postal Code' %>
+    <%= form.text_field :postal_code %>
   </p>
 
   <p>
     <%= form.submit %>
   </p>
- 
 <% end %>

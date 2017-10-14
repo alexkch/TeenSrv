@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009191057) do
+ActiveRecord::Schema.define(version: 20171010153722) do
 
   create_table "accepted_jobs", force: :cascade do |t|
     t.integer "job_id"
@@ -40,11 +40,10 @@ ActiveRecord::Schema.define(version: 20171009191057) do
 
   create_table "bank_infos", force: :cascade do |t|
     t.integer "payment_id"
-    t.string "bank_name"
-    t.string "account_type"
     t.string "account_name"
     t.integer "account_number"
     t.integer "transit_number"
+    t.integer "institution_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["payment_id"], name: "index_bank_infos_on_payment_id"
@@ -58,6 +57,24 @@ ActiveRecord::Schema.define(version: 20171009191057) do
     t.datetime "updated_at", null: false
     t.index ["job_id"], name: "index_cancelled_jobs_on_job_id"
     t.index ["teenager_id"], name: "index_cancelled_jobs_on_teenager_id"
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "job_wanted"
+    t.integer "user_id"
+    t.string "gender"
+    t.integer "birth_year"
+    t.integer "birth_month"
+    t.integer "birth_day"
+    t.string "address"
+    t.integer "apt_no"
+    t.string "city"
+    t.string "province"
+    t.string "country"
+    t.string "postal_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
   create_table "credit_cards", force: :cascade do |t|
@@ -159,6 +176,24 @@ ActiveRecord::Schema.define(version: 20171009191057) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "teenagers", force: :cascade do |t|
+    t.string "skills"
+    t.integer "user_id"
+    t.string "gender"
+    t.integer "birth_year"
+    t.integer "birth_month"
+    t.integer "birth_day"
+    t.string "address"
+    t.integer "apt_no"
+    t.string "city"
+    t.string "province"
+    t.string "country"
+    t.string "postal_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_teenagers_on_user_id"
   end
 
   create_table "transactions", force: :cascade do |t|
