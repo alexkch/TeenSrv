@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   resources :clients
   resources :teenagers
 
+  # resources :profiles
+  
   root 'welcome#index'
 end

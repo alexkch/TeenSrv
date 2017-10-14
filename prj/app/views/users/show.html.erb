@@ -15,17 +15,24 @@
 </p>
 
 <h2>Profiles</h2>
-<% @user.profile do |profile| %>
+<% if @user.usertype == 0 %>
+<div class="Teen">You're A Teenager!
+ <% @user.teenager do |teenager| %>
   <p>
     <strong>Commenter:</strong>
-    <%= profile.firstname %>
+    <%= teenager.firstname %>
   </p>
  
   <p>
     <strong>Comment:</strong>
-    <%= profile.lastname %>
+    <%= teenager.lastname %>
   </p>
 <% end %>
+</div>
+<% elsif @user.usertype == 1 %>
+ <div class="Client">You're A Client!</div>
+<% end %>
+
 
 <h2>Add some info:</h2>
 <%= form_with(model:  @user, uri: users_path, local: true) do |form| %>

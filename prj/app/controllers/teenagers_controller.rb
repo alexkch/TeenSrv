@@ -20,7 +20,8 @@ class TeenagersController < ApplicationController
     end
     
     def create
-        #	render plain: params[:teenager].inspect
+        @user = User.find(params[:user_id])
+        #@profile = @user.create_profile(profile_params)
         @teenager = Teenager.new(teenager_params)
         
         if @teenager.save
@@ -42,7 +43,7 @@ class TeenagersController < ApplicationController
     
     private
     def teenager_params
-        params.require(:teenager).permit(:gender, :birth_month, :birth_day, :birth_year, :address, :apt_no, :city, :province, :country, :postal_code, :babysitting, :lawn_mowing, :snow_shovelling, :skill1, :skill2, :skill3)
+        params.require(:teenager).permit(:user_id, :first_name, :last_name, :gender, :birth_month, :birth_day, :birth_year, :address, :apt_no, :city, :province, :country, :postal_code, :babysitting, :lawn_mowing, :snow_shovelling, :skill1, :skill2, :skill3)
     end
 
 end
