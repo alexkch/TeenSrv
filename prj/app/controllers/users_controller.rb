@@ -18,13 +18,20 @@ end
  
 def create
   @user = User.new(user_params)
- 
+  
+  @teenager = Teenager.new
+
   if @user.save
-    redirect_to @user
+    if @user.usertype == 0
+      redirect_to :controller => 'teenagers', :action => 'new'
+    elsif @user.usertype == 1
+      render 'new' # define type
+    end
   else
     render 'new'
   end
 end
+
 
 def update
   @user = User.find(params[:id])

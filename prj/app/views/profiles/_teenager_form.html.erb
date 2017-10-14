@@ -1,0 +1,67 @@
+<%= form_with scope: :profile, url: teenagers_path, local: true do |form| %>
+  <% if @teenager.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@teenager.errors.count, "error") %> prohibited this article from being saved: </h2>
+      <ul>
+        <% @teenager.errors.full_messages.each do|msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+  <p>
+    <%= form.label :'Given Name:' %>
+    <%= form.text_field :given_name %>
+  </p>
+
+  <p>
+    <%= form.label :'Family Name:' %>
+    <%= form.text_field :family_name %>
+  </p>
+
+  <p>
+    <%= form.label :'Gender:' %>
+    <%= form.text_field :gender %>
+  </p>
+
+  <h3>Date of Birth</h3>
+  <p>
+    <%= form.label :'Month' %>
+    <%= form.text_field :birth_month %>
+    <%= form.label :'Day' %>
+    <%= form.text_field :birth_day %>
+    <%= form.label :'Year' %>
+    <%= form.text_field :birth_year %>
+  </p>
+
+  <h3>Address</h3>
+    <p>
+    <%= form.label :'Address Line' %>
+    <%= form.text_field :address %>
+  </p>
+  <p>
+    <%= form.label :'Apt.No' %>
+    <%= form.text_field :apt_no %>
+  </p>
+    <p>
+    <%= form.label :'City' %>
+    <%= form.text_field :city %>
+  </p>
+  <p>
+    <%= form.label :'Province/State' %>
+    <%= form.text_field :province %>
+  </p>
+  <p>
+    <%= form.label :'Country' %>
+    <%= form.text_field :country %>
+  </p>
+  <p>
+    <%= form.label :'Postal Code' %>
+    <%= form.text_field :postal_code %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
