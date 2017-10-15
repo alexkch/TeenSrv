@@ -18,7 +18,8 @@ end
  
 def create
   @user = User.new(user_params)
-  
+  params[:userid] = params[:id]
+
   @teenager = Teenager.new
 
   if @user.save
