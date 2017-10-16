@@ -19,6 +19,7 @@
       <td><%= address.city %></td>
       <td><%= address.province %></td>
       <td><%= link_to 'Show', user_address_path(@user, address) %></td>
+      <td><%= link_to 'Edit', edit_user_address_path(@user, address) %></td>
     </tr>
   <% end %>
 </table>

@@ -1,36 +1,40 @@
-<%= form_with model: @user, local: true do |form| %>
- 
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@user.errors.count, "error") %> prohibited
-        this user from being saved:
-      </h2>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with(model: [@user, @address]) do |form| %>
  
   <p>
-    <%= form.label :username %><br>
-    <%= form.text_field :username %>
+    <%= form.label :street_no %><br>
+    <%= form.text_field :street_no %>
   </p>
  
   <p>
-    <%= form.label :password %><br>
-    <%= form.text_area :password %>
+    <%= form.label :street %><br>
+    <%= form.text_area :street %>
   </p>
  
   <p>
-    <%= form.label :usertype %><br>
-    <%= form.select :usertype, [['Teen', 0], ['Client', 1],['Customer Service', 2], ['Admin', 3]] %>
+    <%= form.label :apt_no %><br>
+    <%= form.text_field :apt_no %>
   </p>
-
+ 
+  <p>
+    <%= form.label :postalcode %><br>
+    <%= form.text_field :postalcode %>
+  </p>
+ 
+  <p>
+    <%= form.label :city %><br>
+    <%= form.text_field :city %>
+  </p>
+ 
+  <p>
+    <%= form.label :province %><br>
+    <%= form.text_field :province %>
+  </p>
+ 
+  <p>
+    <%= form.label :address_type %><br>
+    <%= form.select :address_type, [['Primary', 1], ['Secondary', 2]]%>
+  </p>
   <p>
     <%= form.submit %>
   </p>
- 
-<% end %>
+ <% end %>

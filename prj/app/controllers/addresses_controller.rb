@@ -1,21 +1,22 @@
 class AddressesController < ApplicationController
 
 def index
-  @user = User.find(params[:user_id])
-  @addresses = @user.address.all
+	@user = User.find(params[:user_id])
+	@addresses = @user.address.all
 end
 
 def show
-  @address = Address.find(params[:id])
+	@address = Address.find(params[:id])
 end
  
 # def new
 #   @user = User.new
 # end
  
-# def edit
-#   @user = User.find(params[:id])
-# end
+def edit
+	@user = User.find(params[:user_id])
+	@address = @user.address.find(params[:id])
+end
  
 # def create
 #   @user = User.new(user_params)
@@ -35,15 +36,15 @@ end
 # end
 
 
-# def update
-#   @user = User.find(params[:id])
+def update
+	@address = Address.find(params[:id])
  
-#   if @user.update(user_params)
-#     redirect_to @user
-#   else
-#     render 'edit'
-#   end
-# end
+	if @address.update(address_params)
+		redirect_to @address
+	else
+		render 'edit'
+	end
+end
 
 
 # def destroy
@@ -53,12 +54,10 @@ end
 #   redirect_to users_path
 # end
 
-# private
-#   def user_params
-#     params.require(:user).permit(:username, :password, :usertype)
-#   end
-# end
-
+private
+  def address_params
+    params.require(:address).permit(:street_no, :street, :apt_no, :postalcode, :city, :province, :address_type)
+  end
 
 
 end
