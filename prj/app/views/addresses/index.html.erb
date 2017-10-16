@@ -1,0 +1,17 @@
+
+<h1>Addresses</h1>
+<%#= link_to 'New address', new_user_addresses_path(@user) %>
+<table>
+  <tr>
+    <th>Address</th>
+    <th colspan="1"></th>
+  </tr>
+ 
+  <% @addresses.each do |address| %>
+    <tr>
+      <td><%= address.street %></td>
+
+
+    </tr>
+  <% end %>
+</table>
