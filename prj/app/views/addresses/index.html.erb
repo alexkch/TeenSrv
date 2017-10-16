@@ -1,5 +1,9 @@
 
-<h1>Addresses</h1>
+<h1>Addresses for</h1>
+<p>
+  <strong><%= @user.username %></strong>
+</p>
+
 <%#= link_to 'New address', new_user_addresses_path(@user) %>
 <table>
   <tr>
@@ -10,8 +14,11 @@
   <% @addresses.each do |address| %>
     <tr>
       <td><%= address.street %></td>
-
-
+      <td><%= address.apt_no %></td>
+      <td><%= address.postalcode %></td>
+      <td><%= address.city %></td>
+      <td><%= address.province %></td>
+      <td><%= link_to 'Show', user_address_path(@user, address) %></td>
     </tr>
   <% end %>
 </table>

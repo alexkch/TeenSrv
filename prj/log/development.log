@@ -17107,3 +17107,121 @@ Processing by AddressesController#index as HTML
 Completed 200 OK in 190ms (Views: 162.0ms | ActiveRecord: 1.5ms)
 
 
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-16 17:57:38 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (1.0ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered addresses/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 196ms (Views: 165.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-16 18:19:05 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Address Load (0.0ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Address Load (0.0ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Address Load (0.0ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  Rendered addresses/index.html.erb within layouts/application (190.6ms)
+Completed 500 Internal Server Error in 339ms (ActiveRecord: 5.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `new_user_addresses_path' for #<#<Class:0xc913470>:0xc912288>
+Did you mean?  new_user_address_path
+               new_user_address_url):
+    4:   <strong><%= @user.username %></strong>
+    5: </p>
+    6: 
+    7: <%= link_to 'New address', new_user_addresses_path(@user) %>
+    8: <table>
+    9:   <tr>
+   10:     <th>Address</th>
+  
+app/views/addresses/index.html.erb:7:in `_app_views_addresses_index_html_erb___170689224_105422052'
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-16 18:20:02 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (0.0ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered addresses/index.html.erb within layouts/application (31.0ms)
+Completed 500 Internal Server Error in 130ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"addresses", :user_id=>#<Address id: 1, street_no: nil, street: "new", apt_no: nil, postalcode: nil, city: nil, province: nil, address_type: nil, user_id: 1, created_at: "2017-10-16 21:50:32", updated_at: "2017-10-16 21:50:32">}, missing required keys: [:id]):
+    18:       <td><%= address.postalcode %></td>
+    19:       <td><%= address.city %></td>
+    20:       <td><%= address.province %></td>
+    21:       <td><%= link_to 'Show', user_address_path(address) %></td>
+    22:     </tr>
+    23:   <% end %>
+    24: </table>
+  
+app/views/addresses/index.html.erb:21:in `block in _app_views_addresses_index_html_erb___170689224_85489572'
+app/views/addresses/index.html.erb:14:in `_app_views_addresses_index_html_erb___170689224_85489572'
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-16 18:20:46 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered addresses/index.html.erb within layouts/application (48.0ms)
+Completed 500 Internal Server Error in 179ms (ActiveRecord: 3.0ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"addresses", :user_id=>#<Address id: 1, street_no: nil, street: "new", apt_no: nil, postalcode: nil, city: nil, province: nil, address_type: nil, user_id: 1, created_at: "2017-10-16 21:50:32", updated_at: "2017-10-16 21:50:32">}, missing required keys: [:id]):
+    18:       <td><%= address.postalcode %></td>
+    19:       <td><%= address.city %></td>
+    20:       <td><%= address.province %></td>
+    21:       <td><%= link_to 'Show', user_address_path(address) %></td>
+    22:     </tr>
+    23:   <% end %>
+    24: </table>
+  
+app/views/addresses/index.html.erb:21:in `block in _app_views_addresses_index_html_erb___170689224_56299296'
+app/views/addresses/index.html.erb:14:in `_app_views_addresses_index_html_erb___170689224_56299296'
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-16 18:21:51 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (1.0ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered addresses/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 183ms (Views: 152.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/1/addresses/1" for 127.0.0.1 at 2017-10-16 18:21:55 -0400
+Processing by AddressesController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mAddress Load (0.0ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/show.html.erb within layouts/application
+  Rendered addresses/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 173ms (Views: 146.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-16 18:22:02 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered addresses/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 175ms (Views: 146.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/addresses/1" for 127.0.0.1 at 2017-10-16 18:22:04 -0400
+Processing by AddressesController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mAddress Load (0.0ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/show.html.erb within layouts/application
+  Rendered addresses/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 224ms (Views: 179.0ms | ActiveRecord: 0.0ms)
+
+
