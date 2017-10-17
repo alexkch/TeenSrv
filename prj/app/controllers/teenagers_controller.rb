@@ -2,15 +2,19 @@ class TeenagersController < ApplicationController
     attr_accessor :address
     
     def index
-        @teenagers = Teenager.all
+        @user = User.find(params[:user_id])
+        @teenagers = @user.teenager.all
     end
     
     def show
-        @teenager = Teenager.find(params[:id])
+        @user = User.find(params[:user_id])
+        @teenager = @user.teenager
     end
     
     def new
-        @teenager = Teenager.new
+        @user = User.find(params[:user_id])
+        @user.teenager = Teenager.new
+        @teenager = @user.teenager
     end
     
     def edit
@@ -22,28 +26,26 @@ class TeenagersController < ApplicationController
     def create
         @user = User.find(params[:user_id])
         #@profile = @user.create_profile(profile_params)
-        @teenager = Teenager.new(teenager_params)
         
-        if @teenager.save
-            redirect_to @teenager 	# tells brower to issue another request
-        else
-            render 'new' 	# render used so object passed back to template when rendered (within same request as form submission)
-        end
+        @user.teenager.create!(teenager_params)
+        redirect_to user_teenagers_path
+        
     end
     
     def update
-        @teenager = Teenager.find(params[:id])
+        @user = User.find(params[:user_id])
+        @teenager = @user.teenager
         
         if @teenager.update(teenager_params)
-            redirect_to @teenager
-            else
+            redirect_to user_teenager_path(@user)
+        else
             render 'edit'
         end
     end
     
     private
     def teenager_params
-        params.require(:teenager).permit(:user_id, :first_name, :last_name, :gender, :birth_month, :birth_day, :birth_year, :address, :apt_no, :city, :province, :country, :postal_code, :babysitting, :lawn_mowing, :snow_shovelling, :skill1, :skill2, :skill3)
+        params.require(:teenager).permit(:user_id, :given_name, :family_name, :gender, :birth_month, :birth_day, :birth_year, :address, :apt_no, :city, :province, :country, :postal_code, :babysitting, :lawn_mowing, :snow_shovelling, :skill1, :skill2, :skill3)
     end
 
 end

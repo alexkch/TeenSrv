@@ -15,12 +15,14 @@ Rails.application.routes.draw do
 
   resources :users do
   	resources :addresses
+    resources :profiles
+    resources :teenagers
   end
   resources :jobs
   resources :job_types
-  resources :profiles
+  #resources :profiles
   resources :clients
-  resources :teenagers
+  #resources :teenagers
 
   
 end
