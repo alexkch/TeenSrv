@@ -1,5 +1,5 @@
 class Payment < ApplicationRecord
   belongs_to :user
-  has_many :credit_cards
-  has_many :bank_infos
+  has_one :credit_cards
+  has_one :bank_infos
 end

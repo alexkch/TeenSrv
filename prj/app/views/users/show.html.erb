@@ -11,7 +11,7 @@
  
 <p>
   <strong>User Type:</strong>
-  <%= @user.usertype ? "Client" : "Teen" %>
+  <%= @user.usertype ? "Teen" : "Client" %>
 </p>
 
 <h2>Profiles</h2>
@@ -48,7 +48,9 @@
     <%= form.submit %>
   </p>
 <% end %>
- 
-<%= link_to 'Back', users_path %>
-<%= link_to 'Edit', edit_user_path(@user) %> |
+
+
+<%= link_to 'Addresses', user_addresses_path(@user) %><br />
+<%= link_to 'My Jobs', jobs_path(:user => @user.id) %><br />
+<%= link_to 'Edit', edit_user_path(@user) %> <br />
 <%= link_to 'Back', users_path %>

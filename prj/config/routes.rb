@@ -5,12 +5,28 @@ Rails.application.routes.draw do
 
   get 'payment/create'
 
-  get 'welcome/index'
+  get 'payments/index'
 
-  resources :users
+  get 'payments/edit'
+
+  get 'payments/show'
+
+  get 'payments/new'
+
+  get 'welcome/index'
+  root 'welcome#index'
+
+  get 'jobs/myjob'
+
+
+  resources :users do
+  	resources :addresses
+  end
+  resources :jobs
+  resources :job_types
   resources :profiles
   resources :clients
   resources :teenagers
 
-  root 'welcome#index'
+  
 end

@@ -1,0 +1,26 @@
+<p>Viewing as:
+  <strong><%= @user.username %></strong>
+</p>
+<h1>Job ID: <strong><%= @job.id %></strong></h1>
+<h3>Description: </h3>
+<p>
+  <strong><%= @job.description %></strong>
+</p>
+
+
+<table>
+  <tr>
+    <th colspan="1"></th>
+  </tr>
+    <tr>  
+      <td><%= @job.amount %></td>
+      <td><%= @job.hours %></td>
+      <td><%= @job.starttime %></td>
+      <td><%= @job.finishtime %></td>
+      <td>Offered By: <%= @job.teenager_id %></td>
+      <td>Accepted By: <%= @job.client_id %></td>
+    </tr>
+    <br />
+</table>
+<%= link_to 'Back', jobs_path(:user => @user.id) %>      
+
