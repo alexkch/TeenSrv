@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'payments/index'
+
+  get 'payments/edit'
+
+  get 'payments/show'
+
+  get 'payments/new'
+
   get 'welcome/index'
   root 'welcome#index'
 
