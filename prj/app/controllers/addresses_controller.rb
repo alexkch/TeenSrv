@@ -25,23 +25,6 @@ def create
 	redirect_to user_addresses_path
 
 end
-# def create
-#   @user = User.new(user_params)
-#   params[:userid] = params[:id]
-
-#   @teenager = Teenager.new
-
-#   if @user.save
-#     if @user.usertype == 0              #type0 = teen
-#       redirect_to new_teenager_path
-#     elsif @user.usertype == 1           #type 1 = client
-#       redirect_to new_client_path
-#     end
-#   else
-#     render 'new'
-#   end
-# end
-
 
 def update
 	@address = Address.find(params[:id])
