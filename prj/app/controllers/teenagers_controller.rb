@@ -1,10 +1,10 @@
 class TeenagersController < ApplicationController
     attr_accessor :address
     
-    def index
-        @user = User.find(params[:user_id])
-        @teenagers = @user.teenager.all
-    end
+    # def index
+    #     @user = User.find(params[:user_id])
+    #     @teenagers = @user.teenager.all
+    # end
     
     def show
         @user = User.find(params[:user_id])
