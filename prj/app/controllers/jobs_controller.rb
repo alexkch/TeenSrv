@@ -12,54 +12,64 @@ def myjob
 
 end
 
+# def request
+
+# 	@user = User.find(params[:user])
+# 	@job = Job.find(params[:id])
+	
+# 	if @job.update(client_id: params[:user])
+# 		redirect_to controller: 'jobs', action: 'index', user: params[:user]
+# 	else
+# 		render 'index'
+# 	end
+
+# end
+
 def show
 	@user = User.find(params[:user])
 	@job = Job.find(params[:id])
 end
  
 def new
-	@job = @job.new
+	@user = User.find(params[:user])
+	@job = Job.new
 end
  
 def edit
-	@user = User.find(params[:user_id])
+	@user = User.find(params[:user])
 	@job = Job.find(params[:id])
 end
 
+
+def create
+	@user = User.find(params[:user])
+	Job.create!(job_params)
+	redirect_to controller: 'jobs', action: 'index', user: params[:user]
 end
 
-# def create
-# 	@user = User.find(params[:user_id])
-# 	@user.address.create!(address_params)
-# 	redirect_to user_addresses_path
-# end
-
-# def update
-# 	@address = Address.find(params[:id])
- 
-# 	if @address.update(address_params)
-# 		redirect_to @address
-# 	else
-# 		render 'edit'
-# 	end
-# end
+def update
+	@user = User.find(params[:user])
+ 	@job = Job.find(params[:id])
+	if @job.update(job_params)
+		redirect_to controller: 'jobs', action: 'myjob', user: params[:user]
+	else
+		render 'edit'
+	end
+end
 
 
-# def destroy
+def destroy
 	
-# 	@user = User.find(params[:user_id])
-# 	@address = Address.find(params[:id])
-# 	@address.destroy
- 
-# 	redirect_to user_addresses_path
-# end
+	@user = User.find(params[:user])
+	@job = Job.find(params[:id])
+	@job.destroy
+ 	redirect_to controller: 'jobs', action: 'myjob', user: params[:user]
+end
 
-# private
-#   def address_params
-#     params.require(:address).permit(:street_no, :street, :apt_no, :postalcode, :city, :province, :address_type)
-#   end
+private
+	def job_params
+    	params.require(:job).permit(:description, :amount, :hours, :starttime, :finishtime).merge(teenager_id: params[:user])
+	end
 
-
-# end
-
+end
 

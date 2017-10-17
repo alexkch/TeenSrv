@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'jobs/myjob'
-  
+
+
   resources :users do
   	resources :addresses
   end
