@@ -4,15 +4,7 @@
 </p>
 <p>
   <strong>Birthday(yyyy/mm/dd):</strong>
-  <%= @teenager.birth_year%>
-</p>
-<p>
-  <strong>Birthday(yyyy/mm/dd):</strong>
-  <%= @teenager.birth_month%>
-</p>
-<p>
-  <strong>Birthday(yyyy/mm/dd):</strong>
-  <%= @teenager.birth_day%>
+  <%= @teenager.birth_year%>/<%= @teenager.birth_month%>/<%= @teenager.birth_day%>
 </p>
 <p>
   <strong>Age:</strong>
@@ -24,5 +16,4 @@
   <%= link_to 'Addresses', user_addresses_path(@user) %><br />
 </p>
 
- 
-<%= link_to 'Back', user_teenagers_path %>
+<%= link_to 'Back to User', @user %>

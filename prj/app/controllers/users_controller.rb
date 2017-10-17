@@ -21,7 +21,7 @@ def create
   params[:userid] = params[:id]
 
   if @user.save
-    if @user.usertype == 0              #type0 = teen
+    if @user.usertype == 0              #type 0 = teen
       redirect_to new_user_teenager_path(@user)
     elsif @user.usertype == 1           #type 1 = client
       redirect_to new_user_client_path(@user)

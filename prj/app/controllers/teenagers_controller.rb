@@ -25,11 +25,9 @@ class TeenagersController < ApplicationController
     
     def create
         @user = User.find(params[:user_id])
-        #@profile = @user.create_profile(profile_params)
         
         @user.teenager.create!(teenager_params)
         redirect_to user_teenagers_path
-        
     end
     
     def update
