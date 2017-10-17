@@ -1,5 +1,21 @@
-<%= form_with(model: [@user, @address]) do |form| %>
- 
+<%= form_with(model: [@user, @address], local: true) do |form| %>
+
+
+  <% if @address.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@address.errors.count, "error") %> prohibited
+        this address from being saved:
+      </h2>
+      <ul>
+        <% @address.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
   <p>
     <%= form.label :street_no %><br>
     <%= form.text_field :street_no %>

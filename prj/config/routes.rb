@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'welcome/index'
-
+  root 'welcome#index'
+  
   resources :users do
   	resources :addresses
   end
@@ -8,5 +9,5 @@ Rails.application.routes.draw do
   resources :clients
   resources :teenagers
 
-  root 'welcome#index'
+  
 end

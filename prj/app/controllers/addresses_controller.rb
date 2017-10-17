@@ -9,15 +9,22 @@ def show
 	@address = Address.find(params[:id])
 end
  
-# def new
-#   @user = User.new
-# end
+def new
+	@user = User.find(params[:user_id])
+	@address = @user.address.new
+end
  
 def edit
 	@user = User.find(params[:user_id])
 	@address = @user.address.find(params[:id])
 end
- 
+
+def create
+	@user = User.find(params[:user_id])
+	@address = @user.address.create(address_params)
+	redirect_to user_addresses_path
+
+end
 # def create
 #   @user = User.new(user_params)
 #   params[:userid] = params[:id]
