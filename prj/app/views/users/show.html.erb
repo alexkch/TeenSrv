@@ -51,5 +51,6 @@
 
 
 <%= link_to 'Addresses', user_addresses_path(@user) %>
+<%= link_to 'My Jobs', jobs_path(:user => @user.id) %>
 <%= link_to 'Edit', edit_user_path(@user) %> 
 <%= link_to 'Back', users_path %>

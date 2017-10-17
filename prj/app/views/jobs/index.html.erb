@@ -1,0 +1,36 @@
+<h3> Viewing as: </h3>
+<p>
+  <strong><%= @user.username %></strong>
+</p><br /><br />
+<h1>All offered Jobs</h1>
+
+
+<table>
+  <tr>
+    <th colspan="1"></th>
+  </tr>
+ 
+  <% @jobs.each do |job| %>
+    <tr>
+      <td><%= job.description %></td>      
+      <td><%= job.amount %></td>
+      <td><%= job.hours %></td>
+      <td><%= job.starttime %></td>
+      <td><%= job.finishtime %></td>
+      <td>Offered By: <%= job.teenager_id %></td>
+      <td>Accepted By: <%= job.client_id %></td>
+
+      <% if @user.usertype == 1 %> 
+      <td><%= link_to 'Show', job_path(job, @user) %></td><br /><br />
+      <% end %>
+
+    </tr>
+  <% end %>
+</table>
+
+<% if @user.usertype == 0 %> 
+  <br /><br /><td><%= link_to 'Create new job', new_job_path(:user => @user.id) %></td><br /><br />
+<% end %>
+
+<%= link_to 'My Jobs', jobs_myjob_path(:user => @user.id) %>
+<%= link_to 'Back', user_path(@user) %>
