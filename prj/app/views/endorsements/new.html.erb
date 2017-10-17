@@ -1,0 +1,24 @@
+<%= form_with(model: [@user, @endorsement], local: true) do |form| %>
+
+  <p>The first two fields are for testing purposes</p>
+
+  <p>
+    <%= form.label :ref_user_id %><br>
+    <%= form.text_field :ref_user_id %>
+  </p>
+ 
+  <p>
+    <%= form.label :end_user_id %><br>
+    <%= form.text_field :end_user_id %>
+  </p>
+ 
+  <p>
+    <%= form.label :comment %><br>
+    <%= form.text_area :comment %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+  
+ <% end %>

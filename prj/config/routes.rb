@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :users do
   	resources :addresses
+    resources :endorsements
   end
   resources :jobs
   resources :job_types

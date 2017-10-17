@@ -1,0 +1,8 @@
+<h1>Endorsements</h1>
+
+<% @endorsements.each do |endorsement| %>
+	<tr>
+		<td> <%= endorsement.ref_user_id %> </td>
+		<td> <%= endorsement.comment %> </td> <br> 
+	</tr>
+<% end %>
