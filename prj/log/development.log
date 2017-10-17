@@ -18449,3 +18449,357 @@ Processing by AddressesController#index as HTML
 Completed 200 OK in 215ms (Views: 176.0ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/users/1/" for 127.0.0.1 at 2017-10-16 20:19:13 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTeenager Load (0.0ms)[0m  [1m[34mSELECT  "teenagers".* FROM "teenagers" WHERE "teenagers"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 203ms (Views: 159.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-16 20:20:10 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  Rendered addresses/index.html.erb within layouts/application (26.0ms)
+Completed 500 Internal Server Error in 130ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"users", :user_id=>"1"}, missing required keys: [:id]):
+     5: </p>
+     6: 
+     7: <%= link_to 'New address', new_user_address_path(@user) %>
+     8: <%= link_to 'Back', user_path %>
+     9: <table>
+    10:   <tr>
+    11:     <th>Address</th>
+  
+app/views/addresses/index.html.erb:8:in `_app_views_addresses_index_html_erb___170689224_105129660'
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-16 20:20:32 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered addresses/index.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 243ms (Views: 213.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-16 20:20:36 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTeenager Load (0.5ms)[0m  [1m[34mSELECT  "teenagers".* FROM "teenagers" WHERE "teenagers"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 164ms (Views: 132.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-16 20:20:38 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 156ms (Views: 130.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-16 20:20:40 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTeenager Load (0.0ms)[0m  [1m[34mSELECT  "teenagers".* FROM "teenagers" WHERE "teenagers"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 192ms (Views: 159.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-16 20:20:41 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 274ms (Views: 230.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/5" for 127.0.0.1 at 2017-10-16 20:20:43 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTeenager Load (0.0ms)[0m  [1m[34mSELECT  "teenagers".* FROM "teenagers" WHERE "teenagers"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 190ms (Views: 155.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/5/addresses" for 127.0.0.1 at 2017-10-16 20:20:46 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ?[0m  [["user_id", 5]]
+  Rendered addresses/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 172ms (Views: 145.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/5" for 127.0.0.1 at 2017-10-16 20:20:49 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTeenager Load (0.0ms)[0m  [1m[34mSELECT  "teenagers".* FROM "teenagers" WHERE "teenagers"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 199ms (Views: 162.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-16 20:21:01 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 169ms (Views: 134.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-16 20:21:05 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTeenager Load (0.5ms)[0m  [1m[34mSELECT  "teenagers".* FROM "teenagers" WHERE "teenagers"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 178ms (Views: 146.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2017-10-16 20:21:15 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (6.0ms)
+  Rendered users/edit.html.erb within layouts/application (44.0ms)
+Completed 200 OK in 277ms (Views: 244.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-16 20:21:17 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 231ms (Views: 187.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-16 20:23:44 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTeenager Load (0.5ms)[0m  [1m[34mSELECT  "teenagers".* FROM "teenagers" WHERE "teenagers"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 171ms (Views: 145.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2017-10-16 20:24:06 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (2.5ms)
+  Rendered users/edit.html.erb within layouts/application (26.5ms)
+Completed 200 OK in 193ms (Views: 167.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-16 20:24:08 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 227ms (Views: 184.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-16 20:32:15 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTeenager Load (0.5ms)[0m  [1m[34mSELECT  "teenagers".* FROM "teenagers" WHERE "teenagers"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 202ms (Views: 160.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-16 20:32:16 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered addresses/index.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 234ms (Views: 178.7ms | ActiveRecord: 2.5ms)
+
+
+Started DELETE "/users/1/addresses/1" for 127.0.0.1 at 2017-10-16 20:32:20 -0400
+Processing by AddressesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"rJJIfgzrY34pJcgWdH1UTMMHOG8ITfxEg000uE/q1uWFkw2XpTjoCf0jXQMrhM9gYAbc+2mpGy7jQwXW1anZYQ==", "user_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (33.6ms)[0m  [1m[31mDELETE FROM "addresses" WHERE "addresses"."id" = ?[0m  [["id", 1]]
+  [1m[35m (112.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/1/addresses
+Completed 302 Found in 152ms (ActiveRecord: 146.8ms)
+
+
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-16 20:32:20 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered addresses/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 204ms (Views: 171.1ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/users/1/addresses/2" for 127.0.0.1 at 2017-10-16 20:32:23 -0400
+Processing by AddressesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"kiCsjWiICc2zsjqImRa4SD8AUwzz1gYu72d6TSA6LF27IelkwVuCume0r53G7yNknAG3mJIy4USPaUsjunkj2Q==", "user_id"=>"1", "id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.0ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (19.6ms)[0m  [1m[31mDELETE FROM "addresses" WHERE "addresses"."id" = ?[0m  [["id", 2]]
+  [1m[35m (118.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/1/addresses
+Completed 302 Found in 144ms (ActiveRecord: 138.9ms)
+
+
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-16 20:32:24 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (0.0ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered addresses/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 182ms (Views: 154.6ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/users/1/addresses/3" for 127.0.0.1 at 2017-10-16 20:32:26 -0400
+Processing by AddressesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"HX2fs1SisZvfqw/9gKDlqXlZdonZUpGA74qGWfoDUIE0fNpa/XE67AutmujfWX6F2liSHbi2duqPhLc3YEBfBQ==", "user_id"=>"1", "id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "addresses" WHERE "addresses"."id" = ?[0m  [["id", 3]]
+  [1m[35m (114.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/1/addresses
+Completed 302 Found in 123ms (ActiveRecord: 116.8ms)
+
+
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-16 20:32:26 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered addresses/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 186ms (Views: 153.4ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/users/1/addresses/4" for 127.0.0.1 at 2017-10-16 20:32:28 -0400
+Processing by AddressesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ut1i//2075Ghx28VDSBtTlRv0PjAu1D1A6hIsk7Kx2CT3CcWVGdk5nXB+gBS2fZi9240bKFft59jpnnc1InI5A==", "user_id"=>"1", "id"=>"4"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAddress Load (1.0ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.5ms)[0m  [1m[31mDELETE FROM "addresses" WHERE "addresses"."id" = ?[0m  [["id", 4]]
+  [1m[35m (117.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/1/addresses
+Completed 302 Found in 146ms (ActiveRecord: 122.0ms)
+
+
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-16 20:32:28 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered addresses/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 196ms (Views: 166.1ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/users/1/addresses/5" for 127.0.0.1 at 2017-10-16 20:32:31 -0400
+Processing by AddressesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"q+xZv6QBLQ7SQCNa8oSHQhrLIBV0h2Gz0ToyLG/YA0OC7RxWDdKmeQZGtk+tfRxuucrEgRVjhtmxNANC9ZsMxw==", "user_id"=>"1", "id"=>"5"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (72.4ms)[0m  [1m[31mDELETE FROM "addresses" WHERE "addresses"."id" = ?[0m  [["id", 5]]
+  [1m[35m (115.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/1/addresses
+Completed 302 Found in 196ms (ActiveRecord: 188.5ms)
+
+
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-16 20:32:31 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered addresses/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 178ms (Views: 148.2ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/users/1/addresses/6" for 127.0.0.1 at 2017-10-16 20:32:33 -0400
+Processing by AddressesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"nsxkirXDhicLrZ2ysKm35XThlsFOCzL72GF5jpA1cuy3zSFjHBANUN+rCKfvUCzJ1+ByVS/v1ZG4b0jgCnZ9aA==", "user_id"=>"1", "id"=>"6"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.0ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (24.1ms)[0m  [1m[31mDELETE FROM "addresses" WHERE "addresses"."id" = ?[0m  [["id", 6]]
+  [1m[35m (118.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/1/addresses
+Completed 302 Found in 149ms (ActiveRecord: 142.9ms)
+
+
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-16 20:32:33 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (0.0ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered addresses/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 182ms (Views: 153.3ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/users/1/addresses/7" for 127.0.0.1 at 2017-10-16 20:32:35 -0400
+Processing by AddressesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/YD0cnh3Ty9Tvl3i9NkO6lFFyBfHZgIIAUh9q1VMrtHUgbGb0aTEWIe4yPerIJXG8kQsg6aC5WJhRkzFzw+hVQ==", "user_id"=>"1", "id"=>"7"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "addresses" WHERE "addresses"."id" = ?[0m  [["id", 7]]
+  [1m[35m (103.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/1/addresses
+Completed 302 Found in 112ms (ActiveRecord: 105.1ms)
+
+
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-16 20:32:35 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (0.0ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered addresses/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 254ms (Views: 212.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-16 20:32:36 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTeenager Load (0.0ms)[0m  [1m[34mSELECT  "teenagers".* FROM "teenagers" WHERE "teenagers"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 192ms (Views: 159.3ms | ActiveRecord: 0.5ms)
+
+

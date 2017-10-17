@@ -21,7 +21,7 @@ end
 
 def create
 	@user = User.find(params[:user_id])
-	@address = @user.address.create(address_params)
+	@user.address.create!(address_params)
 	redirect_to user_addresses_path
 
 end
@@ -54,12 +54,14 @@ def update
 end
 
 
-# def destroy
-#   @user = User.find(params[:id])
-#   @user.destroy
+def destroy
+	
+	@user = User.find(params[:user_id])
+	@address = Address.find(params[:id])
+	@address.destroy
  
-#   redirect_to users_path
-# end
+	redirect_to user_addresses_path
+end
 
 private
   def address_params

@@ -5,6 +5,7 @@
 </p>
 
 <%= link_to 'New address', new_user_address_path(@user) %>
+<%= link_to 'Back', user_path(@user) %>
 <table>
   <tr>
     <th>Address</th>
@@ -20,6 +21,9 @@
       <td><%= address.province %></td>
       <td><%= link_to 'Show', user_address_path(@user, address) %></td>
       <td><%= link_to 'Edit', edit_user_address_path(@user, address) %></td>
+      <td><%= link_to 'Destroy', user_address_path(@user, address), 
+            method: :delete, 
+            data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>
