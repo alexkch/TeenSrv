@@ -5,7 +5,7 @@ class EndorsementsController < ApplicationController
     # be able to endorse this user.
 
     # We get the user they want to endorse from the path and we make a new endorsement, I use g_endorsement because the logged user 
-    # endorse the user (from the path)
+    # endorses the user (from the path)
 
 	def new 
 		@user = User.find(params[:user_id])
@@ -17,15 +17,46 @@ class EndorsementsController < ApplicationController
 
 	def create
 		@user = User.find(params[:user_id])
-		@user.g_endorsement.create(endorsement_params)
-		redirect_to user_endorsements_path
+		@endorsement = @user.g_endorsement.create(endorsement_params)
+
+		if @endorsement.valid?
+			redirect_to user_endorsements_path
+		else
+			render 'new'
+		end
 	end
 
-    # This shows the endorsements that the user (the user in the path) recieved
+    # This shows the endorsements that the user (the user in the path) recieved from every user 
      
 	def index
 		@user = User.find(params[:user_id])
 		@endorsements = @user.g_endorsement.all
+	end
+
+    # The following methods are implemented generically until the team decides from where the logged user can 
+    # perform these actions
+
+	def edit
+		@user = User.find(params[:user_id])
+		@endorsement = @user.g_endorsement.find(params[:id])
+	end
+
+	def update
+		@user = User.find(params[:user_id])
+		@endorsement = @user.g_endorsement.find(params[:id])
+
+		if @endorsement.update(endorsement_params)
+			redirect_to user_endorsements_path
+		else 
+			render 'edit'
+		end
+	end
+
+	def destroy
+		@user = User.find(params[:user_id])
+		@endorsement = @user.g_endorsement.find(params[:id])
+		@endorsement.destroy
+		redirect_to user_endorsements_path
 	end
 
 	private

@@ -1,8 +1,13 @@
-<h1>Endorsements</h1>
+<h1> 
+	<%= @user.username + "'s"%> Endorsements
+</h1>  
+
+<br> 
 
 <% @endorsements.each do |endorsement| %>
-	<tr>
-		<td> <%= endorsement.ref_user_id %> </td>
-		<td> <%= endorsement.comment %> </td> <br> 
-	</tr>
+	<div>
+		<h3><%= User.find(endorsement.ref_user_id).username %> </h3>
+		<p> <%= endorsement.comment %> </p> 
+		<br> 
+	</div>
 <% end %>

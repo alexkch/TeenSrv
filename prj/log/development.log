@@ -43707,3 +43707,693 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 226ms (Views: 187.8ms | ActiveRecord: 0.5ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-10-17 09:59:25 -0400
+Started GET "/" for 127.0.0.1 at 2017-10-17 09:59:27 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (79.3ms)
+  Rendered welcome/index.html.erb within layouts/application (79.3ms)
+Completed 200 OK in 2114ms (Views: 2013.9ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 22189ms (Views: 22145.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2017-10-17 09:59:51 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users" for 127.0.0.1 at 2017-10-17 10:00:01 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (34.1ms)
+Completed 200 OK in 296ms (Views: 213.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-17 10:00:12 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTeenager Load (0.0ms)[0m  [1m[34mSELECT  "teenagers".* FROM "teenagers" WHERE "teenagers"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (136.4ms)
+Completed 200 OK in 369ms (Views: 317.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-17 10:00:20 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (0.0ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered addresses/index.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 422ms (Views: 197.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-17 10:00:27 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTeenager Load (1.0ms)[0m  [1m[34mSELECT  "teenagers".* FROM "teenagers" WHERE "teenagers"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 215ms (Views: 176.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/jobs?user=1" for 127.0.0.1 at 2017-10-17 10:00:28 -0400
+Processing by JobsController#index as HTML
+  Parameters: {"user"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering jobs/index.html.erb within layouts/application
+  [1m[36mJob Load (1.0ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  Rendered jobs/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 229ms (Views: 190.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-17 10:00:53 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTeenager Load (1.0ms)[0m  [1m[34mSELECT  "teenagers".* FROM "teenagers" WHERE "teenagers"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 226ms (Views: 190.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/jobs?user=1" for 127.0.0.1 at 2017-10-17 10:00:58 -0400
+Processing by JobsController#index as HTML
+  Parameters: {"user"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering jobs/index.html.erb within layouts/application
+  [1m[36mJob Load (0.0ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  Rendered jobs/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 236ms (Views: 197.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-17 10:01:12 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTeenager Load (0.0ms)[0m  [1m[34mSELECT  "teenagers".* FROM "teenagers" WHERE "teenagers"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 225ms (Views: 188.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-17 10:01:17 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 212ms (Views: 177.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-17 10:01:19 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTeenager Load (1.0ms)[0m  [1m[34mSELECT  "teenagers".* FROM "teenagers" WHERE "teenagers"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 208ms (Views: 172.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-17 10:01:27 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 211ms (Views: 176.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/24" for 127.0.0.1 at 2017-10-17 10:03:27 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"24"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 211ms (Views: 175.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/jobs?user=24" for 127.0.0.1 at 2017-10-17 10:03:29 -0400
+Processing by JobsController#index as HTML
+  Parameters: {"user"=>"24"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  Rendering jobs/index.html.erb within layouts/application
+  [1m[36mJob Load (0.0ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  Rendered jobs/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 213ms (Views: 178.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/jobs/myjob?user=24" for 127.0.0.1 at 2017-10-17 10:03:35 -0400
+Processing by JobsController#myjob as HTML
+  Parameters: {"user"=>"24"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  Rendering jobs/myjob.html.erb within layouts/application
+  [1m[36mJob Load (0.0ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."teenager_id" = ?[0m  [["teenager_id", 24]]
+  Rendered jobs/myjob.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 223ms (Views: 184.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-17 10:03:48 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTeenager Load (0.0ms)[0m  [1m[34mSELECT  "teenagers".* FROM "teenagers" WHERE "teenagers"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 208ms (Views: 173.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-17 10:03:50 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (0.0ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered addresses/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 208ms (Views: 169.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-17 10:03:53 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTeenager Load (0.0ms)[0m  [1m[34mSELECT  "teenagers".* FROM "teenagers" WHERE "teenagers"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 220ms (Views: 182.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/jobs?user=1" for 127.0.0.1 at 2017-10-17 10:03:54 -0400
+Processing by JobsController#index as HTML
+  Parameters: {"user"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering jobs/index.html.erb within layouts/application
+  [1m[36mJob Load (1.0ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  Rendered jobs/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 217ms (Views: 180.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/jobs/myjob?user=1" for 127.0.0.1 at 2017-10-17 10:03:58 -0400
+Processing by JobsController#myjob as HTML
+  Parameters: {"user"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering jobs/myjob.html.erb within layouts/application
+  [1m[36mJob Load (0.0ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."teenager_id" = ?[0m  [["teenager_id", 1]]
+  Rendered jobs/myjob.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 209ms (Views: 175.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-17 10:04:31 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTeenager Load (0.0ms)[0m  [1m[34mSELECT  "teenagers".* FROM "teenagers" WHERE "teenagers"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 217ms (Views: 182.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-17 10:05:18 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 205ms (Views: 174.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-17 10:33:21 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTeenager Load (1.0ms)[0m  [1m[34mSELECT  "teenagers".* FROM "teenagers" WHERE "teenagers"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (58.2ms)
+Completed 200 OK in 904ms (Views: 821.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/1/addresses" for 127.0.0.1 at 2017-10-17 10:33:36 -0400
+Processing by AddressesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/index.html.erb within layouts/application
+  [1m[36mAddress Load (0.0ms)[0m  [1m[34mSELECT "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered addresses/index.html.erb within layouts/application (21.2ms)
+Completed 200 OK in 268ms (Views: 218.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/addresses/new" for 127.0.0.1 at 2017-10-17 10:33:41 -0400
+Processing by AddressesController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/new.html.erb within layouts/application
+  Rendered addresses/_form.html.erb (27.2ms)
+  Rendered addresses/new.html.erb within layouts/application (60.3ms)
+Completed 200 OK in 271ms (Views: 234.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1/addresses/new" for 127.0.0.1 at 2017-10-17 10:34:31 -0400
+Processing by AddressesController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering addresses/new.html.erb within layouts/application
+  Rendered addresses/_form.html.erb (4.0ms)
+  Rendered addresses/new.html.erb within layouts/application (37.1ms)
+Completed 200 OK in 246ms (Views: 209.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/endorsements/new" for 127.0.0.1 at 2017-10-17 11:01:28 -0400
+Processing by EndorsementsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `endorsement' for #<User:0xa9b6450>
+Did you mean?  g_endorsement
+               g_endorsement=
+               r_endorsement
+               g_endorsement_ids
+               g_endorsement_ids=
+               r_endorsement=):
+  
+app/controllers/endorsements_controller.rb:5:in `new'
+Started GET "/users/1/endorsements/new" for 127.0.0.1 at 2017-10-17 14:57:36 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EndorsementsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 65ms (ActiveRecord: 1.0ms)
+
+
+  
+NoMethodError (undefined method `endorsement' for #<User:0x5d88d40>
+Did you mean?  g_endorsement
+               g_endorsement=
+               r_endorsement
+               g_endorsement_ids
+               g_endorsement_ids=
+               r_endorsement=):
+  
+app/controllers/endorsements_controller.rb:5:in `new'
+Started GET "/favicon.ico" for 127.0.0.1 at 2017-10-17 14:57:45 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users/1/endorsements/new" for 127.0.0.1 at 2017-10-17 14:58:17 -0400
+Processing by EndorsementsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering endorsements/new.html.erb within layouts/application
+  Rendered endorsements/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 610ms (Views: 503.9ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users/1/endorsements" for 127.0.0.1 at 2017-10-17 15:05:41 -0400
+Processing by EndorsementsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HFeu1Sj6EziTJ3RDSTY4K8FrAWB59b3r+afgYUp4DqUT3Am0fAcgTQb4/dsufFYleIz/un5YWVESRLyLODTY+A==", "endorsement"=>{"ref_user_id"=>"2", "end_user_id"=>"1", "comment"=>"Good Work!"}, "commit"=>"Create Endorsement", "user_id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/1/endorsements
+Completed 302 Found in 50ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/users/1/endorsements" for 127.0.0.1 at 2017-10-17 15:05:41 -0400
+Processing by EndorsementsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `endorsement' for #<User:0x3eb3db8>
+Did you mean?  g_endorsement
+               g_endorsement=
+               r_endorsement
+               g_endorsement_ids
+               g_endorsement_ids=
+               r_endorsement=):
+  
+app/controllers/endorsements_controller.rb:16:in `index'
+Started GET "/users/1/endorsements" for 127.0.0.1 at 2017-10-17 15:06:17 -0400
+Processing by EndorsementsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering endorsements/index.html.erb within layouts/application
+  [1m[36mEndorsement Load (0.0ms)[0m  [1m[34mSELECT "endorsements".* FROM "endorsements" WHERE "endorsements"."end_user_id" = ?[0m  [["end_user_id", 1]]
+  Rendered endorsements/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 237ms (Views: 177.9ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/users/1/endorsements" for 127.0.0.1 at 2017-10-17 15:06:55 -0400
+Processing by EndorsementsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering endorsements/index.html.erb within layouts/application
+  [1m[36mEndorsement Load (0.0ms)[0m  [1m[34mSELECT "endorsements".* FROM "endorsements" WHERE "endorsements"."end_user_id" = ?[0m  [["end_user_id", 1]]
+  Rendered endorsements/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 400ms (Views: 333.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1/new" for 127.0.0.1 at 2017-10-17 15:07:03 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/new"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users/1/endorsements/new" for 127.0.0.1 at 2017-10-17 15:07:13 -0400
+Processing by EndorsementsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering endorsements/new.html.erb within layouts/application
+  Rendered endorsements/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 314ms (Views: 268.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/1/endorsements" for 127.0.0.1 at 2017-10-17 15:07:22 -0400
+Processing by EndorsementsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XlgLcI3lY10wfGAj8P2vzlhXiz60OVOburfaSgFebs9R06wR2RhQKKWj6buXt8HA4bB15LOUtyFRVIagcxK4kg==", "endorsement"=>{"ref_user_id"=>"2", "end_user_id"=>"1", "comment"=>"Cheese"}, "commit"=>"Create Endorsement", "user_id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/1/endorsements
+Completed 302 Found in 43ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/users/1/endorsements" for 127.0.0.1 at 2017-10-17 15:07:22 -0400
+Processing by EndorsementsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering endorsements/index.html.erb within layouts/application
+  [1m[36mEndorsement Load (0.0ms)[0m  [1m[34mSELECT "endorsements".* FROM "endorsements" WHERE "endorsements"."end_user_id" = ?[0m  [["end_user_id", 1]]
+  Rendered endorsements/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 427ms (Views: 316.6ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mEndorsement Load (3.0ms)[0m  [1m[34mSELECT  "endorsements".* FROM "endorsements" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mAddress Load (0.0ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/users/1/endorsements/new" for 127.0.0.1 at 2017-10-17 15:12:15 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EndorsementsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering endorsements/new.html.erb within layouts/application
+  Rendered endorsements/new.html.erb within layouts/application (29.1ms)
+Completed 200 OK in 601ms (Views: 478.5ms | ActiveRecord: 3.0ms)
+
+
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+Started POST "/users/1/endorsements" for 127.0.0.1 at 2017-10-17 15:13:11 -0400
+Processing by EndorsementsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ExbsxmbqXHqY6n/LVhI8v9LUMIOw21yJdwI3K+69oGwcnUunMhdvDw019lMxWFKxazPOWbd2uDOc4WvBnPF2MQ==", "endorsement"=>{"ref_user_id"=>"2", "end_user_id"=>"1", "comment"=>"cheese"}, "commit"=>"Create Endorsement", "user_id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/1/endorsements
+Completed 302 Found in 55ms (ActiveRecord: 4.0ms)
+
+
+Started GET "/users/1/endorsements" for 127.0.0.1 at 2017-10-17 15:13:11 -0400
+Processing by EndorsementsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering endorsements/index.html.erb within layouts/application
+  [1m[36mEndorsement Load (0.0ms)[0m  [1m[34mSELECT "endorsements".* FROM "endorsements" WHERE "endorsements"."end_user_id" = ?[0m  [["end_user_id", 1]]
+  Rendered endorsements/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 332ms (Views: 263.6ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mEndorsement Load (1.0ms)[0m  [1m[34mSELECT  "endorsements".* FROM "endorsements" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/users/1/endorsements/new" for 127.0.0.1 at 2017-10-17 15:15:55 -0400
+Processing by EndorsementsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering endorsements/new.html.erb within layouts/application
+  Rendered endorsements/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 320ms (Views: 272.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/1/endorsements" for 127.0.0.1 at 2017-10-17 15:16:03 -0400
+Processing by EndorsementsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pmCs/7CkeR1zrQb0+Xoo9PS94cHWPl8YUMiO23o4UU2p6wue5FlKaOZyj2yeMEb6TVofG9GTu6K7K9IxCHSHEA==", "endorsement"=>{"ref_user_id"=>"5", "end_user_id"=>"1", "comment"=>"cheese"}, "commit"=>"Create Endorsement", "user_id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (47.9ms)[0m  [1m[32mINSERT INTO "endorsements" ("comment", "created_at", "updated_at", "ref_user_id", "end_user_id") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "cheese"], ["created_at", "2017-10-17 19:16:03.550926"], ["updated_at", "2017-10-17 19:16:03.550926"], ["ref_user_id", 5], ["end_user_id", 1]]
+  [1m[35m (18.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/1/endorsements
+Completed 302 Found in 154ms (ActiveRecord: 69.0ms)
+
+
+Started GET "/users/1/endorsements" for 127.0.0.1 at 2017-10-17 15:16:03 -0400
+Processing by EndorsementsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering endorsements/index.html.erb within layouts/application
+  [1m[36mEndorsement Load (0.0ms)[0m  [1m[34mSELECT "endorsements".* FROM "endorsements" WHERE "endorsements"."end_user_id" = ?[0m  [["end_user_id", 1]]
+  Rendered endorsements/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 390ms (Views: 311.2ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.0ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mEndorsement Load (1.0ms)[0m  [1m[34mSELECT  "endorsements".* FROM "endorsements" WHERE "endorsements"."end_user_id" = ? LIMIT ?[0m  [["end_user_id", 1], ["LIMIT", 11]]
+  [1m[36mEndorsement Load (0.0ms)[0m  [1m[34mSELECT  "endorsements".* FROM "endorsements" WHERE "endorsements"."ref_user_id" = ? LIMIT ?[0m  [["ref_user_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mEndorsement Load (0.0ms)[0m  [1m[34mSELECT  "endorsements".* FROM "endorsements" WHERE "endorsements"."end_user_id" = ? LIMIT ?[0m  [["end_user_id", 5], ["LIMIT", 11]]
+  [1m[36mEndorsement Load (0.0ms)[0m  [1m[34mSELECT  "endorsements".* FROM "endorsements" WHERE "endorsements"."ref_user_id" = ? LIMIT ?[0m  [["ref_user_id", 5], ["LIMIT", 11]]
+Started GET "/users/1/endorsements/new" for 127.0.0.1 at 2017-10-17 15:46:55 -0400
+Processing by EndorsementsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering endorsements/new.html.erb within layouts/application
+  Rendered endorsements/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 254ms (Views: 205.5ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users/1/endorsements" for 127.0.0.1 at 2017-10-17 15:47:11 -0400
+Processing by EndorsementsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8m6rC0MaHIBFU6clg6prp1Dp7FO6Rb+T/V9adDh56ej95QxqF+cv9dCMLr3k4AWp6Q4Sib3oWykWvAaeSjU/tQ==", "endorsement"=>{"ref_user_id"=>"5", "comment"=>"Hello"}, "commit"=>"Create Endorsement", "user_id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "endorsements" ("comment", "created_at", "updated_at", "ref_user_id", "end_user_id") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "Hello"], ["created_at", "2017-10-17 19:47:11.964338"], ["updated_at", "2017-10-17 19:47:11.964338"], ["ref_user_id", 5], ["end_user_id", 1]]
+  [1m[35m (16.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/1/endorsements
+Completed 302 Found in 75ms (ActiveRecord: 20.1ms)
+
+
+Started GET "/users/1/endorsements" for 127.0.0.1 at 2017-10-17 15:47:12 -0400
+Processing by EndorsementsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering endorsements/index.html.erb within layouts/application
+  [1m[36mEndorsement Load (0.0ms)[0m  [1m[34mSELECT "endorsements".* FROM "endorsements" WHERE "endorsements"."end_user_id" = ?[0m  [["end_user_id", 1]]
+  Rendered endorsements/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 381ms (Views: 287.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/endorsements/new" for 127.0.0.1 at 2017-10-17 15:47:36 -0400
+Processing by EndorsementsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering endorsements/new.html.erb within layouts/application
+  Rendered endorsements/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 240ms (Views: 190.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/1/endorsements" for 127.0.0.1 at 2017-10-17 15:47:44 -0400
+Processing by EndorsementsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"99dl4dFDrrmxHqil0CRDsa/mwnpLGmSWWhbxxG9V50z4XMKAhb6dzCTBIT23bi2/FgE8oEy3gCyx9a0uHRkxEQ==", "endorsement"=>{"ref_user_id"=>"5", "end_user_id"=>"1", "comment"=>"Chicken"}, "commit"=>"Create Endorsement", "user_id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "endorsements" ("comment", "created_at", "updated_at", "ref_user_id", "end_user_id") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "Chicken"], ["created_at", "2017-10-17 19:47:44.795527"], ["updated_at", "2017-10-17 19:47:44.795527"], ["ref_user_id", 5], ["end_user_id", 1]]
+  [1m[35m (13.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/1/endorsements
+Completed 302 Found in 74ms (ActiveRecord: 16.2ms)
+
+
+Started GET "/users/1/endorsements" for 127.0.0.1 at 2017-10-17 15:47:44 -0400
+Processing by EndorsementsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering endorsements/index.html.erb within layouts/application
+  [1m[36mEndorsement Load (2.0ms)[0m  [1m[34mSELECT "endorsements".* FROM "endorsements" WHERE "endorsements"."end_user_id" = ?[0m  [["end_user_id", 1]]
+  Rendered endorsements/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 297ms (Views: 221.1ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/users/1/endorsements" for 127.0.0.1 at 2017-10-17 15:49:15 -0400
+Processing by EndorsementsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering endorsements/index.html.erb within layouts/application
+  [1m[36mEndorsement Load (1.0ms)[0m  [1m[34mSELECT "endorsements".* FROM "endorsements" WHERE "endorsements"."end_user_id" = ?[0m  [["end_user_id", 1]]
+  Rendered endorsements/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 316ms (Views: 224.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/endorsements" for 127.0.0.1 at 2017-10-17 15:49:33 -0400
+Processing by EndorsementsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering endorsements/index.html.erb within layouts/application
+  [1m[36mEndorsement Load (1.0ms)[0m  [1m[34mSELECT "endorsements".* FROM "endorsements" WHERE "endorsements"."end_user_id" = ?[0m  [["end_user_id", 1]]
+  Rendered endorsements/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 425ms (Views: 341.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/endorsements" for 127.0.0.1 at 2017-10-17 15:49:51 -0400
+Processing by EndorsementsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering endorsements/index.html.erb within layouts/application
+  [1m[36mEndorsement Load (1.0ms)[0m  [1m[34mSELECT "endorsements".* FROM "endorsements" WHERE "endorsements"."end_user_id" = ?[0m  [["end_user_id", 1]]
+  Rendered endorsements/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 358ms (Views: 289.0ms | ActiveRecord: 2.0ms)
+
+
+  [1m[36mEndorsement Load (2.0ms)[0m  [1m[34mSELECT  "endorsements".* FROM "endorsements" WHERE "endorsements"."end_user_id" = ? LIMIT ?[0m  [["end_user_id", 5], ["LIMIT", 11]]
+  [1m[36mEndorsement Load (1.0ms)[0m  [1m[34mSELECT  "endorsements".* FROM "endorsements" WHERE "endorsements"."ref_user_id" = ? LIMIT ?[0m  [["ref_user_id", 5], ["LIMIT", 11]]
+Started GET "/users/5/endorsements" for 127.0.0.1 at 2017-10-17 15:58:19 -0400
+Processing by EndorsementsController#index as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering endorsements/index.html.erb within layouts/application
+  [1m[36mEndorsement Load (1.0ms)[0m  [1m[34mSELECT "endorsements".* FROM "endorsements" WHERE "endorsements"."end_user_id" = ?[0m  [["end_user_id", 5]]
+  Rendered endorsements/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 284ms (Views: 215.4ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/users/5/endorsements/new" for 127.0.0.1 at 2017-10-17 15:58:25 -0400
+Processing by EndorsementsController#new as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering endorsements/new.html.erb within layouts/application
+  Rendered endorsements/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 258ms (Views: 201.5ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users/5/endorsements" for 127.0.0.1 at 2017-10-17 15:58:42 -0400
+Processing by EndorsementsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ilspUp5xCBbU5jbmAnT4Vst6D1Axn8qCxqAjyHH+7S2F0I4zyow7Y0E5v35lPpZYcp3xijYyLjgtQ38iA7I7cA==", "endorsement"=>{"ref_user_id"=>"1", "end_user_id"=>"5", "comment"=>"Good Job!"}, "commit"=>"Create Endorsement", "user_id"=>"5"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "endorsements" ("comment", "created_at", "updated_at", "ref_user_id", "end_user_id") VALUES (?, ?, ?, ?, ?)[0m  [["comment", "Good Job!"], ["created_at", "2017-10-17 19:58:43.028332"], ["updated_at", "2017-10-17 19:58:43.028332"], ["ref_user_id", 1], ["end_user_id", 5]]
+  [1m[35m (13.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/5/endorsements
+Completed 302 Found in 69ms (ActiveRecord: 16.1ms)
+
+
+Started GET "/users/5/endorsements" for 127.0.0.1 at 2017-10-17 15:58:43 -0400
+Processing by EndorsementsController#index as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering endorsements/index.html.erb within layouts/application
+  [1m[36mEndorsement Load (1.0ms)[0m  [1m[34mSELECT "endorsements".* FROM "endorsements" WHERE "endorsements"."end_user_id" = ?[0m  [["end_user_id", 5]]
+  Rendered endorsements/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 370ms (Views: 291.1ms | ActiveRecord: 1.0ms)
+
+
+  [1m[36mEndorsement Load (0.0ms)[0m  [1m[34mSELECT  "endorsements".* FROM "endorsements" WHERE "endorsements"."end_user_id" = ? LIMIT ?[0m  [["end_user_id", 5], ["LIMIT", 11]]
+  [1m[36mEndorsement Load (0.0ms)[0m  [1m[34mSELECT  "endorsements".* FROM "endorsements" WHERE "endorsements"."ref_user_id" = ? LIMIT ?[0m  [["ref_user_id", 5], ["LIMIT", 11]]
