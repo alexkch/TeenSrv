@@ -1,0 +1,17 @@
+<%= form_with(model: [@user, @skill], local: true) do |form| %>
+  <p>
+    <%= form.label :'Skill:' %>
+    <%= form.text_field :skill_name %>
+  </p>
+  <p>
+    <%= form.label :'Experience:' %>
+    <%= form.text_field :experience %>
+  </p>
+    <p>
+    <%= form.label :'Description:' %>
+    <%= form.text_field :description %>
+  </p>
+  <p>
+  	<%= form.submit %>
+  </p>
+<% end %>

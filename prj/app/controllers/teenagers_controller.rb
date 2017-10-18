@@ -9,6 +9,7 @@ class TeenagersController < ApplicationController
     def show
         @user = User.find(params[:user_id])
         @teenager = @user.teenager
+        @skills = @teenager.skill.all
     end
     
     def new

@@ -1,0 +1,18 @@
+<h1>All Skills</h1>
+
+<table>
+	<tr>
+		<th>Skill</th>
+	</tr>
+
+	<% @skills.each do |skill| %>
+		<tr>
+		  <td><%= skill.skill_name %></td>
+		  <td><%= skill.experience %></td>
+		  <td><%= skill.description %></td>
+		  <td><%= link_to 'Show', url_for([@user, skill]) %></td>
+		  <td><%= link_to 'Edit', url_for([:edit, @user, skill]) %></td>
+		  <!-- <td><%= link_to 'Edit', edit_user_skill_path(@user, skill) %></td> -->
+		</tr>
+	<% end %>
+</table>
