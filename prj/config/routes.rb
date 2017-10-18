@@ -1,27 +1,22 @@
 Rails.application.routes.draw do
   get 'payments/index'
 
-  get 'payments/edit'
-
-  get 'payments/show'
-
-  get 'payments/new'
 
   get 'welcome/index'
   root 'welcome#index'
 
-  get 'jobs/myjob'
-
-
   resources :users do
-  	resources :addresses
+	resources :teenagers
+    resources :profiles
+  	resources :addresses 
     resources :endorsements
+  	resources :payments do
+ 		resources :bank_infos
+ 		resources :credit_cards
+ 	end
   end
   resources :jobs
+  get 'jobs/myjob'
   resources :job_types
-  resources :profiles
   resources :clients
-  resources :teenagers
-
-  
 end
