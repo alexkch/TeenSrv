@@ -6,14 +6,14 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :users do
-	resources :teenagers
+    resources :teenagers
     resources :profiles
   	resources :addresses 
     resources :endorsements
   	resources :payments do
- 		resources :bank_infos
- 		resources :credit_cards
- 	end
+      resources :bank_infos
+      resources :credit_cards
+    end
   end
   resources :jobs
   get 'jobs/myjob'

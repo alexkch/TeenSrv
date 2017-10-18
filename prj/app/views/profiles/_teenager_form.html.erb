@@ -1,4 +1,4 @@
-<%= form_with scope: :profile, url: teenagers_path, local: true do |form| %>
+<%= form_with(model: [@user, @teenager], local: true) do |form| %>
   <% if @teenager.errors.any? %>
     <div id="error_explanation">
       <h2>

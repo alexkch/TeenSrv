@@ -20,13 +20,11 @@ def create
   @user = User.new(user_params)
   params[:userid] = params[:id]
 
-  @teenager = Teenager.new
-
   if @user.save
     if @user.usertype == 0              #type0 = teen
-      redirect_to new_teenager_path
+      redirect_to new_user_teenager_path(@user)
     elsif @user.usertype == 1           #type 1 = client
-      redirect_to new_client_path
+      redirect_to new_user_client_path(@user)
     end
   else
     render 'new'
