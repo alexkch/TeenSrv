@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171018033935) do
+ActiveRecord::Schema.define(version: 20171019205405) do
 
   create_table "accepted_jobs", force: :cascade do |t|
     t.integer "job_id"
@@ -181,6 +181,16 @@ ActiveRecord::Schema.define(version: 20171018033935) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "skills", force: :cascade do |t|
+    t.string "skill_name"
+    t.integer "experience"
+    t.string "description"
+    t.integer "teenager_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["teenager_id"], name: "index_skills_on_teenager_id"
+  end
+
   create_table "teenagers", force: :cascade do |t|
     t.string "skills"
     t.integer "user_id"
@@ -218,9 +228,9 @@ ActiveRecord::Schema.define(version: 20171018033935) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.text "password"
+    t.integer "usertype"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "usertype"
   end
 
 end
