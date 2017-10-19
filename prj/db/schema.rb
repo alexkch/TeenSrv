@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010153722) do
+ActiveRecord::Schema.define(version: 20171018033935) do
 
   create_table "accepted_jobs", force: :cascade do |t|
     t.integer "job_id"
@@ -166,6 +166,7 @@ ActiveRecord::Schema.define(version: 20171010153722) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "paymenttype"
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
