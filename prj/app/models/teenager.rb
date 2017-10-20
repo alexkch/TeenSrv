@@ -1,5 +1,4 @@
 class Teenager < ApplicationRecord
-    belongs_to :user, optional: true
-    # has_one :address
-    # has_many: skills
+    belongs_to :user, :foreign_key => 'user_id'
+    has_many :skill
 end

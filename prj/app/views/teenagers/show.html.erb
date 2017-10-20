@@ -1,18 +1,18 @@
 <p>
+  <strong>First Name: </strong>
+  <%= @teenager.firstname %>
+</p>
+<p>
+  <strong>Last Name: </strong>
+  <%= @teenager.lastname %>
+</p>
+<p>
   <strong>Gender: </strong>
   <%= @teenager.gender %>
 </p>
 <p>
   <strong>Birthday(yyyy/mm/dd):</strong>
-  <%= @teenager.birth_year%>
-</p>
-<p>
-  <strong>Birthday(yyyy/mm/dd):</strong>
-  <%= @teenager.birth_month%>
-</p>
-<p>
-  <strong>Birthday(yyyy/mm/dd):</strong>
-  <%= @teenager.birth_day%>
+  <%= @teenager.birth_year%>/<%= @teenager.birth_month%>/<%= @teenager.birth_day%>
 </p>
 <p>
   <strong>Age:</strong>
@@ -20,9 +20,8 @@
 </p>
 
 <p>
-  <strong>Addresses:</strong>
   <%= link_to 'Addresses', user_addresses_path(@user) %><br />
+  <%= link_to 'Skills', teenager_skills_path(@teenager)%><br />
 </p>
 
- 
-<%= link_to 'Back', user_teenagers_path %>
+<%= link_to 'Back to User', @user %>

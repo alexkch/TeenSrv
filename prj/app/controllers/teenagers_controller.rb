@@ -1,14 +1,14 @@
 class TeenagersController < ApplicationController
     attr_accessor :address
     
-    # def index
-    #     @user = User.find(params[:user_id])
-    #     @teenagers = @user.teenager.all
-    # end
+    def index
+        @teenagers = Teenager.all
+    end
     
     def show
-        @user = User.find(params[:user_id])
-        @teenager = @user.teenager
+        @teenager = Teenager.find(params[:id])
+        @user = User.find(@teenager.user_id)
+        @skills = @teenager.skill.all
     end
     
     def new
@@ -25,11 +25,9 @@ class TeenagersController < ApplicationController
     
     def create
         @user = User.find(params[:user_id])
-        #@profile = @user.create_profile(profile_params)
         
         @user.teenager.create!(teenager_params)
         redirect_to user_teenagers_path
-        
     end
     
     def update
@@ -45,7 +43,7 @@ class TeenagersController < ApplicationController
     
     private
     def teenager_params
-        params.require(:teenager).permit(:user_id, :given_name, :family_name, :gender, :birth_month, :birth_day, :birth_year, :address, :apt_no, :city, :province, :country, :postal_code, :babysitting, :lawn_mowing, :snow_shovelling, :skill1, :skill2, :skill3)
+        params.require(:teenager).permit(:user_id, :firstname, :lastname, :gender, :birth_month, :birth_day, :birth_year, :babysitting, :lawn_mowing, :snow_shovelling, :skill1, :skill2, :skill3)
     end
 
 end

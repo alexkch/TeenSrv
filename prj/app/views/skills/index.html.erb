@@ -1,0 +1,23 @@
+<h1>Skills for</h1>
+<%= @user.username %>
+<%= link_to 'Add Skill', new_teenager_skill_path(@teenager) %>
+<%= link_to 'Back', teenager_path(@teenager) %>
+
+<table>
+	<tr>
+		<th>Skill</th>
+	</tr>
+
+	<% @skills.each do |skill| %>
+		<tr>
+		  <td><%= skill.skill_name %></td>
+		  <td><%= skill.experience %></td>
+		  <td><%= skill.description %></td>
+		  <td><%= link_to 'Show', url_for([@teenager, skill]) %></td>
+		  <td><%= link_to 'Edit', url_for([:edit, @teenager, skill]) %></td>
+		  <td><%= link_to 'Destroy', teenager_skill_path(@user, skill), 
+            method: :delete, 
+            data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>	
+</table>
