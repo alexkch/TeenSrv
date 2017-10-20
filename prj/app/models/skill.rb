@@ -1,3 +1,3 @@
 class Skill < ApplicationRecord
-	belongs_to :user, optional: true
+	belongs_to :teenager, :foreign_key => "teenager_id"
 end

@@ -1,4 +1,12 @@
 <p>
+  <strong>First Name: </strong>
+  <%= @teenager.firstname %>
+</p>
+<p>
+  <strong>Last Name: </strong>
+  <%= @teenager.lastname %>
+</p>
+<p>
   <strong>Gender: </strong>
   <%= @teenager.gender %>
 </p>
@@ -13,7 +21,7 @@
 
 <p>
   <%= link_to 'Addresses', user_addresses_path(@user) %><br />
-  <%= link_to 'Skills', user_skills_path(@user, @teenager)%><br />
+  <%= link_to 'Skills', teenager_skills_path(@teenager)%><br />
 </p>
 
 <%= link_to 'Back to User', @user %>

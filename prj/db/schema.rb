@@ -194,16 +194,12 @@ ActiveRecord::Schema.define(version: 20171019205405) do
   create_table "teenagers", force: :cascade do |t|
     t.string "skills"
     t.integer "user_id"
+    t.string "firstname"
+    t.string "lastname"
     t.string "gender"
     t.integer "birth_year"
     t.integer "birth_month"
     t.integer "birth_day"
-    t.string "address"
-    t.integer "apt_no"
-    t.string "city"
-    t.string "province"
-    t.string "country"
-    t.string "postal_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_teenagers_on_user_id"

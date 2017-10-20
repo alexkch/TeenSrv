@@ -1,12 +1,13 @@
 class SkillsController < ApplicationController
 	def new
-		@user = User.find(params[:user_id])
-		@skill = @user.skill.new
+		@teenager = Teenager.find(params[:teenager_id])
+		@skill = @teenager.skill.new
 	end
 
 	def index
-		@user = User.find(params[:user_id])
-		@skills = @user.skill.all
+		@teenager = Teenager.find(params[:teenager_id])
+		@user = User.find(@teenager.user_id)
+		@skills = @teenager.skill.all
 	end
 
 	def show
@@ -14,14 +15,22 @@ class SkillsController < ApplicationController
 	end
 
 	def create
-		@user = User.find(params[:user_id])
-		@user.skill.create!(skill_params)
-		redirect_to user_skills_path
+		@teenager = Teenager.find(params[:teenager_id])
+		@teenager.skill.create!(skill_params)
+		redirect_to teenager_skills_path
 	end
 
 	def edit
-		@user = User.find(params[:user_id])
+		@teenager = Teenager.find(params[:teenager_id])
 		@skill = @user.skill.find(params[:id])
+	end
+
+	def destroy
+		@teenager = Teenager.find(params[:teenager_id])
+		@skill = Skill.find(params[:id])
+		@skill.destroy
+ 
+		redirect_to teenager_skills_path
 	end
 
 	def skill_params
