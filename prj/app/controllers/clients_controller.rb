@@ -1,37 +1,38 @@
 class ClientsController < ApplicationController
-
 	def index
+	  @users = User.all
 	  @clients = Client.all
 	end
 
 	def show
-	  @clients = Client.find(params[:id])
+	  @user = User.find(params[:user_id])
+	  @client = @user.client 
 	end
-	 
+
 	def new
+	  @user = User.find(params[:user_id])
 	  @client = Client.new
+	  @user.client = @client
 	end
 	 
 	def edit
-	  @client = Client.find(params[:id])
+	  @user = User.find(params[:user_id])
+	  @client = @user.client
 	end
 	 
 	def create
-	  @client = Client.new(client_params)
+	  @user = User.find(params[:user_id])
+	  @client = @user.client.create(client_params)
 	  
-	  if @client.save
-	      redirect_to @client
-	  else
-	    render 'new'
-	  end
+	  redirect_to @user
 	end
 
 
 	def update
-	  @client = Client.find(params[:id])
-	 
+	  @user = User.find(params[:user_id])
+	  @client = @user.client
 	  if @client.update(client_params)
-	    redirect_to @client
+	    redirect_to user_client_path(@user)
 	  else
 	    render 'edit'
 	  end
@@ -47,6 +48,6 @@ class ClientsController < ApplicationController
 
 	private
 	def client_params
-		params.require(:client).permit(:user_id, :fName, :lName, :gender, :birth_month, :birth_day, :birth_year, :address, :apt_no, :city, :province, :country, :postal_code)
+		params.require(:client).permit(:fName, :lName, :gender, :birth_month, :birth_day, :birth_year, :address, :apt_no, :city, :province, :country, :postal_code)
     end
 end

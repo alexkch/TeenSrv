@@ -2,10 +2,5 @@
 <h1>New Client</h1>
  
 <%= render 'client_form' %>
-
-<p>1Current user id: <%= params[:id] %></p>
-<p>1Current user id: <%= params[:userid] %></p>
-<p>2Current user id: <%= @client.user_id %></p>
-<p>3Current user id: <%= @client.id %></p>
  
-<%= link_to 'Back', clients_path %>
+<%= link_to 'Back', user_clients_path %>

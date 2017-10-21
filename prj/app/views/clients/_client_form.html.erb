@@ -1,4 +1,4 @@
-<%= form_with scope: :client, url: clients_path, local: true do |form| %>
+<%= form_with(model: [@user, @user.client], local: true) do |form| %>
  
   <% if @client.errors.any? %>
     <div id="error_explanation">
