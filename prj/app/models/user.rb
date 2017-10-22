@@ -14,6 +14,10 @@ class User < ApplicationRecord
   has_many :g_endorsement, :class_name => 'Endorsement', :foreign_key => 'end_user_id'	
   validates :username, presence: true,
                     length: { minimum: 6 }
+  validates :username, format: {
+                      with: /\A[\w+\-]+@[a-z\d\-.]+\.[a-z]+\z/i,
+                      message: "malformed email address"
+                    }
   validates :password, presence: true,
-                    length: { minimum: 6 }
+                    length: { minimum: 1 }
 end
