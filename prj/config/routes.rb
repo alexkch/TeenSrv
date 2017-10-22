@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
  
-  get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
+  # get    '/login',   to: 'sessions#new'
+  # post   '/login',   to: 'sessions#create'
+  # delete '/logout',  to: 'sessions#destroy'
 
   get 'payments/index'
 
@@ -28,6 +28,11 @@ Rails.application.routes.draw do
        resources :credit_cards
     end
   end
+
+  resources :teenagers do
+    resources :skills, :name_prefix => "teenager_"
+  end
+
   resources :jobs
   resources :job_types
   resources :profiles
