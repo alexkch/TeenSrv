@@ -6,8 +6,8 @@ class User < ApplicationRecord
   #   self.usertype ||= :null
   # end
 
-  has_one :teenager
-  has_one :client
+  has_one :teenager, dependent: :destroy
+  has_one :client, dependent: :destroy
   has_many :payment
   has_many :address
   has_many :r_endorsement, :class_name => 'Endorsement', :foreign_key => 'ref_user_id'

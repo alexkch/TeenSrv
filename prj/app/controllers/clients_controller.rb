@@ -5,8 +5,8 @@ class ClientsController < ApplicationController
 	end
 
 	def show
-	  @user = User.find(params[:user_id])
-	  @client = @user.client 
+	  @client = Client.find(params[:id]) 
+	  @user = User.find(@client.user_id)
 	end
 
 	def new

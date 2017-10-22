@@ -53,6 +53,8 @@
 <%= link_to 'Addresses', user_addresses_path(@user) %><br />
 <% if @user.usertype == 0 %>
   <%= link_to 'My Profile', user_teenager_path(@user, @user.teenager) %><br />
+<% elsif @user.usertype == 1 %>  
+  <%= link_to 'My Profile', user_client_path(@user, @user.client) %><br />
 <% end %>
 <%= link_to 'My Jobs', jobs_path(:user => @user.id) %><br />
 <%= link_to 'Edit', edit_user_path(@user) %> <br />
