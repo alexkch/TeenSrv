@@ -20,6 +20,7 @@ def create
   @user = User.new(user_params)
 
   if @user.save
+    log_in @user
     if @user.usertype == 0              #type0 = teen
       redirect_to user_teenager_path
     elsif @user.usertype == 1           #type 1 = client
