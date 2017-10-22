@@ -34,7 +34,7 @@ class SkillsController < ApplicationController
 	end
 
 	def skill_params
-		params.require(:skill).permit(:user_id, :skill_name, :experience, :description)
+		params.require(:skill).permit(:user_id, :skill_type_id, :experience_time, :experience_quantifier, :description)
 	end
 
 end
