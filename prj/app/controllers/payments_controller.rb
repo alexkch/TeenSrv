@@ -3,28 +3,28 @@ class PaymentsController < ApplicationController
   
   def index
      @user = User.find(params[:user_id]) 
-     @payments = @user.payments.all
+     @payments = @user.payment.all
   end
   #action SHOW which will associate with Show.html.erb to print out all methods under one user
   def show
       @user = User.find(params[:user_id])
-      @payment = @user.payments.find(params[:id])
+      @payment = @user.payment.find(params[:id])
   end
       
   def new
       @user = User.find(params[:user_id])
-      @payment = @user.payments.new
+      @payment = @user.payment.new
   end
     
   def edit
       @user = User.find(params[:user_id])
-      @payment = @user.payments.find(params[:id])
+      @payment = @user.payment.find(params[:id])
       render 'new'
   end
 
   def create
       @user = User.find(params[:user_id])
-      @payment = @user.payments.create(payment_params)
+      @payment = @user.payment.create(payment_params)
       if @payment.save
          redirect_to @payment #<- turn to a show action. Here it need to redirect_to other #controller's URL
                  #One Question: How do we determine which URL to go through? Bank_Info or Credit_Card?
@@ -46,7 +46,7 @@ class PaymentsController < ApplicationController
     
  def destroy
        @user=User.find(params[:user_id])
-       @payment=@user.payments.find(params[:id])
+       @payment=@user.payment.find(params[:id])
        @payment.destroy
   end
     
