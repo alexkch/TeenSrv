@@ -1,17 +1,24 @@
-<h1>Skills for</h1>
-<%= @user.username %>
+<h1>Skills for <%= @user.username %></h1>
+
 <%= link_to 'Add Skill', new_teenager_skill_path(@teenager) %>
 <%= link_to 'Back', teenager_path(@teenager) %>
 
 <table>
 	<tr>
-		<th>Skill</th>
+		<th>Skill Type ID</th>
+		<th>Skill_Type_Description</th>
+		<th>Experience_Time</th>
+		<th>Experience_Quantifier</th>
+		<th>Teen_Skill_Description</th>
 	</tr>
 
 	<% @skills.each do |skill| %>
+		<% skill_type = SkillType.find(skill.skill_type_id) %>
 		<tr>
-		  <td><%= skill.skill_name %></td>
-		  <td><%= skill.experience %></td>
+		  <td><%= skill.skill_type_id %></td>
+		  <td><%= skill_type.description %></td>
+		  <td><%= skill.experience_time %></td>
+		  <td><%= skill.experience_quantifier %></td>
 		  <td><%= skill.description %></td>
 		  <td><%= link_to 'Show', url_for([@teenager, skill]) %></td>
 		  <td><%= link_to 'Edit', url_for([:edit, @teenager, skill]) %></td>

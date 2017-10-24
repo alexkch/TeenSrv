@@ -1,11 +1,17 @@
 <%= form_with(model: [@teenager, @skill], local: true) do |form| %>
-  <p>
+    <div>
     <%= form.label :'Skill:' %>
-    <%= form.text_field :skill_name %>
-  </p>
-  <p>
+    </div>
+    <%= form.select :skill_type_name, [["Lawnmowing", "lawnmowing"], ["Snow Shovelling", "snowshovelling"],["Babysitting", "Babysitting"], ["DogWalking", "dogwalking"]] %>
+  
+  <div>
     <%= form.label :'Experience:' %>
-    <%= form.text_field :experience %>
+    </div>
+    <%= form.select :experience_quantifier, [['Years', 'Years'], ['Months', 'Months'],['Weeks', 'Weeks']]%>
+  
+  <p>
+    <%= form.label :'Experience Time:' %>
+    <%= form.text_field :experience_time %>
   </p>
     <p>
     <%= form.label :'Description:' %>

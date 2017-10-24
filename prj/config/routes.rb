@@ -28,6 +28,11 @@ Rails.application.routes.draw do
        resources :credit_cards
     end
   end
+
+  resources :teenagers do
+    resources :skills, :name_prefix => "teenager_"
+  end
+
   resources :jobs
   resources :job_types
   resources :profiles

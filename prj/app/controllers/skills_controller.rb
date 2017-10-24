@@ -16,7 +16,13 @@ class SkillsController < ApplicationController
 
 	def create
 		@teenager = Teenager.find(params[:teenager_id])
-		@teenager.skill.create!(skill_params)
+		@skill_type = SkillType.where(:name => params[:skill][:skill_type_name])[0]
+		@teenager.skill.create!([:teenager_id => @teenager.id, 
+			:skill_type_id => @skill_type.id, 
+			:experience_time => params[:skill][:experience_time],
+			:experience_quantifier => params[:skill][:experience_quantifier],
+			:description => params[:skill][:description]
+			])
 		redirect_to teenager_skills_path
 	end
 
@@ -34,7 +40,7 @@ class SkillsController < ApplicationController
 	end
 
 	def skill_params
-		params.require(:skill).permit(:user_id, :skill_name, :experience, :description)
+		params.require(:skill).permit(:user_id, :skill_type_id, :experience_time, :experience_quantifier, :description)
 	end
 
 end
