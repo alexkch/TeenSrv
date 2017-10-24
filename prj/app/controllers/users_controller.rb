@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :auth_user, :only => [:new, :create]
 
 def index
   @users = User.all
