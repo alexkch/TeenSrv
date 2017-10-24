@@ -1,0 +1,24 @@
+
+<ul>
+
+	<% if user_signed_in? %>
+
+		<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+		<li><%= @x_user %>
+			<%= puts "testing" %>
+			<%= puts user_session %>
+			<%= puts current_user %></li>
+		<li><%= link_to 'Users', users_path %></li>
+		<h2>(Used for indexing) (we will remove this route in the future)</h2>
+	<% else %>
+
+		<li><%= link_to "Sign In", new_user_session_path %></li>
+		<li><%= link_to "Sign Up", new_user_registration_path %></li>
+
+	<% end %>
+
+</ul>
+
+
+<h1>Home#index HOMEPAGE</h1>
+
