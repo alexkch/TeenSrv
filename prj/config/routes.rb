@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
 
   # Routes
-  resources :users do
+  resources :users, only: [:index, :show, :destroy] do
     resources :transactions
     resources :clients
     resources :endorsements
