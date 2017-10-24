@@ -19,7 +19,7 @@
       <td>Accepted By: <%= job.client_id %></td>
 
       <% if @user.usertype == 1 %> 
-      <td><%= link_to 'Request Job', job_path(job, @user) %></td>
+      <td><%= link_to 'Request Job', jobs_myrequest_path(:job => job, :user => @user) %></td>
       <td><%= link_to 'Show', job_path(job, :user => @user.id) %></td><br/>
       <% end %>
 

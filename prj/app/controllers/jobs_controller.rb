@@ -12,13 +12,16 @@ def myjob
 
 end
 
-# def request
+def myrequest
 
-# 	@user = User.find(params[:user])
-# 	@job = Job.find(params[:id])
+ 	@user = User.find(params[:user])
+ 	@job = Job.find(params[:id])
+ 	if @job.update(client_id: params[:user])
+		redirect_to controller: 'jobs', action: 'index', user: params[:user]
+	end
+end
 	
-# 	if @job.update(client_id: params[:user])
-# 		redirect_to controller: 'jobs', action: 'index', user: params[:user]
+
 # 	else
 # 		render 'index'
 # 	end

@@ -4,19 +4,13 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  get 'payments/index'
-
-  get 'payments/edit'
-
-  get 'payments/show'
-
-  get 'payments/new'
 
   get 'welcome/index'
   root 'welcome#index'
 
   get 'jobs/myjob'
 
+  resources :sessions
   resources :users do
     resources :clients
     resources :endorsements
