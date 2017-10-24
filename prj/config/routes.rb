@@ -1,22 +1,33 @@
 Rails.application.routes.draw do
- 
-  get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
+
+  # ROOT
+  root 'home#index' 
 
 
-  get 'welcome/index'
-  root 'welcome#index'
+  # Registration Devise Route
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
 
+
+  # Home Routes  
+  get 'home/index'
+  get 'welcome/index' 
+
+
+  # JOB Routes
+  resources :jobs
+  resources :job_types
   get 'jobs/myjob'
 
-  resources :sessions
+
+  #resources :sessions
+
+
+  # Routes
   resources :users do
     resources :transactions
     resources :clients
     resources :endorsements
     resources :teenagers, :name_prefix => "user_"
-    resources :profiles
     resources :addresses 
     resources :payments do
        resources :bank_infos
@@ -29,7 +40,5 @@ Rails.application.routes.draw do
   end
 
   resources :transactions
-  resources :jobs
-  resources :job_types
   resources :profiles
 end
