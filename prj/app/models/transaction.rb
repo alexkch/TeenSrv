@@ -1,6 +1,6 @@
 class Transaction < ApplicationRecord
-  belongs_to :client
-  belongs_to :teenager
-  belongs_to :job
-  belongs_to :payment
+  belongs_to :client, optional: true
+  belongs_to :teenager, optional: true
+  belongs_to :job, optional: true
+  belongs_to :payment, optional: true
 end

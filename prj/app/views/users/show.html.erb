@@ -11,38 +11,17 @@
  
 <p>
   <strong>User Type:</strong>
-  <%= @user.usertype ? "Teen" : "Client" %>
+  <% if @user.usertype == 0 %>Teen
+  <% elsif @user.usertype == 1 %>Client
+  <% end %>
 </p>
 
-<h2>Profiles</h2>
-<% if @user.usertype == 0 %>
-<div class="Teen">You're A Teenager!
- <% @user.teenager do |teenager| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= teenager.firstname %>
-  </p>
- 
-  <p>
-    <strong>Comment:</strong>
-    <%= teenager.lastname %>
-  </p>
-<% end %>
-</div>
-<% elsif @user.usertype == 1 %>
- <div class="Client">You're A Client!</div>
-<% end %>
 
-
-<h2>Add some info:</h2>
-<%= form_with(model:  @user, uri: users_path, local: true) do |form| %>
+<h2>Tell us what you think!</h2>
+<%= form_with(model: @user, uri: users_path, local: true) do |form| %>
   <p>
-    <%= form.label :firstname %><br>
-    <%= form.text_field :firstname %>
-  </p>
-  <p>
-    <%= form.label :lastname %><br>
-    <%= form.text_field :lastname %>
+    <%= form.label :comments %><br>
+    <%= form.text_area :comments %>
   </p>
   <p>
     <%= form.submit %>
@@ -56,6 +35,7 @@
 <% elsif @user.usertype == 1 %>  
   <%= link_to 'My Profile', user_client_path(@user, @user.client) %><br />
 <% end %>
+<%= link_to 'Payment Profile', user_payments_path(@user) %><br />
 <%= link_to 'My Jobs', jobs_path(:user => @user.id) %><br />
 <%= link_to 'Edit', edit_user_path(@user) %> <br />
 <%= link_to 'Back', users_path %>

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'jobs/myjob'
 
   resources :users do
+    resources :transactions
     resources :clients
     resources :endorsements
     resources :teenagers, :name_prefix => "user_"
@@ -33,6 +34,7 @@ Rails.application.routes.draw do
     resources :skills, :name_prefix => "teenager_"
   end
 
+  resources :transactions
   resources :jobs
   resources :job_types
   resources :profiles

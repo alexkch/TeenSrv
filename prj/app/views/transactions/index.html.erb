@@ -1,0 +1,24 @@
+<h1> All Transactions </h1>
+
+<%= link_to 'Add Transaction', new_transaction_path %>
+
+<table>
+	<tr>
+		<th>Teenager ID</th>
+		<th>Client ID</th>
+		<th>Job ID</th>
+	</tr>
+
+	<% @transactions.each do |transaction| %>
+		<tr>
+		  <td><%= transaction.teenager_id %></td>
+		  <td><%= transaction.client_id %></td>
+		  <td><%= transaction.job_id %></td>
+		  <td><%= link_to 'Show', url_for([transaction]) %></td>
+		  <td><%= link_to 'Edit', url_for([:edit, transaction]) %></td>
+		  <td><%= link_to 'Destroy', transaction_path, 
+            method: :delete, 
+            data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>	
+</table>
