@@ -1,0 +1,22 @@
+<%= form_with(model: @transaction, local: true) do |form| %>
+  
+  <p>
+    <%= form.label :'Teen ID:' %>
+    <%= form.text_field :teenager_id %>
+  </p>
+    <p>
+    <%= form.label :'Client ID:' %>
+    <%= form.text_field :client_id %>
+  </p>
+      <p>
+    <%= form.label :'Job ID:' %>
+    <%= form.text_field :job_id %>
+  </p>
+  <p>
+    <%= form.label :'Payment ID:' %>
+    <%= form.text_field :payment_id %>
+  </p>
+  <p>
+  	<%= form.submit %>
+  </p>
+<% end %>
