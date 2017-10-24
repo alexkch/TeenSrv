@@ -1,4 +1,5 @@
-class SessionsController < ApplicationController
+class SessionsController < ApplicationController  
+  skip_before_action :auth_user, :only => [:new, :create]
   def new
   	render 'new'
   end
