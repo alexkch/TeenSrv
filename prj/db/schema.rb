@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171028211730) do
+ActiveRecord::Schema.define(version: 20171028214857) do
 
   create_table "accepted_jobs", force: :cascade do |t|
     t.integer "job_id"
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 20171028211730) do
   end
 
   create_table "credit_cards", force: :cascade do |t|
-    t.integer "payment_id"
     t.string "card_type"
     t.string "card_name"
     t.integer "card_number"
@@ -86,7 +85,6 @@ ActiveRecord::Schema.define(version: 20171028211730) do
     t.integer "card_expiry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["payment_id"], name: "index_credit_cards_on_payment_id"
   end
 
   create_table "declined_jobs", force: :cascade do |t|
