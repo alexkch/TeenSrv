@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024165901) do
+ActiveRecord::Schema.define(version: 20171028211730) do
 
   create_table "accepted_jobs", force: :cascade do |t|
     t.integer "job_id"
@@ -39,14 +39,12 @@ ActiveRecord::Schema.define(version: 20171024165901) do
   end
 
   create_table "bank_infos", force: :cascade do |t|
-    t.integer "payment_id"
     t.string "account_name"
     t.integer "account_number"
     t.integer "transit_number"
     t.integer "institution_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["payment_id"], name: "index_bank_infos_on_payment_id"
   end
 
   create_table "cancelled_jobs", force: :cascade do |t|
