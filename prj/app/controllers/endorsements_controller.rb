@@ -1,8 +1,7 @@
 class EndorsementsController < ApplicationController
 
-    # One possible design for this controller is: the user currently logged in has to navigate to the user's profile (the one they 
-    # want to endorse) or somewhere where it is appropriate to redirect them to the "new" action of this controller, where they will 
-    # be able to endorse this user.
+    # The user currently logged in has to navigate to the user's profile (the one they want to endorse) and endorse them. And then
+    # redirect them back to the user profile.  
 
     # We get the user they want to endorse from the path and we make a new endorsement, I use g_endorsement because the logged user 
     # endorses the user (from the path)
@@ -10,13 +9,14 @@ class EndorsementsController < ApplicationController
 	def new 
 		@user = User.find(params[:user_id])
 		@endorsement = @user.g_endorsement.new
-	end
-
-    # We create the endorsement with the data from the form, remember that we know who we want to endorse using the path, however the
-    # one who is endorsing will have to be retrieved from the session 
+	end 
 
 	def create
 		@user = User.find(params[:user_id])
+		
+		# Insert the current_user into the hash so we can can save it to the database
+		params[:endorsement].merge!(:ref_user_id => current_user.id)
+		
 		@endorsement = @user.g_endorsement.create(endorsement_params)
 
 		if @endorsement.valid?
@@ -24,17 +24,14 @@ class EndorsementsController < ApplicationController
 		else
 			render 'new'
 		end
-	end
+	end 
+    
+    # Generic Methods that may or may not be needed
 
-    # This shows the endorsements that the user (the user in the path) recieved from every user 
-     
 	def index
 		@user = User.find(params[:user_id])
 		@endorsements = @user.g_endorsement.all
 	end
-
-    # The following methods are implemented generically until the team decides from where the logged user can 
-    # perform these actions
 
 	def edit
 		@user = User.find(params[:user_id])
@@ -61,6 +58,6 @@ class EndorsementsController < ApplicationController
 
 	private
     def endorsement_params
-        params.require(:endorsement).permit(:ref_user_id, :end_user_id, :comment)
+        params.require(:endorsement).permit(:ref_user_id, :comment)
     end
 end
