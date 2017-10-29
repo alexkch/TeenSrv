@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171025194547) do
+ActiveRecord::Schema.define(version: 20171028224227) do
 
   create_table "accepted_jobs", force: :cascade do |t|
     t.integer "job_id"
@@ -39,14 +39,12 @@ ActiveRecord::Schema.define(version: 20171025194547) do
   end
 
   create_table "bank_infos", force: :cascade do |t|
-    t.integer "payment_id"
     t.string "account_name"
     t.integer "account_number"
     t.integer "transit_number"
     t.integer "institution_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["payment_id"], name: "index_bank_infos_on_payment_id"
   end
 
   create_table "cancelled_jobs", force: :cascade do |t|
@@ -80,7 +78,6 @@ ActiveRecord::Schema.define(version: 20171025194547) do
   end
 
   create_table "credit_cards", force: :cascade do |t|
-    t.integer "payment_id"
     t.string "card_type"
     t.string "card_name"
     t.integer "card_number"
@@ -88,7 +85,6 @@ ActiveRecord::Schema.define(version: 20171025194547) do
     t.integer "card_expiry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["payment_id"], name: "index_credit_cards_on_payment_id"
   end
 
   create_table "declined_jobs", force: :cascade do |t|
@@ -180,6 +176,19 @@ ActiveRecord::Schema.define(version: 20171025194547) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "job_id"
+    t.integer "ref_user_id"
+    t.integer "end_user_id"
+    t.integer "rating"
+    t.text "review"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["end_user_id"], name: "index_ratings_on_end_user_id"
+    t.index ["job_id"], name: "index_ratings_on_job_id"
+    t.index ["ref_user_id"], name: "index_ratings_on_ref_user_id"
   end
 
   create_table "skill_types", force: :cascade do |t|

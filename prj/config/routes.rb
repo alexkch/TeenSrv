@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :transactions
     resources :clients
     resources :endorsements
+    resources :ratings
     resources :teenagers, :name_prefix => "user_"
     resources :addresses 
     resources :payments do
