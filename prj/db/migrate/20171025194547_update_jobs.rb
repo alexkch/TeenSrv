@@ -1,6 +1,6 @@
 class UpdateJobs < ActiveRecord::Migration[5.1]
   def change
-  	remove_column :jobs, :description
-  	remove_column :jobs, :teenager
+  	add_column :jobs, :name, :string
+  	add_column :jobs, :accepted, :boolean, default: false
   end
 end

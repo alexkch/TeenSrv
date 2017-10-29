@@ -36,6 +36,7 @@ end
 def new
 	@user = User.find(params[:user])
 	@job = Job.new
+	render 'new'
 end
  
 def edit
@@ -46,6 +47,11 @@ end
 
 def create
 	@user = User.find(params[:user])
+	# Ensure user is a client
+	if @user.usertype==0
+		flash[:error] = "Teenagers cannot create a new job"
+		redirect_to user_path(@user)
+	end
 	Job.create!(job_params)
 	redirect_to controller: 'jobs', action: 'index', user: params[:user]
 end
@@ -71,7 +77,7 @@ end
 
 private
 	def job_params
-    	params.require(:job).permit(:description, :amount, :hours, :starttime, :finishtime).merge(teenager_id: params[:user])
+    	params.require(:job).permit(:name, :client_id, :description, :amount, :hours, :starttime, :finishtime))
 	end
 
 end
