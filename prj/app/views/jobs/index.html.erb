@@ -1,5 +1,5 @@
 <p>Viewing as: 
-  <strong><%= @user.username %></strong>
+  <strong><%= @current_user.username %></strong>
 </p><br/>
 <h1>Job Board</h1>
 
@@ -17,22 +17,22 @@
       <td>Offered By: <%= job.teenager_id %></td>
       <td>Accepted By: <%= job.client_id %></td>
 
-      <% if @user.usertype == 1 %> 
-      <td><%= link_to 'Request Job', jobs_myrequest_path(:job => job, :user => @user) %></td>
-      <td><%= link_to 'Show', job_path(job, :user => @user.id) %></td><br/>
+      <% if @current_user.usertype == 1 %> 
+      <td><%= link_to 'Request Job', jobs_myrequest_path(:job => job, :user => @current_user) %></td>
+      <td><%= link_to 'Show', job_path(job, :user => @current_user.id) %></td><br/>
       <% end %>
 
     </tr>
   <% end %>
 </table>
 
-<% if @user.usertype == 0 %> 
-  <br/><td><%= link_to 'Create new job', new_job_path(:user => @user.id) %></td><br/>
+<% if @current_user.usertype == 0 %> 
+  <br/><td><%= link_to 'Create new job', new_job_path(:user => @current_user.id) %></td><br/>
 <% end %>
 
-<% if @user.usertype == 0 %> 
-  <%= link_to 'My Offered Jobs', jobs_myjob_path(:user => @user.id) %>
+<% if @current_user.usertype == 0 %> 
+  <%= link_to 'My Offered Jobs', jobs_myjob_path(:user => @current_user.id) %>
 <% else %>
-  <%= link_to 'My Requested Jobs', jobs_myjob_path(:user => @user.id) %>
+  <%= link_to 'My Requested Jobs', jobs_myjob_path(:user => @current_user.id) %>
 <% end %>
-<br/><%= link_to 'Back', user_path(@user) %>
+<br/><%= link_to 'Back', user_path(@current_user) %>

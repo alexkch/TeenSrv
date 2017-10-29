@@ -1,5 +1,5 @@
 <p>Viewing as:
-  <strong><%= @user.username %></strong>
+  <strong><%= @current_user.username %></strong>
 </p>
 <h1>Job ID: <strong><%= @job.id %></strong></h1>
 <h3>Description: </h3>
@@ -22,5 +22,5 @@
     </tr>
     <br />
 </table>
-<%= link_to 'Back', jobs_path(:user => @user.id) %>      
+<%= link_to 'Back', jobs_path(:user => @current_user.id) %>      
 
