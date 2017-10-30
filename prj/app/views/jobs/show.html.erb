@@ -1,5 +1,5 @@
 <p>Viewing as:
-  <strong><%= @current_user.username %></strong>
+  <strong><%= current_user.username %></strong>
 </p>
 <h1>Job ID: <strong><%= @job.id %></strong></h1>
 <h3>Description: </h3>
@@ -17,10 +17,10 @@
       <td><%= @job.hours %></td>
       <td><%= @job.starttime %></td>
       <td><%= @job.finishtime %></td>
-      <td>Offered By: <%= @job.teenager_id %></td>
-      <td>Accepted By: <%= @job.client_id %></td>
+      <td>Offered By: <%= Client.find(@job.client_id).user.username %></td>
+      <td>Accepted By: <%= @job.teenager_id %></td>
     </tr>
     <br />
 </table>
-<%= link_to 'Back', jobs_path(:user => @current_user.id) %>      
+<%= link_to 'Back', jobs_path(:user => current_user.id) %>      
 

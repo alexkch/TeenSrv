@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171028224227) do
+ActiveRecord::Schema.define(version: 20171030042428) do
 
   create_table "accepted_jobs", force: :cascade do |t|
     t.integer "job_id"
@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(version: 20171028224227) do
     t.integer "trans_id"
     t.string "name"
     t.boolean "accepted", default: false
+    t.string "description"
     t.index ["client_id"], name: "index_jobs_on_client_id"
     t.index ["job_type_id"], name: "index_jobs_on_job_type_id"
     t.index ["teenager_id"], name: "index_jobs_on_teenager_id"

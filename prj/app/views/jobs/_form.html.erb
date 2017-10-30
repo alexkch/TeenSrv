@@ -14,10 +14,10 @@
       </ul>
     </div>
   <% end %>
-  <%= hidden_field_tag "user", @current_user.id %>
+  <%= hidden_field_tag "user", current_user.id %>
   <p>
     <%= form.label :name %><br>
-    <%= form.select :name, File.open("JobNames.txt").each {|line| [line, line]} %>
+    <%= form.select :name, File.readlines(Rails.root + "app/views/JobNames.txt").each {|line| [line, line]} %>
   </p>
   <p>
     <%= form.label :description %><br>
@@ -26,7 +26,7 @@
  
   <p>
     <%= form.label :amount %><br>
-    <%= form.text_area :amount %>
+    $<%= form.text_area :amount %>
   </p>
  
   <p>
