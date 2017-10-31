@@ -5,16 +5,16 @@
 
         <div class="col-md-2">     
           <span class="nav_link" style="float:right">
-            <%= link_to(new_user_session_path) do %><i class="fa fa-plus"></i></a><% end %>
+            <%= link_to(new_user_session_path) do %><i class="fa fa-sign-in"></i>Sign In<% end %>
           </span>
           <span class="nav_link" style="float:left">
-            <%= link_to(new_user_registration_path) do %><i class="fa fa-sign-in"></i></a><% end %>
+            <%= link_to(new_user_registration_path) do %><i class="fa fa-plus"></i>Sign Up<% end %>
           </span>
         </div>
         <div class="col-md-7">
             <form class="navbar-form" style="float:right">
               <div class="form-group">
-                <input type="text" class="form-control" name="q" placeholder="Search for new startups" style="width:500px;">
+                <input type="text" class="form-control" name="q" placeholder="Search for jobs" style="width:500px;">
               </div>
               <button type="submit" class="btn btn-default"><span class="fa fa-search"></span></button>
             </form>
