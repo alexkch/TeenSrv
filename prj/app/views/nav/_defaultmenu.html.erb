@@ -1,0 +1,39 @@
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+      <div class="row">
+          
+
+        <div class="col-md-2">     
+          <span class="nav_link" style="float:right">
+            <%= link_to(new_user_session_path) do %><i class="fa fa-plus"></i></a><% end %>
+          </span>
+          <span class="nav_link" style="float:left">
+            <%= link_to(new_user_registration_path) do %><i class="fa fa-sign-in"></i></a><% end %>
+          </span>
+        </div>
+        <div class="col-md-7">
+            <form class="navbar-form" style="float:right">
+              <div class="form-group">
+                <input type="text" class="form-control" name="q" placeholder="Search for new startups" style="width:500px;">
+              </div>
+              <button type="submit" class="btn btn-default"><span class="fa fa-search"></span></button>
+            </form>
+        </div>
+        <div class="col-md-3">
+          <ul class="nav navbar-nav navbar-right" style="float:right">
+              <li><%= link_to(welcome_index_path) do %><span class="fa fa-info-circle"></span> About Us</a></li><% end %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-envelope-o"></i>Contact Us</a>
+                  <ul class="dropdown-menu" role="menu">
+                      <li><a href="#"><span class="fa fa-facebook-square"></span> Our Facebook</a></li>
+                      <li><a href="#"><span class="fa fa-twitter-square"></span> Our Twitter</a></li>
+                    <li><a href="#"><span class="fa fa-youtube-play"></span> Our Youtube</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><span class="fa fa-share"></span> Contact Us</a></li>
+                </ul>
+              </li>
+          </ul>
+      </div>
+      </div>
+  </div>
+</nav>

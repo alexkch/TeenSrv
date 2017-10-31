@@ -3,9 +3,7 @@ class HomeController < ApplicationController
 	
 	def index
 		if user_signed_in?
-			@x_user = current_user
-		else
-			redirect_to welcome_index_path
+			@user = current_user
 		end
 	end
 end

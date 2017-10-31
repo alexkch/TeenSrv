@@ -1,24 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
 
-<ul>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- For MOBILE -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-	<% if user_signed_in? %>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+<%= stylesheet_link_tag 'sidebar' %>
+<%= stylesheet_link_tag 'global' %>
+<%= stylesheet_link_tag 'index' %>
+<%= stylesheet_link_tag 'font-awesome.min' %>
+<title>TeenSrv</title>
 
-		<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-		<li><%= @x_user %>
-			<%= puts "testing" %>
-			<%= puts user_session %>
-			<%= puts current_user %></li>
-		<li><%= link_to 'Users', users_path %></li>
-		<h2>(Used for indexing) (we will remove this route in the future)</h2>
-	<% else %>
+</head>
+<body>
+	<section class="index">
+		<div id="splash">
 
-		<li><%= link_to "Sign In", new_user_session_path %></li>
-		<li><%= link_to "Sign Up", new_user_registration_path %></li>
+			<h1>CSC444</h1>
+			<p>Stuff</p>
+			<span class="fa fa-arrow-circle-up fa-4x"></span>
+		</div>
+    </section>
 
-	<% end %>
+<% if user_signed_in? %>
 
-</ul>
+	<%= render :partial => "nav/usermenu" %>
 
 
-<h1>Home#index HOMEPAGE</h1>
+<% else %>
 
+	<%= render :partial => "nav/defaultmenu" %>
+
+<% end %>
+
+
+<!-- script DEFINE jquery first then bootstrap min, then custom js-->
+
+</body>
+<%= javascript_include_tag 'jquery' %>
+<%= javascript_include_tag 'bootstrap.min' %>
+<%= javascript_include_tag 'sidebar' %>
+</html>

@@ -6,14 +6,7 @@ def index
 end
 
 def show
-  @user = User.find(params[:id])
-  @user.usertype=1
-  @user.save
-  if(@user.usertype==1 && @user.client == nil)
-  	redirect_to new_user_client_path(@user.id)
-  elsif( @user.usertype==0 && @user.teenager == nil)
-  	redirect_to new_user_teenager_path(@user.id)
-  end
+  redirect_to welcome_index_path
 end
 
 

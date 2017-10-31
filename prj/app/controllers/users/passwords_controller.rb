@@ -1,4 +1,7 @@
 class Users::PasswordsController < Devise::PasswordsController
+
+  # For users that arent signed in yet
+
   # GET /resource/password/new
   # def new
   #   super
