@@ -3,18 +3,26 @@ class JobsController < ApplicationController
 def index
 	@user = current_user
 	@jobs = Job.all
+	if(@user.usertype==0)
+		@teen = Teenager.find_by_user_id(@user.id)
+	elsif(@user.usertype==1)
+		@client = Client.find_by_user_id(@user.id)
+	end
 end
 
-def myjob
+def clientjobs
 	@user = current_user
-	@jobs = Job.where(:teenager_id => params[:user]).all
+	@jobs = Job.where(client_id: params[:id])
+	if(@user.usertype==1)
+		@client = Client.find_by_user_id(@user.id)
+	end
 end
 
-def myrequest
+def myoffer
 	@user = current_user
- 	@job = Job.find(params[:id])
- 	if @job.update(client_id: params[:user])
-		redirect_to controller: 'jobs', action: 'index', user: params[:user]
+ 	@job = Job.find_by_teenager_id(params[:id])
+	if(@user.usertype==0)
+		@teen = Teenager.find_by_user_id(@user.id)
 	end
 end
 	

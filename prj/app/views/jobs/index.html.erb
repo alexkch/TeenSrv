@@ -9,6 +9,7 @@
   </tr>
    <% @jobs.each do |job| %>
     <tr>
+      <td><%= job.name %></td>
       <td><%= job.description %></td>      
       <td><%= job.amount %></td>
       <td><%= job.hours %></td>
@@ -33,8 +34,8 @@
 <% end %>
 
 <% if current_user.usertype == 0 %> 
-  <%= link_to 'My Offered Jobs', jobs_myjob_path(:user => current_user.id) %>
-<% else %>
-  <%= link_to 'My Requested Jobs', jobs_myjob_path(:user => current_user.id) %>
+  <%= link_to 'Jobs for me', offered_jobs_path(@teen.id) %>
+<% elsif current_user.usertype == 1 %>
+  <%= link_to 'My Jobs list', client_jobs_path(@client.id) %>
 <% end %>
 <br/><%= link_to 'Back', user_path(current_user) %>
