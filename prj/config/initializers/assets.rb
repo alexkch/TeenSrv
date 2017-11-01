@@ -15,7 +15,7 @@ Rails.application.config.assets.precompile += %w(jquery.js)
 %w( welcome users home profiles ).each do |controller|
   Rails.application.config.assets.precompile += ["#{controller}.css"]
 end
-%w( index global sidebar ).each do |filename|
+%w( index global sidebar font-awesome.min ).each do |filename|
   Rails.application.config.assets.precompile += ["#{filename}.css"]
 end
 # Precompile additional assets.
