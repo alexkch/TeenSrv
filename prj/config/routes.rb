@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   # JOB Routes
   resources :jobs
-  resources :job_types
+  resources :offer_jobs
   get 'jobs/myjob'
 
 
