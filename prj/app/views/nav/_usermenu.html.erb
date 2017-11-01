@@ -41,7 +41,23 @@
 <h2> Signed in as <%= @user.username %> </h2>
   <ul class="list-unstyled">
     <li><a href="/"><span class="fa fa-home"></span>Home</a></li>
-    <li><a href="/profile.php"><span class="fa fa-id-card"></span>Profile</a></li>
+
+    <% if(current_user.usertype==0) %>
+      <% @teenager = Teenager.find_by_user_id(current_user.id) %>
+      <% if(teenager!=nil) %>
+        <li><span class="fa fa-id-card"></span><%= link_to 'Profile', user_teenager_path(current_user.id, @teenager.id) %></li>
+      <% else %>
+        <li><span class="fa fa-id-card"></span><%= link_to 'Create Profile', new_user_teenager_path(current_user.id) %></li>
+      <% end %>
+
+    <% elsif(current_user.usertype==1) %>
+      <% @client = Client.find_by_user_id(current_user.id) %>
+      <% if(client != nil) %>
+        <li><span class="fa fa-id-card"></span><%= link_to 'Profile', user_client_path(current_user.id, @client.id) %></li>
+      <% else %>
+        <li><span class="fa fa-id-card"></span><%= link_to 'Create Profile', new_user_client_path(current_user.id) %></li>
+      <% end %>
+    <% end %>
     <li><a href="/newbuilding.php"><span class="fa fa-plus"></span>Post New Jobs</a></li>
   <li><a href="/updateuser.php"><span class="fa fa-pencil"></span>Update Account Information</a></li>
   <li><%= link_to(new_password_path(@user)) do %><span class="fa fa-unlock-alt"></span>Change Account Password</a></li><% end %>
