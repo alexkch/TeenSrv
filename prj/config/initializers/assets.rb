@@ -11,17 +11,10 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w(scroll.js)
 Rails.application.config.assets.precompile += %w(bootstrap.min.js)
 Rails.application.config.assets.precompile += %w(jquery.js)
-Rails.application.config.assets.precompile += %w(sidebar.js)
-
 
 %w( welcome users home profiles ).each do |controller|
   Rails.application.config.assets.precompile += ["#{controller}.css"]
 end
-
-Rails.application.config.assets.precompile += %w(sidebar.css)
-Rails.application.config.assets.precompile += %w(index.css)
-Rails.application.config.assets.precompile += %w(global.css)
-Rails.application.config.assets.precompile += %w(font-awesome.min.css)
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
