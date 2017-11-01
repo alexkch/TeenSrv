@@ -33,8 +33,8 @@
 </p>
 
 <p>
-	<%= link_to 'New Job', new_job_path %>
+	<%= link_to 'Edit Profile', edit_user_client_path(@user.id, @client.id) %>
 </p>
 <p>
-	<%= link_to 'My Offered Jobs', client_jobs_path(@client.id) %>
+	<%= link_to 'Offer a New Job', new_job_path %>
 </p>

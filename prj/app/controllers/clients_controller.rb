@@ -6,22 +6,22 @@ class ClientsController < ApplicationController
 
 	def show
 	  @client = Client.find(params[:id]) 
-	  @user = User.find(@client.user_id)
+	  @user = current_user
 	end
 
 	def new
-	  @user = User.find(params[:user_id])
+	  @user = current_user
 	  @client = Client.new
 	  @user.client = @client
 	end
 	 
 	def edit
-	  @user = User.find(params[:user_id])
+	  @user = current_user
 	  @client = @user.client
 	end
 	 
 	def create
-	  @user = User.find(params[:user_id])
+	  @user = current_user
 	  @client = @user.client.create(client_params)
 	  
 	  redirect_to @user
@@ -29,7 +29,7 @@ class ClientsController < ApplicationController
 
 
 	def update
-	  @user = User.find(params[:user_id])
+	  @user = current_user
 	  @client = @user.client
 	  if @client.update(client_params)
 	    redirect_to user_client_path(@user)
