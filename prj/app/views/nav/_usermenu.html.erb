@@ -44,7 +44,7 @@
 
     <% if(current_user.usertype==0) %>
       <% @teenager = Teenager.find_by_user_id(current_user.id) %>
-      <% if(teenager!=nil) %>
+      <% if(@teenager!=nil) %>
         <li><span class="fa fa-id-card"></span><%= link_to 'Profile', user_teenager_path(current_user.id, @teenager.id) %></li>
       <% else %>
         <li><span class="fa fa-id-card"></span><%= link_to 'Create Profile', new_user_teenager_path(current_user.id) %></li>
@@ -52,7 +52,7 @@
 
     <% elsif(current_user.usertype==1) %>
       <% @client = Client.find_by_user_id(current_user.id) %>
-      <% if(client != nil) %>
+      <% if(@client != nil) %>
         <li><span class="fa fa-id-card"></span><%= link_to 'Profile', user_client_path(current_user.id, @client.id) %></li>
       <% else %>
         <li><span class="fa fa-id-card"></span><%= link_to 'Create Profile', new_user_client_path(current_user.id) %></li>

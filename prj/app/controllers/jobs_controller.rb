@@ -75,6 +75,9 @@ def recommended_teens
 	@user = current_user
 	@job = Job.find(params[:id])
 	@teenagers = Teenager.where(skills: @job.name)
+	@teenagers.each do |teen|
+
+	end
 end
 
 def destroy
