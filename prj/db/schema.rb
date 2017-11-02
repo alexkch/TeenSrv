@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171030042428) do
+ActiveRecord::Schema.define(version: 20171101232129) do
 
   create_table "accepted_jobs", force: :cascade do |t|
     t.integer "job_id"
@@ -151,11 +151,10 @@ ActiveRecord::Schema.define(version: 20171030042428) do
   create_table "offered_jobs", force: :cascade do |t|
     t.integer "job_id"
     t.integer "job_type_id"
-    t.text "description"
-    t.datetime "duration_start"
-    t.datetime "duration_finish"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "client_id"
+    t.integer "teenager_id"
     t.index ["job_id"], name: "index_offered_jobs_on_job_id"
     t.index ["job_type_id"], name: "index_offered_jobs_on_job_type_id"
   end

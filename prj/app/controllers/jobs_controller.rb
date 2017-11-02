@@ -57,8 +57,8 @@ def create
 		redirect_to user_path(@user)
 	end
 	params[:job][:client_id] = Client.find_by_user_id(current_user.id).id
-	Job.create!(job_params)
-	redirect_to controller: 'jobs', action: 'index', user: params[:user]
+	@job = Job.create!(job_params)
+	redirect_to recommended_teens_path(@job.id)
 end
 
 def update
@@ -71,6 +71,11 @@ def update
 	end
 end
 
+def recommended_teens
+	@user = current_user
+	@job = Job.find(params[:id])
+	@teenagers = Teenager.where(skills: @job.name)
+end
 
 def destroy
 	@user = current_user
