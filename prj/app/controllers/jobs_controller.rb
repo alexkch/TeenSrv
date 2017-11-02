@@ -73,11 +73,13 @@ end
 
 def recommended_teens
 	@user = current_user
+	@client = Client.find_by_user_id(@user.id)
 	@job = Job.find(params[:id])
 	@teenagers = Teenager.where(skills: @job.name)
 	@teenagers.each do |teen|
-
+		teen.endo = Endorsement.where(end_user_id: teen.id).count
 	end
+	@teenagers.order(endo: :desc)
 end
 
 def destroy

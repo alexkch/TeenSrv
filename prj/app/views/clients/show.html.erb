@@ -38,3 +38,13 @@
 <p>
 	<%= link_to 'Offer a New Job', new_job_path %>
 </p>
+<% if user_signed_in? %>
+
+	<%= render :partial => "nav/usermenu" %>
+
+
+<% else %>
+
+	<%= render :partial => "nav/defaultmenu" %>
+
+<% end %>

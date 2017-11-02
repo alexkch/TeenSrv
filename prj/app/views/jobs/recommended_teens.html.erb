@@ -1,5 +1,9 @@
 <p>This is a list of teenagers recommended for your job</p>
-
+<ul>
+<% @teenagers.each do |teen| %>
+	<li><%= teen.firstname teen.lastname %>, Endorsements: <%= teen.endo %> <%= link_to 'Offer', new_offer_job_path(:client_id => @client.id, :teenager_id => teen.id) %></li>
+		<!-- I passed params values through link_to -->
+<% end %>
 
 
 <%= link_to 'Back', user_path(@user) %>   
