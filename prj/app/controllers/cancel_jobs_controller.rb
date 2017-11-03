@@ -1,0 +1,2 @@
+class CancelJobsController < ApplicationController
+end
