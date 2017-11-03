@@ -15,13 +15,13 @@ Rails.application.routes.draw do
 
   # JOB Routes
   resources :jobs
-  resources :offer_jobs
-  get 'jobs/clientjobs', to: 'jobs#clientjobs', as: 'clientjobs'
-  get 'jobs/:id/recommended_teens', to: 'jobs#recommended_teens', as: 'recommended_teens'
+  resources :job_types
+  get 'jobs/myjob'
+
 
   #resources :sessions
 
-
+resources :charges
   # Routes
   resources :users, only: [:index, :show, :destroy] do
     resources :transactions
