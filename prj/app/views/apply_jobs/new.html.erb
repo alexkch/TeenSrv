@@ -1,0 +1,12 @@
+<p>This is a list of <%= {@job_name} %> jobs:</p>
+<% @jobs.each do |job| %>
+	<p><%= job.name %>:<br />
+	Client name: <%= @client = Client.find(job.client_id); @client.fName @client.lName%>    
+	<%= link_to 'Apply', new_apply_job_path(:job_id => job.id, :client_id => job.client_id, :teenager_id => @teenager.id, :applied_at => Time.now) %>
+		<!-- I passed params values through link_to -->
+	</p>
+<% end %>
+
+
+<%= link_to 'Home', root_path %>   
+

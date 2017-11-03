@@ -6,7 +6,7 @@ class CreateApplyJobs < ActiveRecord::Migration[5.1]
       t.integer :teenager_id
       t.boolean :filled
       t.integer :winner_id
-
+      t.datetime :applied_at
       t.timestamps
     end
   end

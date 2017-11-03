@@ -54,7 +54,7 @@ def create
 	# Ensure user is a client
 	if @user.usertype==0
 		flash[:error] = "Teenagers cannot create a new job"
-		redirect_to user_path(@user)
+		redirect_to root_path
 	end
 	params[:job][:client_id] = Client.find_by_user_id(current_user.id).id
 	@job = Job.create!(job_params)

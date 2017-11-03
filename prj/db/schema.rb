@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20171103013301) do
     t.integer "teenager_id"
     t.boolean "filled"
     t.integer "winner_id"
+    t.datetime "applied_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 20171103013301) do
   create_table "cancel_jobs", force: :cascade do |t|
     t.integer "job_id"
     t.integer "user_id"
+    t.datetime "cancelled_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
