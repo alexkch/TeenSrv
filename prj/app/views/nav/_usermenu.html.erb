@@ -10,12 +10,10 @@
           </span>
         </div>
         <div class="col-md-7">
-            <form class="navbar-form" style="float:right" role="search" method="get" action="search.php">
-              <div class="form-group">
-                <input type="text" class="form-control" name="q" placeholder="Search for jobs" style="width:500px;">
-              </div>
-              <button type="submit" class="btn btn-default"><span class="fa fa-search"></span></button>
-            </form>
+            <%= form_tag({controller: "jobs", action: "search"}, method: "get", class: "navbar-form", style: "float:right") do %>
+                <%= text_field_tag :search, params[:search], placeholder: "Search for jobs", class: "form-control", style: "width:500px;" %>
+                <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
+            <% end %>
         </div>
         <div class="col-md-3">
           <ul class="nav navbar-nav navbar-right">

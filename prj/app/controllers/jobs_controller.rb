@@ -89,6 +89,11 @@ def destroy
  	redirect_to jobs_path
 end
 
+def search
+	@jobs = Job.where("name LIKE ?", "%#{params[:search]}%")
+end
+
+
 private
 	def job_params
     	params.require(:job).permit(:name, :client_id, :description, :amount, :hours, :starttime, :finishtime)

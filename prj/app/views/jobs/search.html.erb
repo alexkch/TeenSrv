@@ -1,0 +1,15 @@
+<table>
+  <tr>
+    <th colspan="1"></th>
+  </tr>
+   <% @jobs.each do |job| %>
+    <tr>
+      <td><%= job.name %></td>
+      <td><%= job.description %></td>      
+      <td><%= job.amount %></td>
+      <td><%= job.hours %></td>
+      <td><%= job.starttime %></td>
+      <td><%= job.finishtime %></td>
+    </tr>
+  <% end %>
+</table>
