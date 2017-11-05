@@ -89,10 +89,10 @@ def destroy
  	redirect_to jobs_path
 end
 
+# Very basic search implementation: displays all jobs that have not been accepted or cancelled (susceptible to injection) 
 def search
-	@jobs = Job.where("name LIKE ?", "%#{params[:query]}%")
+	@jobs = Job.where("name LIKE ? AND accepted = ? AND cancelled = ?", "%#{params[:query]}%", false, false)
 end
-
 
 private
 	def job_params

@@ -1,13 +1,13 @@
 class ApplyJobsController < ApplicationController
 
 	def create 
-		@current_user = current_user
+		@current_user = User.find(current_user.id)
 		@job = Job.find(params[:apply_job])
 		
 		@apply_job = ApplyJob.new
 		@apply_job.job_id = @job.id
 		@apply_job.client_id = @job.client_id
-		@apply_job.teenager_id = @current_user.id
+		@apply_job.teenager_id = @current_user.teenager
 
 		@apply_job.save
 
