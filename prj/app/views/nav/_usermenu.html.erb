@@ -55,7 +55,7 @@
         <li><%= link_to(user_client_path(current_user.id, @client.id)) do %><span class="fa fa-id-card"></span>Profile</li><% end %>
         <li><%= link_to(edit_user_client_path(current_user.id, @client.id)) do %><span class="fa fa-pencil"></span>Update Account Information</li><% end %>
       <% else %>
-        <li></span><%= link_to(new_user_client_path(current_user.id)) do %><span class="fa fa-id-card">Create Profile</li><% end %>
+        <li><%= link_to(new_user_client_path(current_user.id)) do %><span class="fa fa-id-card"></span>Create Profile</li><% end %>
       <% end %>
       <li><%= link_to(new_job_path) do %><span class="fa fa-plus"></span>Post New Job</li><% end %>
     <% end %>

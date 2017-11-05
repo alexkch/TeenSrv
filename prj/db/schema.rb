@@ -47,6 +47,9 @@ ActiveRecord::Schema.define(version: 20171103013301) do
     t.datetime "applied_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_apply_jobs_on_client_id"
+    t.index ["job_id"], name: "index_apply_jobs_on_job_id"
+    t.index ["teenager_id"], name: "index_apply_jobs_on_teenager_id"
   end
 
   create_table "bank_infos", force: :cascade do |t|
@@ -64,6 +67,8 @@ ActiveRecord::Schema.define(version: 20171103013301) do
     t.datetime "cancelled_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_cancel_jobs_on_job_id"
+    t.index ["user_id"], name: "index_cancel_jobs_on_user_id"
   end
 
   create_table "cancelled_jobs", force: :cascade do |t|

@@ -1,4 +1,5 @@
 class OfferedJob < ApplicationRecord
   belongs_to :job
-  belongs_to :job_type
+  belongs_to :client
+  belongs_to :teenager
 end
