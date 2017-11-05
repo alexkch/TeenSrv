@@ -90,7 +90,7 @@ def destroy
 end
 
 def search
-	@jobs = Job.where("name LIKE ?", "%#{params[:search]}%")
+	@jobs = Job.where("name LIKE ?", "%#{params[:query]}%")
 end
 
 

@@ -14,14 +14,12 @@ Rails.application.routes.draw do
 
 
   # JOB Routes
-  resources :jobs do
-    collection do 
-      get 'jobs/search', to: 'jobs#search', as: 'search'
-    end
-  end
+  get 'jobs/search', to: 'jobs#search', as: 'search'
+  resources :jobs 
   resources :offer_jobs
   get 'jobs/clientjobs', to: 'jobs#clientjobs', as: 'clientjobs'
   get 'jobs/:id/recommended_teens', to: 'jobs#recommended_teens', as: 'recommended_teens'
+  resources :apply_jobs
 
   #resources :sessions
 
