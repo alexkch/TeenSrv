@@ -35,8 +35,8 @@
 <% end %>
 
 <% if current_user.usertype == 0 %> 
-  <%= link_to 'Jobs for me', offered_jobs_path(current_user.id) %>
+  <%= link_to 'Jobs for me', offered_jobs_path(@teen.id) %>
 <% elsif current_user.usertype == 1 %>
-  <%= link_to 'My Jobs list', clientjobs_path(current_user.id) %>
+  <%= link_to 'My Jobs list', clientjobs_path(@client.id) %>
 <% end %>
 <br/><%= link_to 'Back', user_path(current_user) %>
