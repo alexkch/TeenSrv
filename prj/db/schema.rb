@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171103013301) do
+ActiveRecord::Schema.define(version: 20171106001000) do
 
   create_table "accepted_jobs", force: :cascade do |t|
     t.integer "job_id"
@@ -52,15 +52,6 @@ ActiveRecord::Schema.define(version: 20171103013301) do
     t.index ["teenager_id"], name: "index_apply_jobs_on_teenager_id"
   end
 
-  create_table "bank_infos", force: :cascade do |t|
-    t.string "account_name"
-    t.integer "account_number"
-    t.integer "transit_number"
-    t.integer "institution_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "cancel_jobs", force: :cascade do |t|
     t.integer "job_id"
     t.integer "user_id"
@@ -99,16 +90,6 @@ ActiveRecord::Schema.define(version: 20171103013301) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_clients_on_user_id"
-  end
-
-  create_table "credit_cards", force: :cascade do |t|
-    t.string "card_type"
-    t.string "card_name"
-    t.integer "card_number"
-    t.integer "cvc"
-    t.integer "card_expiry"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "declined_jobs", force: :cascade do |t|
