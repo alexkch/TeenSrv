@@ -12,3 +12,6 @@
 //
 //= require rails-ujs
 //= require turbolinks
+
+//= require stripe_connect
+//= require jquery

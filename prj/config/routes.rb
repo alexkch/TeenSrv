@@ -33,6 +33,9 @@ Rails.application.routes.draw do
     resources :ratings
     resources :teenagers, :name_prefix => "user_"
     resources :addresses 
+	
+	get 'payments/index', to: 'payments#index', as: 'paymentsindex'
+	
     resources :payments do
        resources :bank_infos
        resources :credit_cards

@@ -1,20 +1,24 @@
+<!DOCTYPE html>
+<HTML>
+
 <head>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="https://js.stripe.com/v3/"></script>
+
+<%= javascript_include_tag 'stripe_connect' %>
+<%= javascript_include_tag 'jquery' %>
+<%= stylesheet_link_tag 'style1' %>
+
 </head>
 
+
+
 <div class="box">
-  <form>
+  <form action="/charge" method="post" id="payment-form">
     <div class="row">
       <h1> Payment Details </h1>
-      <div class="input-group">
-	<input type="radio" name="payment-method" value="visa" id="payment-method-visa" checked="true"/>
-	<label for="payment-method-visa"><span>Visa</span></label>
-	<input type="radio" name="payment-method" value="mastercard" id="payment-method-mastercard"/>
-	<label for="payment-method-mastercard"><span>Mastercard</span></label>
-	<input type="radio" name="payment-method" value="amex" id="payment-method-amex"/>
-	<label for="payment-method-amex"><span>American Express</span></label>
-      </div>
       <div class="input-group input-group-icon">
         <input type="text" placeholder="Card Number" maxlength="16"/>
         <div class="input-icon"><i class="material-icons">payment</i></div>
@@ -50,16 +54,22 @@
 		  </select>
 		</div>
 	  </div>
+
 	</div>
   </form>
 
-    <div class="row">
-      <h4>Terms and Conditions</h4>
-      <div class="input-group">
-        <input type="checkbox" id="terms"/>
-        <label for="terms"><span>I accept the terms and conditions for signing up to this service, and hereby confirm I have read the privacy policy.</span></label>
-	</div>
-	</div>
+<!--     <div class="row">
+<!--     <h4>Terms and Conditions</h4>
+<!--      <div class="input-group">
+<!--        <input type="checkbox" id="terms"/>
+<!--        <label for="terms"><span>I accept the terms and conditions for signing up to this service, and hereby confirm I have read the privacy policy.</span></label>
+<!--	</div>
+<!--	</div> -->
 
-	<a href="http://localhost:3000/welcome/index" class="myButton pull-right">Continue</a>
+
+<br>
+
+	<a href="index.html" class="myButton pull-right">Continue</a>
+	<a href="index" class="myButton pull-left">Back</a>
 </div>
+</HTML>
