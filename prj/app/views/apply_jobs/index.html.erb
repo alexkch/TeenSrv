@@ -1,0 +1,17 @@
+<h1> My Applied Jobs </h1>
+
+<table>
+   <% @apply_jobs.each do |apply_job| %>
+    <% job = Job.find(apply_job.job_id) %>
+    <tr>
+      <td><%= job.name %></td>
+      <td><%= job.description %></td>      
+      <td><%= job.amount %></td>
+      <td><%= job.hours %></td>
+      <td><%= job.starttime %></td>
+      <td><%= job.finishtime %></td> 
+    </tr>
+   <% end %>
+</table>
+
+<%= link_to "Homepage", root_path %>

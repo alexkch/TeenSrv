@@ -14,9 +14,11 @@ Rails.application.routes.draw do
 
 
   # JOB Routes
+  get 'jobs/search', to: 'jobs#search', as: 'search'
   resources :jobs
   resources :job_types
   resources :offer_jobs
+  resources :apply_jobs
   get 'jobs/clientjobs', to: 'jobs#clientjobs', as: 'clientjobs'
   get 'jobs/:id/recommended_teens', to: 'jobs#recommended_teens', as: 'recommended_teens'
 
