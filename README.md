@@ -2,10 +2,10 @@
 
 Developers     --- Github.username (helper for TA's:
 
-1) Alex
-2) Chloe
-3) Talat
-4) Maithri
-5) Robert
-6) Ric
-7) Tenzin    --- tenzint
+1) Alex       --- alexkch    
+2) Chloe      --- chloeduan
+3) Talat      --- tzaitoun
+4) Maithri    --- maithrisb
+5) Robert     --- Robert-Shen
+6) Ric        --- HXR-RIC
+7) Tenzin     --- tenzint

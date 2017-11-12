@@ -12,6 +12,7 @@ class PaymentsController < ApplicationController
   end
       
   def new
+  # has been hardcoded to show the credit card details form for now. will change once teenagers and clients distinction is made clear.
       @user = User.find(params[:user_id])
       @payment = @user.payment.new
   end
@@ -50,9 +51,4 @@ class PaymentsController < ApplicationController
        @payment.destroy
   end
     
-    
-  private
-    def payment_params
-    params.require(:payment).permit(:user_id)
-    end
 end
