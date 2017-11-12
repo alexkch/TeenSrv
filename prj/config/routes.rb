@@ -12,15 +12,18 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'welcome/index' 
 
-
+  get 'job_types/index', to: 'job_types#index', as: 'job_types'
   # JOB Routes
   get 'jobs/search', to: 'jobs#search', as: 'search'
   resources :jobs
   resources :job_types
   resources :offer_jobs
   resources :apply_jobs
+  resources :accept_jobs
+  resources :cancel_jobs
   get 'jobs/clientjobs', to: 'jobs#clientjobs', as: 'clientjobs'
   get 'jobs/:id/recommended_teens', to: 'jobs#recommended_teens', as: 'recommended_teens'
+
 
   #resources :sessions
 

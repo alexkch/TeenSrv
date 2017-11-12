@@ -41,11 +41,13 @@ end
 def new
 	@user = current_user
 	@job = Job.new
+	@job_types = JobType.all
 	render 'new'
 end
  
 def edit
 	@job = Job.find(params[:id])
+	@job_types = JobType.all
 end
 
 
@@ -58,7 +60,7 @@ def create
 	end
 	params[:job][:client_id] = Client.find_by_user_id(current_user.id).id
 	@job = Job.create!(job_params)
-	redirect_to recommended_teens_path(@job.id)
+	redirect_to root_path
 end
 
 def update
@@ -75,7 +77,7 @@ def recommended_teens
 	@user = current_user
 	@client = Client.find_by_user_id(@user.id)
 	@job = Job.find(params[:id])
-	@teenagers = Teenager.where(skills: @job.name)
+	@teenagers = Teenager.where(skills: @job.job_type.name)
 	@teenagers.each do |teen|
 		teen.endo = Endorsement.where(end_user_id: teen.id).count
 	end
@@ -96,7 +98,7 @@ end
 
 private
 	def job_params
-    	params.require(:job).permit(:name, :client_id, :description, :amount, :hours, :starttime, :finishtime)
+    	params.require(:job).permit(:job_type_id, :client_id, :description, :hourly_rate, :hours, :starttime, :finishtime)
 	end
 
 end
