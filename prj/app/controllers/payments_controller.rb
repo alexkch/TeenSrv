@@ -1,58 +1,61 @@
 class PaymentsController < ApplicationController
-  #In my opinion, the function of PaymentController has the mechanisms that Users will have their option to add #itself in payment table when they first sign in the page or later. After tha, they will try to add a #payment_method or bank_info, at this time, PaymentController has been activated, and first create a #payment_id which associates with user_id and let credit_card and bank_info refer to this payment_id
-  
-  def index
-     @user = User.find(params[:user_id]) 
-     @payments = @user.payment.all
-  end
-  #action SHOW which will associate with Show.html.erb to print out all methods under one user
-  def show
-      @user = User.find(params[:user_id])
-      @payment = @user.payment.find(params[:id])
-  end
-      
-  def new
-      @user = User.find(params[:user_id])
-      @payment = @user.payment.new
-  end
+#In this payment controller, we are supposed to use stripe and in the payment table, we are supposed to store the source and destination of it stripe account in the table for payment history
+#CONNECTED_STRIPE_ACCOUNT_ID is the account that we send to
     
-  def edit
-      @user = User.find(params[:user_id])
-      @payment = @user.payment.find(params[:id])
-      render 'new'
-  end
+    #payment_id     source_stripe_account destination_stripe_account
+    #we need to store the stripe_account_id in a separte table
+    #From the finished Job table, we can get the Client'ID and Teen's ID and the amount
+    #The difference between Platform Account and connected account
+    #account = Stripe::Account.retrieve("XXXXX")
+    #Stripe::Payout.retrieve("XXXXX")
+    #Stripe_Customer_ID Table:  user_email customer_id
+    #Payout Table: payout_id   stripe_payout_id  src/Client_stripe_id    dst/Teen_stripe_id
+    #Payment Table: payment_id user_id stripe_customer_id
+    
+    #Assume userstripe is a table contain the information and make association with user_id and customer_id
+    #customer and userPayment should in the controller where the stripe account is initially created
+    customer = Stripe::Customer.create(
+	    :email => params[:stripeEmail],
+	    :source  => params[:stripeToken]
+	  )
+    user_payment =  UserPayment.create(
+        :user_id => current_user, 
+        :stripe_customer_id => customer.id
+        )
+    
+    
+    #In Charges Controller:
+    @user_payment = UserPayment.find(current_user)
+    @customer = Stripe::Customer.retrieve(@user_payment.stripe_customer_id)
+    
+    
+    #In Transcation Table we need to add payouts_id
+    t.integer "client_id"
+    t.integer "teenager_id"
+    t.integer "job_id"
+    t.integer "payout_id"
+    t.datetime "trans_date"
+    t.string "status"
+    
+    payout = Stripe::Payout.create(
+        :amount => @amount,
+        :currency =>'usd'，
+        :destination => ???
+        )
+    #We create transcation for the finished jobs Tabls in order
+    ##In finished_job
+    @finished_job = FinishedJob.find(params[:id])
+    #@client= Clients.find_by(user_id: params[:client][:user_id])
+    #@teenager = Teenagers.find_by(user_id: params[:teenager][:user_id])
+    transaction = Transaction.create(
+        :client_id => @finished_job.client_id,
+        :teenager_id => @finished_job.teenager_id,
+        :job_id => @finished_job.job_id,
+        :payout_id =>payout.id,
+        :status => ???
+        )
+   # redirect_to payout_url
+   # transaction = 
+#s    payout = Stripe::Payout.retrieve(transaction.payout_id)
 
-  def create
-      @user = User.find(params[:user_id])
-      @payment = @user.payment.create(payment_params)
-      if @payment.save
-         redirect_to @payment #<- turn to a show action. Here it need to redirect_to other #controller's URL
-                 #One Question: How do we determine which URL to go through? Bank_Info or Credit_Card?
-      else
-                 render 'new'
-      end
-  end
-
-  
-  def update
-	  @payment = Payment.find(params[:id])
- 
-	if @payment.update(payment_params)
-		redirect_to @payment
-	else
-		render 'edit'
-	end
-  end
-    
- def destroy
-       @user=User.find(params[:user_id])
-       @payment=@user.payment.find(params[:id])
-       @payment.destroy
-  end
-    
-    
-  private
-    def payment_params
-    params.require(:payment).permit(:user_id)
-    end
 end
