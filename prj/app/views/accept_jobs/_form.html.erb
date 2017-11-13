@@ -1,0 +1,14 @@
+<%= form_with(scope: :apply_job, local: true) do |form| %>
+ 
+<ul>
+  <li>Job type: <%= JobType.find(@job.job_type_id).name %></li>
+  <li>Job description: <%= @job.description %></li>
+  <li>Teenager name: <%= @teenager.firstname %> <%= @teenager.lastname %></li>
+  <li>Applied at: <%= @applied_job.applied_at %></li>
+</ul>
+    <%= form.hidden_field :apply_job_id, :value => params[:apply_job] %>
+  
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

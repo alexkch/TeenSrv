@@ -1,2 +1,10 @@
-<h1>Payment Accounts</h1>
-<%= link_to 'Add Payment Account', new_user_payment_path %>
+<head>
+<%= stylesheet_link_tag 'payments_and_accounts' %>
+</head>
+
+<div class="box">
+	<div class="row">
+		<h1>Your payment details:</h1>
+		<%= link_to 'Add Payment Method', new_user_payment_path %>
+	</div>
+</div>

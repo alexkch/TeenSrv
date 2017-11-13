@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106001000) do
+ActiveRecord::Schema.define(version: 20171111220111) do
 
   create_table "accepted_jobs", force: :cascade do |t|
     t.integer "job_id"
@@ -128,7 +128,6 @@ ActiveRecord::Schema.define(version: 20171106001000) do
 
   create_table "job_types", force: :cascade do |t|
     t.string "name"
-    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -137,17 +136,16 @@ ActiveRecord::Schema.define(version: 20171106001000) do
     t.integer "job_type_id"
     t.integer "teenager_id"
     t.integer "client_id"
-    t.integer "amount"
     t.integer "hours"
     t.datetime "starttime"
     t.datetime "finishtime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "trans_id"
-    t.string "name"
     t.boolean "accepted", default: false
     t.string "description"
     t.boolean "cancelled", default: false
+    t.float "hourly_rate"
     t.index ["client_id"], name: "index_jobs_on_client_id"
     t.index ["job_type_id"], name: "index_jobs_on_job_type_id"
     t.index ["teenager_id"], name: "index_jobs_on_teenager_id"

@@ -1,0 +1,15 @@
+<h1> <%= params[:q] %> jobs</h1>
+
+<table>
+   <% @jobs.each do |job| %>
+    <tr>
+      <td><%= JobType.find(job.job_type_id).name %></td>
+      <td><%= job.description %></td>      
+      <td><%= job.starttime %></td>
+      <td><%= job.finishtime %></td>
+      <td><%= link_to 'Apply', apply_jobs_path(apply_job: job), method: 'post' %> 
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to "Homepage", root_path %>

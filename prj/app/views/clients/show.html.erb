@@ -1,3 +1,9 @@
+<head>
+<%= stylesheet_link_tag 'style1' %>
+</head>
+
+<div class = "box">
+<h1>Your details:</h1>
 <p>
   <strong>Username:</strong>
   <%= @user.username %>
@@ -31,6 +37,8 @@
 <p>
 	Postal Code: <%= @client.postal_code%>
 </p>
+</div>
+
 
 <p>
 	<%= link_to 'Edit Profile', edit_user_client_path(@user.id, @client.id) %>

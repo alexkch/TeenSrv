@@ -1,8 +1,8 @@
 class PaymentsController < ApplicationController
+
 #In this payment controller, we are supposed to use stripe and in the payment table, we are supposed to store the source and destination of it stripe account in the table for payment history
 #CONNECTED_STRIPE_ACCOUNT_ID is the account that we send to
-    
-    #payment_id     source_stripe_account destination_stripe_account
+     #payment_id     source_stripe_account destination_stripe_account
     #we need to store the stripe_account_id in a separte table
     #From the finished Job table, we can get the Client'ID and Teen's ID and the amount
     #The difference between Platform Account and connected account
@@ -22,7 +22,6 @@ class PaymentsController < ApplicationController
         :user_id => current_user, 
         :stripe_customer_id => customer.id
         )
-    
     
     #In Charges Controller:
     @user_payment = UserPayment.find(current_user)

@@ -1,3 +1,9 @@
+<head>
+<%= stylesheet_link_tag 'style1' %>
+</head>
+
+<div class="box">
+
 <%= form_with(model: @job, local: true) do |form| %>
 
 
@@ -15,35 +21,48 @@
     </div>
   <% end %>
   <%= hidden_field_tag "user", current_user.id %>
+  <div class="row">
   <p>
-    <%= form.label :name %><br>
-    <%= form.select :name, File.readlines(Rails.root + "app/views/JobNames.txt").each {|line| [line, line]} %>
+    <%= form.label :job_type_id %><br>
+    <%= form.select :job_type_id, JobType.all.collect {|job_type| [ job_type.name, job_type.id ]} %>
   </p>
+  </div>
+  <div class="row">
   <p>
     <%= form.label :description %><br>
     <%= form.text_field :description %>
   </p>
- 
+  </div>
+ <div class="row">
+ <div class="col-half">
   <p>
-    <%= form.label :amount %><br>
-    $<%= form.text_area :amount %>
+    <%= form.label :hourly_rate %><br>
+    $<%= form.number_field :hourly_rate, :class => 'text_field', :step => 0.01  %>
   </p>
- 
+ </div>
+ <div class="col-half">
   <p>
     <%= form.label :hours %><br>
     <%= form.text_field :hours %>
   </p>
- 
+  </div>
+ </div>
+ <div class="row">
+ <div class="col-half">
   <p>
     <%= form.label :starttime %><br>
     <%= form.datetime_local_field :starttime %>
   </p>
- 
+ </div>
+ <div class="col-half">
   <p>
     <%= form.label :finishtime %><br>
     <%= form.datetime_local_field :finishtime %>
   </p>
+  </div>
+  </div>
   <p>
     <%= form.submit %>
   </p>
  <% end %>
+ </div>
