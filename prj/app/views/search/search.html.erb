@@ -1,12 +1,10 @@
-<h1> <%= params[:query] %> jobs</h1>
+<h1> <%= params[:q] %> jobs</h1>
 
 <table>
    <% @jobs.each do |job| %>
     <tr>
-      <td><%= job.name %></td>
+      <td><%= JobType.find(job.job_type_id).name %></td>
       <td><%= job.description %></td>      
-      <td><%= job.amount %></td>
-      <td><%= job.hours %></td>
       <td><%= job.starttime %></td>
       <td><%= job.finishtime %></td>
       <td><%= link_to 'Apply', apply_jobs_path(apply_job: job), method: 'post' %> 
