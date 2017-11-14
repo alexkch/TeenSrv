@@ -10,19 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171111220111) do
-
-  create_table "accepted_jobs", force: :cascade do |t|
-    t.integer "job_id"
-    t.integer "teenager_id"
-    t.integer "trans_id"
-    t.datetime "accept_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_accepted_jobs_on_job_id"
-    t.index ["teenager_id"], name: "index_accepted_jobs_on_teenager_id"
-    t.index ["trans_id"], name: "index_accepted_jobs_on_trans_id"
-  end
+ActiveRecord::Schema.define(version: 20171114005010) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "street_no"
@@ -62,16 +50,6 @@ ActiveRecord::Schema.define(version: 20171111220111) do
     t.index ["user_id"], name: "index_cancel_jobs_on_user_id"
   end
 
-  create_table "cancelled_jobs", force: :cascade do |t|
-    t.integer "job_id"
-    t.integer "teenager_id"
-    t.datetime "cancel_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_cancelled_jobs_on_job_id"
-    t.index ["teenager_id"], name: "index_cancelled_jobs_on_teenager_id"
-  end
-
   create_table "clients", force: :cascade do |t|
     t.string "job_wanted"
     t.integer "user_id"
@@ -90,16 +68,6 @@ ActiveRecord::Schema.define(version: 20171111220111) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_clients_on_user_id"
-  end
-
-  create_table "declined_jobs", force: :cascade do |t|
-    t.integer "job_id"
-    t.integer "teenager_id"
-    t.datetime "decline_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_declined_jobs_on_job_id"
-    t.index ["teenager_id"], name: "index_declined_jobs_on_teenager_id"
   end
 
   create_table "endorsements", force: :cascade do |t|
