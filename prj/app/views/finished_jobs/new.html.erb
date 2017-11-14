@@ -1,0 +1,15 @@
+<h1>Do you want to confirm that the teenager has completed the job?</h1>
+
+<%= form_with(scope: :finished_job, local: true) do |form| %>
+ 
+<ul>
+  <li>Job type: <%= JobType.find(@job.job_type_id).name %></li>
+  <li>Job description: <%= @job.description %></li>
+  <li>Teenager name: <%= @teenager.firstname %> <%= @teenager.lastname %></li>
+</ul>
+    <%= form.hidden_field :finished_job_id, :value => params[:finished_job] %>
+  
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
