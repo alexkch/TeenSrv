@@ -3,7 +3,7 @@ class FinishedJobsController < ApplicationController
 	def index
 		@current_user = current_user
 		
-		if (@current_user != 1)
+		if (@current_user.usertype != 1)
 			redirect_to root_path
 		end
 
@@ -15,7 +15,7 @@ class FinishedJobsController < ApplicationController
 	def new
 		@current_user = current_user
 		
-		if (@current_user != 1)
+		if (@current_user.usertype != 1)
 			redirect_to root_path
 		end
 
@@ -29,12 +29,12 @@ class FinishedJobsController < ApplicationController
 	def create
 		@current_user = current_user
 		
-		if (@current_user != 1)
+		if (@current_user.usertype != 1)
 			redirect_to root_path
 		end
 
 		@client = Client.find_by_user_id(@current_user)
-		@finished_job = ApplyJob.find(params[:finished_job])
+		@finished_job = ApplyJob.find(params[:finished_job][:finished_job_id])
 		@teenager = Teenager.find(@finished_job.teenager_id)
 
 		@job = Job.find(@finished_job.job_id)
@@ -44,6 +44,8 @@ class FinishedJobsController < ApplicationController
 		@actual_finished_job.teenager_id = @teenager.id
 		@actual_finished_job.client_id = @client.id
 		@actual_finished_job.save
+
+		redirect_to finished_jobs_path
 
 		# Payment team, your stuff should go here, redirect to your payment controller and process the payment
 		# We may need to redesign the db or save the info to the db differently, because here I save the completed job
