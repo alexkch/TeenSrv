@@ -1,17 +1,49 @@
 <h1> My Applied Jobs </h1>
 
-<table>
-   <% @apply_jobs.each do |apply_job| %>
-    <% job = Job.find(apply_job.job_id) %>
-    <tr>
-      <td><%= job.name %></td>
-      <td><%= job.description %></td>      
-      <td><%= job.amount %></td>
-      <td><%= job.hours %></td>
-      <td><%= job.starttime %></td>
-      <td><%= job.finishtime %></td> 
-    </tr>
+<% if (@rewarded_jobs.length != 0) %>
+   
+   <h3> Rewarded Jobs </h3>
+
+   <% @rewarded_jobs.each do |rewarded_job| %>
+      <% job = Job.find(rewarded_job.job_id) %>
+      <% client = Client.find(job.client_id) %>
+
+      <h4><%= JobType.find(job.job_type_id).name %> Job for <%= client.fName %> <%= client.lName %></h4>
+      <p><%= job.description %></p>
+      <table>
+        <tr>   
+          <td>Hourly Rate: $<%= job.hourly_rate %> </td>
+          <td>Job Duration: <%= job.hours %> hours</td>
+          <td>Start Time: <%= job.starttime.to_formatted_s(:long) %></td>
+          <td>End Time: <%= job.finishtime.to_formatted_s(:long) %></td>
+          <td>Contact Info: <%= User.find(client.user_id).username %></td> 
+        </tr>
+      </table>
    <% end %>
-</table>
+<% end %>
+
+<% if (@open_jobs.length != 0) %>
+   
+   <h3> Open Jobs </h3>
+
+  <% @open_jobs.each do |open_job| %>
+      <% job = Job.find(open_job.job_id) %>
+      <% client = Client.find(job.client_id) %>
+
+      <h4><%= JobType.find(job.job_type_id).name %> Job for <%= client.fName %> <%= client.lName %></h4>
+      <p><%= job.description %></p>
+      <table>
+        <tr>   
+          <td>Hourly Rate: $<%= job.hourly_rate %> </td>
+          <td>Job Duration: <%= job.hours %> hours</td>
+          <td>Start Time: <%= job.starttime.to_formatted_s(:long) %></td>
+          <td>End Time: <%= job.finishtime.to_formatted_s(:long) %></td>
+          <td>Contact Info: <%= User.find(client.user_id).username %></td> 
+        </tr>
+      </table>
+   <% end %>
+<% end %>
+
+<br>
 
 <%= link_to "Homepage", root_path %>
