@@ -9,6 +9,7 @@ class FinishedJobsController < ApplicationController
 
 		@client = Client.find_by_user_id(@current_user)
 
+        # This has to change, i need to differentiate between accpeted jobs and finished jobs
 		@accepted_jobs = ApplyJob.includes(:job, :teenager).where("client_id = ? AND filled = ?", @client.id, true) 
 	end
 
