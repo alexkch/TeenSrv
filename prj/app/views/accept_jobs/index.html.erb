@@ -1,9 +1,11 @@
-<p>This is a list of <%= {@job_name} %> jobs:</p>
+<h1>Job Applications</h1>
+
 <% @applications.each do |appl| %>
-	<p><%= JobType.find(appl.job.job_type_id).name %>:<br />
-	Teenager name: <%= appl.teenager.firstname appl.teenager.lastname%>    
-	<%= link_to 'Apply', new_accept_job_path(:apply_job => appl.id) %>
-		<!-- I passed params values through link_to -->
+	<p>
+	  <%= JobType.find(appl.job.job_type_id).name %>:<br />
+	  Teenager name: <%= appl.teenager.firstname %> <%= appl.teenager.lastname %>    
+	  <%= link_to 'Accept', new_accept_job_path(:apply_job => appl.id) %>
+	  <!-- I passed params values through link_to -->
 	</p>
 <% end %>
 

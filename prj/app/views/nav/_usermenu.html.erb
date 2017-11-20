@@ -3,8 +3,8 @@
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container-fluid">
       <div class="row">
-          
-      <div class="col-md-2">     
+
+      <div class="col-md-2">
           <span class="nav_trigger" style="float:left">
               <i class="fa fa-user"></i>
           </span>
@@ -44,6 +44,7 @@
       <% if(@teenager!=nil) %>
         <li><%= link_to(user_teenager_path(current_user.id, @teenager.id)) do %><span class="fa fa-id-card"></span>Profile</li><% end %>
         <li><%= link_to(edit_user_teenager_path(current_user.id, @teenager.id)) do %><span class="fa fa-pencil"></span>Update Account Information</li><% end %>
+        <li><%= link_to(user_transactions_path(current_user.id, @teenager.id)) do %><span class="fa fa-credit-card"></span>Transaction History</li><% end %>
       <% else %>
         <li><%= link_to(new_user_teenager_path(current_user.id)) do %><span class="fa fa-id-card"></span>Create Profile</li><% end %>
       <% end %>
@@ -52,6 +53,7 @@
       <% if(@client != nil) %>
         <li><%= link_to(user_client_path(current_user.id, @client.id)) do %><span class="fa fa-id-card"></span>Profile</li><% end %>
         <li><%= link_to(edit_user_client_path(current_user.id, @client.id)) do %><span class="fa fa-pencil"></span>Update Account Information</li><% end %>
+        <li><%= link_to(user_transactions_path(current_user.id, @client.id)) do %><span class="fa fa-credit-card"></span>Transaction History</li><% end %>
       <% else %>
         <li><%= link_to(new_user_client_path(current_user.id)) do %><span class="fa fa-id-card"></span>Create Profile</li><% end %>
       <% end %>

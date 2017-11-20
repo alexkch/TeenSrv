@@ -8,7 +8,7 @@ class AcceptJobsController < ApplicationController
 		@client = Client.find_by_user_id(@user.id)
 		# @applications = ApplyJob.where("client_id = ? AND filled = false", @client.id).order(:job_id)
 		
-		@applications = ApplyJob.includes(:job, :teenager).where("client_id = ? AND filled = false", @client.id)
+		@applications = ApplyJob.includes(:job, :teenager).where("client_id = ? AND filled = ?", @client.id, false)
 		@jobs = Job.all
 	end
 	def new
@@ -17,7 +17,7 @@ class AcceptJobsController < ApplicationController
 			redirect_to root_path
 		end
 		@client = Client.find_by_user_id(@user.id)
-		@applied_job = ApplyJob.find(apply_job)
+		@applied_job = ApplyJob.find(params[:apply_job])
 		@job = Job.find(@applied_job.job_id)
 		@teenager = Teenager.find(@applied_job.teenager_id)
 	end
@@ -27,7 +27,7 @@ class AcceptJobsController < ApplicationController
 			redirect_to root_path
 		end
 		@client = Client.find_by_user_id(@user.id)
-		@applied_job = ApplyJob.find(params[:apply_job_id])
+		@applied_job = ApplyJob.find(params[:accept_job][:apply_job_id])
 
     	@job = Job.find(@applied_job.job_id)
     	@job.teenager_id = @applied_job.teenager_id
@@ -40,5 +40,7 @@ class AcceptJobsController < ApplicationController
     		appl.filled = true
     		appl.save
     	end
+
+    	redirect_to accept_jobs_path
 	end
 end

@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
 
   # ROOT
-  root 'home#index' 
+  root 'home#index'
 
 
   # Registration Devise Route
   devise_for :users, :controllers => {:registrations => "users/registrations"}
 
 
-  # Home Routes  
+  # Home Routes
   get 'home/index'
-  get 'welcome/index' 
+  get 'welcome/index'
 
   # Search Routes
   get 'search', to: 'search#search', as: 'search'
@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   #resources :sessions
 
   resources :charges
+  resources :clients # Used for display all clients, remove this when production -- Robert
   # Routes
   resources :users, only: [:index, :show, :destroy] do
     resources :transactions
@@ -38,10 +39,10 @@ Rails.application.routes.draw do
     resources :endorsements
     resources :ratings
     resources :teenagers, :name_prefix => "user_"
-    resources :addresses 
-	
+    resources :addresses
+
 	get 'payments/index', to: 'payments#index', as: 'paymentsindex'
-	
+
     resources :payments do
        resources :bank_infos
        resources :credit_cards

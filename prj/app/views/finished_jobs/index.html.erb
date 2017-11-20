@@ -4,7 +4,7 @@
 	
 	<p>
 		<%= JobType.find(accepted.job.job_type_id).name %>: <br>
-		Teenager name: <%= accepted.teenager.firstname accepted.teenager.lastname%>    
+		Teenager name: <%= accepted.teenager.firstname %> <%= accepted.teenager.lastname %>    
 		<%= link_to 'Confirm that job has been finished', new_finished_job_path(:finished_job => accepted.id) %>
 	</p>
 <% end %>

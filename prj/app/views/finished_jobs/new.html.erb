@@ -1,6 +1,6 @@
 <h1>Do you want to confirm that the teenager has completed the job?</h1>
 
-<%= form_with(scope: :finished_job, local: true) do |form| %>
+<%= form_for(:finished_job, :url => {action: "create"}, local: true) do |form| %>
  
 <ul>
   <li>Job type: <%= JobType.find(@job.job_type_id).name %></li>
@@ -10,6 +10,6 @@
     <%= form.hidden_field :finished_job_id, :value => params[:finished_job] %>
   
   <p>
-    <%= form.submit %>
+    <%= form.submit "Confirm" %>
   </p>
 <% end %>

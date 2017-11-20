@@ -1,4 +1,4 @@
-<%= form_with(scope: :apply_job, local: true) do |form| %>
+<%= form_for(:accept_job, :url => {action: "create"}, local: true) do |form| %>
  
 <ul>
   <li>Job type: <%= JobType.find(@job.job_type_id).name %></li>
@@ -9,6 +9,6 @@
     <%= form.hidden_field :apply_job_id, :value => params[:apply_job] %>
   
   <p>
-    <%= form.submit %>
+    <%= form.submit "Accept Job" %>
   </p>
 <% end %>
