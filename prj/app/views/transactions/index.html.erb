@@ -1,6 +1,15 @@
 <h1> All Transactions </h1>
 
 <%= link_to 'Add Transaction', new_transaction_path %>
+<br>
+<%= link_to 'Home', home_index_path%>
+<br>
+<%= link_to 'All Users', users_path%>
+<br>
+<%= link_to 'All Clients', user_clients_path%>
+<br>
+<%= link_to 'All Teenagers', user_teenagers_path%>
+<br>
 
 <table>
 	<tr>
@@ -16,9 +25,9 @@
 		  <td><%= transaction.job_id %></td>
 		  <td><%= link_to 'Show', url_for([transaction]) %></td>
 		  <td><%= link_to 'Edit', url_for([:edit, transaction]) %></td>
-		  <td><%= link_to 'Destroy', transaction_path, 
-            method: :delete, 
+		  <td><%= link_to 'Destroy', transaction_path,
+            method: :delete,
             data: { confirm: 'Are you sure?' } %></td>
 		</tr>
-	<% end %>	
+	<% end %>
 </table>
