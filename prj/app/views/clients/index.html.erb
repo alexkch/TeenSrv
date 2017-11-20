@@ -14,16 +14,16 @@
 
 	<% @clients.each do |client| %>
 		<tr>
-		  <td><%= teenager.fName %></td>
-		  <td><%= teenager.lName %></td>
-		  <td><%= teenager.gender %></td>
-		  <td><%= teenager.birth_month %>/<%= teenager.birth_day %>/<%= teenager.birth_year %></td>
-		  <td><%= teenager.address %></td>
-		  <td><%= teenager.postal_code %></td>
-		  <td><%= teenager.city %></td>
-		  <td><%= teenager.country %></td>
-		  <td><%= link_to 'Show', client_path(client_id) %></td>
-		  <td><%= link_to 'Edit', edit_client_path(client_id) %></td>
+		  <td><%= client.fName %></td>
+		  <td><%= client.lName %></td>
+		  <td><%= client.gender %></td>
+		  <td><%= client.birth_month %>/<%= client.birth_day %>/<%= client.birth_year %></td>
+		  <td><%= client.address %></td>
+		  <td><%= client.postal_code %></td>
+		  <td><%= client.city %></td>
+		  <td><%= client.country %></td>
+		  <td><%= link_to 'Show', client_path(client) %></td>
+		  <td><%= link_to 'Edit', edit_client_path(client) %></td>
 		</tr>
 	<% end %>
 </table>
