@@ -38,7 +38,7 @@ class ChargesController < ApplicationController
 	    #:customer       => customer.id,
 	    :amount         => @amount,
 	    #:description    => 'Rails Stripe customer',
-        :source         => "tok_visa",
+        :source         => params[:stripeToken],
 	    :currency       => 'cad',
         :on_behalf_of   => "{CONNECTED_STRIPE_ACCOUNT_ID}",
         #:transfer_group => "{job_id}"
@@ -47,10 +47,8 @@ class ChargesController < ApplicationController
 	rescue Stripe::CardError => e
 	  flash[:error] = e.message
 	  redirect_to new_charge_path
-	end
-    
-    @finished_job.paid = true
-    @finished_job.save
+    else
+    @finished_job.update(paid:true)
     
     teenager_id = @finished_job.teenager_id
     @teenager = Teenager.find(id: teenager_id)
@@ -63,5 +61,21 @@ class ChargesController < ApplicationController
         :source_transaction => "{charge.id}",
         :destination      => @teenager_user.account_id
         )
+    end
+#=begin    
+    #@finished_job.update(paid:true)
+    
+    #teenager_id = @finished_job.teenager_id
+    #@teenager = Teenager.find(id: teenager_id)
+    #teenager_user_id = @teenager.user_id
+    #@teenager_user = User.find(id: teenager_user_id)
+    
+    #transfer = Stripe::Transfer.create(
+    #   :amount           => @amount * 0.9,
+    #   :currency         => "cad",
+    #   :source_transaction => "{charge.id}",
+    #   :destination      => @teenager_user.account_id
+    #   )
+#=end
     #redirect to transaction controller to set the transfer_id to it
 end

@@ -1,3 +1,4 @@
+<% if false%>
 <%= form_tag charges_path do %>
   <article>
     <% if flash[:error].present? %>
@@ -6,13 +7,76 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Amount: $5.00</span>
+     <span>Amount: <%= number_to_currency(@amount) %></span>
     </label>
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="A month's subscription"
-          data-amount="500"
+          data-amount="<%= @amount %>"
           data-locale="auto"></script>
 <% end %>
+<% end %>
+
+<% -#Here is just for custom button for the checkout %>
+<% -#if false %>
+  <div id="error_explanation">
+    <% if flash[:error].present? %>
+      <p><%= flash[:error] %></p>
+    <% end %>
+  </div>
+  <article>
+    <%= label_tag(:amount, 'Donation Amount:') %>
+    <%= text_field_tag(:amount) %>
+  </article>
+  <article>
+    <%= hidden_field_tag(:stripeToken) %>
+  </article>
+  <button id='payButton'>Pay with Card</button>
+<% end%>
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<script>
+var handler = StripeCheckout.configure({
+  key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+  locale: 'auto',
+  name: 'JP',
+  description: 'Job Payment',
+  token: function(token) {
+    $('input#stripeToken').val(token.id);
+    $('form').submit();
+  }
+});
+
+  $('#payButton').on('click', function(e) {
+  e.preventDefault();
+
+  $('#error_explanation').html('');
+
+  var amount = $('input#amount').val();
+  amount = amount.replace(/\$/g, '').replace(/\,/g, '')
+
+  amount = parseFloat(amount);
+
+  if (isNaN(amount)) {
+    $('#error_explanation').html('<p>Please enter a valid amount in USD ($).</p>');
+  }
+  else if (amount < 5.00) {
+    $('#error_explanation').html('<p>Donation amount must be at least $5.</p>');
+  }
+  else {
+    amount = amount * 100; // Needs to be an integer!
+    handler.open({
+      amount: Math.round(amount)
+    })
+  }
+});
+    
+$(window).on('popstate', function() {
+  handler.close();
+});
+
+
+</script>
+<% end %>
+<% -#end >
