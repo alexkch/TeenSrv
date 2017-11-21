@@ -9,9 +9,13 @@ class ApplyJobsController < ApplicationController
 		@apply_job.client_id = @job.client_id
 		@apply_job.teenager_id = @current_user.teenager.id
 
-		@apply_job.save
+        session[:return_to] ||= request.referer
 
-		redirect_to action: 'index'
+		if (@apply_job.save)
+			redirect_to action: 'index'
+		else
+			redirect_to session.delete(:return_to)
+		end
 	end
 
 	def index
