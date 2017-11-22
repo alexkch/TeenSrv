@@ -21,15 +21,10 @@
 
 <% if user_signed_in? %>
 
-	<% if @user.usertype == 0 %>
+	<% if @user.usertype == 1 %>
 		
-		<%= render :partial => "template/profile_type/teenprofile" %>
-		<%= render :partial => "template/nav/usermenu" %>
-
-	<% elsif @user.usertype == 1 %>
-
-		<%= render :partial => "template/profile_type/clientprofile" %>
-		<%= render :partial => "template/nav/usermenu" %>		
+		<%= render :partial => "template/profile_type/client_profile" %>
+		<%= render :partial => "template/nav/usermenu" %>	
 
 	<% end %>
 
