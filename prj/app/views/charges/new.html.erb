@@ -1,4 +1,3 @@
-<% if false%>
 <%= form_tag charges_path do %>
   <article>
     <% if flash[:error].present? %>
@@ -7,20 +6,20 @@
       </div>
     <% end %>
     <label class="amount">
-     <span>Amount: <%= number_to_currency(@amount) %></span>
+     <span>Amount: <%= number_to_currency(charge.amount) %></span>
     </label>
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="A month's subscription"
-          data-amount="<%= @amount %>"
+          data-amount="<%= charge.amount %>"
           data-locale="auto"></script>
 <% end %>
-<% end %>
 
-<% -#Here is just for custom button for the checkout %>
-<% -#if false %>
+
+<% if false %>
+<%= form_tag charges_path do %>
   <div id="error_explanation">
     <% if flash[:error].present? %>
       <p><%= flash[:error] %></p>
@@ -33,8 +32,9 @@
   <article>
     <%= hidden_field_tag(:stripeToken) %>
   </article>
-  <button id='payButton'>Pay with Card</button>
-<% end%>
+  <button id='payButton'>Donate</button>
+<% end %>
+
 <script src="https://checkout.stripe.com/checkout.js"></script>
 <script>
 var handler = StripeCheckout.configure({
@@ -75,8 +75,6 @@ var handler = StripeCheckout.configure({
 $(window).on('popstate', function() {
   handler.close();
 });
-
-
 </script>
 <% end %>
-<% -#end >
+

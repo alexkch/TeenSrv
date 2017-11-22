@@ -46,13 +46,13 @@ class FinishedJobsController < ApplicationController
 		@actual_finished_job.client_id = @client.id
 		@actual_finished_job.save
 
-		redirect_to finished_jobs_path
+		#redirect_to finished_jobs_path
 
 		# Payment team, your stuff should go here, redirect to your payment controller and process the payment
 		# We may need to redesign the db or save the info to the db differently, because here I save the completed job
 		# on the finished jobs db so if the payment is interrupted, it will still be saved (it will be missing a transaction id)
 		# We could change this class to pending finished jobs and then when the payment is complete, make it a finished job
-        redirect_to  charges_url
+        redirect_to  new_charge_path
         
 	end
 
