@@ -21,12 +21,13 @@
 <%= render 'client_form' %>
  <% if user_signed_in? %>
 
-	<%= render :partial => "nav/usermenu" %>
+ 	<%= render :partial => "template/profile_type/client_edit_form" %>
+	<%= render :partial => "template/nav/usermenu" %>
 
 
 <% else %>
 
-	<%= render :partial => "nav/defaultmenu" %>
+	<%= render :partial => "template/nav/defaultmenu" %>
 
 <% end %>
 

@@ -23,20 +23,20 @@
 
 	<% if @user.usertype == 0 %>
 		
-		<%= render :partial => "profile_type/teenprofile" %>
-		<%= render :partial => "nav/usermenu" %>
+		<%= render :partial => "template/profile_type/teenprofile" %>
+		<%= render :partial => "template/nav/usermenu" %>
 
 	<% elsif @user.usertype == 1 %>
 
-		<%= render :partial => "profile_type/clientprofile" %>
-		<%= render :partial => "nav/usermenu" %>		
+		<%= render :partial => "template/profile_type/clientprofile" %>
+		<%= render :partial => "template/nav/usermenu" %>		
 
 	<% end %>
 
 
 <% else %>
 
-	<%= render :partial => "nav/defaultmenu" %>
+	<%= render :partial => "template/nav/defaultmenu" %>
 
 <% end %>
 
