@@ -54,5 +54,4 @@ Rails.application.routes.draw do
   end
 
   resources :transactions
-  resources :profiles
 end

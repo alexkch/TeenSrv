@@ -1,33 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- For MOBILE -->
+<title>Profile</title>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+<%= stylesheet_link_tag 'style1' %>
 <%= stylesheet_link_tag 'sidebar' %>
 <%= stylesheet_link_tag 'global' %>
 <%= stylesheet_link_tag 'index' %>
 <%= stylesheet_link_tag 'font-awesome.min' %>
-<title>TeenSrv</title>
 
-</head>
-<body>
-	<section class="index">
-		<div id="splash">
+<h1>Edit Your Profile</h1>
 
-			<h1>CSC444</h1>
-			<p>Stuff</p>
-			<span class="fa fa-arrow-circle-up fa-4x"></span>
-		</div>
-    </section>
 
-<% if user_signed_in? %>
+ <% if user_signed_in? %>
 
+ 	<%= render :partial => "template/profile_type/teen_edit_form" %>
 	<%= render :partial => "template/nav/usermenu" %>
 
 
@@ -36,9 +30,6 @@
 	<%= render :partial => "template/nav/defaultmenu" %>
 
 <% end %>
-
-
-<!-- script DEFINE jquery first then bootstrap min, then custom js-->
 
 </body>
 <%= javascript_include_tag 'jquery' %>

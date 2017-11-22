@@ -12,10 +12,11 @@ Rails.application.config.assets.precompile += %w(scroll.js)
 Rails.application.config.assets.precompile += %w(bootstrap.min.js)
 Rails.application.config.assets.precompile += %w(jquery.js)
 Rails.application.config.assets.precompile += %w(sidebar.js)
+Rails.application.config.assets.precompile += %w(profilemenu.js)
 Rails.application.config.assets.precompile += %w(stripe_connect.js)
 Rails.application.config.assets.precompile += %w(style1.css)
 
-%w( welcome users home profiles ).each do |controller|
+%w( welcome users home profile ).each do |controller|
   Rails.application.config.assets.precompile += ["#{controller}.css"]
 end
 %w( index global sidebar font-awesome.min ).each do |filename|

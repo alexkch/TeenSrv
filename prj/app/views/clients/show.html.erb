@@ -1,58 +1,48 @@
+<!DOCTYPE html>
+<html>
 <head>
-<%= stylesheet_link_tag 'style1' %>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- For MOBILE -->
+<title>Profile</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+<%= stylesheet_link_tag 'profile' %>
+<%= stylesheet_link_tag 'sidebar' %>
+<%= stylesheet_link_tag 'global' %>
+<%= stylesheet_link_tag 'index' %>
+<%= stylesheet_link_tag 'font-awesome.min' %>
+
 </head>
 
-<div class = "box">
-<h1>Your details:</h1>
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
 
-<p>
-	Name: <%= @client.fName %> <%= @client.lName %>
-</p>
-<p>
-	Gender: <%= @client.gender%>
-</p>
-
-<p>
-	Birthday (mm/dd/yyyy): <%= @client.birth_month %>/<%= @client.birth_day %>/<%= @client.birth_year %>
-</p>
-<p>
-	Address: <%= @client.address%>
-</p>
-<p>
-	Apartment number: <%= @client.apt_no%>
-</p>
-<p>
-	City: <%= @client.city%>
-</p>
-<p>
-	Province: <%= @client.province%>
-</p>
-<p>
-	Country: <%= @client.country%>
-</p>
-<p>
-	Postal Code: <%= @client.postal_code%>
-</p>
-</div>
-
-
-<p>
-	<%= link_to 'Edit Profile', edit_user_client_path(@user.id, @client.id) %>
-</p>
-<p>
-	<%= link_to 'Offer a New Job', new_job_path %>
-</p>
 <% if user_signed_in? %>
 
-	<%= render :partial => "nav/usermenu" %>
+	<% if @user.usertype == 1 %>
+		
+		<%= render :partial => "template/profile_type/client_profile" %>
+		<%= render :partial => "template/nav/usermenu" %>	
+
+	<% end %>
 
 
 <% else %>
 
-	<%= render :partial => "nav/defaultmenu" %>
+	<%= render :partial => "template/nav/defaultmenu" %>
 
 <% end %>
+
+</body>
+<%= javascript_include_tag 'jquery' %>
+<%= javascript_include_tag 'bootstrap.min' %>
+<%= javascript_include_tag 'sidebar' %>
+<%= javascript_include_tag 'profilemenu' %>
+
+</html>
+
+
+
+

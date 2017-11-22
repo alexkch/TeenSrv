@@ -1,0 +1,96 @@
+<head>
+<%= stylesheet_link_tag 'style1' %>
+</head>
+
+<div class="box">
+
+<%= form_with(model: [@user, @user.client], local: true) do |form| %>
+ 
+  <% if @client.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@client.errors.count, "error") %> prohibited
+        this client form from being saved:
+      </h2>
+      <ul>
+        <% @client.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <div class="col-half">
+  <p>
+    <%= form.label :'First Name:' %>
+    <%= form.text_field :fName %>
+  </p>
+</div>
+<div class="col-half">
+  <p>
+    <%= form.label :'Last Name:' %>
+    <%= form.text_field :lName %>
+  </p>
+</div>
+  <div class="row">
+  <div class="col-half">
+  <p>
+  <h3>
+    <%= form.label :'Gender:' %>
+	</h3>
+    <%= form.select :gender, [['Male', 'male'], ['Female', 'female'],['Bi', 'bi']] %>
+ 
+  </p>
+  </div>
+</div>
+  <h3>Date of Birth</h3>
+  <p>
+  <div class="col-third">
+    <%= form.label :'Month' %>
+    <%= form.text_field :birth_month %>
+	</div>
+	<div class="col-third">
+    <%= form.label :'Day' %>
+    <%= form.text_field :birth_day %>
+	</div>
+	<div class="col-third">
+    <%= form.label :'Year' %>
+    <%= form.text_field :birth_year %>
+	</div>
+  </p>
+
+  <h3>Address</h3>
+    <p>
+    <%= form.label :'Address Line' %>
+    <%= form.text_field :address %>
+  </p>
+  <p>
+    <%= form.label :'Apt.No' %>
+    <%= form.text_field :apt_no %>
+  </p>
+    <p>
+    <%= form.label :'City' %>
+    <%= form.text_field :city %>
+  </p>
+  <div class="col-half">
+  <p>
+    <%= form.label :'Province/State' %>
+    <%= form.text_field :province %>
+  </p>
+  </div>
+  <div class="col-half">
+  <p>
+    <%= form.label :'Country' %>
+    <%= form.text_field :country %>
+  </p>
+  </div>
+  <p>
+    <%= form.label :'Postal Code' %>
+    <%= form.text_field :postal_code %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+</div>
