@@ -5,8 +5,13 @@ class ClientsController < ApplicationController
 	end
 
 	def show
-	  @client = Client.find(params[:id]) 
-	  @user = current_user
+		@user = current_user
+	  	@client = Client.find_by(user_id: current_user.id) 
+	  	@address = Address.find_by(user_id: current_user.id)
+
+	  	@jobs = Job.where(client_id: @client.id).order("created_at DESC").limit(3)
+
+
 	end
 
 	def new

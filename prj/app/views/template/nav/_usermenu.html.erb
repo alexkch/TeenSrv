@@ -1,0 +1,64 @@
+<br><br>
+<!-- Nav bar -->
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+      <div class="row">
+
+      <div class="col-lg-2 col-md-2 col-sm-18 col-xs-18">
+          <span class="nav_trigger" style="float:left">
+              <i class="fa fa-user"></i>
+          </span>
+        </div>
+        <div class="col-lg-7 col-md-7 hidden-sm hidden-xs">
+            <%= form_tag(search_path, method: "get", class: "navbar-form", style: "float:right") do %>
+                <%= text_field_tag :q, params[:q], placeholder: "Search", class: "form-control", style: "width:500px;" %>
+                <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
+            <% end %>
+        </div>
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-envelope-o"></i>Contact Us</a>
+                  <ul class="dropdown-menu" role="menu">
+                      <li><a href="#"><span class="fa fa-facebook-square"></span> Our Facebook</a></li>
+                      <li><a href="#"><span class="fa fa-twitter-square"></span> Our Twitter</a></li>
+                    <li><a href="#"><span class="fa fa-youtube-play"></span> Our Youtube</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><span class="fa fa-share"></span> Contact Us</a></li>
+                </ul>
+              </li>
+          </ul>
+      </div>
+      </div>
+  </div>
+</nav>
+<!-- ./bottom menu bar -->
+<!-- Sidebar -->
+<div id="push_sidebar">
+<h2> Signed in as <%= @user.username %> </h2>
+  <ul class="list-unstyled">
+    <li><a href="/"><span class="fa fa-home"></span>Home</a></li>
+    <% if(current_user.usertype==0) %>
+      <% @teenager = Teenager.find_by_user_id(current_user.id) %>
+      <% if(@teenager!=nil) %>
+        <li><%= link_to(user_teenager_path(current_user.id, @teenager.id)) do %><span class="fa fa-id-card"></span>Profile</li><% end %>
+        <li><%= link_to(edit_user_teenager_path(current_user.id, @teenager.id)) do %><span class="fa fa-pencil"></span>Update Account Information</li><% end %>
+        <li><%= link_to(user_transactions_path(current_user.id, @teenager.id)) do %><span class="fa fa-credit-card"></span>Transaction History</li><% end %>
+      <% else %>
+        <li><%= link_to(new_user_teenager_path(current_user.id)) do %><span class="fa fa-id-card"></span>Create Profile</li><% end %>
+      <% end %>
+    <% elsif(current_user.usertype==1) %>
+      <% @client = Client.find_by_user_id(current_user.id) %>
+      <% if(@client != nil) %>
+        <li><%= link_to(user_client_path(current_user.id, @client.id)) do %><span class="fa fa-id-card"></span>Profile</li><% end %>
+        <li><%= link_to(edit_user_client_path(current_user.id, @client.id)) do %><span class="fa fa-pencil"></span>Update Account Information</li><% end %>
+        <li><%= link_to(user_transactions_path(current_user.id, @client.id)) do %><span class="fa fa-credit-card"></span>Transaction History</li><% end %>
+      <% else %>
+        <li><%= link_to(new_user_client_path(current_user.id)) do %><span class="fa fa-id-card"></span>Create Profile</li><% end %>
+      <% end %>
+      <li><%= link_to(new_job_path) do %><span class="fa fa-plus"></span>Post New Job</li><% end %>
+    <% end %>
+    <li><%= link_to(new_password_path(@user)) do %><span class="fa fa-unlock-alt"></span>Change Account Password</li><% end %>
+    <li><%= link_to(destroy_user_session_path, method: :delete) do %><span class="fa fa-power-off"></span>Log Out</li><% end %>
+  </ul>
+</div>

@@ -8,17 +8,14 @@ Rails.application.config.assets.version = '1.0'
 # Add Yarn node_modules folder to the asset load path.
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
-Rails.application.config.assets.precompile += %w(scroll.js)
-Rails.application.config.assets.precompile += %w(bootstrap.min.js)
-Rails.application.config.assets.precompile += %w(jquery.js)
-Rails.application.config.assets.precompile += %w(sidebar.js)
-Rails.application.config.assets.precompile += %w(stripe_connect.js)
-Rails.application.config.assets.precompile += %w(style1.css)
+%w( scroll bootstrap.min jquery sidebar profilemenu stripe_connect myjobs).each do |filename|
+  Rails.application.config.assets.precompile += ["#{filename}.js"]
+end
 
-%w( welcome users home profiles ).each do |controller|
+%w( welcome users home profile ).each do |controller|
   Rails.application.config.assets.precompile += ["#{controller}.css"]
 end
-%w( index global sidebar font-awesome.min ).each do |filename|
+%w( index global sidebar style1 search myjobs ).each do |filename|
   Rails.application.config.assets.precompile += ["#{filename}.css"]
 end
 # Precompile additional assets.

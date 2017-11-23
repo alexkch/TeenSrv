@@ -4,7 +4,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- For MOBILE -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   
@@ -12,7 +12,6 @@
 <%= stylesheet_link_tag 'sidebar' %>
 <%= stylesheet_link_tag 'global' %>
 <%= stylesheet_link_tag 'index' %>
-<%= stylesheet_link_tag 'font-awesome.min' %>
 <title>TeenSrv</title>
 
 </head>
@@ -28,12 +27,12 @@
 
 <% if user_signed_in? %>
 
-	<%= render :partial => "nav/usermenu" %>
+	<%= render :partial => "template/nav/usermenu" %>
 
 
 <% else %>
 
-	<%= render :partial => "nav/defaultmenu" %>
+	<%= render :partial => "template/nav/defaultmenu" %>
 
 <% end %>
 

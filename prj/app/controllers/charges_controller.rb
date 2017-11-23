@@ -3,7 +3,6 @@ class ChargesController < ApplicationController
 	end
 
 	def create
-	  # Amount in cents
       #Finished_Job Table:  Finished_Job_id, Job_id, Teenager_id, Client_id
         @current_user = current_user
 		
@@ -32,25 +31,27 @@ class ChargesController < ApplicationController
 #	    :email => params[:stripeEmail],
 #	    :source  => params[:stripeToken]
 #	  )
-        #We need to have our platform account
-        
-	  charge = Stripe::Charge.create(
+        #Check if the email is associated with the stripe email
+        @user_stripe_account =  Stripe::Account.retrieve(@current_user.account)
+       if params[stripeEmail] != @user_stripe_account.email
+          flash[:error] = "Please Enter Right Emails Associated with Stripe"
+          redirect_to new_charge_path
+       else
+	  
+        charge = Stripe::Charge.create(
 	    #:customer       => customer.id,
 	    :amount         => @amount,
-	    #:description    => 'Rails Stripe customer',
-        :source         => "tok_visa",
 	    :currency       => 'cad',
-        :on_behalf_of   => "{CONNECTED_STRIPE_ACCOUNT_ID}",
+        :source         => params[:stripeToken],
+        :on_behalf_of   => "{PLATFORM_STRIPE_ACCOUNT_ID}", #<- This should be the stripe_account for platform
         #:transfer_group => "{job_id}"
 	  )
-
+       end
 	rescue Stripe::CardError => e
 	  flash[:error] = e.message
 	  redirect_to new_charge_path
-	end
-    
-    @finished_job.paid = true
-    @finished_job.save
+    else
+    @finished_job.update(paid:true)
     
     teenager_id = @finished_job.teenager_id
     @teenager = Teenager.find(id: teenager_id)
@@ -63,5 +64,7 @@ class ChargesController < ApplicationController
         :source_transaction => "{charge.id}",
         :destination      => @teenager_user.account_id
         )
+    end
+    
     #redirect to transaction controller to set the transfer_id to it
 end
