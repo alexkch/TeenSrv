@@ -12,6 +12,18 @@ body {
 /*	--------------------------------------------------
 	:: Table Filter
 	-------------------------------------------------- */
+
+span .btn {
+
+	min-width: 95%;
+	margin-bottom: 3px;
+}
+
+#badge {
+
+	text-align: left;
+}
+
 .panel {
 	border: 1px solid #ddd;
 	background-color: #fcfcfc;
