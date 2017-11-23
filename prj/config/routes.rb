@@ -5,8 +5,8 @@ Rails.application.routes.draw do
 
 
   # Registration Devise Route
-  devise_for :users, :controllers => {:registrations => "users/registrations"}
 
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   # Home Routes
   get 'home/index'
@@ -41,13 +41,22 @@ Rails.application.routes.draw do
     resources :teenagers, :name_prefix => "user_"
     resources :addresses
 
-	get 'payments/index', to: 'payments#index', as: 'paymentsindex'
+	  get 'payments/index', to: 'payments#index', as: 'paymentsindex'
 
-    resources :payments do
-       resources :bank_infos
-       resources :credit_cards
+    member do
+         post :pay
+         post :subscribe
     end
   end
+
+  # resources :payments do
+  #      # resources :bank_infos
+  #      # resources :credit_cards
+  #      member do
+  #        post :pay
+  #        post :subscribe
+  #      end
+  #   end
 
   resources :teenagers do
     resources :skills, :name_prefix => "teenager_"
@@ -55,4 +64,18 @@ Rails.application.routes.draw do
 
   resources :transactions
   resources :profiles
+
+  get '/users/connect_stripe' => 'users#connect_stripe' 
+
+  # Stripe Connect endpoints
+  #  - oauth flow
+  get '/connect/oauth' => 'stripe#oauth', as: 'stripe_oauth'
+  get '/connect/confirm' => 'stripe#confirm', as: 'stripe_confirm'
+  get '/connect/deauthorize' => 'stripe#deauthorize', as: 'stripe_deauthorize'
+  #  - create accounts
+  post '/connect/managed' => 'stripe#managed', as: 'stripe_managed'
+  post '/connect/standalone' => 'stripe#standalone', as: 'stripe_standalone'
+
+  # Stripe webhooks
+  post '/hooks/stripe' => 'hooks#stripe'
 end
