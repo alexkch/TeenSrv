@@ -27,7 +27,6 @@ Rails.application.routes.draw do
   get 'job/clientjobs', to: 'jobs#clientjobs', as: 'clientjobs'
   get 'job/:id/recommended_teens', to: 'jobs#recommended_teens', as: 'recommended_teens'
 
-
   #resources :sessions
 
   resources :charges
