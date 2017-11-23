@@ -36,6 +36,20 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'stripe'
+gem 'thin'
+gem 'rest-client', '~> 2.0', '>= 2.0.2'
+gem 'oauth2'
+
+gem 'haml'
+# gem 'coffee-rails'
+# gem 'sass-rails', '~> 4.0.3'
+gem 'jquery-rails'
+gem 'bootstrap-sass', '~> 3.3.1'
+# gem 'quiet_assets' #error if uncommented
+
+gem 'highline', require: false # used for setup rake task
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

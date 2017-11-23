@@ -1,4 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
+  asdlfjasdlkfjlsakdjf
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -6,10 +7,10 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  POST /resource/sign_in
+  def create
+    super
+  end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -20,6 +21,10 @@ class Users::SessionsController < Devise::SessionsController
 
   def after_sign_in_path_for(user)
     return home_index_url
+  end
+
+  def after_sign_out_path_for(resource)
+    return users_url
   end
 
   # If you have extra params to permit, append them to the sanitizer.

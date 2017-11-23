@@ -31,8 +31,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # DELETE /resource
   def destroy
+    lsdflakjsdf
     super
+
   end
+
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -58,7 +61,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
 
   def after_sign_up_path_for(user)
-    return home_index_url
+    return user_path(user)
   end
 
   # The path used after sign up for inactive accounts.
