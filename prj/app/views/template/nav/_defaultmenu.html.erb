@@ -1,9 +1,11 @@
+<br><br>
+<!-- Default Menu bar -->
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container-fluid">
       <div class="row">
           
 
-        <div class="col-md-2">     
+        <div class="col-lg-2 col-md-2 col-sm-18 col-xs-18">   
           <span class="nav_link" style="float:right">
             <%= link_to(new_user_session_path) do %><i class="fa fa-sign-in"></i><% end %>
           </span>
@@ -11,7 +13,7 @@
             <%= link_to(new_user_registration_path) do %><i class="fa fa-plus"></i><% end %>
           </span>
         </div>
-        <div class="col-md-7">
+        <div class="col-lg-7 col-md-7 hidden-sm hidden-xs">
             <form class="navbar-form" style="float:right">
               <div class="form-group">
                 <input type="text" class="form-control" name="q" placeholder="Search for jobs" style="width:500px;">
@@ -19,7 +21,7 @@
               <button type="submit" class="btn btn-default"><span class="fa fa-search"></span></button>
             </form>
         </div>
-        <div class="col-md-3">
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
           <ul class="nav navbar-nav navbar-right" style="float:right">
               <li><%= link_to(welcome_index_path) do %><span class="fa fa-info-circle"></span> About Us</a></li><% end %>
               <li class="dropdown">

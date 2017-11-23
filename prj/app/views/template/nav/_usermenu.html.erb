@@ -1,23 +1,22 @@
+<br><br>
 <!-- Nav bar -->
-
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container-fluid">
       <div class="row">
 
-      <div class="col-md-2">
+      <div class="col-lg-2 col-md-2 col-sm-18 col-xs-18">
           <span class="nav_trigger" style="float:left">
               <i class="fa fa-user"></i>
           </span>
         </div>
-        <div class="col-md-7">
+        <div class="col-lg-7 col-md-7 hidden-sm hidden-xs">
             <%= form_tag(search_path, method: "get", class: "navbar-form", style: "float:right") do %>
                 <%= text_field_tag :q, params[:q], placeholder: "Search", class: "form-control", style: "width:500px;" %>
                 <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
             <% end %>
         </div>
-        <div class="col-md-3">
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
           <ul class="nav navbar-nav navbar-right">
-
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-envelope-o"></i>Contact Us</a>
                   <ul class="dropdown-menu" role="menu">

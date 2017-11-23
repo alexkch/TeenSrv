@@ -11,7 +11,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h1 class="panel-title pull-left" style="font-size:40px;"><%= @client.fName %> <%= @client.lName %>
-                        <small>(<%= @user.username %>)</small>
+                        <small>(<%= @user.username %>) DEBUG </small>
                     </h1>
                     <span class="pull-right">
                         <div class="well well-sm">
@@ -51,8 +51,8 @@
             <div class="panel panel-default">                        
                 <span class="pull-right"> 
                     <div class="btn btn-link" style="text-decoration:none;">
-                        <%= link_to(edit_user_client_path(@user.id, @client.id)) do %>
-                            <i class="fa fa-address-card-o" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Mention"></i>
+                        <%= link_to(clientjobs_path(@client.id)) do %>
+                            <i class="fa fa-address-card-o" aria-hidden="true" data-toggle="tooltip" data-placement="bottom"></i>
                         <% end %>
                     </div>
                 </span>
@@ -61,39 +61,21 @@
 
                     <hr>
                     <div class="post-content">
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <h4><strong>Job 1</strong> – <small><small><i><i class="fa fa-clock-o" aria-hidden="true"></i> about 15 hours ago</i></small></small></h4>
-                                    <hr>
-                                    <div class="post-content">
-                                        Info Job 1
+                        <% if @jobs %>
+                            <% @jobs.each do |job| %>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <h4><strong>Job 1</strong> – <small><small><i><i class="fa fa-clock-o" aria-hidden="true"></i><%= job.starttime %></i></small></small></h4>
+                                            <hr>
+                                            <div class="post-content">
+                                                <%= job.description %>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <h4><strong>Job 1</strong> – <small><small><i><i class="fa fa-clock-o" aria-hidden="true"></i> about 15 hours ago</i></small></small></h4>
-                                    <hr>
-                                    <div class="post-content">
-                                        Info Job 1
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <h4><strong>Job 1</strong> – <small><small><i><i class="fa fa-clock-o" aria-hidden="true"></i> about 15 hours ago</i></small></small></h4>
-                                    <hr>
-                                    <div class="post-content">
-                                        Info Job 1
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            <% end %>
+                        <% end %>
                     </div>
                 </div>
             </div>
@@ -110,16 +92,37 @@
                 <div class="panel-body">
                     <h4><strong>Recent Transactions</strong> – <small><small><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></small></small></h4>
                     <hr>
+                    <!-- Transaction -->
                     <div class="post-content">
-                        <p>Simple post content example.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
+                        <p>Transaction 1</p>
+                        <p>Brief Info....</p>
                     </div>
                     <div>
                         <div class="pull-right btn-group-xs">
                             <div class="btn btn-default btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i> More info...</div>
-                        </div>
-
-                        <br>
+                        </div><br>
+                    </div>
+                    <hr>
+                    <!-- Transaction -->                   
+                    <div class="post-content">
+                        <p>Transaction 1</p>
+                        <p>Brief Info....</p>
+                    </div>
+                    <div>
+                        <div class="pull-right btn-group-xs">
+                            <div class="btn btn-default btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i> More info...</div>
+                        </div><br>
+                    </div>
+                    <hr>
+                    <!-- Transaction -->
+                    <div class="post-content">
+                        <p>Transaction 1</p>
+                        <p>Brief Info....</p>
+                    </div>
+                    <div>
+                        <div class="pull-right btn-group-xs">
+                            <div class="btn btn-default btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i> More info...</div>
+                        </div><br>
                     </div>
                     <hr>
                 </div>
@@ -135,7 +138,7 @@
                 <div class="panel-body">
                     <div class="media">
                         <div align="center">
-                            <img class="thumbnail img-responsive" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="300px" height="300px">
+                            <img class="thumbnail img-responsive" src="https://res.cloudinary.com/closebrace/image/upload/w_400/v1491315007/usericon_id76rb.png" width="300px" height="300px">
                         </div>
                         <div class="media-body">
                             <hr>                
