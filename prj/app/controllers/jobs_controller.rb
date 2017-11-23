@@ -54,6 +54,7 @@ def new
 end
  
 def edit
+	@user = current_user
 	@job = Job.find(params[:id])
 	@job_types = JobType.all
 end
@@ -80,7 +81,7 @@ def update
 	@user = current_user
  	@job = Job.find(params[:id])
 	if @job.update(job_params)
-		redirect_to controller: 'jobs', action: 'myjob', user: params[:user]
+		redirect_to controller: 'jobs', action: 'index'
 	else
 		render 'edit'
 	end

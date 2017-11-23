@@ -20,7 +20,7 @@
       </ul>
     </div>
   <% end %>
-  <%= hidden_field_tag "user", current_user.id %>
+  <%= hidden_field_tag "user", @user.id %>
   <div class="row">
   <p>
     <%= form.label :job_type_id %><br>

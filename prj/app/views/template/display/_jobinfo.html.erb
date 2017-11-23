@@ -58,12 +58,17 @@
 	                	<button class="btn btn-danger btn-block"><span class="fa fa-minus-circle"></span> Cancel Job</button>
 	           		</div>
 
-	       			<div class="col-md-2 emphasis" style="padding: 5px">
+	       			<div class="col-md-3 emphasis" style="padding: 5px">
 	        		</div>
 	        		<div class="col-md-2 emphasis" style="padding: 5px">
-	        		</div>
-	        		<div class="col-md-2 emphasis" style="padding: 5px">
-	            		<button type="button" class="btn btn-primary btn-block"><span class="fa fa-gear"></span> Edit Job</button>
+	        			<%= link_to(edit_job_path(@job)) do %>
+	            			<button type="button" class="btn btn-primary btn-block"><span class="fa fa-gear"></span> Edit Job</button>
+	            		<% end %>
+	        		</div>	        		
+	        		<div class="col-md-1 emphasis" style="padding: 5px">
+	        			<%= link_to(jobs_path) do %>
+	        				<button type="button" class="btn btn-primary btn-block"><span class="fa fa-list-ul"></span></button>
+	        			<% end %>
 	        		</div>
 	        	</row>
 	        </div>
