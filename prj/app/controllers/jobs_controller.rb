@@ -36,6 +36,15 @@ end
 def show
 	@user = current_user
 	@job = Job.find(params[:id])
+  	@client = Client.find_by(id: @job.client_id) 
+  	if @client
+  		@client_username = User.select("username").find_by(id: @client.user_id)
+  	end
+  	
+  	@teenager = Teenager.find_by(id: @job.teenager_id)
+  	if @teenager
+  		@teenager_username = User.select("username").find_by(id: @teenager.user_id)
+  	end
 end
  
 def new
