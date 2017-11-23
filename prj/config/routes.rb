@@ -24,8 +24,8 @@ Rails.application.routes.draw do
   resources :accept_jobs
   resources :cancel_jobs
   resources :finished_jobs
-  get 'jobs/clientjobs', to: 'jobs#clientjobs', as: 'clientjobs'
-  get 'jobs/:id/recommended_teens', to: 'jobs#recommended_teens', as: 'recommended_teens'
+  get 'job/clientjobs', to: 'jobs#clientjobs', as: 'clientjobs'
+  get 'job/:id/recommended_teens', to: 'jobs#recommended_teens', as: 'recommended_teens'
 
 
   #resources :sessions
