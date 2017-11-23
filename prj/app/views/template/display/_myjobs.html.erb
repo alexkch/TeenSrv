@@ -9,6 +9,28 @@
 						<div class="table-container">
 							<table class="table table-filter">
 								<tbody>
+									<% if @jobs %>
+ 										<% @jobs.each do |job| %>
+	 										<tr data-status="pending">
+												<td>
+													<div class="media">
+														<div class="media-body">
+															<span class="media-meta pull-right"> <%= job.created_at %></span>
+															<h4 class="title">
+																	<%= link_to(job_path(job)) do %>
+																		Job Type: <%= job.job_type_id %>
+																	<% end %>
+																<span class="pull-right pending">(Pending)</span>
+															</h4>
+															<h5>Offered By: <%= job.teenager_id %></h5>
+															<p>Start Time: <%= job.starttime %> Finish Time: <%= job.finishtime %> for a total of <%= job.hours %> hours </p>
+															<p class="summary">Brief Summary:<%= job.description %></p>
+														</div>
+													</div>
+												</td>
+											</tr>	
+  										<% end %>
+  									<% end %>
 									<tr data-status="accepted">
 										<td>
 											<div class="media">
@@ -23,20 +45,12 @@
 											</div>
 										</td>
 									</tr>
-									<tr data-status="pending">
-										<td>
-											<div class="media">
-												<div class="media-body">
-													<span class="media-meta pull-right">Nov 23, 2017</span>
-													<h4 class="title">
-														Job...
-														<span class="pull-right pending">(Pending)</span>
-													</h4>
-													<p class="summary">Job desc...</p>
-												</div>
-											</div>
-										</td>
-									</tr>
+
+
+
+
+
+
 									<tr data-status="cancelled">
 										<td>
 											<div class="media">

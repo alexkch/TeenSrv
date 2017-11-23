@@ -12,10 +12,8 @@ end
 
 def clientjobs
 	@user = current_user
-	@jobs = Job.where(client_id: params[:id])
-	if(@user.usertype==1)
-		@client = Client.find_by_user_id(@user.id)
-	end
+	@client = Client.find_by(user_id: @user.id)
+	@jobs = Job.where(client_id: @client.id)
 end
 
 def myoffer
