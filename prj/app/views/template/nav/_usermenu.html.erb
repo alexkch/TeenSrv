@@ -38,27 +38,27 @@
 <h2> Signed in as <%= @user.username %> </h2>
   <ul class="list-unstyled">
     <li><a href="/"><span class="fa fa-home"></span>Home</a></li>
+
+    <li><%= link_to(jobs_path) do %><span class="fa fa-list-ul"></span>Jobs<% end %></li>
+
     <% if(current_user.usertype==0) %>
       <% @teenager = Teenager.find_by_user_id(current_user.id) %>
-      <% if(@teenager!=nil) %>
-        <li><%= link_to(user_teenager_path(current_user.id, @teenager.id)) do %><span class="fa fa-id-card"></span>Profile</li><% end %>
-        <li><%= link_to(edit_user_teenager_path(current_user.id, @teenager.id)) do %><span class="fa fa-pencil"></span>Update Account Information</li><% end %>
-        <li><%= link_to(user_transactions_path(current_user.id, @teenager.id)) do %><span class="fa fa-credit-card"></span>Transaction History</li><% end %>
-      <% else %>
-        <li><%= link_to(new_user_teenager_path(current_user.id)) do %><span class="fa fa-id-card"></span>Create Profile</li><% end %>
-      <% end %>
+
+        <li><%= link_to(user_teenager_path(current_user.id, @teenager.id)) do %><span class="fa fa-id-card"></span>Profile<% end %></li>
+        <li><%= link_to(edit_user_teenager_path(current_user.id, @teenager.id)) do %><span class="fa fa-pencil"></span>Update Account Information<% end %></li>
+        <li><%= link_to(user_transactions_path(current_user.id, @teenager.id)) do %><span class="fa fa-credit-card"></span>Transaction History<% end %></li>
+
     <% elsif(current_user.usertype==1) %>
+
       <% @client = Client.find_by_user_id(current_user.id) %>
-      <% if(@client != nil) %>
-        <li><%= link_to(user_client_path(current_user.id, @client.id)) do %><span class="fa fa-id-card"></span>Profile</li><% end %>
-        <li><%= link_to(edit_user_client_path(current_user.id, @client.id)) do %><span class="fa fa-pencil"></span>Update Account Information</li><% end %>
-        <li><%= link_to(user_transactions_path(current_user.id, @client.id)) do %><span class="fa fa-credit-card"></span>Transaction History</li><% end %>
-      <% else %>
-        <li><%= link_to(new_user_client_path(current_user.id)) do %><span class="fa fa-id-card"></span>Create Profile</li><% end %>
-      <% end %>
-      <li><%= link_to(new_job_path) do %><span class="fa fa-plus"></span>Post New Job</li><% end %>
+
+        <li><%= link_to(user_client_path(current_user.id, @client.id)) do %><span class="fa fa-id-card"></span>Profile<% end %></li>
+        <li><%= link_to(edit_user_client_path(current_user.id, @client.id)) do %><span class="fa fa-pencil"></span>Update Account Information<% end %></li>
+        <li><%= link_to(user_transactions_path(current_user.id, @client.id)) do %><span class="fa fa-credit-card"></span>Transaction History<% end %></li>
+
+      <li><%= link_to(new_job_path) do %><span class="fa fa-plus"></span>Post New Job<% end %></li>
     <% end %>
-    <li><%= link_to(new_password_path(@user)) do %><span class="fa fa-unlock-alt"></span>Change Account Password</li><% end %>
-    <li><%= link_to(destroy_user_session_path, method: :delete) do %><span class="fa fa-power-off"></span>Log Out</li><% end %>
+    <li><%= link_to(new_password_path(@user)) do %><span class="fa fa-unlock-alt"></span>Change Account Password<% end %></li>
+    <li><%= link_to(destroy_user_session_path, method: :delete) do %><span class="fa fa-power-off"></span>Log Out<% end %></li>
   </ul>
 </div>
