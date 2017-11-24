@@ -15,7 +15,7 @@ end
 %w( welcome users home profile ).each do |controller|
   Rails.application.config.assets.precompile += ["#{controller}.css"]
 end
-%w( index global sidebar style1 search myjobs ).each do |filename|
+%w( index global sidebar forms search myjobs ).each do |filename|
   Rails.application.config.assets.precompile += ["#{filename}.css"]
 end
 # Precompile additional assets.
