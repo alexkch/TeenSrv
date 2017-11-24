@@ -4,7 +4,9 @@
 
 <div class = "box">
 <h2>Log in</h2>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
 <div class = "row">
   <div class="field">
     <%= f.label :email %><br />
@@ -23,12 +25,11 @@
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
+  <% end %>
 </div>
-  <% end -%>
 
-  <div class="myButton">
-    <%= f.submit "Log in" %>
-  </div>
+
+<%= f.submit "Log in" %>
   <%= render "users/shared/links" %>
 <% end %>
 
