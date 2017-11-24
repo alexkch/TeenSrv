@@ -1,113 +1,173 @@
-<body>
+<div class="mainbody container-fluid">
+    <div class="row">
 
-<div class="section">
-	<div class="container" style="padding-top:55px;">
-			<div class="row">
-				<div class="col-md-4">
-	    	 		<div class="well profile">
-	            		<div class="col-md-12">
-	                  		<div class="col-md-4 text-center">
-	                    		<figure>
-	                        		<img src="https://res.cloudinary.com/closebrace/image/upload/w_400/v1491315007/usericon_id76rb.png" alt="" class="img-circle img-responsive">
-	                    		</figure>
-	                  		</div>
+        <div style="padding-top:2px;"> </div>
 
-	             		   <div class="col-md-8 text-right">
-	             		   		<div class = "box">
-									<h1>Your details:</h1>
-									<p><strong>Username:</strong><%= @user.username %></p>
-									<p> Usertype: Teenager </p>
-									<p>Name: <%= @client.fName %> <%= @client.lName %></p>
-									<p>Gender: <%= @client.gender%></p>
-									<p>Birthday (mm/dd/yyyy): <%= @client.birth_month %>/<%= @client.birth_day %>/<%= @client.birth_year %></p>
-									<p>Address: <%= @client.address%></p>
-									<p>Apartment number: <%= @client.apt_no%></p>
-									<p>City: <%= @client.city%></p>
-									<p>Province: <%= @client.province%></p>
-									<p>Country: <%= @client.country%></p>
-									<p>Postal Code: <%= @client.postal_code%></p>
-								</div>
-	                		</div>             
-	            		</div>            
-	            	<div class="col-md-12 divider text-center">
-	            	<row>
-	                	<div class="col-md-3 emphasis">
-	                    	<button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span>New payment</button>
-	               		</div>
-	               		<div class="col-md-3 emphasis">
-	                    	<button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span>New endorsement</button>
-	               		</div>
-	                <!-- if needed as a spacer <div class="col-md-2"></div> -->
-	               	<div class="col-md-2 emphasis">
-		               	<%= link_to(new_job_path) do %>
-		                	<button class="btn btn-info btn-block"><span class="fa fa-plus"></span>New Job</button>
-		                <% end %>
-		            </div>
-	                <div class="col-md-2 emphasis">
-	                    <button class="btn btn-info btn-block"><span class="fa fa-gear"></span>Manage Jobs</button>
-	                </div>
-	                <div class="col-md-2 emphasis">
-	                    <%= link_to(edit_user_client_path(@user.id, @client.id)) do %>
-	                    	<button type="button" class="btn btn-info btn-block"><span class="fa fa-gear"></span>Edit Profile</button>
-	                    <% end %>
-	                </div>
-	            </row>
-	            
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h1 class="panel-title pull-left" style="font-size:40px;"><%= @client.fName %> <%= @client.lName %>
+                        <small>(<%= @user.username %>) DEBUG </small>
+                    </h1>
+                    <span class="pull-right">
+                        <div class="well well-sm">
+                            <div class="row">
 
-	            <row>
-	                <div class="section">
-	                    <div class="padding-top">
+                                <div class="col-xs-18 col-md-12 text-center">
 
-	                    <!-- Ongoing Jobs -->
-	                        <div class="col-md-12">
-	                          <div class="panel-group" id="accordion">
-	                              <div class="panel panel-primary">
-	                                  <div class="panel-heading">
-	                                    <h4 class="panel-title">
-	                                      <a href="#collpase1" data-toggle="collapse" data-parent="accordion">Ongoing Jobs</a>
-	                                    </h4>
-	                                </div>
-	                                  <div id="collpase1" class="panel-collapse collapse in">
-	                                    <div class="panel-body">
-	                                        <section class="align-box">
-	                                      </section>
-	                                    </div>
-	                                  </div>
-	                              </div>
-	                          </div>
-	                        </div>
-	                        <!-- end -->
+                                    <h1 class="rating-num">
+                                        4.0</h1>
+                                    <div class="rating">
+                                        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                        </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                        </span><span class="glyphicon glyphicon-star-empty"></span>
+                                    </div>
+                                    <div>
+                                        <span class="glyphicon glyphicon-user"></span>### total
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-	                        <!-- Recently completed Jobs -->
-	                        <div class="col-md-12">
-	                          	<div class="panel-group" id="accordion">
-	                              	<div class="panel panel-primary">
-	                                  	<div class="panel-heading">
-	                                    	<h4 class="panel-title">
-	                                      		<a href="#collpase2" data-toggle="collapse" data-parent="accordion">Recent Jobs</a>
-	                                    	</h4>
-	                                	</div>
-	                                	<div id="collpase2" class="panel-collapse collapse in">
-	                                    	<div class="panel-body">
-	                                        	<section class="align-box">
-	                                      		</section>
-	                                    	</div>
-	                                  	</div>
-	                              	</div>
-	                          	</div>
-	                        </div>
-	                        <!-- end -->
+                    </span>
+                    <br><br><br><br><br><br>
+                    <span class="pull-left">                       
+                        <div class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-users" aria-hidden="true"></i> Endorsements <span class="badge">###</span></div>
+                        <% link_to(teenager_skills_path(@teenager)) %><div class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fire" aria-hidden="true"></i> Skills </div><% end %>
+                        <div class="btn btn-link" style="text-decoration:none;"><i class="fa fa-credit-card" aria-hidden="true"></i> Payment Info</div>
+
+ 
+                    </span>
+                </div>
+            </div>
+            <hr>
 
 
-	                   	<!-- enclosing tags -->
-	                	</div>
-	              	</div>
-	            </row>
-	            </div>
-	    	 </div>                 
-			</div>
-		</div>
-	</div>
+            <!-- Upcoming Jobs -->
+            <div class="panel panel-default">                        
+                <span class="pull-right"> 
+                    <div class="btn btn-link" style="text-decoration:none;">
+                        <%= link_to(clientjobs_path(@client.id)) do %>
+                            <i class="fa fa-address-card-o" aria-hidden="true" data-toggle="tooltip" data-placement="bottom"></i>
+                        <% end %>
+                    </div>
+                </span>
+                <div class="panel-body">
+                    <h4><strong>Upcoming Jobs</strong></h4>
+
+                    <hr>
+                    <div class="post-content">
+                        <% if @jobs %>
+                            <% @jobs.each do |job| %>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <h4><strong>Job 1</strong> – <small><small><i><i class="fa fa-clock-o" aria-hidden="true"></i><%= job.starttime %></i></small></small></h4>
+                                            <hr>
+                                            <div class="post-content">
+                                                <%= job.description %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Transactions -->
+            <div class="panel panel-default">
+                <span class="pull-right"> 
+                    <div class="btn btn-link" style="text-decoration:none;">
+                        <%= link_to(edit_user_client_path(@user.id, @client.id)) do %>
+                            <i class="fa fa-address-card-o" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Mention"></i>
+                        <% end %>
+                    </div>
+                </span>
+                <div class="panel-body">
+                    <h4><strong>Recent Transactions</strong> – <small><small><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></small></small></h4>
+                    <hr>
+                    <!-- Transaction -->
+                    <div class="post-content">
+                        <p>Transaction 1</p>
+                        <p>Brief Info....</p>
+                    </div>
+                    <div>
+                        <div class="pull-right btn-group-xs">
+                            <div class="btn btn-default btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i> More info...</div>
+                        </div><br>
+                    </div>
+                    <hr>
+                    <!-- Transaction -->                   
+                    <div class="post-content">
+                        <p>Transaction 1</p>
+                        <p>Brief Info....</p>
+                    </div>
+                    <div>
+                        <div class="pull-right btn-group-xs">
+                            <div class="btn btn-default btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i> More info...</div>
+                        </div><br>
+                    </div>
+                    <hr>
+                    <!-- Transaction -->
+                    <div class="post-content">
+                        <p>Transaction 1</p>
+                        <p>Brief Info....</p>
+                    </div>
+                    <div>
+                        <div class="pull-right btn-group-xs">
+                            <div class="btn btn-default btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i> More info...</div>
+                        </div><br>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    <div class="media">
+                        <div align="center">
+                            <img class="thumbnail img-responsive" src="https://res.cloudinary.com/closebrace/image/upload/w_400/v1491315007/usericon_id76rb.png" width="300px" height="300px">
+                        </div>
+                        <div class="media-body">
+                            <hr>                
+                            <span class="pull-right"> 
+                                <div class="btn btn-link" style="text-decoration:none;">
+                                    <%= link_to(edit_user_client_path(@user.id, @client.id)) do %>
+                                        <i class="fa fa-lg fa-gear" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Mention"></i>
+                                    <% end %>
+                                </div>
+                            </span>
+                            <p>Usertype: Client </p>
+                            <p>Gender: <%= @client.gender%></p>
+                            <p>Birthday (mm/dd/yyyy): <%= @client.birth_month %>/<%= @client.birth_day %>/<%= @client.birth_year %></p>
+                            <hr>
+                            <span class="pull-right"> 
+                                <div class="btn btn-link" style="text-decoration:none;">
+                                    <%= link_to(edit_user_client_path(@user.id, @client.id)) do %>
+                                        <i class="fa fa-lg fa-gear" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Mention"></i>
+                                    <% end %>
+                                </div>
+                            </span>
+                            <h3><strong>Primary Address</strong></h3>
+                            <p>Street: <%= @client.address%></p>
+                            <p>Apartment number: <%= @client.apt_no%></p>
+                            <p>City: <%= @client.city%></p>
+                            <p>Province: <%= @client.province%></p>
+                            <p>Country: <%= @client.country%></p>
+                            <p>Postal Code: <%= @client.postal_code%></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<!-- enclosing tags -->
 

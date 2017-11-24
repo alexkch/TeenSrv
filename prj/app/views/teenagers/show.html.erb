@@ -31,16 +31,10 @@
 
 <% else %>
 
+  <%= render :partial => "template/profile/teen_profile" %>
   <%= render :partial => "template/nav/defaultmenu" %>
 
 <% end %>
-
-<p>
-  <%= link_to 'Addresses', user_addresses_path(@user) %><br />
-  <%= link_to 'Skills', teenager_skills_path(@teenager)%><br />
-</p>
-
-<%= link_to 'Back to User', @user %>
 
 </body>
 <%= javascript_include_tag 'jquery' %>
