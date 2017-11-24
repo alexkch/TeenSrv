@@ -15,6 +15,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.username = params[:user][:email]
     @user.usertype = params[:user][:usertype]
     @user.save
+
+    if @user.usertype == 0
+      @user.create_teenager!
+    elsif @user.usertype == 1
+      @user.create_client!
+    end
+
   end
 
   # GET /resource/edit
