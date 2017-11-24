@@ -27,6 +27,12 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 </div>
+<div class="row">
+  <div class="input-group">
+    <%= f.label :usertype %><br />
+    <%= f.select :usertype, [['Client', 1], ['Teenager', 0]] %>
+  </div>
+</div>
 <br>
 <div class="row">
     <%= f.submit "Go!" %>
