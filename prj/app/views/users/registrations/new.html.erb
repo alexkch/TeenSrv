@@ -1,7 +1,14 @@
+<!DOCTYPE html>
+<html>
 <head>
-<%= stylesheet_link_tag 'style1' %>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- For MOBILE -->
+<title>Profile</title>
 
+<%= stylesheet_link_tag 'style1' %>
+
+</head>
+<body>
 <div class="box">
 <h2>Sign up</h2>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -36,10 +43,18 @@
 <br>
 <div class="row">
     <%= f.submit "Submit" %>
-	 <%= render "users/shared/links" %>
+   <%= render "users/shared/links" %>
 </div>
-	
+  
 <% end %>
 </div>
+
+<%= render :partial => "template/nav/defaultmenu" %>
+
+
+
+</body>
+
+</html>
 
 
