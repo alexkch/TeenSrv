@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
 
   # Registration Devise Route
-  devise_for :users, :controllers => {:registrations => "users/registrations"}
+  devise_for :users, :controllers => {:registrations => "users/registrations", :sessions => "users/sessions"}
 
 
   # Home Routes
