@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     @user = User.find(current_user.id)
     @user.username = params[:user][:email]
-    @user.usertype = 1
+    @user.usertype = params[:user][:usertype]
     @user.save
   end
 
