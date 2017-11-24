@@ -5,10 +5,9 @@ class TeenagersController < ApplicationController
         @teenagers = Teenager.all
     end
     
-    def show
-        @teenager = Teenager.find(params[:id])
-        @user = User.find(@teenager.user_id)
-        @skills = @teenager.skill.all
+    def show        
+        @user = User.find(current_user.id)
+        @teenager = Teenager.find_by(user_id: current_user.id)
     end
     
     def new
