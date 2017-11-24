@@ -1,12 +1,142 @@
-$(function() {
-'use strict';
+(function() { 
+   'use strict'; 
 
+
+var stripe = Stripe('pk_test_ZrguhMtWkrXfRTggQCIDo1sR');
  var elements = stripe.elements({
     // Stripe's examples are localized to specific languages, but if
     // you wish to have Elements automatically detect your user's locale,
     // use `locale: 'auto'` instead.
     locale: window.__exampleLocale
   });
+  
+  
+  function registerElements(elements, exampleName) {
+  var formClass = '.' + exampleName;
+  var example = document.querySelector(formClass);
+
+  var form = example.querySelector('form');
+  var resetButton = example.querySelector('a.reset');
+  var error = form.querySelector('.error');
+  var errorMessage = error.querySelector('.message');
+
+  function enableInputs() {
+    Array.prototype.forEach.call(
+      form.querySelectorAll(
+        "input[type='text'], input[type='email'], input[type='tel']"
+      ),
+      function(input) {
+        input.removeAttribute('disabled');
+      }
+    );
+  }
+
+  function disableInputs() {
+    Array.prototype.forEach.call(
+      form.querySelectorAll(
+        "input[type='text'], input[type='email'], input[type='tel']"
+      ),
+      function(input) {
+        input.setAttribute('disabled', 'true');
+      }
+    );
+  }
+
+  // Listen for errors from each Element, and show error messages in the UI.
+  elements.forEach(function(element) {
+    element.on('change', function(event) {
+      if (event.error) {
+        error.classList.add('visible');
+        errorMessage.innerText = event.error.message;
+      } else {
+        error.classList.remove('visible');
+      }
+    });
+  });
+
+  // Listen on the form's 'submit' handler...
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Show a loading screen...
+    example.classList.add('submitting');
+
+    // Disable all inputs.
+    disableInputs();
+
+    // Gather additional customer data we may have collected in our form.
+    var name = form.querySelector('#' + exampleName + '-name');
+    var address1 = form.querySelector('#' + exampleName + '-address');
+    var city = form.querySelector('#' + exampleName + '-city');
+    var state = form.querySelector('#' + exampleName + '-state');
+    var zip = form.querySelector('#' + exampleName + '-zip');
+    var additionalData = {
+      name: name ? name.value : undefined,
+      address_line1: address1 ? address1.value : undefined,
+      address_city: city ? city.value : undefined,
+      address_state: state ? state.value : undefined,
+      address_zip: zip ? zip.value : undefined,
+    };
+
+    // Use Stripe.js to create a token. We only need to pass in one Element
+    // from the Element group in order to create a token. We can also pass
+    // in the additional customer data we collected in our form.
+    stripe.createToken(elements[0], additionalData).then(function(result) {
+      // Stop loading!
+      example.classList.remove('submitting');
+
+      if (result.token) {
+        // If we received a token, show the token ID.
+        example.querySelector('.token').innerText = result.token.id;
+        example.classList.add('submitted');
+      } else {
+        // Otherwise, un-disable inputs.
+        enableInputs();
+      }
+    });
+  });
+
+  resetButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    // Resetting the form (instead of setting the value to `''` for each input)
+    // helps us clear webkit autofill styles.
+    form.reset();
+
+    // Clear each Element.
+    elements.forEach(function(element) {
+      element.clear();
+    });
+
+    // Reset error state as well.
+    error.classList.remove('visible');
+
+    // Resetting the form does not un-disable inputs, so we need to do it separately:
+    enableInputs();
+    example.classList.remove('submitted');
+  });
+}
+  
+  
+  
+  
+  // Floating labels
+  var inputs = document.querySelectorAll('.cell.example.example2 .input');
+  Array.prototype.forEach.call(inputs, function(input) {
+    input.addEventListener('focus', function() {
+      input.classList.add('focused');
+    });
+    input.addEventListener('blur', function() {
+      input.classList.remove('focused');
+    });
+    input.addEventListener('keyup', function() {
+      if (input.value.length === 0) {
+        input.classList.add('empty');
+      } else {
+        input.classList.remove('empty');
+      }
+    });
+  });
+
   
   var elementStyles = {
     base: {
@@ -27,7 +157,7 @@ $(function() {
       color: '#E25950',
 
       '::placeholder': {
-        color: '#FF88A5',
+        color: '#FFCCA5',
       },
     },
   };
@@ -38,14 +168,29 @@ $(function() {
     invalid: 'invalid',
   };
 
-// Create an instance of the card Element
-var card = elements.create('card', {
-    style: elementStyles,
-    classes: elementClasses,
-  });
+  
+  var cardNumber = elements.create('cardNumber', { 
+     style: elementStyles, 
+     classes: elementClasses, 
+   }); 
+   cardNumber.mount('#card-number'); 
+ 
+ 
+   var cardExpiry = elements.create('cardExpiry', { 
+     style: elementStyles, 
+     classes: elementClasses, 
+   }); 
+   cardExpiry.mount('#card-expiry'); 
+ 
+ 
+   var cardCvc = elements.create('cardCvc', { 
+     style: elementStyles, 
+     classes: elementClasses, 
+   }); 
+   cardCvc.mount('#card-cvc'); 
 
-// Add an instance of the card Element into the `card-element` <div>
-card.mount('#card-element');
 
-registerElements([card], "_cc_details_form.html.erb");
-})();
+registerElements([cardNumber, cardExpiry, cardCvc], 'example2');
+
+
+   })();

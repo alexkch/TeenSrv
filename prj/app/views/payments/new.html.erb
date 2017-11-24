@@ -1,6 +1,7 @@
-<% if current_user.usertype.1? %>
+<% if @user.usertype == 1 %>
     <%= render 'cc_details_form' %>
-<% end %>
-<% elsif current_user.usertype.2? %>
+<% elsif @user.usertype == 0 %>
     <%= render 'account_details_form' %>
+<% else %>
+	
 <% end %>
