@@ -14,6 +14,10 @@ def clientjobs
 	@user = current_user
 	@client = Client.find_by(user_id: @user.id)
 	@jobs = Job.where(client_id: @client.id)
+	@accepted_jobs = Job.where("client_id = ? AND cancelled = ? AND accepted = ? AND finished = ?", @client_id, false, true, false)
+	@pending_jobs = Job.where("client_id = ? AND cancelled = ? AND accepted = ? AND finished = ?", @client_id, false, false, false)
+	@cancelled_jobs = Job.where("client_id = ? AND cancelled = ?", @client_id, true)
+	@finished_jobs = Job.where("client_id = ? AND cancelled = ? AND finished = ?", @client_id, false, true)
 end
 
 def myoffer

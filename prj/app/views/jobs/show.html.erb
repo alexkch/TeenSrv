@@ -20,8 +20,8 @@
 <% if user_signed_in? %>
 
 
-  <% if @user.cancelled == true %>
-    <h4>This job has been cancelled</h4>
+  <% if @job.cancelled == true %>
+    <h4 align='center'>This job has been cancelled</h4>
     <% else %>
   <%= render :partial => "template/display/jobinfo" %>
   <% end %>
