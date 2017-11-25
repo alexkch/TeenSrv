@@ -5,7 +5,7 @@
 	    	<div class="col-md-12" style="padding-top: 10px">
 	          	<div class="col-md-6 text-center">
 					<p><strong>Job ID:</strong><%= @job.id %></p>
-					<p>Job Type ID: <%= @job.job_type_id %></p>
+					<p>Job Type ID: <%= JobType.find(@job.job_type_id).name %></p>
 					<p>Description: <%= @job.description%></p>
 					<p>Start Time (mm/dd/yyyy): <%= @job.starttime%></p>
 					<p>End Time (mm/dd/yyyy): <%= @job.finishtime%></p>
@@ -55,7 +55,10 @@
 	                	<button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Accept Job</button>
 	           		</div>
 	           		<div class="col-md-3 emphasis" style="padding: 5px">
+	           			<%= form_with url: cancel_jobs_path, local: true do |form| %>
+	           			<%= form.hidden_field :job_id, :value => @job.id%>
 	                	<button class="btn btn-danger btn-block"><span class="fa fa-minus-circle"></span> Cancel Job</button>
+	                	<% end %>
 	           		</div>
 
 	       			<div class="col-md-3 emphasis" style="padding: 5px">

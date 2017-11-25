@@ -105,7 +105,7 @@ end
 
 private
 	def job_params
-    	params.require(:job).permit(:job_type_id, :client_id, :description, :hourly_rate, :hours, :starttime, :finishtime)
+    	params.require(:job).permit(:job_type_id, :client_id, :description, :hourly_rate, :hours, :starttime, :finishtime, :cancelled)
 	end
 
 end
