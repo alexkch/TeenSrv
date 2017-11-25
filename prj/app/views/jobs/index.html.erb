@@ -19,14 +19,8 @@
 
 <% if user_signed_in? %>
 
-  <% if @user.usertype == 0 %>
-    
-    <%= render :partial => "template/display/job_board" %>
-    <%= render :partial => "template/nav/usermenu" %>
-
-
-  <% end %>
-
+  <%= render :partial => "template/display/job_board" %>
+  <%= render :partial => "template/nav/usermenu" %>
 
 <% else %>
 
@@ -36,31 +30,12 @@
 <% end %>
 
 </body>
+
 <%= javascript_include_tag 'jquery' %>
 <%= javascript_include_tag 'bootstrap.min' %>
 <%= javascript_include_tag 'sidebar' %>
-<%= javascript_include_tag 'profilemenu' %>
+
 
 </html>
 
 
-
-
-
-
-      <td><%= link_to 'Show', job_path(job) %></td><br/>
-      <td><%= link_to 'Recommended Teens', recommended_teens_path(job.id) %></td><br/>
-      <% end %>
-      <td><%= link_to 'Destroy', job_path(job),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-<% if current_user.usertype == 1 %> 
-  <br/><td><%= link_to 'Create new job', new_job_path %></td><br/>
-<% end %>
-
-<% if current_user.usertype == 0 %> 
-  <%= link_to 'Jobs for me', offered_jobs_path(@teen.id) %>
-<% elsif current_user.usertype == 1 %>
-  <%= link_to 'My Jobs list', clientjobs_path(@client.id) %>
-<% end %>
-<br/><%= link_to 'Back', home_index_path %>
