@@ -52,20 +52,34 @@
 	    	<div class="col-md-12 divider text-center">
 	    		<row>
 	            	<div class="col-md-3 emphasis" style="padding: 5px">
-	                	<button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Accept Job</button>
+	            		<!-- for a teenager -->
+	            		<% if(@user.usertype == 0) %>
+	            			<% if(ApplyJob.where("job_id = ? AND teenager_id = ?", @job.id, Teenager.find_by_user_id(@user.id).id).first == nil) %>
+			            		<%= form_with url: apply_jobs_path, local: true do |form| %>
+			            			<%= form.hidden_field :apply_job, :value => @job.id %>
+			                		<button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Apply</button>
+				                <% end %>
+				            <% else %>
+			                	Already applied
+			                <% end %>
+	                	<% end %>
 	           		</div>
 	           		<div class="col-md-3 emphasis" style="padding: 5px">
-	           			<%= form_with url: cancel_jobs_path, local: true do |form| %>
-	           			<%= form.hidden_field :job_id, :value => @job.id%>
-	                	<button class="btn btn-danger btn-block"><span class="fa fa-minus-circle"></span> Cancel Job</button>
-	                	<% end %>
+	           			<% if((@user.usertype == 0 && @job.teenager_id == Teenager.find_by_user_id(@user.id).id) || (@user.usertype == 1 && @job.client_id == Client.find_by_user_id(@user.id).id)) %>
+		           			<%= form_with url: cancel_jobs_path, local: true do |form| %>
+			           			<%= form.hidden_field :job_id, :value => @job.id%>
+			                	<button class="btn btn-danger btn-block"><span class="fa fa-minus-circle"></span> Cancel Job</button>
+		                	<% end %>
+		                <% end %>
 	           		</div>
 
 	       			<div class="col-md-3 emphasis" style="padding: 5px">
 	        		</div>
 	        		<div class="col-md-2 emphasis" style="padding: 5px">
-	        			<%= link_to(edit_job_path(@job)) do %>
-	            			<button type="button" class="btn btn-primary btn-block"><span class="fa fa-gear"></span> Edit Job</button>
+	        			<% if(@user.usertype == 1 && @job.client_id == Client.find_by_user_id(@user.id).id) %>
+		        			<%= link_to(edit_job_path(@job)) do %>
+		            			<button type="button" class="btn btn-primary btn-block"><span class="fa fa-gear"></span> Edit Job</button>
+		            		<% end %>
 	            		<% end %>
 	        		</div>	        		
 	        		<div class="col-md-1 emphasis" style="padding: 5px">

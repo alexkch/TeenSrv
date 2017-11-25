@@ -2,7 +2,7 @@ class JobsController < ApplicationController
 
 def index
 	@user = current_user
-	@jobs = Job.all
+	@jobs = Job.where("cancelled = ? AND finished = ?", false, false)
 	if(@user.usertype==0)
 		@teen = Teenager.find_by_user_id(@user.id)
 	elsif(@user.usertype==1)
@@ -69,7 +69,7 @@ def create
 	@job = Job.create(job_params)
 
 	if (@job.valid?)
-		redirect_to root_path
+		redirect_to job_path(@job.id)
 	else
 		render 'new'
 	end

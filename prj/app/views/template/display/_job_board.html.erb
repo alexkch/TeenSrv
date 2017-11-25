@@ -27,8 +27,12 @@
                     <td><%= job.starttime %></td>
                     <td><%= job.finishtime %></td>
                     <td>
-                      <%= link_to(job_path(job)) do %>
-                      <button class="btn btn-primary btn-xs"><span class="fa fa-info-circle"></span></button><% end %>
+                      <% if(@user.usertype==1 && Client.find(job.client_id).user_id == @user.id || @user.usertype==0) %>
+                        <%= link_to(job_path(job)) do %>
+                        <button class="btn btn-primary btn-xs"><span class="fa fa-info-circle"></span></button><% end %>
+                      <% else %>
+                        ----
+                      <% end %>
                     </td>
                   </tr>
                 <% end %>
