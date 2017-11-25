@@ -1,36 +1,59 @@
-<p>Viewing as: 
-  <strong><%= current_user.username %></strong>
-</p><br/>
-<h1>Job Board</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- For MOBILE -->
+<title>Profile</title>
 
-<table>
-  <tr>
-    <th colspan="1"></th>
-  </tr>
-   <% @jobs.each do |job| %>
-    <tr>
-      <td><%= JobType.find(job.job_type_id).name %></td>
-      <!-- job.job_type.name gives us SQLite exception, it should work but doesn't-->
-      <td><%= job.description %></td>      
-      <td><%= job.hourly_rate %></td>
-      <td><%= job.hours %></td>
-      <td><%= job.starttime %></td>
-      <td><%= job.finishtime %></td>
-      <td>Accepted By: <%= job.teenager_id %></td>
-      <td>Offered By: <%= Client.find(job.client_id).user.username %></td>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-      <% if current_user.usertype == 1 %> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+<%= stylesheet_link_tag 'sidebar' %>
+
+
+</head>
+
+<body>
+
+<% if user_signed_in? %>
+
+  <% if @user.usertype == 0 %>
+    
+    <%= render :partial => "template/display/job_board" %>
+    <%= render :partial => "template/nav/usermenu" %>
+
+
+  <% end %>
+
+
+<% else %>
+
+  <%= render :partial => "template/display/job_board" %>
+  <%= render :partial => "template/nav/defaultmenu" %>
+
+<% end %>
+
+</body>
+<%= javascript_include_tag 'jquery' %>
+<%= javascript_include_tag 'bootstrap.min' %>
+<%= javascript_include_tag 'sidebar' %>
+<%= javascript_include_tag 'profilemenu' %>
+
+</html>
+
+
+
+
+
+
       <td><%= link_to 'Show', job_path(job) %></td><br/>
       <td><%= link_to 'Recommended Teens', recommended_teens_path(job.id) %></td><br/>
       <% end %>
       <td><%= link_to 'Destroy', job_path(job),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
-
-    </tr>
-  <% end %>
-</table>
-
 <% if current_user.usertype == 1 %> 
   <br/><td><%= link_to 'Create new job', new_job_path %></td><br/>
 <% end %>
