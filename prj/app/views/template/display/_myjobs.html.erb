@@ -17,74 +17,82 @@
 															<div class="media-body">
 																<span class="media-meta pull-right"> <%= job.created_at %></span>
 																<h4 class="title">
-																		<%= link_to(job_path(job)) do %>
-																			Job Type: <%= job.job_type_id %>
-																		<% end %>
+																	<%= link_to(job_path(job)) do %>
+																		Job Type: <%= JobType.find(job.job_type_id).name %>
+																	<% end %>
 																	<span class="pull-right pending">(Pending)</span>
 																</h4>
-																<h5>Offered By: <%= job.client_id %></h5>
+																<h5>Offered By: <%= Client.find(job.client_id).fName %> <%= Client.find(job.client_id).lName %></h5>
 																<p>Start Time: <%= job.starttime %> Finish Time: <%= job.finishtime %> for a total of <%= job.hours %> hours </p>
 																<p class="summary">Brief Summary:<%= job.description %></p>
 															</div>
 														</div>
 													</td>
 												<% end %>
-											</tr>	
-  										<% end %>
-  									<% end %>
-									<tr data-status="accepted">
-										
-											<td>
-												<div class="media">
-													<div class="media-body">
-														<span class="media-meta pull-right"><%= job.created_at %></span>
+											</tr>
+											<tr data-status="accepted">
+												<% if(job.accepted == true && job.cancelled == false && job.finished == false) %>
+													<td>
+														<div class="media">
+															<div class="media-body">
+																<span class="media-meta pull-right"><%= job.created_at %></span>
 																<h4 class="title">
-																		<%= link_to(job_path(job)) do %>
-																			Job Type: <%= job.job_type_id %>
-																		<% end %>
+																	<%= link_to(job_path(job)) do %>
+																		Job Type: <%= JobType.find(job.job_type_id).name %>
+																	<% end %>
 																	<span class="pull-right accepted">(Accepted)</span>
 																</h4>
-																<h5>Offered By: <%= job.client_id %></h5>
+																<h5>Offered By: <%= Client.find(job.client_id).fName %> <%= Client.find(job.client_id).lName %></h5>
 																<p>Start Time: <%= job.starttime %> Finish Time: <%= job.finishtime %> for a total of <%= job.hours %> hours </p>
 																<p class="summary">Brief Summary:<%= job.description %></p>
-													</div>
-												</div>
-											</td>
-									</tr>
+															</div>
+														</div>
+													</td>
+												<% end %>
+											</tr>
+											<tr data-status="cancelled">
+												<% if(job.cancelled == true) %>
+													<td>
+														<div class="media">
+															<div class="media-body">
+																<span class="media-meta pull-right"><%= job.created_at %></span>
+																<h4 class="title">
+																	<%= link_to(job_path(job)) do %>
+																		Job Type: <%= JobType.find(job.job_type_id).name %>
+																	<% end %>
+																	<span class="pull-right cancelled">(Cancelled)</span>
+																</h4>
+																<h5>Offered By: <%= Client.find(job.client_id).fName %> <%= Client.find(job.client_id).lName %></h5>
+																<p>Start Time: <%= job.starttime %> Finish Time: <%= job.finishtime %> for a total of <%= job.hours %> hours </p>
+																<p class="summary">Brief Summary:<%= job.description %></p>
+															</div>
+														</div>
+													</td>
+												<% end %>
+											</tr>
+											<tr data-status="finished">
+												<% if(job.cancelled == false && job.finished == true) %>
+													<td>
+														<div class="media">
+															<div class="media-body">
+																<span class="media-meta pull-right"><%= job.created_at %></span>
+																<h4 class="title">
+																	<%= link_to(job_path(job)) do %>
+																		Job Type: <%= JobType.find(job.job_type_id).name %>
+																	<% end %>
+																	<span class="pull-right finished">(Finished)</span>
+																</h4>
+																<h5>Offered By: <%= Client.find(job.client_id).fName %> <%= Client.find(job.client_id).lName %></h5>
+																<p>Start Time: <%= job.starttime %> Finish Time: <%= job.finishtime %> for a total of <%= job.hours %> hours </p>
+																<p class="summary">Brief Summary:<%= job.description %></p>
+															</div>
+														</div>
+													</td>
+												<% end %>
+											</tr>
 
-
-
-
-
-
-									<tr data-status="cancelled">
-										<td>
-											<div class="media">
-												<div class="media-body">
-													<span class="media-meta pull-right">Nov 23, 2017</span>
-													<h4 class="title">
-														Job...
-														<span class="pull-right cancelled">(Cancelled)</span>
-													</h4>
-													<p class="summary">Job desc...</p>
-												</div>
-											</div>
-										</td>
-									</tr>
-									<tr data-status="pending">
-										<td>
-											<div class="media">
-												<div class="media-body">
-													<span class="media-meta pull-right">Nov 23, 2017</span>
-													<h4 class="title">
-														Job...
-														<span class="pull-right pending">(Pending)</span>
-													</h4>
-													<p class="summary">Job desc...</p>
-												</div>
-											</div>
-										</td>
-									</tr>
+										<% end %>
+									<% end %>
 								</tbody>
 							</table>
 						</div>
@@ -98,6 +106,7 @@
 					<button type="button" class="btn btn-success btn-filter" data-target="accepted"> Accepted</button>
 					<button type="button" class="btn btn-warning btn-filter" data-target="pending">Pending</button>
 					<button type="button" class="btn btn-danger btn-filter" data-target="cancelled">Cancelled</button>
+					<button type="button" class="btn btn-filter" data-target="finished">Finished</button>
 				</span>
 			</div>
 
