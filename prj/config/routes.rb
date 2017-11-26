@@ -52,5 +52,5 @@ Rails.application.routes.draw do
     resources :skills, :name_prefix => "teenager_"
   end
 
-  resources :transactions
+  #resources :transactions
 end

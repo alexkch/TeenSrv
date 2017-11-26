@@ -17,7 +17,15 @@ class TransactionsController < ApplicationController
 	end
 
 	def show
-		@transaction = Transaction.find(params[:id])
+		@user = current_user
+		@transaction = nil
+		if @user.usertype == 0 # Teenager
+			@teenager = Teenager.find(params[:format])
+			@transaction = Transaction.find_by(teenager_id: @teenager.id)
+		else # Client
+			@client = Client.find(params[:format])
+			@transaction = Transaction.find_by(client_id: @client.id)
+		end
 	end
 
 	def mytransaction
