@@ -1,6 +1,6 @@
 $(function(){
-	$('#search').keyup(function(){	
-		var current_query = $('#search').val();
+	$('#searchmodal').keyup(function(){	
+		var current_query = $('#searchmodal').val();
 		if (current_query !== "") {
 			$(".list-group li").hide();
 			$(".list-group li").each(function(){
