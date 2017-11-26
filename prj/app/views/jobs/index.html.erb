@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- For MOBILE -->
-<title>Profile</title>
+<title>Jobs</title>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -18,16 +18,12 @@
 
 <body>
 
+<%= render :partial => "template/display/job_board" %>
+
 <% if user_signed_in? %>
-
-  <%= render :partial => "template/display/job_board" %>
   <%= render :partial => "template/nav/usermenu" %>
-
 <% else %>
-
-  <%= render :partial => "template/display/job_board" %>
   <%= render :partial => "template/nav/defaultmenu" %>
-
 <% end %>
 
 </body>

@@ -6,19 +6,19 @@ class TeenagersController < ApplicationController
     end
     
     def show        
-        @user = User.find(current_user.id)
+        @user = current_user
         @teenager = Teenager.find_by(user_id: current_user.id)
     end
     
     def new
-        @user = User.find(params[:user_id])
+        @user = current_user
         @user.teenager = Teenager.new
         @teenager = @user.teenager
     end
     
     def edit
         @teenager = Teenager.find(params[:id])
-        
+        @user = current_user
         render 'new'
     end
     

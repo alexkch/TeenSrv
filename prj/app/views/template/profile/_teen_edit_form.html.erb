@@ -1,3 +1,4 @@
+<div class="box">
 <%= form_with(model: [@user, @teenager], local: true) do |form| %>
   <% if @teenager.errors.any? %>
     <div id="error_explanation">
@@ -10,10 +11,7 @@
       </ul>
     </div>
     <% end %>
-  <p>
-  <%= form.label :'UserID:' %>
-    <%= form.text_field :user_id %>
-  </p>
+    <h2>Edit your Profile</h2>
   <p>
     <%= form.label :'First Name:' %>
     <%= form.text_field :firstname %>
@@ -61,3 +59,4 @@
     <%= form.submit %>
   </p>
 <% end %>
+</div>

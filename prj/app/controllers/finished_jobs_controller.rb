@@ -39,13 +39,14 @@ class FinishedJobsController < ApplicationController
 		@teenager = Teenager.find(@finished_job.teenager_id)
 
 		@job = Job.find(@finished_job.job_id)
-
-		@actual_finished_job = FinishedJob.new
-		@actual_finished_job.job_id = @job.id
-		@actual_finished_job.teenager_id = @teenager.id
-		@actual_finished_job.client_id = @client.id
-		@actual_finished_job.save
-
+		@job.finished = true
+		if(@job.save(:validate => false) == true)
+			@actual_finished_job = FinishedJob.new
+			@actual_finished_job.job_id = @job.id
+			@actual_finished_job.teenager_id = @teenager.id
+			@actual_finished_job.client_id = @client.id
+			@actual_finished_job.save
+		end
 		#redirect_to finished_jobs_path
 
 		# Payment team, your stuff should go here, redirect to your payment controller and process the payment
