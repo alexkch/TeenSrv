@@ -19,7 +19,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.usertype == 0
       @user.create_teenager!
     elsif @user.usertype == 1
-      @user.create_client!
+      @client = Client.new
+      @client.user_id = @user.id
+      @client.save(validate: false)
+      #@user.create_client!
     end
 
   end

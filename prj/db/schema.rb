@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121035227) do
+ActiveRecord::Schema.define(version: 20171126010637) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "street_no"
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 20171121035227) do
     t.string "postal_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
@@ -140,17 +142,6 @@ ActiveRecord::Schema.define(version: 20171121035227) do
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
-  create_table "profiles", force: :cascade do |t|
-    t.string "firstname"
-    t.string "lastname"
-    t.datetime "dob"
-    t.text "description"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_profiles_on_user_id"
-  end
-
   create_table "ratings", force: :cascade do |t|
     t.integer "job_id"
     t.integer "ref_user_id"
@@ -194,6 +185,8 @@ ActiveRecord::Schema.define(version: 20171121035227) do
     t.integer "birth_day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_teenagers_on_user_id"
   end
 
