@@ -9,6 +9,9 @@
                     <h1 class="panel-title pull-left" style="font-size:40px;"><%= @teenager.firstname %> <%= @teenager.lastname %>
                         <small>(<%= @user.username %>) DEBUG </small>
                     </h1>
+
+                                     
+
                     <span class="pull-right">
                         <div class="well well-sm">
                             <div class="row">
@@ -32,13 +35,11 @@
                     </span>
                     <br><br><br><br><br><br>
                     <span class="pull-left">
-
-                        <div class="btn btn-link" data-toggle="modal" data-target="#basicModal" style="text-decoration:none;"><i class="fa fa-fw fa-users" aria-hidden="true"></i> Endorsements <span class="badge">###</span></div>
-                        <div class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fire" aria-hidden="true"></i> Skills </div>
+                        <div class="btn btn-link" data-toggle="modal" data-target="#endorseModal" style="text-decoration:none;"><i class="fa fa-check-square-o" aria-hidden="true"></i> Endorse</div>
+                        <div class="btn btn-link" data-toggle="modal" data-target="#endorsementModal" style="text-decoration:none;"><i class="fa fa-fw fa-users" aria-hidden="true"></i> Endorsements <span class="badge">###</span></div>
                         <div class="btn btn-link" style="text-decoration:none;"><i class="fa fa-credit-card" aria-hidden="true"></i> Payment Info</div>
-
- 
                     </span>
+
                 </div>
             </div>
             <hr>
