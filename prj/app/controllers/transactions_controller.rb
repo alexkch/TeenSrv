@@ -5,7 +5,15 @@ class TransactionsController < ApplicationController
 	end
 
 	def index
-		@transactions = Transaction.all
+		@user = current_user
+		@transactions = nil
+		if @user.usertype == 0 # Teenager
+			@teenager = Teenager.find(params[:format])
+			@transactions = Transaction.find_by(teenager_id: @teenager.id)
+		else # Client
+			@client = Client.find(params[:format])
+			@transactions = Transaction.find_by(client_id: @client.id)
+		end
 	end
 
 	def create
