@@ -65,6 +65,6 @@ class ChargesController < ApplicationController
         :destination      => @teenager_user.account_id
         )
     end
-    
+    redirect_to new_transaction_path
     #redirect to transaction controller to set the transfer_id to it
 end
