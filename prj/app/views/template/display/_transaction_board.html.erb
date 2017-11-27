@@ -18,17 +18,25 @@
               <th>Status</th>
             </thead>
             <tbody>
-              <% @transactions.each do |transaction| %>
+              <% Array(@transactions).each do |transaction| %>
                 <tr>
                   <td><%= transaction.trans_date %></td>
-                  <%= client_lname = Client.find(transaction.client_id).lName %>
-                  <%= client_fname = Client.find(transaction.client_id).fName %>
-                  <%= client_name = client_lname + ", " + client_fname %>
+                  <% client_lname = Client.find(transaction.client_id).lName %>
+                  <% client_fname = Client.find(transaction.client_id).fName %>
+                  <% client_lname ||= "N/A" %>
+                  <% client_fname ||= "N/A" %>
+                  <% client_name = client_lname + ", " + client_fname %>
                   <td><%= client_name %></td>
-                  <%= teen_lname = Teenager.find(transaction.teenager_id).lastname %>
-                  <%= teen_fname = Teenager.find(transaction.teenager_id).firstname %>
-                  <%= teen_name = teen_lname + ", " + teen_fname %>
-                  <td><%= teen_name %></td>
+                  <% if transaction.teenager_id == nil %>
+                    <td>Error: teenager_id==nil, name cannot be retrieved</td>
+                  <% else %>
+                    <% teen_lname = Teenager.find(transaction.teenager_id).lastname %>
+                    <% teen_fname = Teenager.find(transaction.teenager_id).firstname %>
+                    <% teen_lname ||= "N/A" %>
+                    <% teen_fname ||= "N/A" %>
+                    <% teen_name = teen_lname + ", " + teen_fname %>
+                    <td><%= teen_name %></td>
+                  <% end %>
                   <td><%= JobType.find(transaction.job.job_type_id).name %></td>
                   <td>TBD</td>
                   <td><%= transaction.amount %></td>
@@ -64,8 +72,9 @@
                 <span class="glyphicon glyphicon-chevron-right"></span></a>
             </li>
           </ul>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+
 
     </div>
   </div>

@@ -7,9 +7,7 @@
 		<title>Transactions</title>
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
 		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 		<%= stylesheet_link_tag 'sidebar' %>
 	</head>
@@ -21,18 +19,9 @@
 			<%= render :partial => "template/nav/defaultmenu" %>
 		<% end %>
 
-		<%= link_to 'Add Transaction', new_user_transaction_path %>
-		<br>
-		<%= link_to 'Home', home_index_path%>
-		<br>
-		<%= link_to 'All Users', users_path%>
-		<br>
-		<%= link_to 'All Clients', user_clients_path%>
-		<br>
-		<%= link_to 'All Teenagers', user_teenagers_path%>
-		<br>
-
 		<%= render :partial => "template/display/transaction_board" %>
+
+		<%= link_to 'Add Transaction', new_user_transaction_path %>
 	</body>
 
 	<%= javascript_include_tag 'jquery' %>

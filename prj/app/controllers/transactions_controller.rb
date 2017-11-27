@@ -2,16 +2,20 @@ class TransactionsController < ApplicationController
 	def new
 		@transaction = Transaction.new
 		@user = current_user
+		@users = User.all
+		@clients = Client.all
+		@teenagers = Teenager.all
+		@jobs = Job.all
 	end
 
 	def index
 		@user = current_user
 		@transactions = nil
 		if @user.usertype == 0 # Teenager
-			@teenager = Teenager.find(params[:format])
+			@teenager = Teenager.find_by(user_id: @user.id)
 			@transactions = Transaction.find_by(teenager_id: @teenager.id)
 		else # Client
-			@client = Client.find(params[:format])
+			@client = Client.find_by(user_id: @user.id)
 			@transactions = Transaction.find_by(client_id: @client.id)
 		end
 	end
@@ -43,6 +47,6 @@ class TransactionsController < ApplicationController
 
 	private
 	def transaction_params
-		params.require(:transaction).permit(:teeanger_id, :client_id, :job_id)
+		params.require(:transaction).permit(:teeanger_id, :client_id, :job_id, :amount, :trans_date, :status)
 	end
 end
