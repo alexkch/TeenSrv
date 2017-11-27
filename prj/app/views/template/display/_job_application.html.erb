@@ -2,10 +2,10 @@
 	<div class="row">
     <div class="col-md-12">
       <h4>Teenagers' Applications</h4>
-        <div class="table-responsive">     
-            <table id="mytable" class="table table-bordred table-striped">    
+        <div class="table-responsive">
+            <table id="mytable" class="table table-bordred table-striped">
               <thead>
-             
+
                 <th>Job Type</th>
                 <th>Description</th>
                 <th>Start Time</th>
@@ -20,7 +20,7 @@
 						<tr>
 							<td><%= JobType.find(appl.job.job_type_id).name %></td>
 							<!-- job.job_type.name gives us SQLite exception, it should work but doesn't-->
-							<td><%= appl.job.description %></td>   
+							<td><%= appl.job.description %></td>
 							<td><%= appl.job.starttime %></td>
 							<td><%= appl.job.finishtime %></td>
 							<td>
@@ -39,7 +39,7 @@
 					<% end %>
                 <% end %>
               </tbody>
-                  
+
             </table>
 
 
@@ -53,9 +53,9 @@
               <li><a href="#">5</a></li>
               <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
             </ul>
-                
+
           </div>
-            
+
         </div>
 	   </div>
   </div>
@@ -73,26 +73,26 @@
         <input class="form-control " type="text" placeholder="Mohsin">
         </div>
         <div class="form-group">
-        
+
         <input class="form-control " type="text" placeholder="Irshad">
         </div>
         <div class="form-group">
         <textarea rows="2" class="form-control" placeholder="CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan"></textarea>
-    
-        
+
+
         </div>
       </div>
           <div class="modal-footer ">
         <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
       </div>
         </div>
-    <!-- /.modal-content --> 
+    <!-- /.modal-content -->
   </div>
-      <!-- /.modal-dialog --> 
+      <!-- /.modal-dialog -->
     </div>
-    
-    
-    
+
+
+
     <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
       <div class="modal-dialog">
     <div class="modal-content">
@@ -101,16 +101,16 @@
         <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
       </div>
           <div class="modal-body">
-       
+
        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div>
-       
+
       </div>
         <div class="modal-footer ">
         <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
       </div>
         </div>
-    <!-- /.modal-content --> 
+    <!-- /.modal-content -->
   </div>
-      <!-- /.modal-dialog --> 
+      <!-- /.modal-dialog -->
 </div>
