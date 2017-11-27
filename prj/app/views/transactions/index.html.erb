@@ -1,33 +1,30 @@
-<h1> All Transactions </h1>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- For MOBILE -->
+		<title>Transactions</title>
 
-<%= link_to 'Add Transaction', new_transaction_path %>
-<br>
-<%= link_to 'Home', home_index_path%>
-<br>
-<%= link_to 'All Users', users_path%>
-<br>
-<%= link_to 'All Clients', user_clients_path%>
-<br>
-<%= link_to 'All Teenagers', user_teenagers_path%>
-<br>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+		<%= stylesheet_link_tag 'sidebar' %>
+	</head>
 
-<table>
-	<tr>
-		<th>Teenager ID</th>
-		<th>Client ID</th>
-		<th>Job ID</th>
-	</tr>
+	<body>
+		<% if user_signed_in? %>
+			<%= render :partial => "template/nav/usermenu" %>
+		<% else %>
+			<%= render :partial => "template/nav/defaultmenu" %>
+		<% end %>
 
-	<% @transactions.each do |transaction| %>
-		<tr>
-		  <td><%= transaction.teenager_id %></td>
-		  <td><%= transaction.client_id %></td>
-		  <td><%= transaction.job_id %></td>
-		  <td><%= link_to 'Show', url_for([transaction]) %></td>
-		  <td><%= link_to 'Edit', url_for([:edit, transaction]) %></td>
-		  <td><%= link_to 'Destroy', transaction_path,
-            method: :delete,
-            data: { confirm: 'Are you sure?' } %></td>
-		</tr>
-	<% end %>
-</table>
+		<%= render :partial => "template/display/transaction_board" %>
+
+		<%= link_to 'Add Transaction', new_user_transaction_path %>
+	</body>
+
+	<%= javascript_include_tag 'jquery' %>
+	<%= javascript_include_tag 'bootstrap.min' %>
+	<%= javascript_include_tag 'sidebar' %>
+</html>

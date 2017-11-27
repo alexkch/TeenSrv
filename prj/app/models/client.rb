@@ -3,6 +3,7 @@ class Client < ApplicationRecord
     has_many :jobs
     has_many :apply_jobs
     has_many :cancel_jobs
+    has_many :transactions
 
     #validates :fName, presence: true
     #validates :lName, presence: true 
@@ -49,5 +50,4 @@ class Client < ApplicationRecord
       		errors.add(:address, "could not be found")
     	end
  	end
-
 end

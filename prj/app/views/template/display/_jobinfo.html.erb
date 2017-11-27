@@ -36,15 +36,15 @@
 		        	<% if @teenager %>
 		   				<p><strong>Username:</strong><%= @teenager_user %></p>
 						<p> Usertype: Teenager </p>
-						<p>Name: <%= @teenager.fName %> <%= @teenager.lName %></p>
+						<p>Name: <%= @teenager.firstname %> <%= @teenager.lastname %></p>
 						<p>Gender: <%= @teenager.gender%></p>
 						<p>Birthday (mm/dd/yyyy): <%= @teenager.birth_month %>/<%= @teenager.birth_day %>/<%= @teenager.birth_year %></p>
-						<p>Address: <%= @teenager.address%></p>
-						<p>Apartment number: <%= @teenager.apt_no%></p>
-						<p>City: <%= @teenager.city%></p>
-						<p>Province: <%= @teenager.province%></p>
-						<p>Country: <%= @teenager.country%></p>
-						<p>Postal Code: <%= @teenager.postal_code%></p>
+						<p>Address: </p>
+						<p>Apartment number: </p>
+						<p>City: </p>
+						<p>Province: </p>
+						<p>Country: </p>
+						<p>Postal Code: </p>
 					<% end %>
 
 	        	</div>             
@@ -61,6 +61,17 @@
 				                <% end %>
 				            <% else %>
 			                	Already applied
+			                <% end %>
+			            <% elsif(@user.usertype == 1) %>
+			            	<% if(@job.accepted == true) %>
+			            		
+			            		<%= link_to user_teenager_path(Teenager.find(@job.teenager_id).user_id, @job.teenager_id), class: "btn btn-warning btn-block"  do %>
+			                		<span class="fa fa-plus-circle"></span> Job confirmed: <% @teenager %>
+			                	<% end %>
+			            	<% else %>
+			            		<%= link_to new_accept_job_path(:job => @job.id), class: "btn btn-success btn-block"  do %>
+			                		<span class="fa fa-plus-circle"></span> View Applicants
+			                	<% end %>
 			                <% end %>
 	                	<% end %>
 	           		</div>

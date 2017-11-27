@@ -31,12 +31,12 @@
 
                     </span>
                     <br><br><br><br><br><br>
-                    <span class="pull-left">                       
+                    <span class="pull-left">
                         <div class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-users" aria-hidden="true"></i> Endorsements <span class="badge">###</span></div>
                         <div class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fire" aria-hidden="true"></i> Skills </div>
                         <div class="btn btn-link" style="text-decoration:none;"><i class="fa fa-credit-card" aria-hidden="true"></i> Payment Info</div>
 
- 
+
                     </span>
                 </div>
             </div>
@@ -44,8 +44,8 @@
 
 
             <!-- Upcoming Jobs -->
-            <div class="panel panel-default">                        
-                <span class="pull-right"> 
+            <div class="panel panel-default">
+                <span class="pull-right">
                     <div class="btn btn-link" style="text-decoration:none;">
                         <%= link_to(clientjobs_path(@client.id)) do %>
                             <i class="fa fa-address-card-o" aria-hidden="true" data-toggle="tooltip" data-placement="bottom"></i>
@@ -78,10 +78,10 @@
 
             <!-- Recent Transactions -->
             <div class="panel panel-default">
-                <span class="pull-right"> 
+                <span class="pull-right">
                     <div class="btn btn-link" style="text-decoration:none;">
-                        <%= link_to(edit_user_client_path(@user.id, @client.id)) do %>
-                            <i class="fa fa-address-card-o" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Mention"></i>
+                        <%= link_to(user_transactions_path(current_user.id, @client.id)) do %>
+                            <i class="fa fa-credit-card" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Mention"></i>
                         <% end %>
                     </div>
                 </span>
@@ -99,7 +99,7 @@
                         </div><br>
                     </div>
                     <hr>
-                    <!-- Transaction -->                   
+                    <!-- Transaction -->
                     <div class="post-content">
                         <p>Transaction 1</p>
                         <p>Brief Info....</p>
@@ -137,8 +137,8 @@
                             <img class="thumbnail img-responsive" src="https://res.cloudinary.com/closebrace/image/upload/w_400/v1491315007/usericon_id76rb.png" width="300px" height="300px">
                         </div>
                         <div class="media-body">
-                            <hr>                
-                            <span class="pull-right"> 
+                            <hr>
+                            <span class="pull-right">
                                 <div class="btn btn-link" style="text-decoration:none;">
                                     <%= link_to(edit_user_client_path(@user.id, @client.id)) do %>
                                         <i class="fa fa-lg fa-gear" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Mention"></i>
@@ -149,7 +149,7 @@
                             <p>Gender: <%= @client.gender%></p>
                             <p>Birthday (mm/dd/yyyy): <%= @client.birth_month %>/<%= @client.birth_day %>/<%= @client.birth_year %></p>
                             <hr>
-                            <span class="pull-right"> 
+                            <span class="pull-right">
                                 <div class="btn btn-link" style="text-decoration:none;">
                                     <%= link_to(edit_user_client_path(@user.id, @client.id)) do %>
                                         <i class="fa fa-lg fa-gear" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Mention"></i>
@@ -170,4 +170,3 @@
         </div>
     </div>
 </div>
-
