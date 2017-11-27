@@ -1,62 +1,93 @@
 <div class="box">
+
 <%= form_with(model: [@user, @teenager], local: true) do |form| %>
+
   <% if @teenager.errors.any? %>
     <div id="error_explanation">
       <h2>
-        <%= pluralize(@teenager.errors.count, "error") %> prohibited this article from being saved: </h2>
+        <%= pluralize(@teenager.errors.count, "error") %> 
+        prohibited this teenager from being saved: 
+      </h2>
       <ul>
         <% @teenager.errors.full_messages.each do|msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
-    <% end %>
-    <h2>Edit your Profile</h2>
+  <% end %>
+
+  <div class="col-half">
   <p>
     <%= form.label :'First Name:' %>
     <%= form.text_field :firstname %>
   </p>
-
+</div>
+<div class="col-half">
   <p>
     <%= form.label :'Last Name:' %>
     <%= form.text_field :lastname %>
   </p>
-
+</div>
+  <div class="row">
+  <div class="col-half">
   <p>
+  <h3>
     <%= form.label :'Gender:' %>
-    
-    <input id="gender_male" name="gender" type="radio" value="Male" />
-    <label for="gender_male">Male</label>
-    <input id="gender_female" name="gender" type="radio" value="Female" />
-    <label for="gender_female">Female</label>
+  </h3>
+    <%= form.select :gender, [['Male', 'male'], ['Female', 'female'],['Bi', 'bi']] %>
+ 
   </p>
-
+  </div>
+</div>
   <h3>Date of Birth</h3>
   <p>
+  <div class="col-third">
     <%= form.label :'Month' %>
     <%= form.text_field :birth_month %>
+  </div>
+  <div class="col-third">
     <%= form.label :'Day' %>
     <%= form.text_field :birth_day %>
+  </div>
+  <div class="col-third">
     <%= form.label :'Year' %>
     <%= form.text_field :birth_year %>
+  </div>
   </p>
 
-    <h3>Skills</h3>
-      <%= check_box_tag(:babysitting) %>
-      <%= label_tag(:babysitting, "Babysitting") %>
-      <%= check_box_tag(:lawn_mowing) %>
-      <%= label_tag(:lawn_mowing, "Lawn Mowing") %>
-      <%= check_box_tag(:snow_shovelling) %>
-      <%= label_tag(:snow_shovelling, "Snow Shovelling") %>
-      <%= check_box_tag(:skill1) %>
-      <%= label_tag(:skill1, "Skill1") %>
-      <%= check_box_tag(:skill2) %>
-      <%= label_tag(:skill2, "Skill2") %>
-      <%= check_box_tag(:skill3) %>
-      <%= label_tag(:skill3, "Skill3") %>
+  <h3>Address</h3>
+    <p>
+    <%= form.label :'Address Line' %>
+    <%= form.text_field :address %>
+  </p>
+  <p>
+    <%= form.label :'Apt.No' %>
+    <%= form.text_field :apt_no %>
+  </p>
+    <p>
+    <%= form.label :'City' %>
+    <%= form.text_field :city %>
+  </p>
+  <div class="col-half">
+  <p>
+    <%= form.label :'Province/State' %>
+    <%= form.text_field :province %>
+  </p>
+  </div>
+  <div class="col-half">
+  <p>
+    <%= form.label :'Country' %>
+    <%= form.text_field :country %>
+  </p>
+  </div>
+  <p>
+    <%= form.label :'Postal Code' %>
+    <%= form.text_field :postal_code %>
+  </p>
 
   <p>
     <%= form.submit %>
   </p>
 <% end %>
+
 </div>

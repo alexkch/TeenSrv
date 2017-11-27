@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171126010637) do
+ActiveRecord::Schema.define(version: 20171126013101) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "street_no"
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 20171126010637) do
     t.string "description"
     t.boolean "cancelled", default: false
     t.float "hourly_rate"
+    t.boolean "finished", default: false
     t.index ["client_id"], name: "index_jobs_on_client_id"
     t.index ["job_type_id"], name: "index_jobs_on_job_type_id"
     t.index ["teenager_id"], name: "index_jobs_on_teenager_id"
@@ -187,6 +188,12 @@ ActiveRecord::Schema.define(version: 20171126010637) do
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
+    t.string "address"
+    t.integer "apt_no"
+    t.string "city"
+    t.string "province"
+    t.string "country"
+    t.string "postal_code"
     t.index ["user_id"], name: "index_teenagers_on_user_id"
   end
 

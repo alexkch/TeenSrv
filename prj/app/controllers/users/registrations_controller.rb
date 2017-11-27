@@ -17,12 +17,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.save
 
     if @user.usertype == 0
-      @user.create_teenager!
+      @teenager = Teenager.new
+      @teenager.user_id = @user.id
+      @teenager.save(validate: false)
     elsif @user.usertype == 1
       @client = Client.new
       @client.user_id = @user.id
       @client.save(validate: false)
-      #@user.create_client!
     end
 
   end
