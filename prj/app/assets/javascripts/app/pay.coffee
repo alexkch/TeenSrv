@@ -8,10 +8,10 @@ $(document).ready ->
   submitting = false
 
   payButton = $('.pay-button')
-  amoutn = $('.pay-amount')
+  amount = $('.pay-amount')
   destination = form.find('select[name=charge_on]')
   indicator = form.find('.indicator').height( form.outerHeight() )
-  pay_amount = form.find('select[name=pay_amount]')
+  job_id = form.find('select[name=job_id]')
   handler = null
 
   createHandler = ->

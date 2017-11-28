@@ -55,7 +55,7 @@ class FinishedJobsController < ApplicationController
         @teen_user = User.find(@teenager.user_id)
         @client_user = User.find(@client.user_id)
 
-        redirect_to user_path(@current_user)
+        redirect_to user_path(id: @teen_user.id, finished_job_id: @actual_finished_job.job_id)
 	end
 
 end

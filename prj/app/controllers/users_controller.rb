@@ -36,22 +36,32 @@ class UsersController < ApplicationController
   # Show a user's profile page.
   # This is where you can spend money with the connected account.
   # app/views/users/show.html.haml
-  def show 
+  def show
     @user = User.find( params[:id] )
     @plans = Stripe::Plan.all
     @current_user = current_user
+    if params.has_key?(:finished_job_id)
+      @job_to_pay = Job.find(params[:finished_job_id])
+    end
   end
 
   # Make a one-off payment to the user.
   # See app/assets/javascripts/app/pay.coffee
   def pay
     # Find the user to pay.
-    user = User.find( params[:id] )
-    
+    job_id = eval(params[:job_id])[:value]
+    job = Job.find(job_id )
+    teen = Teenager.find(job.teenager_id)
+    client = Client.find(job.client_id)
+    client_user = User.find(client.user_id)
+    teen_user = User.find(teen.user_id)
+
+    user = client_user
     # Charge $10.
-    amount = params[:pay_amount]
+    amount = (job.hours * job.hourly_rate * 100).to_i
     # Calculate the fee amount that goes to the application.
     fee = (amount * Rails.application.secrets.fee_percentage).to_i
+
 
     begin
       charge_attrs = {
@@ -62,20 +72,24 @@ class UsersController < ApplicationController
         application_fee: fee
       }
 
-      case params[:charge_on]
-      when 'connected'
-        # Use the user-to-be-paid's access token
-        # to make the charge directly on their account
-        charge = Stripe::Charge.create( charge_attrs, user.secret_key )
-      when 'platform'
-        # Use the platform's access token, and specify the
-        # connected account's user id as the destination so that
-        # the charge is transferred to their account.
-        charge_attrs[:destination] = user.stripe_user_id
-        charge = Stripe::Charge.create( charge_attrs )
-      end
+      client_to_us_charge = Stripe::Charge.create( charge_attrs, user.secret_key )
+      charge_attrs[:destination] = teen_user.stripe_user_id
+      us_to_teen_charge = Stripe::Charge.create( charge_attrs )
 
-      flash[:notice] = "Charged successfully! <a target='_blank' rel='#{params[:charge_on]}-account' href='https://dashboard.stripe.com/test/payments/#{charge.id}'>View in dashboard &raquo;</a>"
+      # case params[:charge_on]
+      # when 'connected'
+      #   # Use the user-to-be-paid's access token
+      #   # to make the charge directly on their account
+      #   charge = Stripe::Charge.create( charge_attrs, user.secret_key )
+      # when 'platform'
+      #   # Use the platform's access token, and specify the
+      #   # connected account's user id as the destination so that
+      #   # the charge is transferred to their account.
+      #   charge_attrs[:destination] = teen_user.stripe_user_id
+      #   charge = Stripe::Charge.create( charge_attrs )
+      # end
+
+      flash[:notice] = "Charged successfully! <a target='_blank' rel='#{params[:charge_on]}-account' href='https://dashboard.stripe.com/test/payments/#{client_to_us_charge.id}'>View in dashboard &raquo;</a>"
 
     rescue Stripe::CardError => e
       error = e.json_body[:error][:message]

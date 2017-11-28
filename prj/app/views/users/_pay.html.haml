@@ -1,4 +1,4 @@
-- if @user.can_accept_charges?
+- if @user.can_accept_charges? && @job_to_pay != nil
   .panel.panel-primary
     .panel-body
       = form_tag pay_user_path( @user ) do |f|
@@ -6,15 +6,17 @@
         = hidden_field_tag :token
         %button.pull-right.btn.btn-primary.btn-lg.pay-button Pay
         
-        %h3 Make a one-off charge
-        %input{:type => "integer", :name => "pay_amount", :class => "integer"}
+        / %h3 Make a one-off charge
+        / %input{:type => "integer", :name => "pay_amount", :class => "integer"}
+        = hidden_field_tag :job_id, value: @job_to_pay.id
         %p
-          Pay a one-time charge of $10 #{@user.currency.upcase}.
+          Pay a one-time charge of $#{@job_to_pay.hours*@job_to_pay.hourly_rate} #{@user.currency.upcase}.
         %p
           %small Responsible for fees, refunds and chargebacks?
           %select{ name: 'charge_on' }
-            %option{ value: 'connected' } Connected Account
             %option{ value: 'platform' } Platform Account
+            %option{ value: 'connected' } Connected Account
+            
 
   .panel.panel-primary
     .panel-body
@@ -51,7 +53,7 @@
 - else
   .panel.panel-danger
     .panel-body
-      %h3 Nope
+      %h3 There are no jobs for you to pay for this teenager
 
 = javascript_include_tag 'https://checkout.stripe.com/checkout.js'
 :javascript
@@ -62,4 +64,4 @@
     connected: #{@user.publishable_key.to_json}
   };
   window.currentUserEmail = #{@user.username.to_json};
-  window.payPath = #{pay_user_path( @user ).to_json};
+  window.payPath = #{pay_user_path( @user).to_json};
