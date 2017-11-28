@@ -53,6 +53,7 @@ class ChargesController < ApplicationController
     else
     @finished_job.update(paid:true)
     
+    redirect_to new_transaction_path
     teenager_id = @finished_job.teenager_id
     @teenager = Teenager.find(id: teenager_id)
     teenager_user_id = @teenager.user_id
@@ -64,7 +65,25 @@ class ChargesController < ApplicationController
         :source_transaction => "{charge.id}",
         :destination      => @teenager_user.account_id
         )
+        
+    payout = Stripe::Payout.create(
+        :amount => transfer.amount,
+        :currency => transfeer.currency
+        )
+
+    #while payout.status == "failed" || payout.status == "cancelled" do
+     #   payout = Stripe::Payout.create(
+      #  :amount => transfer.amount,
+       # :currency => transfeer.currency
+        #)
+    #end
+
+    transaction = Transaction.create(
+        :client_id   => @finished_job.client_id,
+        :teenager_id => @finished_job.teenager_id,
+        :job_id      => @finished_job.job_id,
+        :payout_id   => payout.id,
+        :amount      => payout.amount
+        )    
     end
-    redirect_to new_transaction_path
-    #redirect to transaction controller to set the transfer_id to it
 end
