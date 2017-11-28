@@ -3,3 +3,73 @@
 <%= render 'transactions_form' %>
 
 <%= link_to 'Back', user_transactions_path(@user.id) %>
+
+<h1>Users</h1>
+<table>
+  <tr>
+    <th>Username</th>
+    <th>User_type</th>
+    <th>User_id</th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.username %></td>
+      <% if user.usertype == 0 %>
+        <td>Teen (0)</td>
+        <% elsif user.usertype == 1 %>
+          <td>Client (1)</td>
+        <% else %>
+          <%= user.usertype %>
+        <% end %>
+        <td><%= user.id %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <h1>Clients</h1>
+  <table>
+    <tr>
+      <th>First_Name</th>
+      <th>Last_Name</th>
+      <th>client_id</th>
+    </tr>
+
+    <% @clients.each do |client| %>
+      <tr>
+        <td><%= client.fName %></td>
+        <td><%= client.lName %></td>
+        <td><%= client.id %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <h1>Teenagers</h1>
+  <table>
+  	<tr>
+  		<th>First_Name</th>
+  		<th>Last_Name</th>
+      <th>teenager_id</th>
+  	</tr>
+
+  	<% @teenagers.each do |teenager| %>
+  		<tr>
+  		  <td><%= teenager.firstname %></td>
+  		  <td><%= teenager.lastname %></td>
+  		  <td><%= teenager.id %></td>
+  		</tr>
+  	<% end %>
+  </table>
+
+  <h1>Jobs</h1>
+  <table>
+  	<tr>
+  		<th>job_id</th>
+  	</tr>
+
+  	<% @jobs.each do |job| %>
+  		<tr>
+  		  <td><%= job.id %></td>
+  		</tr>
+  	<% end %>
+  </table>

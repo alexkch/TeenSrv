@@ -5,8 +5,7 @@ Rails.application.routes.draw do
 
 
   # Registration Devise Route
-
-  devise_for :users, :controllers => {:registrations => "users/registrations"}
+  devise_for :users, :controllers => {:registrations => "users/registrations", :sessions => "users/sessions"}
 
   # Home Routes
   get 'home/index'
@@ -26,7 +25,6 @@ Rails.application.routes.draw do
   resources :finished_jobs
   get 'job/clientjobs', to: 'jobs#clientjobs', as: 'clientjobs'
   get 'job/:id/recommended_teens', to: 'jobs#recommended_teens', as: 'recommended_teens'
-
 
   #resources :sessions
 

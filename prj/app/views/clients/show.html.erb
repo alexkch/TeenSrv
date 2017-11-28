@@ -17,12 +17,13 @@
 
 </head>
 
+<body>
 
 <% if user_signed_in? %>
 
 	<% if @user.usertype == 1 %>
 		
-		<%= render :partial => "template/profile/test_profile" %>
+		<%= render :partial => "template/profile/client_profile" %>
 		<%= render :partial => "template/nav/usermenu" %>	
 
 	<% end %>
@@ -30,6 +31,7 @@
 
 <% else %>
 
+	<%= render :partial => "template/profile/client_profile" %>
 	<%= render :partial => "template/nav/defaultmenu" %>
 
 <% end %>

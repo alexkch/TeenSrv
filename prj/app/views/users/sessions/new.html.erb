@@ -1,35 +1,74 @@
-<head>
-<%= stylesheet_link_tag 'style1' %>
-</head>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- For MOBILE -->
+    <title>Profile</title>
 
-<div class = "box">
-<h2>Log in</h2>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<div class = "row">
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-</div>
-<div class="row">
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-</div>
-<div class = "row">
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <%= stylesheet_link_tag 'sidebar' %>
+    <%= stylesheet_link_tag 'forms' %>
+    <%= stylesheet_link_tag 'login' %>
+
+  </head>
+  <body>
+    <div class="box">
+      <h2>Log in</h2>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="imgcontainer">
+          <img src=<%= asset_path 'p6.png' %> alt="Avatar" class="avatar">
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <%= f.label :email %><br/>
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+          <div class="field">
+            <%= f.label :password %><br/>
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+          <% if devise_mapping.rememberable? -%>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <%= f.submit "Login", :id => 'loginBtn' %>
+          </div>
+        </div>
+
+        <br />
+
+        <%= render "users/shared/links" %>
+      <% end %>
     </div>
-</div>
-  <% end -%>
 
-  <div class="myButton">
-    <%= f.submit "Log in" %>
-  </div>
-  <%= render "users/shared/links" %>
-<% end %>
+    <%= render :partial => "template/nav/defaultmenu" %>
 
-</div>
+  </body>
+<%= javascript_include_tag 'jquery' %>
+<%= javascript_include_tag 'bootstrap.min' %>
+
+</html>

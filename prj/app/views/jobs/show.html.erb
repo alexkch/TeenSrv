@@ -1,25 +1,40 @@
-<p>Viewing as:
-  <strong><%= current_user.username %></strong>
-</p>
-<h1>Job ID: <strong><%= @job.id %></strong></h1>
-<h3>Description: </h3>
-<p>
-  <strong><%= @job.description %></strong>
-</p>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- For MOBILE -->
+<title>My Jobs</title>
+
+<!-- IMPORTANT ONLY WORKS FOR version < 3.3.1 --> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+<%= stylesheet_link_tag 'sidebar' %>
+<%= stylesheet_link_tag 'profile' %>
+
+</head>
 
 
-<table>
-  <tr>
-    <th colspan="1"></th>
-  </tr>
-    <tr>  
-      <td><%= @job.hours %></td>
-      <td><%= @job.starttime %></td>
-      <td><%= @job.finishtime %></td>
-      <td>Offered By: <%= Client.find(@job.client_id).user.username %></td>
-      <td>Accepted By: <%= @job.teenager_id %></td>
-    </tr>
-    <br />
-</table>
-<%= link_to 'Back', jobs_path(:user => current_user.id) %>      
+<% if user_signed_in? %>
 
+
+  <% if @job.cancelled == true %>
+    <h4 align='center'>This job has been cancelled</h4>
+    <% else %>
+  <%= render :partial => "template/display/jobinfo" %>
+  <% end %>
+  <%= render :partial => "template/nav/usermenu" %>
+
+
+<% end %>
+
+
+</body>
+<%= javascript_include_tag 'jquery' %>
+<%= javascript_include_tag 'bootstrap.min' %>
+<%= javascript_include_tag 'sidebar' %>
+<%= javascript_include_tag 'profilemenu' %>
+
+</html>

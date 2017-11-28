@@ -14,9 +14,10 @@
 <%= stylesheet_link_tag 'sidebar' %>
 <%= stylesheet_link_tag 'global' %>
 <%= stylesheet_link_tag 'index' %>
-
+<%= stylesheet_link_tag 'modal_endorse' %>
 </head>
 
+<body>
 
 <% if user_signed_in? %>
 
@@ -24,29 +25,27 @@
     
     <%= render :partial => "template/profile/teen_profile" %>
     <%= render :partial => "template/nav/usermenu" %>
-
+    
 
   <% end %>
 
 
 <% else %>
 
+  <%= render :partial => "template/profile/teen_profile" %>
   <%= render :partial => "template/nav/defaultmenu" %>
 
 <% end %>
-
-<p>
-  <%= link_to 'Addresses', user_addresses_path(@user) %><br />
-  <%= link_to 'Skills', teenager_skills_path(@teenager)%><br />
-</p>
-
-<%= link_to 'Back to User', @user %>
-
+<%= render :partial => "template/modal/endorse" %> 
+<%= render :partial => "template/modal/endorsement" %> 
 </body>
+
+
 <%= javascript_include_tag 'jquery' %>
 <%= javascript_include_tag 'bootstrap.min' %>
 <%= javascript_include_tag 'sidebar' %>
 <%= javascript_include_tag 'profilemenu' %>
+<%= javascript_include_tag 'modal_endorse' %>
 
 </html>
 

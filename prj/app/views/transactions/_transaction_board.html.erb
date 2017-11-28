@@ -1,0 +1,135 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Transaction board</h4>
+
+      <div class="table-responsive">
+        <% if @transactions.nil? %>
+          <strong>No transactions found</strong>
+        <% elsif Array(@transactions).count == 0 %>
+          <strong>No transactions found</strong>
+        <% else %>
+          <h4>Show
+            <div class="form-group" style="display: inline-block;">
+              <select name="state" id="trans_maxRows" class="form-control" style="width: 70px;">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+              </select>
+            </div>
+          entries
+          </h4>
+
+          <table id="trans_table" class="table table-bordred table-striped">
+            <thead>
+              <th>Date</th>
+              <th>Client</th>
+              <th>Teenager</th>
+              <th>Job</th>
+              <th>Payment</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </thead>
+            <tbody>
+              <% Array(@transactions).each do |transaction| %>
+                <tr>
+                  <td><%= transaction.trans_date %></td>
+                  <% client_lname = Client.find(transaction.client_id).lName %>
+                  <% client_fname = Client.find(transaction.client_id).fName %>
+                  <% client_lname ||= "N/A" %>
+                  <% client_fname ||= "N/A" %>
+                  <% client_name = client_lname + ", " + client_fname %>
+                  <td><%= client_name %></td>
+                  <% if transaction.teenager_id == nil %>
+                    <td>Error: teenager_id==nil, name cannot be retrieved</td>
+                  <% else %>
+                    <% teen_lname = Teenager.find(transaction.teenager_id).lastname %>
+                    <% teen_fname = Teenager.find(transaction.teenager_id).firstname %>
+                    <% teen_lname ||= "N/A" %>
+                    <% teen_fname ||= "N/A" %>
+                    <% teen_name = teen_lname + ", " + teen_fname %>
+                    <td><%= teen_name %></td>
+                  <% end %>
+                  <td><%= JobType.find(transaction.job.job_type_id).name %></td>
+                  <td>TBD</td>
+                  <td><%= transaction.amount %></td>
+                  <td><%= transaction.status %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+          <div class="clearfix"></div>
+
+          <div class="pagination-container">
+        		<nav>
+        			<ul class="pagination pull-right"></ul>
+        		</nav>
+      	  </div>
+
+
+          <script>
+            var table = '#trans_table'
+            $('#trans_maxRows').on('change', function () {
+              $('.pagination').html('')
+              var trnum = 0
+              var maxRows = parseInt($(this).val())
+              var totalRows = $(table + ' tbody tr').length
+              $(table + ' tr:gt(0)').each(function () {
+                trnum++
+                if (trnum > maxRows) {
+                  $(this).hide()
+                }
+                if (trnum <= maxRows) {
+                  $(this).show()
+                }
+              })
+              if (totalRows > maxRows) {
+                var pagenum = Math.ceil(totalRows / maxRows)
+                for (var i = 1; i <= pagenum;) {
+                  $('.pagination').append('<li data-page="' + i + '">\<span>' + i++ + '<span class="sr-only">(current)</span></span>\</li>').show()
+                }
+              }
+              $('.pagination li:first-child').addClass('active')
+              $('.pagination li').on('click', function () {
+                var pagenum = $(this).attr('data-page')
+                var trIndex = 0;
+                $('.pagination li').removeClass('active')
+                $(this).addClass('active')
+                $(table + ' tr:gt(0)').each(function () {
+                  trIndex++
+                  if (trIndex > (maxRows * pagenum) || trIndex <= ((maxRows * pagenum) - maxRows)) {
+                    $(this).hide()
+                  } else {
+                    $(this).show()
+                  }
+                })
+              })
+            })
+
+            $(function () {
+              $('table tr:eq(0)').prepend('<th>ID</th>')
+              var id = 0;
+              $('table tr:gt(0)').each(function () {
+                id++
+                $(this).prepend('<td>' + id + '</td>')
+              })
+            })
+            $('#trans_maxRows').trigger("change");
+          </script>
+        <% end %>
+
+
+
+
+
+
+      </div>
+
+
+    </div>
+  </div>
+</div>

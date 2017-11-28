@@ -13,8 +13,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     @user = User.find(current_user.id)
     @user.username = params[:user][:email]
-    @user.usertype = 1
+    @user.usertype = params[:user][:usertype]
     @user.save
+
+    if @user.usertype == 0
+      @teenager = Teenager.new
+      @teenager.user_id = @user.id
+      @teenager.save(validate: false)
+    elsif @user.usertype == 1
+      @client = Client.new
+      @client.user_id = @user.id
+      @client.save(validate: false)
+    end
+
   end
 
   # GET /resource/edit

@@ -4,17 +4,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- For MOBILE -->
-<title>Profile</title>
+<title>My Jobs</title>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- IMPORTANT ONLY WORKS FOR version < 3.3.1 --> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-<%= stylesheet_link_tag 'profile' %>
 <%= stylesheet_link_tag 'sidebar' %>
-<%= stylesheet_link_tag 'global' %>
-<%= stylesheet_link_tag 'index' %>
+<%= stylesheet_link_tag 'myjobs' %>
 
 </head>
 
@@ -34,47 +33,6 @@
 <%= javascript_include_tag 'jquery' %>
 <%= javascript_include_tag 'bootstrap.min' %>
 <%= javascript_include_tag 'sidebar' %>
-<%= javascript_include_tag 'profilemenu' %>
+<%= javascript_include_tag 'myjobs' %>
 
 </html>
-
-
-
-
-
-
-<!-- 
-<h1>Jobs for</h1>
-<p>
-  <strong><%= @user.username %></strong>
-</p>
-
-<%= link_to 'Back', jobs_path %>
-<table>
-  <tr>
-    <th colspan="1"></th>
-  </tr>
- 
-  <% @jobs.each do |job| %>
-    <tr>
-      <td><%= job.description %></td>      
-      <td><%= job.amount %></td>
-      <td><%= job.hours %></td>
-      <td><%= job.starttime %></td>
-      <td><%= job.finishtime %></td>
-      <td>Offered By: <%= job.teenager_id %></td>
-      <td>Accepted By: <%= job.client_id %></td>
-      <td><%= link_to 'Show', job_path(job, :user => @user.id) %></td>
-      <td><%= link_to 'Edit', edit_job_path(job, :user => @user.id) %></td>
-      <td><%= link_to 'Destroy', job_path(job, :user => @user.id),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-    <br />
-</table>
-      
-
-
-    </tr>
-  <% end %>
-</table> -->

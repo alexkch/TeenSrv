@@ -7,6 +7,7 @@ end
 
 gem 'stripe'
 gem 'validates_timeliness', '~> 4.0'
+gem 'geocoder'
 # Bundle gem Devise 
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

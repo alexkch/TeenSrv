@@ -2,7 +2,7 @@ class JobsController < ApplicationController
 
 def index
 	@user = current_user
-	@jobs = Job.all
+	@jobs = Job.where("cancelled = ? AND finished = ?", false, false)
 	if(@user.usertype==0)
 		@teen = Teenager.find_by_user_id(@user.id)
 	elsif(@user.usertype==1)
@@ -12,10 +12,8 @@ end
 
 def clientjobs
 	@user = current_user
-	@jobs = Job.where(client_id: params[:id])
-	if(@user.usertype==1)
-		@client = Client.find_by_user_id(@user.id)
-	end
+	@client = Client.find_by(user_id: @user.id)
+	@jobs = Job.where(client_id: @client.id)
 end
 
 def myoffer
@@ -36,6 +34,15 @@ end
 def show
 	@user = current_user
 	@job = Job.find(params[:id])
+  	@client = Client.find_by(id: @job.client_id) 
+  	if @client
+  		@client_username = User.select("username").find_by(id: @client.user_id)
+  	end
+  	
+  	@teenager = Teenager.find_by(id: @job.teenager_id)
+  	if @teenager
+  		@teenager_username = User.select("username").find_by(id: @teenager.user_id)
+  	end
 end
  
 def new
@@ -45,6 +52,7 @@ def new
 end
  
 def edit
+	@user = current_user
 	@job = Job.find(params[:id])
 	@job_types = JobType.all
 end
@@ -61,7 +69,7 @@ def create
 	@job = Job.create(job_params)
 
 	if (@job.valid?)
-		redirect_to root_path
+		redirect_to job_path(@job.id)
 	else
 		render 'new'
 	end
@@ -71,7 +79,7 @@ def update
 	@user = current_user
  	@job = Job.find(params[:id])
 	if @job.update(job_params)
-		redirect_to controller: 'jobs', action: 'myjob', user: params[:user]
+		redirect_to controller: 'jobs', action: 'index'
 	else
 		render 'edit'
 	end
@@ -97,7 +105,7 @@ end
 
 private
 	def job_params
-    	params.require(:job).permit(:job_type_id, :client_id, :description, :hourly_rate, :hours, :starttime, :finishtime)
+    	params.require(:job).permit(:job_type_id, :client_id, :description, :hourly_rate, :hours, :starttime, :finishtime, :cancelled)
 	end
 
 end
