@@ -30,7 +30,7 @@ class TeenagersController < ApplicationController
     end
     
     def update
-        @user = User.find(params[:user_id])
+        @user = current_user
         @teenager = @user.teenager
         
         if @teenager.update(teenager_params)
@@ -42,7 +42,7 @@ class TeenagersController < ApplicationController
     
     private
     def teenager_params
-        params.require(:teenager).permit(:user_id, :firstname, :lastname, :gender, :birth_month, :birth_day, :birth_year, :babysitting, :lawn_mowing, :snow_shovelling, :skill1, :skill2, :skill3)
+        params.require(:teenager).permit(:firstname, :lastname, :gender, :birth_month, :birth_day, :birth_year, :address, :apt_no, :city, :province, :country, :postal_code)
     end
 
 end

@@ -17,9 +17,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.save
 
     if @user.usertype == 0
-      @user.create_teenager!
+      @teenager = Teenager.new
+      @teenager.user_id = @user.id
+      @teenager.save(validate: false)
     elsif @user.usertype == 1
-      @user.create_client!
+      @client = Client.new
+      @client.user_id = @user.id
+      @client.save(validate: false)
     end
 
   end
@@ -38,8 +42,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # DELETE /resource
   def destroy
+    lsdflakjsdf
     super
+
   end
+
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -65,7 +72,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
 
   def after_sign_up_path_for(user)
-    return home_index_url
+    return user_path(user)
   end
 
   # The path used after sign up for inactive accounts.

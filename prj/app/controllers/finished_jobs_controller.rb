@@ -53,8 +53,10 @@ class FinishedJobsController < ApplicationController
 		# We may need to redesign the db or save the info to the db differently, because here I save the completed job
 		# on the finished jobs db so if the payment is interrupted, it will still be saved (it will be missing a transaction id)
 		# We could change this class to pending finished jobs and then when the payment is complete, make it a finished job
-        redirect_to  new_charge_path
-        
+        @teen_user = User.find(@teenager.user_id)
+        @client_user = User.find(@client.user_id)
+
+        redirect_to user_path(id: @teen_user.id, finished_job_id: @actual_finished_job.job_id)
 	end
 
 end

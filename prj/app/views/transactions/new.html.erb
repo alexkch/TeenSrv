@@ -1,5 +1,9 @@
 <h1>Add Transactions</h1>
 
+<%= render 'transactions_form' %>
+
+<%= link_to 'Back', user_transactions_path(@user.id) %>
+
 <h1>Users</h1>
 <table>
   <tr>
@@ -69,7 +73,3 @@
   		</tr>
   	<% end %>
   </table>
-
-  <%= render 'transactions_form' %>
-
-  <%= link_to 'Back', user_transactions_path(@user.id) %>

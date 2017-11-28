@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
   	end
   end
   def destroy
+    sdfs
   	log_out
   	redirect_to welcome_path
   end
