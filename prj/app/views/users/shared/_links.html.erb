@@ -1,11 +1,10 @@
 <%- if controller_name != 'sessions' %>
-<div class="myButton pull-left">
+  <label><b>Already a user?</b></label>
   <%= link_to "Login", new_session_path(resource_name) %><br />
-</div>
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  New user?
+  <label><b>New user?</b></label>
   <%= link_to "Sign up", new_registration_path(resource_name) %><br />
 <% end -%>
 
