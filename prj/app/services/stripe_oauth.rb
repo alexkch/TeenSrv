@@ -63,7 +63,7 @@ class StripeOauth < Struct.new( :user )
     } )
 
     user.stripe_user_id = data.params['stripe_user_id']
-    user.stripe_account_type = 'oauth'
+    user.stripe_account_type = 'oauth' # change BACK TO STRIPE_ACCOUNT_TYPE
     user.publishable_key = data.params['stripe_publishable_key']
     user.secret_key = data.token
     user.currency = default_currency

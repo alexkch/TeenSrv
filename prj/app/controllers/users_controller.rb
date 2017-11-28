@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   # Show a user's profile page.
   # This is where you can spend money with the connected account.
   # app/views/users/show.html.haml
-  def show
+  def show 
     @user = User.find( params[:id] )
     @plans = Stripe::Plan.all
     @current_user = current_user

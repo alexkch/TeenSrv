@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121163301) do
+ActiveRecord::Schema.define(version: 20171122185514) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "street_no"
@@ -105,7 +105,6 @@ ActiveRecord::Schema.define(version: 20171121163301) do
     t.integer "job_type_id"
     t.integer "teenager_id"
     t.integer "client_id"
-    t.text "description"
     t.integer "hours"
     t.datetime "starttime"
     t.datetime "finishtime"
@@ -113,6 +112,7 @@ ActiveRecord::Schema.define(version: 20171121163301) do
     t.datetime "updated_at", null: false
     t.integer "trans_id"
     t.boolean "accepted", default: false
+    t.string "description"
     t.boolean "cancelled", default: false
     t.float "hourly_rate"
     t.index ["client_id"], name: "index_jobs_on_client_id"
@@ -138,17 +138,6 @@ ActiveRecord::Schema.define(version: 20171121163301) do
     t.datetime "updated_at", null: false
     t.integer "paymenttype"
     t.index ["user_id"], name: "index_payments_on_user_id"
-  end
-
-  create_table "profiles", force: :cascade do |t|
-    t.string "firstname"
-    t.string "lastname"
-    t.datetime "dob"
-    t.text "description"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -217,12 +206,6 @@ ActiveRecord::Schema.define(version: 20171121163301) do
     t.string "username"
     t.text "password"
     t.integer "usertype"
-    t.string "publishable_key"
-    t.string "secret_key"
-    t.string "stripe_user_id"
-    t.string "currency"
-    t.string "stripe_account_type"
-    t.text "stripe_account_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
@@ -235,8 +218,12 @@ ActiveRecord::Schema.define(version: 20171121163301) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "string_account_type"
-    t.text "string_account_status"
+    t.string "publishable_key"
+    t.string "secret_key"
+    t.string "stripe_user_id"
+    t.string "currency"
+    t.string "stripe_account_type"
+    t.text "stripe_account_status"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
