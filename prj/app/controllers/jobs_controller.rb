@@ -34,14 +34,15 @@ end
 def show
 	@user = current_user
 	@job = Job.find(params[:id])
+	@job_name = JobType.find(@job.job_type_id).name
   	@client = Client.find_by(id: @job.client_id) 
   	if @client
-  		@client_username = User.select("username").find_by(id: @client.user_id)
+  		@client_username = User.find(@client.user_id).username
   	end
   	
   	@teenager = Teenager.find_by(id: @job.teenager_id)
   	if @teenager
-  		@teenager_username = User.select("username").find_by(id: @teenager.user_id)
+  		@teenager_username = User.find(@teenager.user_id).username
   	end
 end
  

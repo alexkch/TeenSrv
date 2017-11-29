@@ -5,7 +5,7 @@
 	    	<div class="col-md-12" style="padding-top: 10px">
 	          	<div class="col-md-6 text-center">
 					<p><strong>Job ID:</strong><%= @job.id %></p>
-					<p>Job Type ID: <%= JobType.find(@job.job_type_id).name %></p>
+					<p>Job Type: <%= @job_name %></p>
 					<p>Description: <%= @job.description%></p>
 					<p>Start Time (mm/dd/yyyy): <%= @job.starttime%></p>
 					<p>End Time (mm/dd/yyyy): <%= @job.finishtime%></p>
@@ -17,7 +17,7 @@
 	     		<div class="col-md-3 text-center">
 
 		     		<% if @client %>
-		   				<p><strong>Username:</strong><%= @client_user %></p>
+		   				<p><strong>Username:</strong> <%= link_to "#{@client_username}", client_path(@client.id) %></p>
 						<p> Usertype: Client </p>
 						<p>Name: <%= @client.fName %> <%= @client.lName %></p>
 						<p>Gender: <%= @client.gender%></p>
@@ -34,7 +34,7 @@
 	        	<div class="col-md-3 text-center">
 
 		        	<% if @teenager %>
-		   				<p><strong>Username:</strong><%= @teenager_user %></p>
+		   				<p><strong>Username:</strong> <%= link_to "#{@teenager_username}", client_path(@client.id) %></p>
 						<p> Usertype: Teenager </p>
 						<p>Name: <%= @teenager.firstname %> <%= @teenager.lastname %></p>
 						<p>Gender: <%= @teenager.gender%></p>
@@ -63,10 +63,9 @@
 			                	Already applied
 			                <% end %>
 			            <% elsif(@user.usertype == 1) %>
-			            	<% if(@job.accepted == true) %>
-			            		
+			            	<% if(@job.accepted == true && @teenager) %>
 			            		<%= link_to user_teenager_path(Teenager.find(@job.teenager_id).user_id, @job.teenager_id), class: "btn btn-warning btn-block"  do %>
-			                		<span class="fa fa-plus-circle"></span> Job confirmed: <% @teenager %>
+			                		<span class="fa fa-plus-circle"></span> Job confirmed: <%= @teenager_username %>3 <% @job %>
 			                	<% end %>
 			            	<% else %>
 			            		<%= link_to new_accept_job_path(:job => @job.id), class: "btn btn-success btn-block"  do %>
