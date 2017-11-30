@@ -1,4 +1,7 @@
 class ClientsController < ApplicationController
+
+	before_action :authenticate_profile
+
 	def index
 	  @users = User.all
 	  @clients = Client.all
@@ -10,7 +13,6 @@ class ClientsController < ApplicationController
 	  	@address = Address.find_by(user_id: current_user.id)
 
 	  	@jobs = Job.where(client_id: @client.id).order("created_at DESC").limit(3)
-
 
 	end
 
