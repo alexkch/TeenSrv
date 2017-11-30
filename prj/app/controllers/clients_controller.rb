@@ -1,6 +1,7 @@
 class ClientsController < ApplicationController
 
-	before_action :authenticate_profile
+    before_action :authenticate_profile_show, only: [:show]
+    before_action :authenticate_client_edit, only: [:edit, :update]
 
 	def index
 	  @users = User.all
@@ -11,29 +12,13 @@ class ClientsController < ApplicationController
 		@user = current_user
 	  	@client = Client.find_by(user_id: current_user.id) 
 	  	@address = Address.find_by(user_id: current_user.id)
-
 	  	@jobs = Job.where(client_id: @client.id).order("created_at DESC").limit(3)
-
 	end
 
-	def new
-	  @user = current_user
-	  @client = Client.new
-	  @user.client = @client
-	end
-	 
 	def edit
 	  @user = current_user
 	  @client = @user.client
 	end
-	 
-	def create
-	  @user = current_user
-	  @client = @user.client.create(client_params)
-	  
-	  redirect_to @user
-	end
-
 
 	def update
 	  @user = current_user
@@ -45,7 +30,6 @@ class ClientsController < ApplicationController
 	  end
 	end
 
-
 	def destroy
 	  @client = CLient.find(params[:id])
 	  @client.destroy
@@ -54,6 +38,7 @@ class ClientsController < ApplicationController
 	end
 
 	private
+
 	def client_params
 		params.require(:client).permit(:fName, :lName, :gender, :birth_month, :birth_day, :birth_year, :address, :apt_no, :city, :province, :country, :postal_code)
     end

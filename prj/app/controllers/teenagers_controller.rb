@@ -1,5 +1,7 @@
 class TeenagersController < ApplicationController
     attr_accessor :address
+    before_action :authenticate_profile_show, only: [:show]
+    before_action :authenticate_teenager_edit, only: [:edit, :update]
     
     def index
         @teenagers = Teenager.all
@@ -10,23 +12,9 @@ class TeenagersController < ApplicationController
         @teenager = Teenager.find_by(user_id: current_user.id)
     end
     
-    def new
-        @user = current_user
-        @user.teenager = Teenager.new
-        @teenager = @user.teenager
-    end
-    
     def edit
-        @teenager = Teenager.find(params[:id])
         @user = current_user
-        render 'new'
-    end
-    
-    def create
-        @user = User.find(params[:user_id])
-        
-        @user.teenager.create!(teenager_params)
-        redirect_to user_teenagers_path
+        @teenager = Teenager.find_by(user_id: current_user.id)
     end
     
     def update
