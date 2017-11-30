@@ -24,13 +24,6 @@ def myoffer
 	end
 end
 	
-
-# 	else
-# 		render 'index'
-# 	end
-
-# end
-
 def show
 	@user = current_user
 	@job = Job.find(params[:id])

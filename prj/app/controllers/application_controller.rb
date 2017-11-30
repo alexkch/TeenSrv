@@ -15,26 +15,30 @@ class ApplicationController < ActionController::Base
   
   before_action :authenticate_user!
 
-  #before_action :configure_permitted_parameters, if: :devise_controller?
+  def authenticate_profile
 
-  # protected
-  
+    this_user = User.find(params[:user_id])
+    if this_user.usertype == 0 #Teenager
+      this_profile = Teenager.find_by(user_id: params[:user_id])
+    elsif this_user.usertype == 1 #Client
+      this_profile = Client.find_by(user_id: params[:user_id])
+    end
 
-  # def configure_permitted_parameters
-  #   # devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-  #   #   user_params.permit(:username, :email, :password, :password_confirmation)
-  #   devise_parameter_sanitizer.permit(:sign_in) do |user_params|
-  #     user_params.permit(:username, :email, :password, :password_confirmation)
-  #   end
-  # end
+    if current_user.usertype == 0 #Teenager
+      my_profile = Teenager.find_by(user_id: current_user.id)
+    elsif current_user.usertype == 1 #Client
+      my_profile = Client.find_by(user_id: current_user.id)
+    end
 
-    # A simple before_action to redirect a non-logged-in
-  # user to the login page
-  def require_user
-    if session[:user_id].blank?
-      redirect_to new_sessions_path
-      return
+    if this_profile.nil? 
+      redirect_to home_index_url
+    elsif current_user.id != this_user.id || my_profile.id != this_profile
+      redirect_to controller: 'profiles', action: 'viewuser'
     end
   end
+
+
+
+
 
 end
