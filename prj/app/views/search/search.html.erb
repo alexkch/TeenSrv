@@ -1,4 +1,4 @@
-<h1> <%= params[:q] %> jobs</h1>
+<h1> <%= @jobs.size %> <%= params[:q] %> jobs in your area</h1>
 
 <table>
    <% @jobs.each do |job| %>
@@ -7,6 +7,7 @@
       <td><%= job.description %></td>      
       <td><%= job.starttime %></td>
       <td><%= job.finishtime %></td>
+      <td> <% client = job.client %> </td>
       <td><%= link_to 'Apply', apply_jobs_path(apply_job: job), method: 'post' %> 
     </tr>
   <% end %>

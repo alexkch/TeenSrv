@@ -1,5 +1,5 @@
-<%= form_with(model: @transaction, local: true) do |form| %>
-  
+<%= form_with(model: [@user, @transaction], local: true) do |form| %>
+
   <p>
     <%= form.label :'Teen ID:' %>
     <%= form.text_field :teenager_id %>
@@ -13,8 +13,16 @@
     <%= form.text_field :job_id %>
   </p>
   <p>
-    <%= form.label :'Payment ID:' %>
-    <%= form.text_field :payment_id %>
+    <%= form.label :'Amount:' %>
+    <%= form.number_field :amount %>
+  </p>
+  <p>
+    <%= form.label :'Trans_Date:' %>
+    <%= form.datetime_local_field :trans_date %>
+  </p>
+  <p>
+    <%= form.label :'Status:' %>
+    <%= form.text_field :status %>
   </p>
   <p>
   	<%= form.submit %>
