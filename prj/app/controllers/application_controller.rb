@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
 
     if this_profile.nil? 
       redirect_to home_index_url
-    elsif current_user.id != this_user.id || my_profile.id != this_profile
+    elsif current_user.id != this_user.id || my_profile.id != this_profile.id
       redirect_to controller: 'profiles', action: 'viewuser'
     end
   end
