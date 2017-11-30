@@ -242,20 +242,14 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.11)
-<<<<<<< HEAD
   bootstrap-sass (~> 3.3.1)
-=======
->>>>>>> e0854412301c0d7535623ad31e43b0926f692d2e
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   devise
-<<<<<<< HEAD
+  geocoder
   haml
   highline
-=======
-  geocoder
->>>>>>> e0854412301c0d7535623ad31e43b0926f692d2e
   jbuilder (~> 2.5)
   jquery-rails
   oauth2

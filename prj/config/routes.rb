@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 
   #resources :sessions
 
+  get 'profile/:user_id', to: 'profiles#viewuser', as: 'user_profile'
+
   resources :charges
   resources :clients # Used for display all clients, remove this when production -- Robert
   # Routes
@@ -59,9 +61,6 @@ Rails.application.routes.draw do
   resources :teenagers do
     resources :skills, :name_prefix => "teenager_"
   end
-
-  resources :transactions
-  resources :profiles
 
   get '/users/connect_stripe' => 'users#connect_stripe' 
 
