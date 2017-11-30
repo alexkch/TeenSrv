@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   # ROOT
   root 'home#index'
 
-
   # Registration Devise Route
   devise_for :users, :controllers => {:registrations => "users/registrations", :sessions => "users/sessions"}
 
@@ -26,19 +25,17 @@ Rails.application.routes.draw do
   get 'job/clientjobs', to: 'jobs#clientjobs', as: 'clientjobs'
   get 'job/:id/recommended_teens', to: 'jobs#recommended_teens', as: 'recommended_teens'
 
-  #resources :sessions
-
-  get 'profile/:user_id', to: 'profiles#viewuser', as: 'user_profile'
+  get 'profile/:user_id', to: 'profiles#this_profile', as: 'this_profile'
 
   resources :charges
-  resources :clients # Used for display all clients, remove this when production -- Robert
+  
   # Routes
   resources :users, only: [:index, :show, :destroy] do
     resources :transactions
-    resources :clients
+    resources :clients, only: [:index, :show, :edit, :update, :destroy]
     resources :endorsements
     resources :ratings
-    resources :teenagers, :name_prefix => "user_"
+    resources :teenagers, :name_prefix => "user_", only: [:index, :show, :edit, :update, :destroy]
     resources :addresses
 
 	  get 'payments/index', to: 'payments#index', as: 'paymentsindex'
