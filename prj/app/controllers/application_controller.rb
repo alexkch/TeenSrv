@@ -17,23 +17,28 @@ class ApplicationController < ActionController::Base
 
   def authenticate_profile
 
-    this_user = (params[:user_id]).to_i
-    this_profile = (params[:id]).to_i
-
-    if current_user.usertype == 0 #Teenager
-      profile = Teenager.find_by(user_id: current_user.id)
-    elsif current_user.usertype == 1 #Client
-      profile = Client.find_by(user_id: current_user.id)
+    this_user = User.find(params[:user_id])
+    if this_user.usertype == 0 #Teenager
+      this_profile = Teenager.find_by(user_id: params[:user_id])
+    elsif this_user.usertype == 1 #Client
+      this_profile = Client.find_by(user_id: params[:user_id])
     end
 
-    if profile.nil? 
+    if current_user.usertype == 0 #Teenager
+      my_profile = Teenager.find_by(user_id: current_user.id)
+    elsif current_user.usertype == 1 #Client
+      my_profile = Client.find_by(user_id: current_user.id)
+    end
+
+    if this_profile.nil? 
       redirect_to home_index_url
-    elsif current_user.id != this_user || profile.id != this_profile
-      redirect_to home_index_url
+    elsif current_user.id != this_user.id || my_profile.id != this_profile
+      redirect_to controller: 'profiles', action: 'viewuser'
     end
   end
 
 
 
-  
+
+
 end

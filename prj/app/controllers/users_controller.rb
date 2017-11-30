@@ -14,18 +14,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  # # Create a new user via #new
-  # # Log them in after creation, and take
-  # # them to their own 'profile page'.
-  # def create
-  #   @user = User.create( user_params )
-  #   session[:user_id] = @user.id
-  #   if @user.valid?
-  #     redirect_to user_path( @user )
-  #   else
-  #     render action: 'new'
-  #   end
-  # end
 
   def update
     manager = current_user.manager
