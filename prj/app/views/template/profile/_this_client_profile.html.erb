@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h1 class="panel-title pull-left" style="font-size:40px;"><%= @this_client.fName %> <%= @this_client.lName %>
-                        <small>(<%= @this_user.username %>) DEBUG </small>
+                        <small>(<%= @this_user.username %>)</small>
                     </h1>
                     <span class="pull-right">
                         <div class="well well-sm">
@@ -36,10 +36,10 @@
             <hr>
 
 
-            <!-- Upcoming Jobs -->
+            <!-- Recent Jobs -->
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h4><strong>Upcoming Jobs</strong></h4>
+                    <h4><strong>Recent Jobs</strong></h4>
 
                     <hr>
                     <div class="post-content">
@@ -72,32 +72,17 @@
                         <p>Transaction 1</p>
                         <p>Brief Info....</p>
                     </div>
-                    <div>
-                        <div class="pull-right btn-group-xs">
-                            <div class="btn btn-default btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i> More info...</div>
-                        </div><br>
-                    </div>
                     <hr>
                     <!-- Transaction -->
                     <div class="post-content">
                         <p>Transaction 1</p>
                         <p>Brief Info....</p>
                     </div>
-                    <div>
-                        <div class="pull-right btn-group-xs">
-                            <div class="btn btn-default btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i> More info...</div>
-                        </div><br>
-                    </div>
                     <hr>
                     <!-- Transaction -->
                     <div class="post-content">
                         <p>Transaction 1</p>
                         <p>Brief Info....</p>
-                    </div>
-                    <div>
-                        <div class="pull-right btn-group-xs">
-                            <div class="btn btn-default btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i> More info...</div>
-                        </div><br>
                     </div>
                     <hr>
                 </div>
@@ -117,17 +102,19 @@
                         </div>
                         <div class="media-body">
                             <hr>
+                            <h3>Bio</h3>
                             <p>Usertype: Client </p>
                             <p>Gender: <%= @this_client.gender%></p>
                             <p>Birthday (mm/dd/yyyy): <%= @this_client.birth_month %>/<%= @this_client.birth_day %>/<%= @this_client.birth_year %></p>
                             <hr>
-                            <h3><strong>Primary Address</strong></h3>
+                            <h3><strong>Address</strong></h3>
                             <p>Street: <%= @this_client.address%></p>
                             <p>Apartment number: <%= @this_client.apt_no%></p>
                             <p>City: <%= @this_client.city%></p>
                             <p>Province: <%= @this_client.province%></p>
                             <p>Country: <%= @this_client.country%></p>
                             <p>Postal Code: <%= @this_client.postal_code%></p>
+                            <hr>
                         </div>
                     </div>
                 </div>
