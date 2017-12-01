@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
 
 	    if @this_user.usertype == 0 #Teenager
 	      	@this_teenager = Teenager.find_by(user_id: @this_user.id)
-	      	@endorsements = Endorsement.where(end_user_id: @this_user.id).all
+	      	@endorsements = Endorsement.where(end_user_id: @this_user.id, removed: 0).all
 	      	if @endorsements
 	      		@end_count = @endorsements.count
 	      	end
