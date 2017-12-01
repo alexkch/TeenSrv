@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :destroy] do
     resources :transactions
     resources :clients, only: [:index, :show, :edit, :update, :destroy]
-    resources :endorsements
+    resources :endorsements, only: [:create, :update, :destroy]
     resources :ratings
     resources :teenagers, :name_prefix => "user_", only: [:index, :show, :edit, :update, :destroy]
     resources :addresses

@@ -11,11 +11,13 @@
 				</span>
 			</div>
 			<ul class="list-group">
-				<li class="list-group-item">Cras justo odio</li>
-				<li class="list-group-item">Dapibus ac facilisis in</li>
-				<li class="list-group-item">Morbi leo risus</li>
-				<li class="list-group-item">Porta ac consectetur ac</li>
-				<li class="list-group-item">Vestibulum at eros</li>
+				<% if @endorsements %>
+                	<% @endorsements.each do |endorsement| %>
+                		<% if endorsement.removed != 1 %>
+				<li class="list-group-item"><%= link_to User.find(endorsement.ref_user_id).username, :controller => :profiles, :action => :this_profile, :user_id => endorsement.ref_user_id %><span class="badge"><%= endorsement.skill %></span></li>
+				<% end %>
+				<% end %>
+				<% end %>
 			</ul>
 		</div>
 	</div>

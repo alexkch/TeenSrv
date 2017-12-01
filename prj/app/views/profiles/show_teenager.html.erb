@@ -19,19 +19,18 @@
 
 <% if user_signed_in? %>
 
-  <% if @user.usertype == 0 %>
-    
-    <%= render :partial => "template/profile/this_teen_profile" %>
-    <%= render :partial => "template/nav/usermenu" %>
-    <%= render :partial => "template/modal/endorse" %> 
+  
+<%= render :partial => "template/profile/this_teen_profile" %>
+<%= render :partial => "template/nav/usermenu" %>
+<%= render :partial => "template/modal/endorse" %> 
 
-  <% end %>
+
 
 
 <% else %>
 
-  <%= render :partial => "template/profile/this_teen_profile" %>
-  <%= render :partial => "template/nav/defaultmenu" %>
+<%= render :partial => "template/profile/this_teen_profile" %>
+<%= render :partial => "template/nav/defaultmenu" %>
 
 <% end %>
 
