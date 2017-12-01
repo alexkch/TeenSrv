@@ -1,8 +1,12 @@
 class SearchController < ApplicationController
 
 	def search
-		if (current_user.usertype == 0)
+		if(current_user.usertype == 0)
 			job_search_teen
+		elsif(current_user.usertype == 1)
+			redirect_to root_path
+		else
+			redirect_to root_path
 		end
 	end
 
