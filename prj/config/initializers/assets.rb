@@ -8,7 +8,7 @@ Rails.application.config.assets.version = '1.0'
 # Add Yarn node_modules folder to the asset load path.
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
-%w( scroll bootstrap.min jquery sidebar stripe_connect myjobs modal_endorse ).each do |filename|
+%w( bootstrap.min jquery sidebar stripe_connect myjobs modal_endorse ).each do |filename|
   Rails.application.config.assets.precompile += ["#{filename}.js"]
 end
 

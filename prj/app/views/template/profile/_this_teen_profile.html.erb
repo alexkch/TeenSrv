@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h1 class="panel-title pull-left" style="font-size:40px;"><%= @this_teenager.firstname %> <%= @this_teenager.lastname %>
-                        <small>(<%= @this_user.username %>) DEBUG </small>
+                        <small>(<%= @this_user.username %>)</small>
                     </h1>
                     <span class="pull-right">
                         <div class="well well-sm">
@@ -33,7 +33,7 @@
                     <br><br><br><br><br><br>
                     <span class="pull-left">
                         <div class="btn btn-link" data-toggle="modal" data-target="#endorseModal" style="text-decoration:none;"><i class="fa fa-check-square-o" aria-hidden="true"></i> Endorse</div>
-                        <div class="btn btn-link" data-toggle="modal" data-target="#endorsementModal" style="text-decoration:none;"><i class="fa fa-fw fa-users" aria-hidden="true"></i> Endorsements <span class="badge">###</span></div>
+                        <div class="btn btn-link" data-toggle="modal" data-target="#endorsementModal" style="text-decoration:none;"><i class="fa fa-fw fa-users" aria-hidden="true"></i> Endorsements <span class="badge"><%= @end_count %></span></div>
                     </span>
 
                 </div>
@@ -43,13 +43,6 @@
 
             <!-- Upcoming Jobs -->
             <div class="panel panel-default">                        
-                <span class="pull-right"> 
-                    <div class="btn btn-link" style="text-decoration:none;">
-
-                            <i class="fa fa-address-card-o" aria-hidden="true" data-toggle="tooltip" data-placement="bottom"></i>
-
-                    </div>
-                </span>
                 <div class="panel-body">
                     <h4><strong>Upcoming Jobs</strong></h4>
 
@@ -77,17 +70,12 @@
             <!-- Recent Transactions -->
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h4><strong>Recent Transactions</strong> – <small><small><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></small></small></h4>
+                    <h4><strong>Recent Transactions</strong> – <small><small><i><i class="fa fa-clock-o" aria-hidden="true"></i> some minutes ago</i></small></small></h4>
                     <hr>
                     <!-- Transaction -->
                     <div class="post-content">
                         <p>Transaction 1</p>
                         <p>Brief Info....</p>
-                    </div>
-                    <div>
-                        <div class="pull-right btn-group-xs">
-                            <div class="btn btn-default btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i> More info...</div>
-                        </div><br>
                     </div>
                     <hr>
                     <!-- Transaction -->                   
@@ -95,21 +83,11 @@
                         <p>Transaction 1</p>
                         <p>Brief Info....</p>
                     </div>
-                    <div>
-                        <div class="pull-right btn-group-xs">
-                            <div class="btn btn-default btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i> More info...</div>
-                        </div><br>
-                    </div>
                     <hr>
                     <!-- Transaction -->
                     <div class="post-content">
                         <p>Transaction 1</p>
                         <p>Brief Info....</p>
-                    </div>
-                    <div>
-                        <div class="pull-right btn-group-xs">
-                            <div class="btn btn-default btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i> More info...</div>
-                        </div><br>
                     </div>
                     <hr>
                 </div>
@@ -128,13 +106,20 @@
                             <img class="thumbnail img-responsive" src="https://res.cloudinary.com/closebrace/image/upload/w_400/v1491315007/usericon_id76rb.png" width="300px" height="300px">
                         </div>
                         <div class="media-body">
-                            <hr>                
+                            <hr>
+                            <h3>Bio</h3>                
                             <p>Usertype: Teenager </p>
                             <p>Gender: <%= @this_teenager.gender%></p>
                             <p>Birthday (mm/dd/yyyy): <%= @this_teenager.birth_month %>/<%= @this_teenager.birth_day %>/<%= @this_teenager.birth_year %></p>
                             <hr>
-                            <span class="pull-right"> 
-                            </span>
+                            <h3><strong>Address</strong></h3>
+                            <p>Address: <%= @this_teenager.address%></p>
+                            <p>Apartment number: <%= @this_teenager.apt_no%></p>
+                            <p>City: <%= @this_teenager.city%></p>
+                            <p>Province: <%= @this_teenager.province%></p>
+                            <p>Country: <%= @this_teenager.country%></p>
+                            <p>Postal Code: <%= @this_teenager.postal_code%></p>
+                            <hr>
 
                         </div>
                     </div>

@@ -19,13 +19,13 @@
 
 <% if user_signed_in? %>
 
-	<%= render :partial => "template/profile/this_client_profile" %>
-	<%= render :partial => "template/nav/usermenu" %>
+<%= render :partial => "template/profile/this_client_profile" %>
+<%= render :partial => "template/nav/usermenu" %>
 
 <% else %>
 
-	<%= render :partial => "template/profile/this_client_profile" %>
-	<%= render :partial => "template/nav/defaultmenu" %>
+<%= render :partial => "template/profile/this_client_profile" %>
+<%= render :partial => "template/nav/defaultmenu" %>
 
 <% end %>
 

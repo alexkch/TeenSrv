@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h1 class="panel-title pull-left" style="font-size:40px;"><%= @teenager.firstname %> <%= @teenager.lastname %>
-                        <small>(<%= @user.username %>) DEBUG </small>
+                        <small>(<%= @user.username %>)</small>
                     </h1>
 
 
@@ -35,7 +35,7 @@
                     </span>
                     <br><br><br><br><br><br>
                     <span class="pull-left">
-                        <div class="btn btn-link" data-toggle="modal" data-target="#endorsementModal" style="text-decoration:none;"><i class="fa fa-fw fa-users" aria-hidden="true"></i> Endorsements <span class="badge">###</span></div>
+                        <div class="btn btn-link" data-toggle="modal" data-target="#endorsementModal" style="text-decoration:none;"><i class="fa fa-fw fa-users" aria-hidden="true"></i> Endorsements <span class="badge"><%= @end_count %></span></div>
                         <div class="btn btn-link" style="text-decoration:none;"><i class="fa fa-credit-card" aria-hidden="true"></i> Payment Info</div>
                     </span>
 
@@ -181,18 +181,21 @@
                                         <i class="fa fa-lg fa-gear" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Mention"></i>
                                     <% end %>
                                 </div>
-                            </span>
+                            </span>     
+                            <h3>Bio</h3>         
                             <p>Usertype: Teenager </p>
                             <p>Gender: <%= @teenager.gender%></p>
                             <p>Birthday (mm/dd/yyyy): <%= @teenager.birth_month %>/<%= @teenager.birth_day %>/<%= @teenager.birth_year %></p>
+
                             <hr>
-                            <span class="pull-right">
-                                <div class="btn btn-link" style="text-decoration:none;">
-                                    <%= link_to(edit_user_teenager_path(@user.id, @teenager.id)) do %>
-                                        <i class="fa fa-lg fa-gear" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Mention"></i>
-                                    <% end %>
-                                </div>
-                            </span>
+                            <h3><strong>Address</strong></h3>
+                            <p>Address: <%= @teenager.address%></p>
+                            <p>Apartment number: <%= @teenager.apt_no%></p>
+                            <p>City: <%= @teenager.city%></p>
+                            <p>Province: <%= @teenager.province%></p>
+                            <p>Country: <%= @teenager.country%></p>
+                            <p>Postal Code: <%= @teenager.postal_code%></p>
+                            <hr>
 
                         </div>
                     </div>

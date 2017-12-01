@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+ 	
+ 	before_action :self_assertion_profile, only: [:this_profile]
 
 	def this_profile
 		@this_user = User.find(params[:user_id])
@@ -6,9 +8,17 @@ class ProfilesController < ApplicationController
 
 	    if @this_user.usertype == 0 #Teenager
 	      	@this_teenager = Teenager.find_by(user_id: @this_user.id)
+	      	@endorsements = Endorsement.where(end_user_id: @this_user.id).all
+	      	if @endorsements
+	      		@end_count = @endorsements.count
+	      	end
 	      	if @this_teenager.nil?
 	      		redirect_to home_index_url
 	      	else
+	      		@endorsement = Endorsement.find_by(ref_user_id: @user.id, end_user_id: @this_user.id)
+	      		if @endorsement.nil?
+					@new_endorsement = @this_user.g_endorsement.new
+	      		end
 	      		render "profiles/show_teenager"
 	    	end
 	    
