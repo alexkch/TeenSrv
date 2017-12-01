@@ -1,9 +1,13 @@
 class ProfilesController < ApplicationController
  	
+ 	before_action :user_assertion_profile, only: [:this_profile]
  	before_action :self_assertion_profile, only: [:this_profile]
 
 	def this_profile
 		@this_user = User.find(params[:user_id])
+
+
+
 		@user = current_user
 
 	    if @this_user.usertype == 0 #Teenager
