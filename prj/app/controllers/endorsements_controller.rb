@@ -31,11 +31,6 @@ class EndorsementsController < ApplicationController
 	
     # Admin Usage
 
-	def index
-		@user = User.find(params[:user_id])
-		@endorsements = @user.g_endorsement.all
-	end
-
 	def destroy
 		@user = User.find(params[:user_id])
 		@endorsement = @user.g_endorsement.find(params[:id])
