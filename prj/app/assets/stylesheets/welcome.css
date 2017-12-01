@@ -22,13 +22,18 @@ body {
 .text-vertical-center h1 {
     margin: 0;
     padding: 0;
+    background: floralwhite;
     font-size: 4.5em;
     font-weight: 700;
-    color: #0099FF;
+    color: #000000;
 }
 
 /* Custom Button Styles */
 
+.bg-primary {
+
+    background-color: lightslategray;
+}
 
 .btn-xlarge {
     padding: 18px 38px;
@@ -42,7 +47,7 @@ body {
 .btn-dark {
     border-radius: 0;
     color: #fff;
-    background-color: #0099FF;
+    background-color: #000000;
 }
 
 .btn-dark:hover,
@@ -102,23 +107,6 @@ body {
     background-size: cover;
     -o-background-size: cover;
 }
-
-/* Img 3 (NOT IN USE ANYMORE) */
-
-.img3 {
-
-    display: table;
-    position: relative;
-	height: 100%;
-	width: 100%;
- 	background-position:right top;
-	background: url(bg2.jpg);
-	-webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
-
 
 .loginbtnpadding{
 
