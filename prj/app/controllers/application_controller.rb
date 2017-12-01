@@ -67,4 +67,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
+  def user_assertion_profile
+
+    @check_user = User.find_by(id: params[:user_id])
+    if @check_user.nil?
+      redirect_to home_index_url
+    end 
+  end
+
 end

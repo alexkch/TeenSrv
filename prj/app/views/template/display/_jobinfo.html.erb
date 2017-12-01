@@ -17,7 +17,7 @@
 	     		<div class="col-md-3 text-center">
 
 		     		<% if @client %>
-		   				<p><strong>Username:</strong> <%= link_to "#{@client_username}", clientjobs_path(@client.id) %></p>
+		   				<p><strong>Username:</strong> <%= link_to "#{@client_username}", user_client_path(@user.id, @client.id) %></p>
 						<p> Usertype: Client </p>
 						<p>Name: <%= @client.fName %> <%= @client.lName %></p>
 						<p>Gender: <%= @client.gender%></p>
