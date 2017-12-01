@@ -12,7 +12,6 @@ Rails.application.routes.draw do
 
   # Search Routes
   get 'search', to: 'search#search', as: 'search'
-
   get 'job_types/index', to: 'job_types#index', as: 'job_types'
   # JOB Routes
   resources :jobs
@@ -24,19 +23,16 @@ Rails.application.routes.draw do
   resources :finished_jobs
   get 'job/clientjobs', to: 'jobs#clientjobs', as: 'clientjobs'
   get 'job/:id/recommended_teens', to: 'jobs#recommended_teens', as: 'recommended_teens'
-
   get 'profile/:user_id', to: 'profiles#this_profile', as: 'this_profile'
 
   resources :charges
-  
+  resources :admin, only: [:index]
   # Routes
   resources :users, only: [:index, :show, :destroy] do
     resources :transactions
     resources :clients, only: [:index, :show, :edit, :update, :destroy]
     resources :endorsements, only: [:create, :update, :destroy]
-    resources :ratings
     resources :teenagers, :name_prefix => "user_", only: [:index, :show, :edit, :update, :destroy]
-    resources :addresses
 
 	  get 'payments/index', to: 'payments#index', as: 'paymentsindex'
 
@@ -45,15 +41,6 @@ Rails.application.routes.draw do
          post :subscribe
     end
   end
-
-  # resources :payments do
-  #      # resources :bank_infos
-  #      # resources :credit_cards
-  #      member do
-  #        post :pay
-  #        post :subscribe
-  #      end
-  #   end
 
   resources :teenagers do
     resources :skills, :name_prefix => "teenager_"
