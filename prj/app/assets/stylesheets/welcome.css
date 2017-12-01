@@ -22,18 +22,12 @@ body {
 .text-vertical-center h1 {
     margin: 0;
     padding: 0;
-    background: floralwhite;
     font-size: 4.5em;
     font-weight: 700;
     color: #000000;
 }
 
 /* Custom Button Styles */
-
-.bg-primary {
-
-    background-color: lightslategray;
-}
 
 .btn-xlarge {
     padding: 18px 38px;
@@ -83,57 +77,6 @@ body {
     background-size: cover;
     -o-background-size: cover;
 }
-
-/* Services */
-
-.services {
-    padding: 100px 0;
-}
-
-.service-item {
-    margin-bottom: 30px;
-}
-
-/* Callout */
-
-.img2 {
-    display: table;
-    width: 100%;
-    height: 250px;
-    color: #fff;
-    background: url(bg3.jpg) no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
-
-.loginbtnpadding{
-
-	padding-top: 155px;
-	padding-left: 1210px;
-
-}
-
-.textformat {
-	text-align: left;
-
-}
-
-/* About */
-
-#about {
-    padding: 25px 0;
-}
-
-
-.placement {
-    display: table;
-    width: 100%;
-    height: 400px;
-    color: #fff;
-}
-
 
 
 
