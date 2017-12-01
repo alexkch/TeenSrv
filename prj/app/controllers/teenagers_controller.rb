@@ -10,6 +10,11 @@ class TeenagersController < ApplicationController
     def show        
         @user = current_user
         @teenager = Teenager.find_by(user_id: current_user.id)
+        @endorsements = Endorsement.where(end_user_id: current_user.id).all
+        if @endorsements
+            @end_count = @endorsements.count
+        end
+
     end
     
     def edit
