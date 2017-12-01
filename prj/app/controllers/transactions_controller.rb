@@ -27,8 +27,8 @@ class TransactionsController < ApplicationController
 		# 										:amount => params[:transaction][:amount],
 		# 										:trans_date => params[:transaction][:trans_date],
 		# 										:status => params[:transaction][:status],)
-		Transaction.create!(:teenager_id => 2,
-												:client_id => 4,
+		Transaction.create!(:teenager_id => 5,
+												:client_id => 7,
 												:job_id => 1,
 												:amount => 100,
 												:trans_date => rand_time(2.days.ago),

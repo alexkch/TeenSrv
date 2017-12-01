@@ -12,7 +12,6 @@
           <h5>Show
             <div class="form-group" style="display: inline-block;">
               <select name="state" id="trans_maxRows" class="form-control" style="width: 70px;">
-              <option value="5">5</option>
               <option value="10">10</option>
               <option value="15">15</option>
               <option value="20">20</option>
@@ -39,8 +38,8 @@
                   <td><%= transaction.trans_date %></td>
                   <% client_lname = Client.find(transaction.client_id).lName %>
                   <% client_fname = Client.find(transaction.client_id).fName %>
-                  <% client_lname ||= "N/A" %>
-                  <% client_fname ||= "N/A" %>
+                  <% client_lname ||= "NoLastname" %>
+                  <% client_fname ||= "NoFirstname" %>
                   <% client_name = client_lname + ", " + client_fname %>
                   <td><%= client_name %></td>
                   <% if transaction.teenager_id == nil %>
@@ -48,8 +47,8 @@
                   <% else %>
                     <% teen_lname = Teenager.find(transaction.teenager_id).lastname %>
                     <% teen_fname = Teenager.find(transaction.teenager_id).firstname %>
-                    <% teen_lname ||= "N/A" %>
-                    <% teen_fname ||= "N/A" %>
+                    <% teen_lname ||= "NoLastname" %>
+                    <% teen_fname ||= "NoFirstname" %>
                     <% teen_name = teen_lname + ", " + teen_fname %>
                     <td><%= teen_name %></td>
                   <% end %>
