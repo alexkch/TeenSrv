@@ -2,10 +2,22 @@
 	<div class="row">
     <div class="col-md-12">
       <h4>Job board</h4>
-        <div class="table-responsive">     
-            <table id="mytable" class="table table-bordred table-striped">    
+        <div class="table-responsive">
+						<h5>Show
+	            <div class="form-group" style="display: inline-block;">
+	              <select name="state" id="jobs_maxRows" class="form-control" style="width: 70px;">
+	              <option value="10">10</option>
+	              <option value="15">15</option>
+	              <option value="20">20</option>
+	              <option value="50">50</option>
+	              <option value="100">100</option>
+	              </select>
+	            </div>
+	          entries
+						</h5>
+
+						<table id="jobs_table" class="table table-bordred table-striped">
               <thead>
-             
                 <th>Job Type</th>
                 <th>Description</th>
                 <th>Hourly Rate</th>
@@ -13,15 +25,13 @@
                 <th>Start Time</th>
                 <th>Finish Time</th>
                 <th>Edit</th>
-                
-
               </thead>
               <tbody>
                 <% @jobs.each do |job| %>
                   <tr>
                     <td><%= JobType.find(job.job_type_id).name %></td>
                     <!-- job.job_type.name gives us SQLite exception, it should work but doesn't-->
-                    <td><%= job.description %></td>      
+                    <td><%= job.description %></td>
                     <td><%= job.hourly_rate %></td>
                     <td><%= job.hours %></td>
                     <td><%= job.starttime %></td>
@@ -37,23 +47,68 @@
                   </tr>
                 <% end %>
               </tbody>
-                  
             </table>
 
+						<div class="clearfix"></div>
 
-            <div class="clearfix"></div>
-            <ul class="pagination pull-right">
-              <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-            </ul>
-                
+						<div class="pagination-container">
+	        		<nav>
+	        			<ul class="pagination pull-right"></ul>
+	        		</nav>
+	      	  </div>
+
+						<script>
+	            var table = '#jobs_table'
+	            $('#jobs_maxRows').on('change', function () {
+	              $('.pagination').html('')
+	              var trnum = 0
+	              var maxRows = parseInt($(this).val())
+	              var totalRows = $(table + ' tbody tr').length
+	              $(table + ' tr:gt(0)').each(function () {
+	                trnum++
+	                if (trnum > maxRows) {
+	                  $(this).hide()
+	                }
+	                if (trnum <= maxRows) {
+	                  $(this).show()
+	                }
+	              })
+	              if (totalRows > maxRows) {
+	                var pagenum = Math.ceil(totalRows / maxRows)
+	                for (var i = 1; i <= pagenum;) {
+	                  $('.pagination').append('<li data-page="' + i + '">\<span>' + i++ + '<span class="sr-only">(current)</span></span>\</li>').show()
+	                }
+	              }
+	              $('.pagination li:first-child').addClass('active')
+	              $('.pagination li').on('click', function () {
+	                var pagenum = $(this).attr('data-page')
+	                var trIndex = 0;
+	                $('.pagination li').removeClass('active')
+	                $(this).addClass('active')
+	                $(table + ' tr:gt(0)').each(function () {
+	                  trIndex++
+	                  if (trIndex > (maxRows * pagenum) || trIndex <= ((maxRows * pagenum) - maxRows)) {
+	                    $(this).hide()
+	                  } else {
+	                    $(this).show()
+	                  }
+	                })
+	              })
+	            })
+
+	            $(function () {
+	              $('table tr:eq(0)').prepend('<th>ID</th>')
+	              var id = 0;
+	              $('table tr:gt(0)').each(function () {
+	                id++
+	                $(this).prepend('<td>' + id + '</td>')
+	              })
+	            })
+	            $('#jobs_maxRows').trigger("change");
+	          </script>
+
           </div>
-            
+
         </div>
 	   </div>
   </div>
@@ -71,26 +126,26 @@
         <input class="form-control " type="text" placeholder="Mohsin">
         </div>
         <div class="form-group">
-        
+
         <input class="form-control " type="text" placeholder="Irshad">
         </div>
         <div class="form-group">
         <textarea rows="2" class="form-control" placeholder="CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan"></textarea>
-    
-        
+
+
         </div>
       </div>
           <div class="modal-footer ">
         <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
       </div>
         </div>
-    <!-- /.modal-content --> 
+    <!-- /.modal-content -->
   </div>
-      <!-- /.modal-dialog --> 
+      <!-- /.modal-dialog -->
     </div>
-    
-    
-    
+
+
+
     <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
       <div class="modal-dialog">
     <div class="modal-content">
@@ -99,18 +154,16 @@
         <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
       </div>
           <div class="modal-body">
-       
+
        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div>
-       
+
       </div>
         <div class="modal-footer ">
         <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
       </div>
         </div>
-    <!-- /.modal-content --> 
+    <!-- /.modal-content -->
   </div>
-      <!-- /.modal-dialog --> 
+      <!-- /.modal-dialog -->
 </div>
-
-
