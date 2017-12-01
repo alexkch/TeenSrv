@@ -9,7 +9,7 @@
         <% elsif Array(@transactions).count == 0 %>
           <strong>No transactions found</strong>
         <% else %>
-          <h4>Show
+          <h5>Show
             <div class="form-group" style="display: inline-block;">
               <select name="state" id="trans_maxRows" class="form-control" style="width: 70px;">
               <option value="5">5</option>
@@ -21,7 +21,7 @@
               </select>
             </div>
           entries
-          </h4>
+          </h5>
 
           <table id="trans_table" class="table table-bordred table-striped">
             <thead>
@@ -69,7 +69,6 @@
         			<ul class="pagination pull-right"></ul>
         		</nav>
       	  </div>
-
 
           <script>
             var table = '#trans_table'
@@ -122,14 +121,7 @@
           </script>
         <% end %>
 
-
-
-
-
-
       </div>
-
-
     </div>
   </div>
 </div>
