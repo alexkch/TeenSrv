@@ -56,4 +56,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def self_assertion_profile
+
+    if (params[:user_id]).to_i == current_user.id
+      if current_user.usertype == 0
+        redirect_to user_teenager_path(current_user.id, current_user.teenager.id)
+      elsif current_user.usertype == 1
+        redirect_to user_client_path(current_user.id, current_user.client.id)
+      end
+    end
+  end
+
 end
