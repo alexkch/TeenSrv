@@ -9,9 +9,31 @@ class AcceptJobsController < ApplicationController
 			# @applications = ApplyJob.where("client_id = ? AND filled = false", @client.id).order(:job_id)
 			
 			@applications = ApplyJob.includes(:job, :teenager).where("client_id = ? AND filled = ?", @client.id, false)
+			@applications.each do | app |
+				endCount = Endorsement.where(end_user_id: app.teenager_id).count
+
+				allRatings = FinishedJob.where(teenager_id: app.teenager_id)
+				rCount = allRatings.count
+
+				total = endCount + rCount
+
+				rScore = 0
+
+				allRatings.each do |rating|
+					rScore = rScore + rating.teens_rating
+				end
+
+				RatingScore = RateScore / rcount
+
+				FinalScore = endCount * log(total/endcount) * 3.5 + RatingScore
+
+			end
+
 			@jobs = Job.all
 		end
 	end
+
+
 	def new
 		@user = current_user
 		if(@user.usertype != 1)
