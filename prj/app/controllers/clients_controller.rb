@@ -17,18 +17,33 @@ class ClientsController < ApplicationController
 	end
 
 	def edit
-	  @user = current_user
-	  @client = @user.client
+		if current_user.usertype != 2
+            @user = current_user
+            @client = Client.find_by(user_id: current_user.id)
+        else
+            @user = User.find(params[:user_id])
+            @client = Client.find_by(user_id: @user.id)
+        end
 	end
 
 	def update
-	  @user = current_user
-	  @client = @user.client
-	  if @client.update(client_params)
-	    redirect_to user_client_path(@user)
-	  else
-	    render 'edit'
-	  end
+        if current_user.usertype != 2
+            @user = current_user
+            @client = @user.client
+        else
+            @user = User.find(params[:user_id])
+            @client = @user.client
+        end
+
+        if @client.update(client_params)
+        	if current_user.usertype != 2
+            	redirect_to user_client_path(@user)
+            else
+            	redirect_to admin_index_path
+            end
+        else
+            render 'edit'
+        end
 	end
 
 	def destroy

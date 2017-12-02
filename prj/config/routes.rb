@@ -27,12 +27,13 @@ Rails.application.routes.draw do
 
   resources :charges
   resources :admin, only: [:index]
+
   # Routes
   resources :users, only: [:index, :show, :destroy] do
     resources :transactions
-    resources :clients, only: [:index, :show, :edit, :update, :destroy]
+    resources :clients, only: [:show, :edit, :update]
     resources :endorsements, only: [:create, :update, :destroy]
-    resources :teenagers, :name_prefix => "user_", only: [:index, :show, :edit, :update, :destroy]
+    resources :teenagers, :name_prefix => "user_", only: [:show, :edit, :update]
 
 	  get 'payments/index', to: 'payments#index', as: 'paymentsindex'
 
