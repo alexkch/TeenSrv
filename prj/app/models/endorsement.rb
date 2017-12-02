@@ -1,6 +1,6 @@
 class Endorsement < ApplicationRecord
-  belongs_to :endorsed_user, :class_name => "User", foreign_key: "endoresed_user_id"
-  belongs_to :reference_user, :class_name => "User", foreign_key: "reference_user_id"
+  belongs_to :endorsed_user, :class_name => 'User'
+  belongs_to :reference_user, :class_name => 'User'
 
   validate :check_endorsement_users
 
