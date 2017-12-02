@@ -3,6 +3,13 @@ class ApplicationController < ActionController::Base
   
   before_action :authenticate_user!
 
+  def authenticate_admin
+
+    if current_user.usertype != 2
+      redirect_to home_index_url
+    end
+  end
+
   def authenticate_profile_show
 
     this_user = User.find(params[:user_id])
@@ -27,32 +34,36 @@ class ApplicationController < ActionController::Base
 
   def authenticate_teenager_edit
 
-    if (params[:user_id]).to_i != current_user.id || current_user.usertype == 1 
-      redirect_to home_index_url
-    end
+    if current_user.usertype != 2
+      if (params[:user_id]).to_i != current_user.id || current_user.usertype == 1 
+        redirect_to home_index_url
+      end
 
-    if current_user.usertype == 0 #Teenager
-      my_profile = Teenager.find_by(user_id: current_user.id)
-    end
+      if current_user.usertype == 0 #Teenager
+        my_profile = Teenager.find_by(user_id: current_user.id)
+      end
 
-    if my_profile.id != (params[:id]).to_i
-      redirect_to controller: 'teenagers', action: 'edit', user_id: current_user.id, id: my_profile.id
+      if my_profile.id != (params[:id]).to_i
+        redirect_to controller: 'teenagers', action: 'edit', user_id: current_user.id, id: my_profile.id
+      end
     end
   end
   
 
   def authenticate_client_edit
 
-    if (params[:user_id]).to_i != current_user.id || current_user.usertype == 0 
-      redirect_to home_index_url
-    end
+    if current_user.usertype != 2
+      if (params[:user_id]).to_i != current_user.id || current_user.usertype == 0 
+        redirect_to home_index_url
+      end
 
-    if current_user.usertype == 1 #Teenager
-      my_profile = Client.find_by(user_id: current_user.id)
-    end
+      if current_user.usertype == 1 #Teenager
+        my_profile = Client.find_by(user_id: current_user.id)
+      end
 
-    if my_profile.id != (params[:id]).to_i
-      redirect_to controller: 'clients', action: 'edit', user_id: current_user.id, id: my_profile.id
+      if my_profile.id != (params[:id]).to_i
+        redirect_to controller: 'clients', action: 'edit', user_id: current_user.id, id: my_profile.id
+      end
     end
   end
 

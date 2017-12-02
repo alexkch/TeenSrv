@@ -3,10 +3,6 @@ class TeenagersController < ApplicationController
     before_action :authenticate_profile_show, only: [:show]
     before_action :authenticate_teenager_edit, only: [:edit, :update]
 
-    def index
-        @teenagers = Teenager.all
-    end
-
     def show
         @user = current_user
         @teenager = Teenager.find_by(user_id: current_user.id)
@@ -18,16 +14,31 @@ class TeenagersController < ApplicationController
     end
 
     def edit
-        @user = current_user
-        @teenager = Teenager.find_by(user_id: current_user.id)
+        if current_user.usertype != 2
+            @user = current_user
+            @teenager = Teenager.find_by(user_id: current_user.id)
+        else
+            @user = User.find(params[:user_id])
+            @teenager = Teenager.find_by(user_id: @user.id)
+        end
+
     end
 
     def update
-        @user = current_user
-        @teenager = @user.teenager
+        if current_user.usertype != 2
+            @user = current_user
+            @teenager = @user.teenager
+        else
+            @user = User.find(params[:user_id])
+            @teenager = @user.teenager
+        end
 
         if @teenager.update(teenager_params)
-            redirect_to user_teenager_path(@user)
+            if current_user.usertype != 2
+                redirect_to user_teenager_path(@user)
+            else
+                redirect_to admin_index_path
+            end
         else
             render 'edit'
         end

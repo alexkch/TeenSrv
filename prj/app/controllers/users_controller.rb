@@ -21,6 +21,18 @@ class UsersController < ApplicationController
     redirect_to user_path( current_user )
   end
 
+
+  # Admin Use, dont delete
+
+  def destroy
+
+    @user = User.find(params[:id])
+    @user.destroy
+   
+    redirect_to admin_index_path
+  end
+    
+
   # Show a user's profile page.
   # This is where you can spend money with the connected account.
   # app/views/users/show.html.haml
@@ -124,12 +136,6 @@ class UsersController < ApplicationController
     redirect_to user_path( user )
   end
 
-def destroy
-  @user = User.find(params[:id])
-  @user.destroy
- 
-  redirect_to users_path
-end
 
 private
   def user_params
