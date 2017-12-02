@@ -34,7 +34,7 @@
 	        	<div class="col-md-3 text-center">
 
 		        	<% if @teenager %>
-		   				<p><strong>Username:</strong> <%= link_to "#{@teenager_username}", client_path(@client.id) %></p>
+		   				<p><strong>Username:</strong> <%= link_to "#{@teenager_username}", user_teenager_path(@user.id, @teenager.id) %></p>
 						<p> Usertype: Teenager </p>
 						<p>Name: <%= @teenager.firstname %> <%= @teenager.lastname %></p>
 						<p>Gender: <%= @teenager.gender%></p>

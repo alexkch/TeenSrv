@@ -11,7 +11,6 @@ class ClientsController < ApplicationController
 	def show
 		@user = current_user
 	  @client = Client.find_by(user_id: current_user.id)
-	  @address = Address.find_by(user_id: current_user.id)
 	  @jobs = Job.where(client_id: @client.id).order("created_at DESC").limit(3)
     @transactions = Transaction.where(client_id: @client.id).order(trans_date: :desc).limit(3)
 	end

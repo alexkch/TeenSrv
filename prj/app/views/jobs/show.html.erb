@@ -15,19 +15,18 @@
 <%= stylesheet_link_tag 'profile' %>
 
 </head>
-
+<body>
 
 <% if user_signed_in? %>
-
-
   <% if @job.cancelled == true %>
     <h4 align='center'>This job has been cancelled</h4>
-    <% else %>
-  <%= render :partial => "template/display/jobinfo" %>
+  <% else %>
+  	<%= render :partial => "template/display/jobinfo" %>
   <% end %>
   <%= render :partial => "template/nav/usermenu" %>
 
-
+<% else %>
+  <%= render :partial => "template/nav/defaultmenu" %>
 <% end %>
 
 
