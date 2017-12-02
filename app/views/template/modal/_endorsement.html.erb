@@ -1,0 +1,30 @@
+<div class="modal fade" id="endorsementModal" tabindex="-1" role="dialog" aria-labelledby="endorsementModal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" style="z-index: 1041">
+    <div class="modal-content">
+		<div id="custom-search-input">
+			<div class="input-group col-md-12">
+				<input id="searchmodal" type="text" class="form-control input-lg" placeholder="Search" />
+				<span class="input-group-btn">
+					<button class="btn btn-info btn-lg close" type="button" data-dismiss="modal">
+						<i class="fa fa-times"></i>
+					</button>
+				</span>
+			</div>
+			<ul class="list-group">
+				<% if @endorsements %>
+                	<% @endorsements.each do |endorsement| %>
+                		<% if endorsement.removed != 1 %>
+                			<% ref_user = User.find_by(id: endorsement.ref_user_id) %>
+                			<% if ref_user %>
+				<li class="list-group-item"><%= link_to ref_user.username, :controller => :profiles, :action => :this_profile, :user_id => endorsement.ref_user_id %><span class="badge"><%= endorsement.skill %></span></li>
+							<% else %>
+				<li class="list-group-item">Deleted User_id: <%= endorsement.ref_user_id %><span class="badge"><%= endorsement.skill %></span></li>
+				<% end %>
+				<% end %>
+				<% end %>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>
+</div>

@@ -1,0 +1,26 @@
+<p>
+  <strong>Card Type:</strong>
+  <%= @payment.card_type %>
+</p>
+<p>
+  <strong>Card Number:</strong>
+  <%= @payment.card_number %> 
+</p>
+<p>
+  <strong>Expiry:</strong>
+  <%= @payment.expiry_date %>
+</p>
+<p>
+  <strong>Account number:</strong>
+  <%= @payment.account %>
+</p>
+<p>
+  <strong>Transit number:</strong>
+  <%= @payment.transit_number %> 
+</p>
+<p>
+  <strong>Institution ID:</strong>
+  <%= @payment.institution_id %>
+</p>
+
+<%= link_to 'Back', user_payments_url %>

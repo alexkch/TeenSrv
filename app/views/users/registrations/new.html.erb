@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- For MOBILE -->
+    <title>Profile</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <%= stylesheet_link_tag 'sidebar' %>
+    <%= stylesheet_link_tag 'forms' %>
+    <%= stylesheet_link_tag 'login' %>
+
+  </head>
+  <body>
+    <div class="box">
+      <h2>Sign up</h2>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+        <%= devise_error_messages! %>
+
+        <div class="imgcontainer">
+          <img src=<%= asset_path 'avatar.gif' %> alt="Avatar" class="avatar">
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <%= f.label :email %><br/>
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+          <div class="field">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %>
+                characters minimum)</em>
+            <% end %><br/>
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+          <div class="field">
+            <%= f.label :password_confirmation %><br/>
+            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          </div>
+        </div>
+
+        <br />
+
+        <div class="row" >
+          <label><b>Who are you?</b></label>
+          <div class="field" >
+            <%= f.select :usertype, [['Client', 1], ['Teenager', 0], ['Admin', 2]], class: "signinSubmit" %>
+            <%= f.submit "Sign Up", :id => 'signupBtn' %>
+          </div>
+        </div>
+
+        <br>
+
+        <%= render "users/shared/links" %>
+      <% end %>
+    </div>
+
+    <%= render :partial => "template/nav/defaultmenu" %>
+
+  </body>
+
+<%= javascript_include_tag 'jquery' %>
+<%= javascript_include_tag 'bootstrap.min' %>
+
+</html>

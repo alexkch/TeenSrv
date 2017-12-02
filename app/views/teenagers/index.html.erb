@@ -1,0 +1,23 @@
+<h1>All Teenagers</h1>
+
+<table>
+	<tr>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Gender Name</th>
+		<th>Age</th>
+		<th>Birthday(MM/DD/YYYY)</th>
+	</tr>
+
+	<% @teenagers.each do |teenager| %>
+		<tr>
+		  <td><%= teenager.firstname %></td>
+		  <td><%= teenager.lastname %></td>
+		  <td><%= teenager.gender %></td>
+		  <td><%= 2017 - teenager.birth_year.to_i %></td>
+		  <td><%= teenager.birth_month %></td>
+		  <td><%= link_to 'Show', teenager_path(teenager) %></td>
+		  <td><%= link_to 'Edit', edit_teenager_path(teenager) %></td>
+		</tr>
+	<% end %>
+</table>

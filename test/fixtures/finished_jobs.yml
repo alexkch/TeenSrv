@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  job: one
+  teenager: one
+  client: one
+  trans: one
+  finish_time: 2017-10-09 12:45:16
+
+two:
+  job: two
+  teenager: two
+  client: two
+  trans: two
+  finish_time: 2017-10-09 12:45:16

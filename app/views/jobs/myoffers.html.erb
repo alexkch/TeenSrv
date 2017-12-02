@@ -1,0 +1,31 @@
+
+<h1>Jobs for</h1>
+<p>
+  <strong><%= @user.username %></strong>
+</p>
+
+<%= link_to 'Back', jobs_path %>
+<table>
+  <tr>
+    <th colspan="1"></th>
+  </tr>
+ 
+  <% @jobs.each do |job| %>
+    <tr>
+      <td><%= job.description %></td>      
+      <td><%= job.amount %></td>
+      <td><%= job.hours %></td>
+      <td><%= job.starttime %></td>
+      <td><%= job.finishtime %></td>
+      <td>Offered By: <%= Client.find(job.client_id).fName %> <%= Client.find(job.client_id).lName %></td>
+      <td><%= link_to 'Show', job_path(job.id) %></td>
+      <td><%= link_to 'Accept this Job', acceptteen_path(job.id) %></td>
+    </tr>
+    <br />
+</table>
+      
+
+
+    </tr>
+  <% end %>
+</table>

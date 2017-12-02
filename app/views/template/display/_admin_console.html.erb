@@ -1,0 +1,98 @@
+<div class="container">
+	<div class="row">
+		<section class="content">
+			<h1>Admin Console</h1>
+			<div class="col-md-8 col-md-offset-2">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="table-container">
+							<table class="table table-filter">
+								<tbody>
+									<% if @jobs %>
+ 										<% @jobs.each do |job| %>
+	 										<tr data-status="jobs">
+												<td>
+													<div class="media">
+														<div class="media-body">
+															<span class="media-meta pull-right">Created at: <%= job.created_at %></span>
+															<h4 class="title">
+																<%= link_to(job_path(job)) do %>
+																	Job Type: <%= JobType.find(job.job_type_id).name %>
+																<% end %>
+															</h4>
+															<h5>Offered By: <%= Client.find(job.client_id).fName %> <%= Client.find(job.client_id).lName %></h5>
+															<p>Start Time: <%= job.starttime %> Finish Time: <%= job.finishtime %> for a total of <%= job.hours %> hours </p>
+															<p class="summary">Brief Summary:<%= job.description %></p>
+															<span class="media-meta pull-right">
+															<%= link_to "Edit", :controller => :jobs, :action => :edit, :id => job.id %>
+															</span>
+														</div>
+													</div>
+												</td>
+											</tr>
+										<% end %>
+									<% end %>
+									<% if @users %>
+ 										<% @users.each do |user| %>
+											<tr data-status="users">
+												<td>
+													<div class="media">
+														<div class="media-body">
+															<span class="media-meta pull-right">Created at: <%= user.created_at %></span>
+															<h4 class="title">
+																	Id:<%= user.id %><% if user.usertype == 0 %> Usertype: Teen<br>Username: <%= link_to user.username, :controller => :profiles, :action => :this_profile, :user_id => user.id %><% elsif user.usertype == 1 %> Usertype: Client<br>Username: <%= link_to user.username, :controller => :profiles, :action => :this_profile, :user_id => user.id %><% else %> Usertype: Admin<% end %>
+																
+															</h4>
+															<span class="media-meta pull-right">
+															<% if user.usertype == 0 %>
+															<%= link_to "Edit", :controller => :teenagers, :action => :edit, :user_id => user.id, :id => user.teenager.id %>
+															<!--%= link_to Destroy, user_path(user), method: :delete, data: { confirm: Are you sure? } %> -->
+															<% elsif user.usertype == 1 %>
+															<%= link_to "Edit", :controller => :clients, :action => :edit, :user_id => user.id, :id => user.client.id %>
+															<% end %>
+															</span>
+														</div>
+													</div>
+												</td>
+											</tr>
+										<% end %>
+									<% end %>
+									<% if @transactions %>
+ 										<% @transactions.each do |transaction| %>
+											<tr data-status="transactions">
+												<td>
+													<div class="media">
+														<div class="media-body">
+															<span class="media-meta pull-right">Created at: <%= transaction.created_at %></span>
+															<h4 class="title">
+																	Id:<%= transaction.id %>
+															</h4>
+															<span class="media-meta pull-right">
+															<%= link_to "Edit", :controller => :transactions, :action => :edit, :id => transaction.id %>
+															</span>
+														</div>
+													</div>
+												</td>
+											</tr>
+										<% end %>
+									<% end %>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-2 well">
+				<span>
+					<button type="button" class="btn btn-primary btn-filter" data-target="users">All Users</button>
+					<hr>
+					<button type="button" class="btn btn-primary btn-filter" data-target="jobs">All Jobs</button>
+					<hr>
+					<button type="button" class="btn btn-primary btn-filter" data-target="transactions">All Transactions</button>
+				</span>
+			</div>
+
+
+		</section>
+	</div>
+</div>

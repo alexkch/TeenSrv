@@ -1,0 +1,13 @@
+<h1> 
+	<%= @user.username + "'s"%> Endorsements
+</h1>  
+
+<br> 
+
+<% @endorsements.each do |endorsement| %>
+	<div>
+		<h3><%= User.find(endorsement.ref_user_id).username %> </h3>
+		<p> <%= endorsement.comment %> </p> 
+		<br> 
+	</div>
+<% end %>

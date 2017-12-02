@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  job: one
+  ref_user: one
+  end_user: one
+  rating: 1
+  review: MyText
+
+two:
+  job: two
+  ref_user: two
+  end_user: two
+  rating: 1
+  review: MyText
