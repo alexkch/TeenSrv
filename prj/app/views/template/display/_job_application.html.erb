@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
     <div class="col-md-12">
-      <h4>Teenagers' Applications</h4>
+      <h4>Jobs that need approval</h4>
         <div class="table-responsive">
             <table id="mytable" class="table table-bordred table-striped">
               <thead>
@@ -10,33 +10,29 @@
                 <th>Description</th>
                 <th>Start Time</th>
                 <th>Finish Time</th>
-                <th>Edit</th>
-                <th>Teenager Name</th>
+                <th>Job</th>
+                <th>Teenagers</th>
 
               </thead>
               <tbody>
-				<% @applications.each do |appl| %>
-					<% if(appl.job.cancelled == false && appl.job.finished == false && appl.job.accepted == false) %>
+				    <% @jobs.each do |job| %>
 						<tr>
-							<td><%= JobType.find(appl.job.job_type_id).name %></td>
+							<td><%= JobType.find(job.job_type_id).name %></td>
 							<!-- job.job_type.name gives us SQLite exception, it should work but doesn't-->
-							<td><%= appl.job.description %></td>
-							<td><%= appl.job.starttime %></td>
-							<td><%= appl.job.finishtime %></td>
+							<td><%= job.description %></td>
+							<td><%= job.starttime %></td>
+							<td><%= job.finishtime %></td>
 							<td>
-							<%= link_to(job_path(appl.job)) do %>
-								<button class="btn btn-primary btn-xs"><span class="fa fa-info-circle"></span></button>
-							<% end %>
+  							<%= link_to(job_path(job.id)) do %>
+  								<button class="btn btn-primary btn-xs"><span class="fa fa-info-circle"></span></button>
+  							<% end %>
 							</td>
-							<td><%= appl.teenager.firstname %> <%= appl.teenager.lastname %></td>
 							<td>
-								<%= form_with url: accept_jobs_path, local: true do |form| %>
-			            			<%= form.hidden_field :apply_job_id, :value => appl.id %>
-			                		<button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Accept</button>
-				                <% end %>
-				            </td>
+								<%= link_to new_accept_job_path(:job => job.id), class: "btn btn-default btn-block" do %>
+                  View applicants
+                <% end %>
+				      </td>
 						</tr>
-					<% end %>
                 <% end %>
               </tbody>
 
