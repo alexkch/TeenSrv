@@ -8,7 +8,19 @@
             <h4>You have already accepted a teenager for this job</h4>
           </div>
         <% else %>
-        <div class="table-responsive">     
+        <div class="table-responsive">    
+            <h5>Show
+              <div class="form-group" style="display: inline-block;">
+                <select name="state" id="jobs_maxRows" class="form-control" style="width: 70px;">
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                </select>
+              </div>
+            entries
+            </h5> 
             <table id="mytable" class="table table-bordred table-striped">    
               <thead>
              
@@ -50,16 +62,6 @@
             </table>
 
 
-            <div class="clearfix"></div>
-            <ul class="pagination pull-right">
-              <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-            </ul>
                 
           </div>
             <% end %>

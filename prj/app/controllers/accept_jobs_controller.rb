@@ -26,7 +26,7 @@ class AcceptJobsController < ApplicationController
 		@appliers = {}
 		@applications.each do | app |
 			endCount = Endorsement.where(end_user_id: app.teenager_id).count
-			allRatings = FinishedJob.where(teenager_id: app.teenager_id)
+			allRatings = Job.where("cancelled = ? AND finished = ? AND teenager_id = ?", false, true, app.teenager_id)
 			rCount = allRatings.count
 
 			total = endCount + rCount

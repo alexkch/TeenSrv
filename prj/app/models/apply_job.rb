@@ -1,4 +1,6 @@
 class ApplyJob < ApplicationRecord
+	attr_accessor :teens_rating
+	attr_accessor :clients_rating
 	belongs_to :job
 	belongs_to :client
 	belongs_to :teenager
