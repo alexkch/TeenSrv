@@ -8,7 +8,19 @@
             <h4>You have already accepted a teenager for this job</h4>
           </div>
         <% else %>
-        <div class="table-responsive">     
+        <div class="table-responsive">    
+            <h5>Show
+              <div class="form-group" style="display: inline-block;">
+                <select name="state" id="jobs_maxRows" class="form-control" style="width: 70px;">
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                </select>
+              </div>
+            entries
+            </h5> 
             <table id="mytable" class="table table-bordred table-striped">    
               <thead>
              
@@ -18,48 +30,38 @@
                 <th>Finish Time</th>
                 <th>Edit</th>
                 <th>Teenager Name</th>
+                <th>Score</th>
 
               </thead>
               <tbody>
-        				<% @applications.each do |appl| %>
-
-        					<% if(appl.job.cancelled == false && appl.job.finished == false && appl.job.accepted == false) %>
-        						<tr>
-        							<td><%= JobType.find(appl.job.job_type_id).name %></td>
-        							<!-- job.job_type.name gives us SQLite exception, it should work but doesn't-->
-        							<td><%= appl.job.description %></td>   
-        							<td><%= appl.job.starttime %></td>
-        							<td><%= appl.job.finishtime %></td>
+        				<% @appliers.each do |appl| %>
+                  <!-- appl[0] = teenager_id; appl[1] = finalScore -->
+        					<tr>
+        							<td><%= JobType.find(@job.job_type_id).name %></td>
+        							
+        							<td><%= @job.description %></td>   
+        							<td><%= @job.starttime %></td>
+        							<td><%= @job.finishtime %></td>
         							<td>
-        							<%= link_to(job_path(appl.job)) do %>
+        							<%= link_to(job_path(@job)) do %>
         								<button class="btn btn-primary btn-xs"><span class="fa fa-info-circle"></span></button>
         							<% end %>
         							</td>
-        							<td><%= appl.teenager.firstname %> <%= appl.teenager.lastname %></td>
+        							<td><%= Teenager.find(appl[0]).firstname %> <%= Teenager.find(appl[0]).lastname %></td>
+                      <td><%= appl[1] %></td>
         							<td>
         								<%= form_with url: accept_jobs_path, local: true do |form| %>
-    			            			<%= form.hidden_field :apply_job_id, :value => appl.id %>
-    			                		<button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Accept</button>
-    				                <% end %>
-    				            </td>
+    			            		<%= form.hidden_field :apply_job_id, :value => ApplyJob.where("teenager_id = ? AND job_id = ?", appl[0], @job.id).first.id %>
+    			                <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Accept</button>
+    				            <% end %>
+    				          </td>
         						</tr>
         					<% end %>
-                <% end %>
               </tbody>
                   
             </table>
 
 
-            <div class="clearfix"></div>
-            <ul class="pagination pull-right">
-              <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-            </ul>
                 
           </div>
             <% end %>

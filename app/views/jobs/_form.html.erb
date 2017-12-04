@@ -20,6 +20,7 @@
       </ul>
     </div>
   <% end %>
+  <h1>Job</h1>
   <%= hidden_field_tag "user", @user.id %>
   <div class="row">
   <p>
@@ -51,13 +52,13 @@
  <div class="col-half">
   <p>
     <%= form.label :starttime %><br>
-    <%= form.datetime_local_field :starttime %>
+    <%= form.datetime_select :starttime, :ampm => true, :minute_step => 15 %>
   </p>
  </div>
  <div class="col-half">
   <p>
     <%= form.label :finishtime %><br>
-    <%= form.datetime_local_field :finishtime %>
+    <%= form.datetime_select :finishtime, :ampm => true, :minute_step => 15 %>
   </p>
   </div>
   </div>

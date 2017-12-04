@@ -8,12 +8,12 @@ class AcceptJobsController < ApplicationController
 			@client = Client.find_by_user_id(@user.id)
 			# @applications = ApplyJob.where("client_id = ? AND filled = false", @client.id).order(:job_id)
 			
-			@applications = ApplyJob.includes(:job, :teenager).where("client_id = ? AND filled = ?", @client.id, false)
+			@applications = ApplyJob.where("client_id = ?", @client.id)
+			@applications = @applications.eager_load(:job, :teenager).where("cancelled = ? AND finished = ? AND accepted = ?", false, false, false)
 			
-			@jobs = Job.all
+			@jobs = Job.where("client_id = ? AND cancelled = ? AND accepted = ? AND finished = ?", @client.id, false, false, false)
 		end
 	end
-
 
 	def new
 		@user = current_user
@@ -22,12 +22,11 @@ class AcceptJobsController < ApplicationController
 		end
 		@client = Client.find_by_user_id(@user.id)
 		@job = Job.find(params[:job])
-		@applications = ApplyJob.includes(:job, :teenager).where("client_id = ? AND job_id = ? AND filled = ?", @client.id, @job.id, false)
+		@applications = ApplyJob.eager_load(:job, :teenager).where("apply_jobs.client_id = ? AND job_id = ? AND filled = ? AND jobs.cancelled = ? AND jobs.finished = ? AND jobs.accepted = ?", @client.id, @job.id, false, false, false, false)
 		@appliers = {}
 		@applications.each do | app |
 			endCount = Endorsement.where(end_user_id: app.teenager_id).count
-
-			allRatings = FinishedJob.where(teenager_id: app.teenager_id)
+			allRatings = Job.where("cancelled = ? AND finished = ? AND teenager_id = ?", false, true, app.teenager_id)
 			rCount = allRatings.count
 
 			total = endCount + rCount

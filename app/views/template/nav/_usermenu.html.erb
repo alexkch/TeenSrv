@@ -52,6 +52,9 @@
         <li><%= link_to(edit_user_client_path(current_user.id, @client.id)) do %><span class="fa fa-pencil"></span>Update Account Information<% end %></li>
         <li><%= link_to(accept_jobs_path) do %><span class="fa  glyphicon-exclamation-sign"></span>All Teenager Applicants<% end %></li>
 
+        <li><%= link_to(my_finished_jobs_path) do %><span class="fa fa-credit-card"></span>My Finished Jobs<% end %></li>
+        <li><%= link_to(finished_jobs_path) do %><span class="fa fa-credit-card"></span>Ready to Finish<% end %></li>
+
         <li><%= link_to(user_transactions_path(current_user.id, @client.id)) do %><span class="fa fa-credit-card"></span>Transaction History<% end %></li>
 
       <li><%= link_to(new_job_path) do %><span class="fa fa-plus"></span>Post New Job<% end %></li>

@@ -17,7 +17,7 @@
 	     		<div class="col-md-3 text-center">
 
 		     		<% if @client %>
-		   				<p><strong>Username:</strong> <%= link_to "#{@client_username}", user_client_path(@user.id, @client.id) %></p>
+		   				<p><strong>Username:</strong> <%= link_to "#{@client_username}", this_profile_path(User.find(@client.user_id)) %></p>
 						<p> Usertype: Client </p>
 						<p>Name: <%= @client.fName %> <%= @client.lName %></p>
 						<p>Gender: <%= @client.gender%></p>
@@ -34,7 +34,7 @@
 	        	<div class="col-md-3 text-center">
 
 		        	<% if @teenager %>
-		   				<p><strong>Username:</strong> <%= link_to "#{@teenager_username}", user_teenager_path(@user.id, @teenager.id) %></p>
+		   				<p><strong>Username:</strong> <%= link_to "#{@teenager_username}", this_profile_path(User.find(@teenager.user_id)) %></p>
 						<p> Usertype: Teenager </p>
 						<p>Name: <%= @teenager.firstname %> <%= @teenager.lastname %></p>
 						<p>Gender: <%= @teenager.gender%></p>
