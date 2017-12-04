@@ -129,8 +129,6 @@ GEM
       httpauth (~> 0.1)
       multi_json (~> 1.3)
     orm_adapter (0.5.0)
-    pg (0.21.0)
-    pg (0.21.0-x86-mingw32)
     public_suffix (3.0.0)
     puma (3.10.0)
     rack (2.0.3)
@@ -153,11 +151,6 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.5)
     railties (5.1.4)
       actionpack (= 5.1.4)
       activesupport (= 5.1.4)
@@ -260,10 +253,8 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   oauth2
-  pg
   puma (~> 3.7)
   rails (~> 5.1.4)
-  rails_12factor
   rest-client (~> 2.0, >= 2.0.2)
   sass-rails (~> 5.0)
   selenium-webdriver
@@ -275,9 +266,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   validates_timeliness (~> 4.0)
   web-console (>= 3.3.0)
-
-RUBY VERSION
-   ruby 2.3.3p222
 
 BUNDLED WITH
    1.16.0
