@@ -14,24 +14,24 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  # # Create a new user via #new
-  # # Log them in after creation, and take
-  # # them to their own 'profile page'.
-  # def create
-  #   @user = User.create( user_params )
-  #   session[:user_id] = @user.id
-  #   if @user.valid?
-  #     redirect_to user_path( @user )
-  #   else
-  #     render action: 'new'
-  #   end
-  # end
 
   def update
     manager = current_user.manager
     manager.update_account! params: params
     redirect_to user_path( current_user )
   end
+
+
+  # Admin Use, dont delete
+
+  def destroy
+
+    @user = User.find(params[:id])
+    @user.destroy
+   
+    redirect_to admin_index_path
+  end
+    
 
   # Show a user's profile page.
   # This is where you can spend money with the connected account.
@@ -146,12 +146,6 @@ class UsersController < ApplicationController
     redirect_to user_path( user )
   end
 
-def destroy
-  @user = User.find(params[:id])
-  @user.destroy
- 
-  redirect_to users_path
-end
 
 private
   def user_params

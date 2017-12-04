@@ -1,0 +1,2 @@
+web: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-production}
+export SECRET_KEY_BASE=d3b0c8e8566777cfd0c32a20f59d6a6db4ca86a30482028545557bce2b6790d3419565c9df9d02637d32cef9fceb23d33c87bfa36f46fe259d3b5cbc7291f13d

@@ -1,0 +1,169 @@
+<div class="mainbody container-fluid">
+    <div class="row">
+
+        <div style="padding-top:2px;"> </div>
+
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h1 class="panel-title pull-left" style="font-size:40px;"><%= @this_teenager.firstname %> <%= @this_teenager.lastname %>
+                        <small>(<%= @this_user.username %>)</small>
+                    </h1>
+                    <span class="pull-right">
+                        <div class="well well-sm">
+                            <div class="row">
+                                <div class="col-xs-18 col-md-12 text-center">
+                                  <% if(@r_count == 0) %>
+                                    <div class="rating">
+                                        No ratings
+                                    </div>
+                                  <% else %>
+                                    <h1 class="rating-num">
+                                        <%= @r_avg %></h1>
+                                    <div class="rating">
+                                      <% case @r_avg %>
+                                      <% when 0..0.5 %>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                      <% when 0.5..1.5 %>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                      <% when 1.5..2.5 %>
+                                      <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                      <% when 2.5..3.5 %>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                      <% when 3.5..4.5 %>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                      <% when 4.5..5 %>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                      <% end %>
+                                    </div>
+                                    <div>
+                                        <span class="glyphicon glyphicon-user"></span> <%= @r_count %> total
+                                    </div>
+                                  <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                    <br><br><br><br><br><br>
+                    <span class="pull-left">
+                        <div class="btn btn-link" data-toggle="modal" data-target="#endorseModal" style="text-decoration:none;"><i class="fa fa-check-square-o" aria-hidden="true"></i> Endorse</div>
+                        <div class="btn btn-link" data-toggle="modal" data-target="#endorsementModal" style="text-decoration:none;"><i class="fa fa-fw fa-users" aria-hidden="true"></i> Endorsements <span class="badge"><%= @end_count %></span></div>
+                    </span>
+
+                </div>
+            </div>
+            <hr>
+
+
+            <!-- Upcoming Jobs -->
+            <div class="panel panel-default">                        
+                <div class="panel-body">
+                    <h4><strong>Upcoming Jobs</strong></h4>
+
+                    <hr>
+                    <div class="post-content">
+                        <% if @jobs %>
+                            <% @jobs.each do |job| %>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <h4><strong><%= JobType.find(job.job_type_id).name %></strong> – <small><small><i><i class="fa fa-clock-o" aria-hidden="true"></i><%= job.starttime %></i></small></small></h4>
+                                            <hr>
+                                            <div class="post-content">
+                                                <%= job.description %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Transactions -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4><strong>Recent Transactions</strong> – <small><small><i><i class="fa fa-clock-o" aria-hidden="true"></i> some minutes ago</i></small></small></h4>
+                    <hr>
+                    <!-- Transaction -->
+                    <div class="post-content">
+                        <p>Transaction 1</p>
+                        <p>Brief Info....</p>
+                    </div>
+                    <hr>
+                    <!-- Transaction -->                   
+                    <div class="post-content">
+                        <p>Transaction 1</p>
+                        <p>Brief Info....</p>
+                    </div>
+                    <hr>
+                    <!-- Transaction -->
+                    <div class="post-content">
+                        <p>Transaction 1</p>
+                        <p>Brief Info....</p>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    <div class="media">
+                        <div align="center">
+                            <img class="thumbnail img-responsive" src="https://res.cloudinary.com/closebrace/image/upload/w_400/v1491315007/usericon_id76rb.png" width="300px" height="300px">
+                        </div>
+                        <div class="media-body">
+                            <hr>
+                            <h3>Bio</h3>                
+                            <p>Usertype: Teenager </p>
+                            <p>Gender: <%= @this_teenager.gender%></p>
+                            <p>Birthday (mm/dd/yyyy): <%= @this_teenager.birth_month %>/<%= @this_teenager.birth_day %>/<%= @this_teenager.birth_year %></p>
+                            <hr>
+                            <h3><strong>Address</strong></h3>
+                            <p>Address: <%= @this_teenager.address%></p>
+                            <p>Apartment number: <%= @this_teenager.apt_no%></p>
+                            <p>City: <%= @this_teenager.city%></p>
+                            <p>Province: <%= @this_teenager.province%></p>
+                            <p>Country: <%= @this_teenager.country%></p>
+                            <p>Postal Code: <%= @this_teenager.postal_code%></p>
+                            <hr>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

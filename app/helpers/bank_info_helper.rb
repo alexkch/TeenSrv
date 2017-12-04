@@ -1,0 +1,2 @@
+module BankInfoHelper
+end
