@@ -58,6 +58,7 @@ class AcceptJobsController < ApplicationController
 		end
 		@client = Client.find_by_user_id(@user.id)
 		@applied_job = ApplyJob.find(params[:apply_job_id])
+		# @applied_job = ApplyJob.find(8)
 
     	@job = Job.find(@applied_job.job_id)
     	@job.teenager_id = @applied_job.teenager_id

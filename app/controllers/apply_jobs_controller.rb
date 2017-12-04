@@ -19,8 +19,8 @@ class ApplyJobsController < ApplicationController
 	end
 
 	def index
-		@current_user = current_user
-		@teenager_id = @current_user.teenager.id
+		@user = current_user
+		@teenager_id = @user.teenager.id
 
 		@rewarded_jobs = ApplyJob.where(teenager_id: @teenager_id, filled: true, winner_id: @teenager_id) 
 		@open_jobs = ApplyJob.where(teenager_id: @teenager_id, job_id: Job.where(accepted: false, cancelled: false))

@@ -16,7 +16,12 @@ class ProfilesController < ApplicationController
 	      	if @endorsements
 	      		@end_count = @endorsements.count
 	      	end
-	      	if @this_teenager.nil?
+	      	@jobs = Job.where(teenager_id: @this_teenager.id).order("created_at DESC").limit(3)
+        	@rating_coll = Job.where("teenager_id = ? AND cancelled = ? AND finished = ?", @this_teenager.id, false, true)
+	        # ratings matter only for finished jobs
+	        @r_count = @rating_coll.count
+	        @r_avg = @rating_coll.average(:teens_rating)
+        	if @this_teenager.nil?
 	      		redirect_to home_index_url
 	      	else
 	      		@endorsement = Endorsement.find_by(ref_user_id: @user.id, end_user_id: @this_user.id)
@@ -28,7 +33,12 @@ class ProfilesController < ApplicationController
 	    
 	    elsif @this_user.usertype == 1 #Client
 	    	@this_client = Client.find_by(user_id: @this_user.id)
-	      	if @this_client.nil?
+	      	@jobs = Job.where(client_id: @this_client.id).order("created_at DESC").limit(3)
+    		@rating_coll = Job.where("client_id = ? AND cancelled = ? AND finished = ?", @this_client.id, false, true)
+			# ratings matter only for finished jobs
+			@r_count = @rating_coll.count
+			@r_avg = @rating_coll.average(:clients_rating)
+    		if @this_client.nil?
 	      		redirect_to home_index_url
 	      	else
 	      		render "profiles/show_client"

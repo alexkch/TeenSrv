@@ -26,13 +26,20 @@
               <thead>
                 <th>Job Type</th>
                 <th>Teenager name</th>
+                <th>Job description</th>
+                <th>Job start time</th>
+                <th>Job end time</th>
                 <th>Finish time</th>
               </thead>
               <tbody>
               	<% @finished_jobs.each do |fin| %>
 					<tr>
+						<% the_job = Job.find(fin.job_id) %>
 						<td><%= JobType.find(fin.job.job_type_id).name %>:</td>
-						<td><%= fin.teenager.firstname %> <%= fin.teenager.lastname %></td>    
+						<td><%= fin.teenager.firstname %> <%= fin.teenager.lastname %></td>
+						<td><%= the_job.description %></td>
+						<td><%= the_job.starttime %></td>
+						<td><%= the_job.finishtime %></td>  
 						<td><%= fin.finish_time %></td>
 						
 				</tr>
