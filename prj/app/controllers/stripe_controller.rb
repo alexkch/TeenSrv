@@ -20,7 +20,6 @@ class StripeController < ApplicationController
   # See app/services/stripe_oauth.rb for #oauth_url details.
   def oauth
     connector = StripeOauth.new( current_user )
-    fsdf
     url, error = connector.oauth_url( redirect_uri: stripe_confirm_url )
 
     if url.nil?
