@@ -34,29 +34,31 @@
             </thead>
             <tbody>
               <% Array(@transactions).each do |transaction| %>
-                <tr>
-                  <td><%= transaction.trans_date %></td>
-                  <% client_lname = Client.find(transaction.client_id).lName %>
-                  <% client_fname = Client.find(transaction.client_id).fName %>
-                  <% client_lname ||= "NoLastname" %>
-                  <% client_fname ||= "NoFirstname" %>
-                  <% client_name = client_lname + ", " + client_fname %>
-                  <td><%= client_name %></td>
-                  <% if transaction.teenager_id == nil %>
-                    <td>Error: teenager_id==nil, name cannot be retrieved</td>
-                  <% else %>
-                    <% teen_lname = Teenager.find(transaction.teenager_id).lastname %>
-                    <% teen_fname = Teenager.find(transaction.teenager_id).firstname %>
-                    <% teen_lname ||= "NoLastname" %>
-                    <% teen_fname ||= "NoFirstname" %>
-                    <% teen_name = teen_lname + ", " + teen_fname %>
-                    <td><%= teen_name %></td>
-                  <% end %>
-                  <td><%= JobType.find(transaction.job.job_type_id).name %></td>
-                  <td>TBD</td>
-                  <td><%= transaction.amount %></td>
-                  <td><%= transaction.status %></td>
-                </tr>
+                <%= link_to(user_transaction_path(current_user.id, transaction.id)) do %>
+                  <tr>
+                    <td><%= transaction.trans_date %></td>
+                    <% client_lname = Client.find(transaction.client_id).lName %>
+                    <% client_fname = Client.find(transaction.client_id).fName %>
+                    <% client_lname ||= "NoLastname" %>
+                    <% client_fname ||= "NoFirstname" %>
+                    <% client_name = client_lname + ", " + client_fname %>
+                    <td><%= client_name %></td>
+                    <% if transaction.teenager_id == nil %>
+                      <td>Error: teenager_id==nil, name cannot be retrieved</td>
+                    <% else %>
+                      <% teen_lname = Teenager.find(transaction.teenager_id).lastname %>
+                      <% teen_fname = Teenager.find(transaction.teenager_id).firstname %>
+                      <% teen_lname ||= "NoLastname" %>
+                      <% teen_fname ||= "NoFirstname" %>
+                      <% teen_name = teen_lname + ", " + teen_fname %>
+                      <td><%= teen_name %></td>
+                    <% end %>
+                    <td><%= JobType.find(transaction.job.job_type_id).name %></td>
+                    <td>TBD</td>
+                    <td><%= transaction.amount %></td>
+                    <td><%= transaction.status %></td>
+                  </tr>
+                <% end %>
               <% end %>
             </tbody>
           </table>

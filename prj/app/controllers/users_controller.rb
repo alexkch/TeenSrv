@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   # This is where you can spend money with the connected account.
   # app/views/users/show.html.haml
   def show
-    @user = User.find( params[:id] )
+    @user = User.find(current_user.id)
     @plans = Stripe::Plan.all
     @current_user = current_user
     if params.has_key?(:finished_job_id)
@@ -104,7 +104,7 @@ class UsersController < ApplicationController
       # in your database so that you can keep track of
       # the subscription status/etc. Here we're just
       # fire-and-forgetting it.
-      
+
       customer = Stripe::Customer.create(
         {
           source: params[:token],
@@ -127,7 +127,7 @@ class UsersController < ApplicationController
 def destroy
   @user = User.find(params[:id])
   @user.destroy
- 
+
   redirect_to users_path
 end
 
