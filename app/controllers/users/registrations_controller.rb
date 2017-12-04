@@ -71,7 +71,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
 
   def after_sign_up_path_for(user)
-    return home_index_path
+    return home_index_url
   end
 
   # The path used after sign up for inactive accounts.

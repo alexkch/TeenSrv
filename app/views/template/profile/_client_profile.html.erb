@@ -185,7 +185,9 @@
                         </div>
                         <div>
                             <div class="pull-right btn-group-xs">
-                                <div class="btn btn-default btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i> More info...</div>
+                                <%= link_to(user_transaction_path(current_user.id, transaction.id)) do %>
+                                  <div class="btn btn-default btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i> More info...</div>
+                                <% end %>
                             </div><br>
                         </div>
                         <hr>

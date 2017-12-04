@@ -39,12 +39,15 @@ class TransactionsController < ApplicationController
 	def show
 		@user = current_user
 		@transaction = nil
+		@type = nil
 		if @user.usertype == 0 # Teenager
-			@teenager = Teenager.find(params[:format])
-			@transaction = Transaction.find_by(teenager_id: @teenager.id)
+			teenager = Teenager.find(user_id: current_user.id)
+			@type = teenager
+			@transaction = Transaction.find(params[:id])
 		else # Client
-			@client = Client.find(params[:format])
-			@transaction = Transaction.find_by(client_id: @client.id)
+			client = Client.find_by(user_id: current_user.id)
+			@type = client
+			@transaction = Transaction.find(params[:id])
 		end
 	end
 
