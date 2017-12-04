@@ -24,6 +24,7 @@
 
           <table id="trans_table" class="table table-bordred table-striped">
             <thead>
+              <th>ID</th>
               <th>Date</th>
               <th>Client</th>
               <th>Teenager</th>
@@ -34,29 +35,32 @@
             </thead>
             <tbody>
               <% Array(@transactions).each do |transaction| %>
-                <tr>
-                  <td><%= transaction.trans_date %></td>
-                  <% client_lname = Client.find(transaction.client_id).lName %>
-                  <% client_fname = Client.find(transaction.client_id).fName %>
-                  <% client_lname ||= "NoLastname" %>
-                  <% client_fname ||= "NoFirstname" %>
-                  <% client_name = client_lname + ", " + client_fname %>
-                  <td><%= client_name %></td>
-                  <% if transaction.teenager_id == nil %>
-                    <td>Error: teenager_id==nil, name cannot be retrieved</td>
-                  <% else %>
-                    <% teen_lname = Teenager.find(transaction.teenager_id).lastname %>
-                    <% teen_fname = Teenager.find(transaction.teenager_id).firstname %>
-                    <% teen_lname ||= "NoLastname" %>
-                    <% teen_fname ||= "NoFirstname" %>
-                    <% teen_name = teen_lname + ", " + teen_fname %>
-                    <td><%= teen_name %></td>
-                  <% end %>
-                  <td><%= JobType.find(transaction.job.job_type_id).name %></td>
-                  <td>TBD</td>
-                  <td><%= transaction.amount %></td>
-                  <td><%= transaction.status %></td>
-                </tr>
+
+                  <tr data-link="<%= user_transaction_path(current_user.id, transaction.id) %>">
+                    <td><%= transaction.id %></td>
+                    <td><%= transaction.trans_date %></td>
+                    <% client_lname = Client.find(transaction.client_id).lName %>
+                    <% client_fname = Client.find(transaction.client_id).fName %>
+                    <% client_lname ||= "NoLastname" %>
+                    <% client_fname ||= "NoFirstname" %>
+                    <% client_name = client_lname + ", " + client_fname %>
+                    <td><%= client_name %></td>
+                    <% if transaction.teenager_id == nil %>
+                      <td>Error: teenager_id==nil, name cannot be retrieved</td>
+                    <% else %>
+                      <% teen_lname = Teenager.find(transaction.teenager_id).lastname %>
+                      <% teen_fname = Teenager.find(transaction.teenager_id).firstname %>
+                      <% teen_lname ||= "NoLastname" %>
+                      <% teen_fname ||= "NoFirstname" %>
+                      <% teen_name = teen_lname + ", " + teen_fname %>
+                      <td><%= teen_name %></td>
+                    <% end %>
+                    <td><%= JobType.find(transaction.job.job_type_id).name %></td>
+                    <td>TBD</td>
+                    <td><%= transaction.amount %></td>
+                    <td><%= transaction.status %></td>
+                  </tr>
+
               <% end %>
             </tbody>
           </table>
@@ -108,14 +112,10 @@
               })
             })
 
-            $(function () {
-              $('table tr:eq(0)').prepend('<th>ID</th>')
-              var id = 0;
-              $('table tr:gt(0)').each(function () {
-                id++
-                $(this).prepend('<td>' + id + '</td>')
-              })
+            $("tr[data-link]").click(function() {
+              window.location = $(this).data("link")
             })
+
             $('#trans_maxRows').trigger("change");
           </script>
         <% end %>

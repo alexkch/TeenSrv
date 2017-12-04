@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171126013101) do
+ActiveRecord::Schema.define(version: 20171201220101) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "street_no"
@@ -73,11 +73,12 @@ ActiveRecord::Schema.define(version: 20171126013101) do
   end
 
   create_table "endorsements", force: :cascade do |t|
-    t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "ref_user_id"
     t.integer "end_user_id"
+    t.string "skill"
+    t.integer "removed"
     t.index ["end_user_id"], name: "index_endorsements_on_end_user_id"
     t.index ["ref_user_id"], name: "index_endorsements_on_ref_user_id"
   end

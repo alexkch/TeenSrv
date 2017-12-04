@@ -85,3 +85,15 @@ span.psw {
 .signinSubmit {
   display: inline-block;
 }
+
+
+
+#trans_table tr:hover {
+    background-color: #ccc;
+}
+#trans_table th {
+    background-color: #fff;
+}
+#trans_table td:hover {
+    cursor: pointer;
+}
