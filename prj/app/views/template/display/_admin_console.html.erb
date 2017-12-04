@@ -6,11 +6,11 @@
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="table-container">
-							<table class="table table-filter">
+							<table id="admin_table" class="table table-filter">
 								<tbody>
 									<% if @jobs %>
  										<% @jobs.each do |job| %>
-	 										<tr data-status="jobs">
+	 										<tr data-status="jobs" data-link="<%= job_path(job.id) %>">
 												<td>
 													<div class="media">
 														<div class="media-body">
@@ -20,9 +20,14 @@
 																	Job Type: <%= JobType.find(job.job_type_id).name %>
 																<% end %>
 															</h4>
-															<h5>Offered By: <%= Client.find(job.client_id).fName %> <%= Client.find(job.client_id).lName %></h5>
-															<p>Start Time: <%= job.starttime %> Finish Time: <%= job.finishtime %> for a total of <%= job.hours %> hours </p>
-															<p class="summary">Brief Summary:<%= job.description %></p>
+															<% client_lname = Client.find(job.client_id).lName %>
+					                    <% client_fname = Client.find(job.client_id).fName %>
+					                    <% client_lname ||= "NoLastname" %>
+					                    <% client_fname ||= "NoFirstname" %>
+					                    <% client_name = client_lname + ", " + client_fname %>
+															<h5>Offered By: <%= client_name %></h5>
+															<p><b>Start Time:</b> <%= job.starttime %> <b>Finish Time:</b> <%= job.finishtime %> <b>For a total of</b> <%= job.hours %> hours </p>
+															<p class="summary"><b>Brief Summary:</b> <%= job.description %></p>
 															<span class="media-meta pull-right">
 															<%= link_to "Edit", :controller => :jobs, :action => :edit, :id => job.id %>
 															</span>
@@ -34,15 +39,22 @@
 									<% end %>
 									<% if @users %>
  										<% @users.each do |user| %>
-											<tr data-status="users">
+											<tr data-status="users" data-link="<%= this_profile_path(user.id) %>">
 												<td>
 													<div class="media">
 														<div class="media-body">
 															<span class="media-meta pull-right">Created at: <%= user.created_at %></span>
 															<h4 class="title">
-																	Id:<%= user.id %><% if user.usertype == 0 %> Usertype: Teen<br>Username: <%= link_to user.username, :controller => :profiles, :action => :this_profile, :user_id => user.id %><% elsif user.usertype == 1 %> Usertype: Client<br>Username: <%= link_to user.username, :controller => :profiles, :action => :this_profile, :user_id => user.id %><% else %> Usertype: Admin<% end %>
-																
+																	ID: <%= user.id %>
+																	<% if user.usertype == 0 %>
+																		Usertype: Teen<br>
+																	<% elsif user.usertype == 1 %>
+																		Usertype: Client<br>
+																	<% else %>
+																	 	Usertype: Admin
+																	<% end %>
 															</h4>
+															<p><b>Username:</b> <%= user.username %></p>
 															<span class="media-meta pull-right">
 															<% if user.usertype == 0 %>
 															<%= link_to "Edit", :controller => :teenagers, :action => :edit, :user_id => user.id, :id => user.teenager.id %>
@@ -59,16 +71,28 @@
 									<% end %>
 									<% if @transactions %>
  										<% @transactions.each do |transaction| %>
-											<tr data-status="transactions">
+											<tr data-status="transactions" data-link="<%= transaction_path(transaction.id) %>">
 												<td>
 													<div class="media">
 														<div class="media-body">
 															<span class="media-meta pull-right">Created at: <%= transaction.created_at %></span>
 															<h4 class="title">
-																	Id:<%= transaction.id %>
+																	ID: <%= transaction.id %>
 															</h4>
+															<% client_lname = Client.find(transaction.client_id).lName %>
+					                    <% client_fname = Client.find(transaction.client_id).fName %>
+					                    <% client_lname ||= "NoLastname" %>
+					                    <% client_fname ||= "NoFirstname" %>
+					                    <% client_name = client_lname + ", " + client_fname %>
+															<% teen_lname = Teenager.find(transaction.teenager_id).lastname %>
+				                      <% teen_fname = Teenager.find(transaction.teenager_id).firstname %>
+				                      <% teen_lname ||= "NoLastname" %>
+				                      <% teen_fname ||= "NoFirstname" %>
+				                      <% teen_name = teen_lname + ", " + teen_fname %>
+															<p><b>From:</b> <%= client_name %> <b>To:</b> <%= teen_name %></br>
+																<b>At:</b> <%= transaction.trans_date %> <b>For:</b> <%= number_to_currency(transaction.amount) %></p>
 															<span class="media-meta pull-right">
-															<%= link_to "Edit", :controller => :transactions, :action => :edit, :id => transaction.id %>
+															<%= link_to "Edit", edit_transaction_path(transaction.id) %>
 															</span>
 														</div>
 													</div>
@@ -92,6 +116,11 @@
 				</span>
 			</div>
 
+			<script>
+				$("tr[data-link]").click(function() {
+					window.location = $(this).data("link")
+				})
+			</script>
 
 		</section>
 	</div>
