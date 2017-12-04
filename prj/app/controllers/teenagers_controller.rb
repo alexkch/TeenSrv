@@ -6,11 +6,16 @@ class TeenagersController < ApplicationController
     def show
         @user = current_user
         @teenager = Teenager.find_by(user_id: current_user.id)
+        @jobs = Job.where(teenager_id: @teenager.id).order("created_at DESC").limit(3)
         @endorsements = Endorsement.where(end_user_id: current_user.id).all
         if @endorsements
             @end_count = @endorsements.count
         end
         @transactions = Transaction.where(teenager_id: @teenager.id).order(trans_date: :desc).limit(3)
+        @rating_coll = Job.where("teenager_id = ? AND cancelled = ? AND finished = ?", @teenager.id, false, true)
+        # ratings matter only for finished jobs
+        @r_count = @rating_coll.count
+        @r_avg = @rating_coll.average(:teens_rating)
     end
 
     def edit

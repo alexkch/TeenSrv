@@ -10,9 +10,13 @@ class ClientsController < ApplicationController
 
 	def show
 		@user = current_user
-	  @client = Client.find_by(user_id: current_user.id)
-	  @jobs = Job.where(client_id: @client.id).order("created_at DESC").limit(3)
-    @transactions = Transaction.where(client_id: @client.id).order(trans_date: :desc).limit(3)
+		@client = Client.find_by(user_id: current_user.id)
+	  	@jobs = Job.where(client_id: @client.id).order("created_at DESC").limit(3)
+    	@transactions = Transaction.where(client_id: @client.id).order(trans_date: :desc).limit(3)
+		@rating_coll = Job.where("client_id = ? AND cancelled = ? AND finished = ?", @client.id, false, true)
+		# ratings matter only for finished jobs
+		@r_count = @rating_coll.count
+		@r_avg = @rating_coll.average(:clients_rating)
 	end
 
 	def edit

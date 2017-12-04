@@ -24,17 +24,16 @@ class FinishedJobsController < ApplicationController
 
 	def new
 		@user = current_user
+		@finished_job = ApplyJob.find(params[:finished_job])
+		@job = Job.find(@finished_job.job_id)
+		@job_type = JobType.find(@job.job_type_id).name 
 		
 		if (@user.usertype == 0)
-			redirect_to root_path
+			@teenager = Teenager.find_by_user_id(@user)
+			@client = Client.find(@finished_job.client_id)
 		elsif(@user.usertype == 1)
-
 			@client = Client.find_by_user_id(@user)
-
-			@finished_job = ApplyJob.find(params[:finished_job])
-			@job = Job.find(@finished_job.job_id)
 			@teenager = Teenager.find(@finished_job.teenager_id)
-			@job_type = JobType.find(@job.job_type_id).name 
 			@client_username = User.find(@client.user_id).username
 			@teenager_username = User.find(@teenager.user_id).username
 		else
