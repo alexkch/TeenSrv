@@ -206,7 +206,11 @@
                 <div class="panel-body">
                     <div class="media">
                         <div align="center">
-                            <img class="thumbnail img-responsive" src="https://res.cloudinary.com/closebrace/image/upload/w_400/v1491315007/usericon_id76rb.png" width="300px" height="300px">
+                          <% if @teenager.gender == 'female'%>
+                            <img class="thumbnail img-responsive" src=<%= asset_path 'woman.png' %> width="300px" height="300px">
+                          <% else %>
+                            <img class="thumbnail img-responsive" src=<%= asset_path 'man.png' %> width="300px" height="300px">
+                          <% end %>
                         </div>
                         <div class="media-body">
                             <hr>
@@ -216,8 +220,8 @@
                                         <i class="fa fa-lg fa-gear" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Mention"></i>
                                     <% end %>
                                 </div>
-                            </span>     
-                            <h3>Bio</h3>         
+                            </span>
+                            <h3>Bio</h3>
                             <p>Usertype: Teenager </p>
                             <p>Gender: <%= @teenager.gender%></p>
                             <p>Birthday (mm/dd/yyyy): <%= @teenager.birth_month %>/<%= @teenager.birth_day %>/<%= @teenager.birth_year %></p>
