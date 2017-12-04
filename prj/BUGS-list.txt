@@ -1,6 +1,0 @@
-Bugs found:
-
-1. "NoMethodError in Search#search "; path: "TeenSrv/prj/app/views/search/search.html.erb where line #1 raised: "
-	<h1> <%= @jobs.size %> <%= params[:q] %> jobs in your area</h1>
-	
-2. 

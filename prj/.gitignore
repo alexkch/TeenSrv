@@ -1,7 +1,0 @@
-# This .gitignore file should help with merge issues now.
-# This causes git to ignore the files when doing git pull (not sure about details, but its a thing)
-# Beware not to write paths to important files!!
-/db/*.sqlite3
-/tmp/*
-/.bundle
-/.gem

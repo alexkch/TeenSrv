@@ -1,8 +1,14 @@
 class SearchController < ApplicationController
 
 	def search
+		@user = current_user
 		if(current_user.usertype == 0)
-			job_search_teen
+			@teenager = Teenager.find_by_user_id(@user.id)
+			if(@teenager.latitude == nil || @teenager.longitude == nil)
+				redirect_to edit_user_teenager_path(@user.id, @teenager)
+			else
+				job_search_teen
+			end
 		elsif(current_user.usertype == 1)
 			redirect_to root_path
 		else
@@ -16,6 +22,7 @@ class SearchController < ApplicationController
 
 		# Find the teen's address
 		@current_user = current_user
+		@user = current_user		
 		@teen = Teenager.find_by_user_id(@current_user.id)
         @lat = @teen.latitude
         @lng = @teen.longitude
