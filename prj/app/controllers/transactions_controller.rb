@@ -8,6 +8,11 @@ class TransactionsController < ApplicationController
 		@jobs = Job.all
 	end
 
+	def edit
+		@user = current_user
+		@transaction = Transaction.find(params[:id])
+	end
+
 	def index
 		@user = current_user
 		@transactions = nil
@@ -21,18 +26,18 @@ class TransactionsController < ApplicationController
 	end
 
 	def create
-		# Transaction.create!(:teenager_id => params[:transaction][:teenager_id],
-		# 										:client_id => params[:transaction][:client_id],
-		# 										:job_id => params[:transaction][:job_id],
-		# 										:amount => params[:transaction][:amount],
-		# 										:trans_date => params[:transaction][:trans_date],
-		# 										:status => params[:transaction][:status],)
-		Transaction.create!(:teenager_id => 5,
-												:client_id => 7,
-												:job_id => 1,
-												:amount => 100,
-												:trans_date => rand_time(2.days.ago),
-												:status => 'done',)
+		Transaction.create!(:teenager_id => params[:transaction][:teenager_id],
+												:client_id => params[:transaction][:client_id],
+												:job_id => params[:transaction][:job_id],
+												:amount => params[:transaction][:amount],
+												:trans_date => params[:transaction][:trans_date],
+												:status => params[:transaction][:status],)
+		# Transaction.create!(:teenager_id => 5,
+		# 										:client_id => 7,
+		# 										:job_id => 1,
+		# 										:amount => 100,
+		# 										:trans_date => rand_time(2.days.ago),
+		# 										:status => 'done',)
 		redirect_to controller: 'transactions', action: 'index', user: params[:user]
 	end
 

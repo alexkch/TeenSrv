@@ -48,7 +48,9 @@ Rails.application.routes.draw do
     resources :skills, :name_prefix => "teenager_"
   end
 
-  get '/users/connect_stripe' => 'users#connect_stripe' 
+  get '/users/connect_stripe' => 'users#connect_stripe'
+
+  resources :transactions
 
   # Stripe Connect endpoints
   #  - oauth flow

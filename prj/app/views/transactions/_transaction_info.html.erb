@@ -29,25 +29,28 @@
                 </div>
               </div>
               <div class="col-md-12 divider text-center"></div>
-              <div class="col-md-12">
-                <row>
-                  <div class="col-md-2 emphasis" style="padding: 5px">
-                    <%= link_to(user_transactions_path(current_user.id, @type.id)) do %>
-                      <button type="button" class="btn btn-primary btn-block"><span class="fa fa-list-ul">Prev</span></button>
-                    <% end %>
-                  </div>
-                  <div class="col-md-2 emphasis" style="padding: 5px">
-                    <%= link_to(user_transactions_path(current_user.id, @type.id)) do %>
-                      <button type="button" class="btn btn-primary btn-block"><span class="fa fa-list-ul">Next</span></button>
-                    <% end %>
-                  </div>
-                  <div class="col-md-2 emphasis col-md-offset-6" style="padding: 5px">
-                    <%= link_to(user_transactions_path(current_user.id, @type.id)) do %>
-                      <button type="button" class="btn btn-primary btn-block"><span class="fa fa-list-ul"></span></button>
-                    <% end %>
-                  </div>
-                </row>
-              </div>
+              <% if @type.nil? %>
+              <% else %>
+                <div class="col-md-12">
+                  <row>
+                    <div class="col-md-2 emphasis" style="padding: 5px">
+                      <%= link_to(user_transactions_path(current_user.id, @type.id)) do %>
+                        <button type="button" class="btn btn-primary btn-block"><span class="fa fa-list-ul">Prev</span></button>
+                      <% end %>
+                    </div>
+                    <div class="col-md-2 emphasis" style="padding: 5px">
+                      <%= link_to(user_transactions_path(current_user.id, @type.id)) do %>
+                        <button type="button" class="btn btn-primary btn-block"><span class="fa fa-list-ul">Next</span></button>
+                      <% end %>
+                    </div>
+                    <div class="col-md-2 emphasis col-md-offset-6" style="padding: 5px">
+                      <%= link_to(user_transactions_path(current_user.id, @type.id)) do %>
+                        <button type="button" class="btn btn-primary btn-block"><span class="fa fa-list-ul"></span></button>
+                      <% end %>
+                    </div>
+                  </row>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>

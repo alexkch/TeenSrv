@@ -1,0 +1,77 @@
+<div class="box">
+  <%= form_with(model: @transaction, local: true) do |form| %>
+    <% if @transaction.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@transaction.errors.count, "error") %>
+          prohibited this client form from being saved:
+        </h2>
+        <ul>
+          <% @transaction.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <h1>Edit Transaction</h1>
+    <div class="row">
+      <div class="col-third">
+        <p>Transaction ID: <%= @transaction.id %></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <p>
+        <div class="col-half">
+          <% client_lname = Client.find(@transaction.client_id).lName %>
+          <% client_fname = Client.find(@transaction.client_id).fName %>
+          <% client_lname ||= "NoLastname" %>
+          <% client_fname ||= "NoFirstname" %>
+          <% client_name = client_lname + ", " + client_fname %>
+          <label>Client: (<%= client_name %>)</label>
+          <%= form.number_field :client %>
+        </div>
+        <div class="col-half">
+          <% teen_lname = Teenager.find(@transaction.teenager_id).lastname %>
+          <% teen_fname = Teenager.find(@transaction.teenager_id).firstname %>
+          <% teen_lname ||= "NoLastname" %>
+          <% teen_fname ||= "NoFirstname" %>
+          <% teen_name = teen_lname + ", " + teen_fname %>
+          <label>Teenager: (<%= teen_name %>)</label>
+          <%= form.number_field :teenager %>
+        </div>
+      </p>
+    </div>
+
+    <div class="row">
+      <br/>
+      <p>
+        <label>DateTime: <%= @transaction.trans_date %></label>
+        <%= form.datetime_local_field :trans_date %>
+      </p>
+    </div>
+
+    <div class="row">
+      <p>
+        <div class="col-half">
+          <label>Amount: (<%= @transaction.amount %>)</label>
+          <%= form.number_field :amount %>
+        </div>
+        <div class="col-half">
+          <label>Status: <%= @transaction.status %></label>
+          <%= form.text_field :status %>
+        </div>
+      </p>
+    </div>
+
+    <div class="row">
+      <br/>
+      <p>
+        <%= form.submit %>
+      </p>
+    </div>
+
+  <% end %>
+
+</div>
