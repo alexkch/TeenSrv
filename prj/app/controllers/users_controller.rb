@@ -21,11 +21,24 @@ class UsersController < ApplicationController
     redirect_to user_path( current_user )
   end
 
+
+  # Admin Use, dont delete
+
+  def destroy
+
+    @user = User.find(params[:id])
+    @user.destroy
+   
+    redirect_to admin_index_path
+  end
+    
+
   # Show a user's profile page.
   # This is where you can spend money with the connected account.
   # app/views/users/show.html.haml
   def show
     @user = User.find(current_user.id)
+    @user.currency = "cad"
     @plans = Stripe::Plan.all
     @current_user = current_user
     if params.has_key?(:finished_job_id)
@@ -60,9 +73,18 @@ class UsersController < ApplicationController
         application_fee: fee
       }
 
-      client_to_us_charge = Stripe::Charge.create( charge_attrs, user.secret_key )
-      charge_attrs[:destination] = teen_user.stripe_user_id
-      us_to_teen_charge = Stripe::Charge.create( charge_attrs )
+      client_to_plat_charge = Stripe::Charge.create( charge_attrs, user.secret_key )
+      # charge_attrs[:destination] = teen_user.stripe_user_id
+      # us_to_teen_charge = Stripe::Charge.create( charge_attrs )
+
+      # Create a Transfer to a connected account (later):
+      transfer = Stripe::Transfer.create({
+        :amount => amount,
+        :currency => user.currency,
+        # :source_transaction => client_to_plat_charge.id,
+        :destination => "#{teen_user.stripe_user_id}",
+        :transfer_group => "{ORDER10}",
+      })
 
       # case params[:charge_on]
       # when 'connected'
@@ -77,7 +99,7 @@ class UsersController < ApplicationController
       #   charge = Stripe::Charge.create( charge_attrs )
       # end
 
-      flash[:notice] = "Charged successfully! <a target='_blank' rel='#{params[:charge_on]}-account' href='https://dashboard.stripe.com/test/payments/#{client_to_us_charge.id}'>View in dashboard &raquo;</a>"
+      flash[:notice] = "Charged successfully! <a target='_blank' rel='#{params[:charge_on]}-account' href='https://dashboard.stripe.com/test/payments/#{client_to_plat_charge.id}'>View in dashboard &raquo;</a>"
 
     rescue Stripe::CardError => e
       error = e.json_body[:error][:message]
@@ -123,13 +145,6 @@ class UsersController < ApplicationController
 
     redirect_to user_path( user )
   end
-
-def destroy
-  @user = User.find(params[:id])
-  @user.destroy
-
-  redirect_to users_path
-end
 
 private
   def user_params

@@ -1,11 +1,24 @@
-# TeenSrv
+# README
 
-Developers     --- Github.username (helper for TA's:
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-1) Alex       --- alexkch    
-2) Chloe      --- chloeduan
-3) Talat      --- tzaitoun
-4) Maithri    --- maithrisb
-5) Robert     --- Robert-Shen
-6) Ric        --- HXR-RIC
-7) Tenzin     --- tenzint
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...

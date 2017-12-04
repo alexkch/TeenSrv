@@ -1,0 +1,5 @@
+<% @cancel_job.each do |cj| %>
+<p>Job ID: <%= cj.job_id %></p>
+<p>User ID: <%= cj.user_id %></p>
+<p>Cancelled at: <%= cj.cancelled_at %></p>
+<% end %>
