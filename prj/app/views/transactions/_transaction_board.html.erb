@@ -24,6 +24,7 @@
 
           <table id="trans_table" class="table table-bordred table-striped">
             <thead>
+              <th>ID</th>
               <th>Date</th>
               <th>Client</th>
               <th>Teenager</th>
@@ -34,8 +35,9 @@
             </thead>
             <tbody>
               <% Array(@transactions).each do |transaction| %>
-                <%= link_to(user_transaction_path(current_user.id, transaction.id)) do %>
-                  <tr>
+
+                  <tr data-link="<%= user_transaction_path(current_user.id, transaction.id) %>">
+                    <td><%= transaction.id %></td>
                     <td><%= transaction.trans_date %></td>
                     <% client_lname = Client.find(transaction.client_id).lName %>
                     <% client_fname = Client.find(transaction.client_id).fName %>
@@ -58,7 +60,7 @@
                     <td><%= transaction.amount %></td>
                     <td><%= transaction.status %></td>
                   </tr>
-                <% end %>
+
               <% end %>
             </tbody>
           </table>
@@ -110,14 +112,10 @@
               })
             })
 
-            $(function () {
-              $('table tr:eq(0)').prepend('<th>ID</th>')
-              var id = 0;
-              $('table tr:gt(0)').each(function () {
-                id++
-                $(this).prepend('<td>' + id + '</td>')
-              })
+            $("tr[data-link]").click(function() {
+              window.location = $(this).data("link")
             })
+
             $('#trans_maxRows').trigger("change");
           </script>
         <% end %>
