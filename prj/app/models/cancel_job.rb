@@ -1,2 +1,0 @@
-class CancelJob < ApplicationRecord
-end
