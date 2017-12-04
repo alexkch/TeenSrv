@@ -1,7 +1,7 @@
 class HooksController < ApplicationController
   # Webhooks can't possibly know our CSRF token.
   # So disable that feature entirely for this controller.
-  #skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   def stripe
     # If the request has a 'user_id' key, then this is a webhook
