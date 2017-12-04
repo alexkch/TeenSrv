@@ -1,0 +1,239 @@
+<div class="mainbody container-fluid">
+    <div class="row">
+
+        <div style="padding-top:2px;"> </div>
+
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h1 class="panel-title pull-left" style="font-size:40px;"><%= @client.fName %> <%= @client.lName %>
+                        <small>(<%= @user.username %>)</small>
+                    </h1>
+                    <span class="pull-right">
+                        <div class="well well-sm">
+                            <div class="row">
+                                <div class="col-xs-18 col-md-12 text-center">
+                                  <% if(@r_count == 0) %>
+                                    <div class="rating">
+                                        No ratings
+                                    </div>
+                                  <% else %>
+                                    <h1 class="rating-num">
+                                        <%= @r_avg %></h1>
+                                    <div class="rating">
+                                      <% case @r_avg %>
+                                      <% when 0..0.5 %>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                      <% when 0.5..1.5 %>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                      <% when 1.5..2.5 %>
+                                      <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                      <% when 2.5..3.5 %>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                      <% when 3.5..4.5 %>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                      <% when 4.5..5 %>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                      <% end %>
+                                    </div>
+                                    <div>
+                                        <span class="glyphicon glyphicon-user"></span> <%= @r_count %> total
+                                    </div>
+                                  <% end %>
+                                </div>
+                            </div>
+                        </div>
+
+                    </span>
+                    <br><br><br><br><br><br>
+                    <span class="pull-left">
+                        <div class="btn btn-link" style="text-decoration:none;"><i class="fa fa-credit-card" aria-hidden="true"></i> Payment Info</div>
+                    </span>
+                </div>
+            </div>
+            <hr>
+
+
+            <!-- Upcoming Jobs -->
+            <div class="panel panel-default">
+                <span class="pull-right">
+                    <div class="btn btn-link" style="text-decoration:none;">
+                        <%= link_to(clientjobs_path(@client.id)) do %>
+                            <i class="fa fa-address-card-o" aria-hidden="true" data-toggle="tooltip" data-placement="bottom"></i>
+                        <% end %>
+                    </div>
+                </span>
+                <div class="panel-body">
+                    <h4><strong>Upcoming Jobs</strong></h4>
+
+                    <hr>
+                    <div class="post-content">
+                        <% if @jobs %>
+                            <% @jobs.each do |job| %>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <h4>
+                                              <strong><%= JobType.find(job.job_type_id).name %></strong><br/>
+                                              <small><small><i><i class="fa fa-clock-o" aria-hidden="true"></i> <%= job.starttime %></i></small></small>
+                                            </h4>
+                                            <hr>
+                                            <div class="post-content">
+                                                <%= job.description %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Transactions -->
+            <div class="panel panel-default">
+                <span class="pull-right">
+                    <div class="btn btn-link" style="text-decoration:none;">
+                        <%= link_to(user_transactions_path(current_user.id, @client.id)) do %>
+                            <i class="fa fa-credit-card" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Mention"></i>
+                        <% end %>
+                    </div>
+                </span>
+                <div class="panel-body">
+                    <% if @transactions.nil? %>
+                      <h4><strong>Recent Transactions</strong></h4>
+                      <hr>
+                      <p>No transactions found</p>
+                    <% elsif Array(@transactions).count == 0 %>
+                      <h4><strong>Recent Transactions</strong></h4>
+                      <hr>
+                      <p>No transactions found</p>
+                    <% else %>
+                      <% recent_trans = Array(@transactions).first %>
+                      <% recent_trans_date = recent_trans.trans_date %>
+                      <% currentUTC = Time.now.utc %>
+                      <% diff_in_months = (currentUTC.year*12 + currentUTC.month) - (recent_trans_date.year*12 + recent_trans_date.month) %>
+                      <% diff_in_days = currentUTC.mday - recent_trans_date.mday %>
+                      <% if diff_in_days < 0 %>
+                        <% diff_in_months -= 1 %>
+                        <% diff_in_days += 30 %>
+                      <% end %>
+                      <% diff_in_hrs = currentUTC.hour - recent_trans_date.hour %>
+                      <% if diff_in_hrs < 0 %>
+                        <% diff_in_days -= 1 %>
+                        <% diff_in_hrs += 24 %>
+                      <% end %>
+                      <% diff_in_time = "" %>
+                      <% if diff_in_months > 0 %>
+                        <% diff_in_time += diff_in_months.to_s + " months " %>
+                      <% end %>
+                      <% if diff_in_days > 0 %>
+                        <% diff_in_time += diff_in_days.to_s + " days " %>
+                      <% end %>
+                      <% if diff_in_hrs > 0 %>
+                        <% diff_in_time += diff_in_hrs.to_s + " hours " %>
+                      <% end %>
+                      <% diff_in_time += " ago" %>
+                      <h4>
+                        <strong>Recent Transactions</strong> – <small><small><i><i class="fa fa-clock-o" aria-hidden="true"></i> <%= diff_in_time %></i></small></small>
+                      </h4>
+                      <hr>
+                      <% Array(@transactions).each do |transaction| %>
+                        <div class="post-content">
+                            <strong><%= JobType.find(transaction.job.job_type_id).name %></strong><br/><br/>
+                            <p>Transaction Date:
+                              <small><small><i><i class="fa fa-clock-o" aria-hidden="true"></i> <%= transaction.trans_date %></i></small></small>
+                            </p>
+                            <p>Paid to:
+                              <% teen_lname = Teenager.find(transaction.teenager_id).lastname %>
+                              <% teen_fname = Teenager.find(transaction.teenager_id).firstname %>
+                              <% teen_lname ||= "NoLastname" %>
+                              <% teen_fname ||= "NoFirstname" %>
+                              <% teen_name = teen_lname + ", " + teen_fname %>
+                              <small><%= teen_name %></small>
+                            </p>
+                            <p>Amount:
+                              <small><%= number_to_currency(transaction.amount) %></small>
+                            </p>
+                            <p>Status:
+                              <small><%= transaction.status %></small>
+                            </p>
+                        </div>
+                        <div>
+                            <div class="pull-right btn-group-xs">
+                                <div class="btn btn-default btn-xs"><i class="fa fa-info-circle" aria-hidden="true"></i> More info...</div>
+                            </div><br>
+                        </div>
+                        <hr>
+                      <% end %>
+                    <% end %>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    <div class="media">
+                        <div align="center">
+                            <img class="thumbnail img-responsive" src="https://res.cloudinary.com/closebrace/image/upload/w_400/v1491315007/usericon_id76rb.png" width="300px" height="300px">
+                        </div>
+                        <div class="media-body">
+                            <hr>
+                            <span class="pull-right">
+                                <div class="btn btn-link" style="text-decoration:none;">
+                                    <%= link_to(edit_user_client_path(@user.id, @client.id)) do %>
+                                        <i class="fa fa-lg fa-gear" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Mention"></i>
+                                    <% end %>
+                                </div>
+                            </span>
+                            <h3>Bio</h3>
+                            <p>Usertype: Client </p>
+                            <p>Gender: <%= @client.gender%></p>
+                            <p>Birthday (mm/dd/yyyy): <%= @client.birth_month %>/<%= @client.birth_day %>/<%= @client.birth_year %></p>
+                            <hr>
+                            <h3><strong>Primary Address</strong></h3>
+                            <p>Street: <%= @client.address%></p>
+                            <p>Apartment number: <%= @client.apt_no%></p>
+                            <p>City: <%= @client.city%></p>
+                            <p>Province: <%= @client.province%></p>
+                            <p>Country: <%= @client.country%></p>
+                            <p>Postal Code: <%= @client.postal_code%></p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

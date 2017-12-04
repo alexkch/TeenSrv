@@ -1,0 +1,32 @@
+
+<h1>Transactions for</h1>
+<p>
+  <strong><%= @user.username %></strong>
+</p>
+
+<%= link_to 'Back', users_path(:user => @user.id) %>
+<table>
+  <tr>
+    <th colspan="1"></th>
+  </tr>
+ 
+  <% @transactions.each do |transaction| %>
+    <tr>
+      <td><%= transaction.teenager_id %></td>
+      <td><%= transaction.client_id %></td>
+      <td><%= transaction.job_id %></td>
+      <td><%= transaction.payment_id %></td>
+      <td><%= link_to 'Show', transaction_path %></td>
+      <td><%= link_to 'Edit', edit_transaction_path %></td>
+      <td><%= link_to 'Destroy', transaction_path,
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <br />
+</table>
+      
+
+
+    </tr>
+  <% end %>
+</table>

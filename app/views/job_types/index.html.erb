@@ -1,0 +1,6 @@
+<h2>List of all the jobs</h2>
+<ul>
+	<% @job_types.each do |job_type| %>	
+	<li><%= job_type.name; %> ______ ID: <%= job_type.id %></li>
+	<% end %>
+</ul>
