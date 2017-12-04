@@ -18,6 +18,7 @@
 
 						<table id="jobs_table" class="table table-bordred table-striped">
               <thead>
+								<th>ID</th>
                 <th>Job Type</th>
                 <th>Description</th>
                 <th>Hourly Rate</th>
@@ -28,10 +29,11 @@
               </thead>
               <tbody>
                 <% @jobs.each do |job| %>
-                  <tr>
+                  <tr data-link="<%= job_path(job) %>">
+										<td><%= job.id %></td>
                     <td><%= JobType.find(job.job_type_id).name %></td>
                     <!-- job.job_type.name gives us SQLite exception, it should work but doesn't-->
-                    <td><%= job.description %></td>
+										<td><%= job.description %></td>
                     <td><%= job.hourly_rate %></td>
                     <td><%= job.hours %></td>
                     <td><%= job.starttime %></td>
@@ -96,13 +98,8 @@
 	              })
 	            })
 
-	            $(function () {
-	              $('table tr:eq(0)').prepend('<th>ID</th>')
-	              var id = 0;
-	              $('table tr:gt(0)').each(function () {
-	                id++
-	                $(this).prepend('<td>' + id + '</td>')
-	              })
+							$("tr[data-link]").click(function() {
+	              window.location = $(this).data("link")
 	            })
 	            $('#jobs_maxRows').trigger("change");
 	          </script>

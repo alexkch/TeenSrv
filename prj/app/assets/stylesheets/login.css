@@ -97,3 +97,13 @@ span.psw {
 #trans_table td:hover {
     cursor: pointer;
 }
+
+#jobs_table tr:hover {
+    background-color: #ccc;
+}
+#jobs_table th {
+    background-color: #fff;
+}
+#jobs_table td:hover {
+    cursor: pointer;
+}
