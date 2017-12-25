@@ -1,24 +1,16 @@
-# README
+# RUBY PROJECT - TEENAGER/CLIENT JOB SERVICE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+RoR
 
-Things you may want to cover:
+- Devise Gem
+- GoogleMaps Gem
 
-* Ruby version
+Team Members:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Alex Chang
+2. Tenzin Thabkhae
+3. Talat Zaitoun
+4. Chloe Duan
+5. Robert Shen
+6. Maithra Subramu
+7. Ric Huang
