@@ -1,6 +1,8 @@
-# \[RUBY\] Full Stack Web Application - TEENAGER/CLIENT JOB SERVICE
+# \[RUBY\] Teen Jobs Service 
 
-RoR
+Full Stack Web Application
+
+Ruby on Rails
 
 - Devise Gem
 - GoogleMaps Gem
