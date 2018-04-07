@@ -1,11 +1,11 @@
-# \[RUBY\] Teen Jobs Service 
+# \[Ruby on Rails\] Teen Jobs Service 
 
 Full Stack Web Application
 
-Ruby on Rails
-
-- Devise Gem
-- GoogleMaps Gem
+Gems:
+- Bcrypt
+- Devise
+- GoogleMaps
 
 Team Members:
 
